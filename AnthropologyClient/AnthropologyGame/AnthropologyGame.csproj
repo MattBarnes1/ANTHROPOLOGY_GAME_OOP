@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace>AnthropologyClient.AnthropologyGame</RootNamespace>
+    <AssemblyName>AnthropologyGame</AssemblyName>
+    <ProjectGuid>{}</ProjectGuid>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GuiHandler.cs" />
+    <Compile Include="MainGameCode.cs" />
+    <Compile Include="TradeGood.cs" />
+    <Compile Include="ProductionHandler.cs" />
+    <Compile Include="BuildingHandler.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="PlayerCampObject.cs" />
+    <Compile Include="RandomEvent.cs" />
+    <Compile Include="RandomEventHandler.cs" />
+    <Compile Include="PlayerSocietyChoices.cs" />
+    <Compile Include="SocialValues.cs" />
+    <Compile Include="SocialValuesQuestions.cs" />
+    <Compile Include="HorticulturalHandler.cs" />
+    <Compile Include="Granary.cs" />
+    <Compile Include="Field.cs" />
+    <Compile Include="Workshop.cs" />
+    <Compile Include="BuildingCountClass.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
