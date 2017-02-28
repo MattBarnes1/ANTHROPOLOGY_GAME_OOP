@@ -1,16 +1,38 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+imports java.javafx;
 
 namespace AnthropologyClient.AnthropologyGame
 {
 	public class GuiHandler
 	{
-		String ChoiceBody;
+		private static GuiHandler myGui = null;
+		
+		public static GuiHandler getGui()
+		{
+			if(GuiHandler == null)
+			{
+				throw new Exception("Gui handler undefined!");
+			} else {
+				return myGui;
+			}
+		}
+		
+		String choiceBody;
+		Stage mainDisplayStage;
+		Scene mainScreen;
+		Scene loadGameScreen;
+		Scene displayInGameChoice;
+		Scene displayInGameChoiceExplanation;
+		
+		public GuiHandler(Stage primaryStage, Scene mainScreen, Scene loadScreen, Scene saveScreen)
+		{
+			mainDisplayStage = primaryStage;
+			
+			displayMainMenuGUI();
+		}
 
 		public void displayMainMenuGUI()
 		{
-			throw new NotImplementedException();
+			
 		}
 
 		public void displaySocietyChoiceSelectionGUI(String Body, String[] Choices)
