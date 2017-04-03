@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="anthropologyapplication.FXML.MainGameScreenController">
+    <stylesheets>
+        <URL value="@maingamescreen.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutX="6.0" layoutY="424.0" prefHeight="171.0" prefWidth="781.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Buildings">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="192.0" layoutY="8.0" prefHeight="129.0" prefWidth="585.0">
+                           <content>
+                              <FlowPane fx:id="BuildingItem" prefHeight="127.0" prefWidth="582.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Trade Goods">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="208.0" layoutY="6.0" prefHeight="127.0" prefWidth="566.0">
+                           <content>
+                              <FlowPane fx:id="TradeFlowpane" prefHeight="127.0" prefWidth="582.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Assign Citizens">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="63.0" text="Total Citizens:" />
+                        <Label fx:id="assignCitizensFreeCitizensCount" layoutX="88.0" layoutY="63.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Label fx:id="GameWorldTimeObject112" layoutX="221.0" layoutY="14.0" text="Workers:" />
+                        <Label fx:id="assignCitizensWorkersCount1" layoutX="268.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Label fx:id="GameWorldTimeObject1112" layoutX="353.0" layoutY="14.0" text="Warriors:" />
+                        <Label fx:id="assignCitizensWarriorsCount1" layoutX="401.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Label fx:id="GameWorldTimeObject11112" layoutX="491.0" layoutY="14.0" text="Builders:" />
+                        <Label fx:id="assignCitizensBuildersCount" layoutX="536.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Label fx:id="GameWorldTimeObject111111" layoutX="646.0" layoutY="14.0" text="Farmers:" />
+                        <Label fx:id="assignCitizensFarmersCount" layoutX="691.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Button fx:id="increaseWorkersButton" layoutX="221.0" layoutY="51.0" mnemonicParsing="false" onAction="#increaseWorkersButtonClick" text="/\" />
+                        <Button fx:id="decreaseWorkersButton" layoutX="221.0" layoutY="80.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
+                        <Button fx:id="increaseWarriorsButton" layoutX="351.0" layoutY="49.0" mnemonicParsing="false" onAction="#increaseWarriorsButtonClick" text="/\" />
+                        <Button fx:id="decreaseWarriorsButton" layoutX="351.0" layoutY="78.0" mnemonicParsing="false" onAction="#decreaseWarriorsButtonClick" text="\\/" />
+                        <Button fx:id="increaseBuildersButton" layoutX="498.0" layoutY="48.0" mnemonicParsing="false" onAction="#increaseBuildersButtonClick" text="/\" />
+                        <Button fx:id="decreaseWorkersButton" layoutX="498.0" layoutY="77.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
+                        <Button fx:id="increaseFarmersButton" layoutX="653.0" layoutY="50.0" mnemonicParsing="false" onAction="#increaseFarmersButtonClick" text="/\" />
+                        <Button fx:id="decreaseFarmersButton" layoutX="653.0" layoutY="79.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label fx:id="GameWorldTimeObject" layoutX="14.0" layoutY="14.0" text="Building Queue" />
+      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onDragDetected="#MouseDraggingDetectedOnCanvas" onMouseClicked="#CanvasMapDisplayClicked" width="587.0" />
+      <Label layoutX="185.0" layoutY="400.0" text="Total Citizens:" />
+      <Label fx:id="GameWorldTimeObject11" layoutX="302.0" layoutY="400.0" text="Workers:" />
+      <Label fx:id="GameWorldTimeObject111" layoutX="383.0" layoutY="400.0" text="Warriors:" />
+      <Label fx:id="GameWorldTimeObject1111" layoutX="479.0" layoutY="400.0" text="Builders:" />
+      <Label fx:id="worldDisplayFreeCitizensCount" layoutX="267.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+      <Label fx:id="worldDisplayWarriorsCount" layoutX="443.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+      <Label fx:id="worldDisplayBuildersCount" layoutX="530.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+      <Label fx:id="worldDisplayWorkersCount" layoutX="358.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+      <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" text="&gt;&gt;" />
+      <Button fx:id="NormalSpeedButton" layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickedNormalSpeed" text="&gt;" />
+      <Button fx:id="Pause" layoutX="665.0" layoutY="396.0" mnemonicParsing="false" onAction="#openPauseMenu" text="Pause" />
+      <Label fx:id="GameWorldTimeObject11111" layoutX="571.0" layoutY="400.0" text="Farmers:" />
+      <Label fx:id="worldDisplayFarmersCount" layoutX="622.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+      <VBox fx:id="BuildingQueueList" layoutX="6.0" layoutY="31.0" prefHeight="385.0" prefWidth="170.0" />
+   </children>
+</AnchorPane>

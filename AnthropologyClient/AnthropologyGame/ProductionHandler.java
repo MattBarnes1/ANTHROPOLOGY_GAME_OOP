@@ -1,29 +1,63 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package anthropologyapplication;
 
-namespace AnthropologyClient.AnthropologyGame
-{
-	public class ProductionHandler
+
+import internalLockers.internalProductLocker;
+import java.util.ArrayList;
+import java.util.Iterator;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+/**
+ *
+ * @author Duke
+ */
+public class ProductionHandler
 	{
 		TradeGood[] TradeGoodList;
-		int ProducersAmount;
-
+		int ProducersAmount = 0;
+                private internalProductLocker[] internalProductList = new internalProductLocker[] {
+                                     
+                };
+       
+                private ArrayList<String> ProductsThatCanBeBuilt = new ArrayList<>();
+                private ArrayList<TradeGood> ProductsBeingMade = new ArrayList<>();
+                
+                
 		public ProductionHandler()
 		{
-			throw new NotImplementedException();
+			updatePossibleItems();
 		}
 
-		public void unlockTier(int TierLevel)
+		public void update(GameTime MS)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void update(float MS)
-		{
-			throw new NotImplementedException();
-		}
-
+                public void lockTradeGood(Class<? extends TradeGood> aTradeGood)
+                {
+                     for(internalProductLocker A : internalProductList)
+                    {
+                        if(A.myTradeGood.getClass() == aTradeGood)
+                        {
+                            A.Available = false;
+                        }
+                    }
+                    
+                }
+                public void unlockTradeGood(Class<? extends TradeGood> aTradeGood)
+                {
+                     for(internalProductLocker A : internalProductList)
+                    {
+                        if(A.myTradeGood.getClass() == aTradeGood)
+                        {
+                            A.Available = true;
+                        }
+                    }
+                }
 		public TradeGood[] getTradeGoodInventory()
 		{
 			throw new NotImplementedException();
@@ -31,17 +65,27 @@ namespace AnthropologyClient.AnthropologyGame
 
 		public void addProducers(int amount)
 		{
-			throw new NotImplementedException();
+			ProducersAmount++;
 		}
 
 		public void removeProducers(int Amount)
 		{
-			throw new NotImplementedException();
+                    if((ProducersAmount - Amount) > 0)
+                    {
+			ProducersAmount--;
+                    } else {
+                        ProducersAmount = 0;
+                    }
 		}
 
-		public void getProducerAmount()
-		{
-			throw new NotImplementedException();
-		}
+            private void updatePossibleItems() { 
+                    ProductsThatCanBeBuilt.clear();
+                    for(internalProductLocker aVal : internalProductList)
+                    {
+                        if(aVal.Available)
+                        {
+                            ProductsThatCanBeBuilt.add(aVal.myTradeGood.getName());
+                        }
+                    }
+            }
 	}
-}

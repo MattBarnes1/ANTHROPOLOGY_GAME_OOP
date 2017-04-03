@@ -9,18 +9,16 @@ package anthropologyapplication;
  *
  * @author Duke
  */
-public enum SocialValues {
-    Matrilineal,
+public enum SocialValuesOpposite {
     Patrilineal,
-    Exogamy,
+    Matrilineal,
     Endogamy,
-    Monogamy,
+    Exogamy,
     Polygamy,
-    Matriarchal,
+    Monogamy,
     Patriarchal,
-    Horticultural,
-    Pastoral
+    Matriarchal,
+    Pastoral,
+    Horticultural
     
 }
-
-

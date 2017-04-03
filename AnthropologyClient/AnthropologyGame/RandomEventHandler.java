@@ -1,28 +1,55 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package anthropologyapplication;
 
-namespace AnthropologyClient.AnthropologyGame
-{
-	public class RandomEventHandler
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+/**
+ *
+ * @author Duke
+ */
+public class RandomEventHandler implements Runnable
 	{
-		PlayerSocietyChoices thePlayersChoices;
+		SocietyChoices thePlayersChoices;
 		RandomEvent RandomEventTree;
 		RandomEvent CurrentlySelectedNode;
-
-		public RandomEventHandler(PlayerSocietyChoices playerChoices)
+                ArrayList<RandomEvent> UnorderedEvents = new ArrayList<RandomEvent>();
+                String FileName;
+		public RandomEventHandler(String FileName) throws IOException
 		{
-			throw new NotImplementedException();
+                    this.FileName = FileName;
+		}
+               
+                
+		public void update(GameTime MS)
+		{
+			CurrentlySelectedNode.update(MS);
 		}
 
-		public void update()
+                public boolean isEventReady()
+                {
+                    return CurrentlySelectedNode.isFinished();
+                }
+                
+		public RandomEvent GetNextRandomEvent()
 		{
-			throw new NotImplementedException();
+			CurrentlySelectedNode = CurrentlySelectedNode.getNextEvent();
+                        return CurrentlySelectedNode;
 		}
 
-		public RandomEvent checkGetRandomEvent()
-		{
-			throw new NotImplementedException();
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            RandomEventTree = new RandomEvent(FileName);
+        } catch (IOException ex) {
+            Logger.getLogger(RandomEventHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
