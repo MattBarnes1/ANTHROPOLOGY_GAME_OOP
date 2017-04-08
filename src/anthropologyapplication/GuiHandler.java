@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.FXML.*;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -40,6 +41,8 @@ public class GuiHandler {
     private MapLocationSelectionController mapLocationSelectionController;
     private Scene saveScreen;
     private SaveScreenController saveScreenController;
+    private final Scene creatingWorldScreen;
+    private final CreatingWorldScreenController creatingWorldScreenLoader;
     
     public GuiHandler(Stage aStage, int WindowWidth, int WindowHeight) throws IOException
     {
@@ -55,19 +58,20 @@ public class GuiHandler {
         FXMLLoader socialValuesSelectionScreenLoader = new FXMLLoader(getClass().getResource("/anthropologyapplication/FXML/socialValuesSelection.fxml"));
         FXMLLoader mapLocationSelectionScreenLoader = new FXMLLoader(getClass().getResource("/anthropologyapplication/FXML/mapLocationSelection.fxml"));
         FXMLLoader saveScreenLoader = new FXMLLoader(getClass().getResource("/anthropologyapplication/FXML/saveScreen.fxml"));
-        
+        FXMLLoader creatingGameWorld = new FXMLLoader(getClass().getResource("/anthropologyapplication/FXML/creatingWorldScreen.fxml"));
      
-                pauseMenu = new Scene(pauseMenuLoader.load(), WindowWidth, WindowHeight);
-                mainMenu = new Scene(mainMenuLoader.load(), WindowWidth, WindowHeight);
-                loadScreen = new Scene(loadScreenLoader.load(), WindowWidth, WindowHeight);
-                saveScreen = new Scene(saveScreenLoader.load(), WindowWidth, WindowHeight);
-                displayChoice = new Scene(displayChoiceLoader.load(), WindowWidth, WindowHeight);
-                explainChoice = new Scene(explainChoiceLoader.load(), WindowWidth, WindowHeight);
-                mainGameScreen = new Scene(mainGameScreenLoader.load(), WindowWidth, WindowHeight);
-                mapLocationSelectionScreen = new Scene(mapLocationSelectionScreenLoader.load(), WindowWidth, WindowHeight);
-                socialValuesSelectionScreen = new Scene(socialValuesSelectionScreenLoader.load(), WindowWidth, WindowHeight);
-
+        pauseMenu = new Scene(pauseMenuLoader.load(), WindowWidth, WindowHeight);
+        mainMenu = new Scene(mainMenuLoader.load(), WindowWidth, WindowHeight);
+        loadScreen = new Scene(loadScreenLoader.load(), WindowWidth, WindowHeight);
+        saveScreen = new Scene(saveScreenLoader.load(), WindowWidth, WindowHeight);
+        displayChoice = new Scene(displayChoiceLoader.load(), WindowWidth, WindowHeight);
+        explainChoice = new Scene(explainChoiceLoader.load(), WindowWidth, WindowHeight);
+        mainGameScreen = new Scene(mainGameScreenLoader.load(), WindowWidth, WindowHeight);
+        mapLocationSelectionScreen = new Scene(mapLocationSelectionScreenLoader.load(), WindowWidth, WindowHeight);
+        socialValuesSelectionScreen = new Scene(socialValuesSelectionScreenLoader.load(), WindowWidth, WindowHeight);
+        creatingWorldScreen = new Scene(creatingGameWorld.load(), WindowWidth, WindowHeight);
            
+        creatingWorldScreenLoader = creatingGameWorld.getController();
         socialValuesSelectionController = socialValuesSelectionScreenLoader.getController();
         mapLocationSelectionController = mapLocationSelectionScreenLoader.getController();
         pauseController = pauseMenuLoader.getController();
@@ -84,17 +88,21 @@ public class GuiHandler {
         mainGameScreenController.setTime(aTime);
     }
     
+ 
+    
     public void displayMainMenuGUI(MainGameCode aThis) {
         if(!currentStage.isShowing()) currentStage.show();
+        
         mainMenuController.setMainGameCode(aThis);
         currentStage.setScene(mainMenu);
 
     }
 
-    public void displayMainGameScreen(MainGameCode aThis, Map mapData)
+    public void displayMainGameScreen(MainGameCode aThis)
     {
+        creatingWorldScreenLoader.stopUpdatingScreenData();
         mainGameScreenController.setMainGameCode(aThis);
-        mainGameScreenController.setMapData(mapData);
+        //mainGameScreenController.setMapData(mapData);
         currentStage.setScene(mainGameScreen);
     }
     
@@ -104,8 +112,19 @@ public class GuiHandler {
         currentStage.setScene(pauseMenu);
     }
     
-
+    public void displayCreatingWorldScreen(MainGameCode aThis)
+    {
+        creatingWorldScreenLoader.setMainGameCode(aThis);
+        creatingWorldScreenLoader.startUpdatingScreenData();
+        currentStage.setScene(creatingWorldScreen);
+    }
     
+    
+    
+    public AutoMapperGui getAutomapper()
+    {
+        return mainGameScreenController.getAutomap();
+    }
     
     void displaySocietyChoiceSelectionGUI(MainGameCode aThis) {
         socialValuesSelectionController.setMainGameCode(aThis);
@@ -134,6 +153,10 @@ public class GuiHandler {
 
     void drawMainGameScreenMap() {
         mainGameScreenController.redrawMap();
+    }
+
+    void setupMap() {
+        mainGameScreenController.updateMap();
     }
 
    

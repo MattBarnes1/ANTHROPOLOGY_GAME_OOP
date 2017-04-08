@@ -62,10 +62,6 @@ public class TribalCampObject {
         myProductionHandler.update(MS);
         myBuildingHandler.update(MS);
     }
-    
-    
-
-    
 
     void saveAntagonists(AICampObject[] myEnemyArray) {
         this.myEnemyArray = myEnemyArray;
@@ -85,5 +81,28 @@ public class TribalCampObject {
 
     void setHomeTile(MapTile HomeTile) {
        this.HomeTile = HomeTile;
+    }
+
+    public int getFreeCitizens() {
+        return this.TotalAvailableCitizens;
+    }
+
+    boolean hasFreeCitizens() {
+      return (this.TotalAvailableCitizens > 0);
+    }
+
+    void removeFreeCitizen() {
+        if(hasFreeCitizens())
+        {
+            this.TotalAvailableCitizens--;
+        }
+    }
+
+    void addFreeCitizen() {
+        this.TotalAvailableCitizens++;
+    }
+
+    WarriorHandler getWarriorHandler() {
+        return myWarriorHandler;
     }
 }

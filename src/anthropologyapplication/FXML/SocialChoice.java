@@ -44,7 +44,7 @@ public class SocialChoice {
         } 
         else if (i == 2)
         {
-            return ChoiceString1;
+            return ChoiceString2;
         }
         else {
             return "";

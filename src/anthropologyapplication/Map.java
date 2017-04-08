@@ -5,67 +5,56 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.MapTiles.MapTile_Land;
 import anthropologyapplication.MapTiles.MapTile_Water;
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyStringProperty;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
  * @author Duke
  */
-public class Map implements Runnable {
-    MapTile[][] myMap = new MapTile[40][40];
+public class Map extends Service{
+    MapTile[][] myMap;
     int mapXAndYLength = 0;
     private final MapTile[] BaseTileTypes = new MapTile[]{ new MapTile_Land(), new MapTile_Water()};
     int possibleSettlements = 3;
     Random myRandomNumberGen = new Random(47);//TODO better seeding
-    public Map(int mapXAndYLength) {
+
+    float BaseProbability_Water = 0.1F;
+    float BaseProbability_Land = 0.9F;
+    int Value = myRandomNumberGen.nextInt(101);//TODO
+    MainGameCode myCode;
+    AutoMapperGui Automap;
+    Map(int mapXAndYLength, MainGameCode aThis, AutoMapperGui automapper) {
+        myCode = aThis;
+        Automap = automapper;
         this.mapXAndYLength = mapXAndYLength;
         myMap = new MapTile[mapXAndYLength][mapXAndYLength];
     }
-
-    float BaseProbability_Water = 0.3F;
-    float BaseProbability_Land = 0.7F;
     public void generateWorldMap(int xCoord, int yCoord, int zCoord, double WaterTilesRemaining, double LandTilesRemaining)
     {
-        int Value = myRandomNumberGen.nextInt(101);//TODO
         if(Value <= (BaseProbability_Water*100)) //This Generates first tile!
         {
-            MapTile_Water myWaterTile = new MapTile_Water();
-            myWaterTile.generateSubType(getSurroundingTiles(xCoord, yCoord),myRandomNumberGen, WaterTilesRemaining);
-            myWaterTile.setCoordinates(new Vector3(xCoord, yCoord, zCoord));
-            WaterTilesRemaining--;
-            myMap[xCoord++][yCoord] = myWaterTile;
-            if(xCoord > mapXAndYLength - 1)
-            {
-                xCoord = 0;
-                yCoord += 1;
-                if(yCoord > mapXAndYLength - 1)
-                {
-                    return;
-                }
-            }
-            generateWorldMap(xCoord,yCoord, zCoord, WaterTilesRemaining, LandTilesRemaining);
+            myMap[xCoord][yCoord] = new MapTile_Water();
+            ((MapTile_Water)myMap[xCoord][yCoord]).generateSubType(getSurroundingTiles(xCoord, yCoord),myRandomNumberGen, WaterTilesRemaining);
+            ((MapTile_Water)myMap[xCoord][yCoord]).setCoordinates(new Vector3(xCoord, yCoord, zCoord));
         } else {
-            MapTile_Land myLandTile = new MapTile_Land();
-            myLandTile.setCoordinates(new Vector3(xCoord, yCoord, zCoord));
-            myLandTile.generateSubType(getSurroundingTiles(xCoord, yCoord),myRandomNumberGen, LandTilesRemaining);
-            LandTilesRemaining--;
-            myMap[xCoord++][yCoord] = myLandTile;
-            if(xCoord > mapXAndYLength - 1)
-            {
-                xCoord = 0;
-                yCoord += 1;
-                if(yCoord > mapXAndYLength - 1)
-                {
-                    return;
-                }
-            }
-            generateWorldMap(xCoord,yCoord, zCoord, WaterTilesRemaining, LandTilesRemaining);
+            myMap[xCoord][yCoord] = new MapTile_Land();
+            ((MapTile_Land)myMap[xCoord][yCoord]).setCoordinates(new Vector3(xCoord, yCoord, zCoord));
+            ((MapTile_Land)myMap[xCoord][yCoord]).generateSubType(getSurroundingTiles(xCoord, yCoord),myRandomNumberGen, LandTilesRemaining);
 
         }
     }
@@ -171,20 +160,8 @@ private MapTile[] getPossibleSettlementPosition()
     {
         return minMapCoordinates;
     }
+    Map aJumper = this;
     
-    @Override
-    public void run() {
-        maxMapCoordinates = new Vector3(mapXAndYLength,mapXAndYLength,0);
-        generateWorldMap(0,0,0,Math.floor((mapXAndYLength*mapXAndYLength*.3)), Math.floor(mapXAndYLength*mapXAndYLength*.7));
-        System.out.print(this);
-        linkMapTiles(0,0);
-        if(isValidMap())
-        {
-        generateSettlements();
-        }
-        
-    }
-
   
     private MapTile[][] getSurroundingTiles(int X, int Y)
     {
@@ -241,21 +218,51 @@ private MapTile[] getPossibleSettlementPosition()
        if(ourTile.getSouth() == null && surroundingTiles[1][2] != null) ourTile.setSouth(surroundingTiles[1][2]);
        if(ourTile.getSouthwest() == null && surroundingTiles[0][2] != null) ourTile.setSouthwest(surroundingTiles[0][2]);
        if(ourTile.getWest() == null && surroundingTiles[0][1] != null) ourTile.setWest(surroundingTiles[0][1]);
-        xCoordinate++;
-        if(xCoordinate > mapXAndYLength - 1)
-        {
-            xCoordinate = 0;
-            yCoordinate += 1;
-            if(yCoordinate > mapXAndYLength - 1)
-            {
-                return;
-            }
-        }
-        linkMapTiles(xCoordinate, yCoordinate);
     }
 
     public MapTile[][] getMapTiles() {
         return myMap;
     }
 
+
+    @Override
+    protected Task createTask() {
+        Task aTask = new Task<String>() {
+            @Override
+            protected String call() throws Exception {
+                maxMapCoordinates = new Vector3(mapXAndYLength,mapXAndYLength,0);
+                double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
+                double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
+                double counter = 0;
+                for(int x = 0; x < mapXAndYLength; x++)
+                {
+                    for(int y = 0; y < mapXAndYLength; y++)
+                    {
+                        //counter += ((double)((x+1)*(y+1)));
+                        Value = myRandomNumberGen.nextInt(101);
+                        generateWorldMap(x,y,0,AmountOfWater, AmountOfLand);
+                        linkMapTiles(x,y);
+                        if(getMapTile(x,y).getClass().getDeclaringClass() == MapTile_Land.class)
+                        {
+                            AmountOfLand--;
+                        } else {
+                            AmountOfWater--;
+                        }
+                    }
+                    super.updateProgress((double)(x+1)*mapXAndYLength,(double)(mapXAndYLength*mapXAndYLength));
+                }
+                if(isValidMap())
+                {
+                  generateSettlements();
+                }
+                
+                Automap.setMap(aJumper, myCode);
+                
+                return null;
+            }         
+        };         
+        return aTask;  
+    }        
+        
+    
 }

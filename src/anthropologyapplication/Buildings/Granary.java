@@ -26,7 +26,7 @@ public class Granary extends Building {
    
 
     @Override
-    public void startBuildingAtLocation(MapTile aTile, MapTile[][] surroundingTiles) {
+    public void startBuildingAtLocation(MapTile aTile) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

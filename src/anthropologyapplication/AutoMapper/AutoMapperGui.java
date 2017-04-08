@@ -1,7 +1,11 @@
 
 package anthropologyapplication.AutoMapper;
 
+import anthropologyapplication.MainGameCode;
 import anthropologyapplication.Map;
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
 
@@ -15,7 +19,7 @@ import javafx.scene.image.WritableImage;
  *
  * @author Duke
  */
-public class AutoMapperGui { 
+public class AutoMapperGui extends Service { 
     
     final int DEFAULT_ROOMTODRAWSIZE_X = 5;
     final int DEFAULT_ROOMTODRAWSIZE_Y = 5;
@@ -37,9 +41,7 @@ public class AutoMapperGui {
     int MidPointY;
     Vector3 RoomsToDrawZero;
     
-    public void AutoMapperGui(Vector3 maxRoomCoordinates, Vector3 minRoomCoordinates, MapTile[] myRooms) {
-        PlaceRoomsInWorld(myRooms);
-    }
+   
     
     private void PlaceRoomsInWorld(MapTile[] myRooms) {//TODO:Remove debugging hsit
         for (int i = 0; i < myRooms.length; i++) {
@@ -217,18 +219,77 @@ public class AutoMapperGui {
         System.out.println("Repported World Max; " + WorldMaxXY.toString());
     }
 
-    public void setMap(Map mapData, int ScreenWidth, int ScreenHeight) {
+
+    public void setScreenXYSize(int ScreenWidth, int ScreenHeight)
+    {
         ScreenTileWidth = Math.floor(ScreenWidth/MapTile.getTileWidth());
         ScreenTileHeight = Math.floor(ScreenHeight/MapTile.getTileHeight());
+        
+    }
+    
+    
+    MainGameCode myCode;
+    Map mapData = null;
+    public void setMap(Map mapData, MainGameCode myCode) {
+        this.myCode = myCode;
+        this.mapData = mapData;
         RoomsToDraw = new MapTile[(int)ScreenTileWidth][(int)ScreenTileHeight];
-        CalculateWorldZeroTransforms(mapData.getMinMapCoordinates());
-        CreateWorldRoomLocationsArray(mapData.getMaxMapCoordinates());
-        MapTile[][] tempArray = mapData.getMapTiles();
-        for(int i = 0; i < tempArray.length; i++)
-        {
-            PlaceRoomsInWorld(tempArray[i]);
-        }
-        setRoomFocus(new Vector3(0,0,0));
+        
+        this.start();
+    }
+    
+    public int getTileWidth() {
+       return (int)MapTile.getTileWidth();
+    }
+
+    public int getTileHeight() {
+       return (int)MapTile.getTileHeight();
+    }
+
+    public Vector3 getCurrentRoomCoordinates() {
+        return this.RoomFocus;
+    }
+
+    public MapTile getTileAtMouseCoordinates(double sceneX, double sceneY) {
+
+        int XCoord = (int)((sceneX - sceneX % MapTile.getTileWidth())/MapTile.getTileWidth());
+        int YCoord = (int)((sceneY - sceneY % MapTile.getTileHeight())/MapTile.getTileHeight());
+        
+        MapTile debug = this.getRoomAtCoordinate(new Vector3(XCoord, YCoord, 0));
+        System.out.println(debug.getCoordinates());
+        return debug;
+        
+    }
+
+    @Override
+    protected Task createTask() {
+        Task NewTask = new Task<Integer>(){
+            @Override
+            protected Integer call() throws Exception {
+                
+                
+                CalculateWorldZeroTransforms(mapData.getMinMapCoordinates());
+                CreateWorldRoomLocationsArray(mapData.getMaxMapCoordinates());
+                MapTile[][] tempArray = mapData.getMapTiles();
+
+                for(int i = 0; i < tempArray.length; i++)
+                {
+                    super.updateMessage("DAMMMMNNNN IIITTTT");
+                    super.updateProgress((i+1)*tempArray.length, tempArray.length*tempArray.length);
+                    System.out.println((i+1)*tempArray.length);
+                    PlaceRoomsInWorld(tempArray[i]);
+                }
+                setRoomFocus(new Vector3(0,0,0));
+               
+                return null;
+            }
+            
+        };
+        return NewTask;
+    }
+
+    public void setCanvas(GraphicsContext graphicsContext2D) {
+       aGameCanvas = graphicsContext2D;
     }
 
 }

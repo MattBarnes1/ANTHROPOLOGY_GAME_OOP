@@ -34,9 +34,12 @@ public class ProductionHandler
 
 		public void update(GameTime MS)
 		{
-			throw new NotImplementedException();
+                    
 		}
-
+                public boolean canRemoveMore()
+                {
+                    return ((ProducersAmount - 1) > 0);
+                }
                 public void lockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
                      for(internalProductLocker A : internalProductList)
@@ -88,4 +91,8 @@ public class ProductionHandler
                         }
                     }
             }
+
+    public int getProducersAmount() {
+        return ProducersAmount;
+    }
 	}

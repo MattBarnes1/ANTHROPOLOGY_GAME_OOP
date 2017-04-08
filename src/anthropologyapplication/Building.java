@@ -7,7 +7,7 @@ package anthropologyapplication;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+//import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
@@ -35,7 +35,7 @@ public abstract class Building
         public abstract boolean canBuildOnTile(MapTile aTile);
         public abstract Building Copy();
         
-        public void startBuildingAtLocation(MapTile aTile, MapTile[][] surroundingTiles)
+        public void startBuildingAtLocation(MapTile aTile)
         {
             BuiltOn = aTile;
             aTile.setForegroundImage(ForegroundImageFileName);

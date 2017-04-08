@@ -28,7 +28,12 @@ public class FoodHandler {
 
 		public void removeFarmers(int Amount)
 		{
+                    if(getFarmersAmount()-1 < 0)
+                    {
+                        FarmerAmount = 0;
+                    } else {
 			FarmerAmount--;
+                    }
 		}
 
 		public int getCrops()
@@ -45,10 +50,18 @@ public class FoodHandler {
 		{
 			throw new NotImplementedException();
 		}
+                
+                public boolean canRemoveMore()
+                {
+                    return ((FarmerAmount - 1) > 0);
+                }
 
    
 
     void update(GameTime MS) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getFarmersAmount() {
+        return FarmerAmount;
     }
 }

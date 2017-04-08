@@ -6,6 +6,7 @@
 package anthropologyapplication;
 
 import anthropologyapplication.AutoMapper.MapTile;
+import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.internalLockers.internalBuildingLocker;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
 import anthropologyapplication.Buildings.Workshop;
@@ -96,8 +97,9 @@ public class BuildingHandler {
                 
 		
 
-		public void startBuilding(String aBuildingName, MapTile aTile, MapTile[][] SurroundingTiles)
+		public BuildingConstructionDisplayData startBuilding(String aBuildingName, MapTile aTile)
 		{//TODO: Valid maptile check
+                    BuildingConstructionDisplayData retVal = null;
 			for(internalBuildingLocker A : internalBuildingList)
                         {
                             if(A.myBuilding.getBuildingName().compareTo(aBuildingName) == 0)
@@ -107,16 +109,19 @@ public class BuildingHandler {
                                   if(A.myBuilding.canBuildMultiples())
                                   {
                                       Building newBuilding = A.myBuilding.Copy();
-                                      newBuilding.startBuildingAtLocation(aTile, SurroundingTiles);
+                                      newBuilding.startBuildingAtLocation(aTile);
+                                      retVal = new BuildingConstructionDisplayData(newBuilding);
                                       BuildingsBeingConstructed.add(newBuilding);
                                   }
                                 } else {
                                       Building newBuilding = A.myBuilding.Copy();
-                                      newBuilding.startBuildingAtLocation(aTile, SurroundingTiles);
+                                      newBuilding.startBuildingAtLocation(aTile);
+                                      retVal = new BuildingConstructionDisplayData(newBuilding);
                                       BuildingsBeingConstructed.add(newBuilding);
                                 }
                             }
                         }
+                    return retVal;
 		}
 
 		public ArrayList<String> getBuiltBuildings()
@@ -164,10 +169,15 @@ public class BuildingHandler {
 		{
 			BuildersBuilding += amount;
 		}
+                
+                public boolean canRemoveMore()
+                {
+                    return ((BuildersBuilding - 1) > 0);
+                }
 
 		public void removeBuilders(int amount)
 		{
-			if((BuildersBuilding - amount)< 0)
+			if(BuildersBuilding - amount < 0)
                         {
                             BuildersBuilding = 0;
                         } else {
@@ -192,4 +202,6 @@ public class BuildingHandler {
                     }
                     return retBuilding;
 		}
+
+
 }

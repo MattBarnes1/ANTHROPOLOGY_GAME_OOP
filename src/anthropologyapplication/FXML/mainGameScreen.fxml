@@ -24,7 +24,7 @@
                      <children>
                         <ScrollPane layoutX="192.0" layoutY="8.0" prefHeight="129.0" prefWidth="585.0">
                            <content>
-                              <FlowPane fx:id="BuildingItem" prefHeight="127.0" prefWidth="582.0" />
+                              <FlowPane fx:id="BuildingItemList" prefHeight="127.0" prefWidth="582.0" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -73,7 +73,7 @@
         </tabs>
       </TabPane>
       <Label fx:id="GameWorldTimeObject" layoutX="14.0" layoutY="14.0" text="Building Queue" />
-      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onDragDetected="#MouseDraggingDetectedOnCanvas" onMouseClicked="#CanvasMapDisplayClicked" width="587.0" />
+      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseMoved="#MouseMovedWithinMe" onMousePressed="#CanvasMapTrackMouseHeld" onMouseReleased="#CanvasMapTrackMouseReleased" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
       <Label layoutX="185.0" layoutY="400.0" text="Total Citizens:" />
       <Label fx:id="GameWorldTimeObject11" layoutX="302.0" layoutY="400.0" text="Workers:" />
       <Label fx:id="GameWorldTimeObject111" layoutX="383.0" layoutY="400.0" text="Warriors:" />
@@ -82,8 +82,8 @@
       <Label fx:id="worldDisplayWarriorsCount" layoutX="443.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
       <Label fx:id="worldDisplayBuildersCount" layoutX="530.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
       <Label fx:id="worldDisplayWorkersCount" layoutX="358.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
-      <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" text="&gt;&gt;" />
-      <Button fx:id="NormalSpeedButton" layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickedNormalSpeed" text="&gt;" />
+      <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" onMouseClicked="#FastForwardButtonClicked" text="&gt;&gt;" />
+      <Button fx:id="NormalSpeedButton" layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickedNormalSpeed" onMouseClicked="#RegularSpeedButtonClicked" text="&gt;" />
       <Button fx:id="Pause" layoutX="665.0" layoutY="396.0" mnemonicParsing="false" onAction="#openPauseMenu" text="Pause" />
       <Label fx:id="GameWorldTimeObject11111" layoutX="571.0" layoutY="400.0" text="Farmers:" />
       <Label fx:id="worldDisplayFarmersCount" layoutX="622.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="00" />
