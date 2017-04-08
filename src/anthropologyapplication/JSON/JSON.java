@@ -5,63 +5,30 @@
  */
 package anthropologyapplication.JSON;
 
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import javax.naming.OperationNotSupportedException;
 
 /**
  *
- * @author Duke
+ * @author noone
  */
-public class JSON implements Iterator {
-    aObject StartingObject;
-    array anArray;
-    public JSON(InputStream newStream) throws IOException {
-        int charVal = newStream.read();
-        if(charVal == '{') //it's an Object
-        {
-            StartingObject = new aObject(newStream);
-        } else if(charVal == '[')
-        {
-            anArray = new array(newStream);
-        } else {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
+public class JSON {
 
-    @Override
-    public boolean hasNext() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-
-   
-
-
-    @Override
-    public void remove() {
-        Iterator.super.remove(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public array getArray() {
-        return anArray;
-    }
-
-   
-    public Value getValueInObject(aObject myObject, String eventString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Value Base;
+    public JSON(InputStream newStream) throws IOException, OperationNotSupportedException {
+       char aChar = (char)newStream.read();
+       if(aChar == '[')
+       {
+           Base = new Array(newStream);
+       }
+       else {
+           Base = new aObject(newStream, true);
+       }
     }
 
     public aObject getObject() {
-        return StartingObject;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
