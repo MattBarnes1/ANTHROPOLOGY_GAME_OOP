@@ -16,7 +16,7 @@ public class BuildingConstructionDisplayData {
     
     public BuildingConstructionDisplayData(Building aBuilding)
     {
-        
+     this.aBuilding = aBuilding;   
     }
     
     public String getName()

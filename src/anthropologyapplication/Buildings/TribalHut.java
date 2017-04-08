@@ -5,40 +5,41 @@
  */
 package anthropologyapplication.Buildings;
 
-import anthropologyapplication.Building;
 import anthropologyapplication.AutoMapper.MapTile;
+import anthropologyapplication.Building;
 
 /**
  *
  * @author Duke
  */
-public class Granary extends Building {
-    
-    public Granary(String Name, String Description, float BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+public class TribalHut extends Building {
+
+    public TribalHut(String Name, String Description, float BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
+        
     }
 
-    private Granary(Granary aThis) {
+    private TribalHut(TribalHut aThis) {
         super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime().toMS(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     }
 
     @Override
-    public boolean canBuildOnTile(MapTile aTile) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean canBuildMultiples()
+    {
+        return false;
     }
-
-   
-
-
+    
+    
+    
+    
+    @Override
+    public boolean canBuildOnTile(MapTile aTile) {
+        return true;
+    }
 
     @Override
     public Building Copy() {
-        return new Granary(this);
-    }
-
-    @Override
-    public void removeFromMapTile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new TribalHut(this);
     }
     
 }

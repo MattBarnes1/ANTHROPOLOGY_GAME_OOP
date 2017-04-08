@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.naming.OperationNotSupportedException;
 
 /**
@@ -111,4 +112,9 @@ public class Array extends Value {
         }
         readData = (byte)input.read(); //Moves us out of the array so we don't have to bother with it.
     }
+
+    public Iterator<Value> getIterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

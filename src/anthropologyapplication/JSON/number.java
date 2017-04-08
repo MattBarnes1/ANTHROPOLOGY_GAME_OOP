@@ -30,6 +30,7 @@ public class Number extends Value
             //Moves us past the final " so we don't activate the string again;
         }
         
+        @Override
          public void PrettyPrint(OutputStream aStream, int tabdepth) throws IOException
         {
             super.doTabDepth(tabdepth);
@@ -37,6 +38,7 @@ public class Number extends Value
         }
          
         
+        @Override
         public int GetWeight()
         {
             return 1;

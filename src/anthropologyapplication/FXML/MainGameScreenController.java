@@ -18,9 +18,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -165,15 +167,18 @@ public class MainGameScreenController implements Initializable {
     
     @FXML
     private void CanvasMapDisplayClicked(MouseEvent event) {
-        if(event.isSecondaryButtonDown() && BuildingSelectedForBuilding != null)
+        if (event.getButton() == MouseButton.SECONDARY && BuildingSelectedForBuilding != null)
         {
             BuildingSelectedForBuilding = null;
-        } else {
-           MapTile aTile = myAutomapper.getTileAtMouseCoordinates(event.getSceneX(), event.getSceneY());
-           BuildingConstructionDisplayData myConstruction = myMain.getPlayersCamp().getBuildingHandler().startBuilding(BuildingSelectedForBuilding, aTile);
-           if(myConstruction != null)
+        } else if (event.getButton() == MouseButton.PRIMARY && BuildingSelectedForBuilding != null){
+           MapTile aTile = myAutomapper.getTileAtMouseCoordinates(event.getSceneX() - CanvasMapDisplay.getLayoutX(), event.getSceneY() - CanvasMapDisplay.getLayoutY());
+           if(aTile != null)
            {
-               BuildingQueueList.getChildren().add(new QueueButton(myConstruction));
+                BuildingConstructionDisplayData myConstruction = myMain.getPlayersCamp().getBuildingHandler().startBuilding(BuildingSelectedForBuilding, aTile);
+                if(myConstruction != null)
+                {
+                    BuildingQueueList.getChildren().add(new QueueButton(myConstruction));
+                }
            }
         }
     }

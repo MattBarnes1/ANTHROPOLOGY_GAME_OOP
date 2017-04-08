@@ -14,6 +14,7 @@ import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
 public class QueueButton extends javafx.scene.control.Button  {
     BuildingConstructionDisplayData myConstruction;
     QueueButton(BuildingConstructionDisplayData myConstruction) {
+        super(myConstruction.getName());
         this.myConstruction = myConstruction;
     }
     

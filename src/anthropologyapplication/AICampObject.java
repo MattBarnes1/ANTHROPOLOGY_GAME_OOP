@@ -16,7 +16,7 @@ public class AICampObject extends TribalCampObject {
     
     public AICampObject(SocietyChoices mySocietyChoices, MapTile HomeTile) {
         super(mySocietyChoices);
-        super.setHomeTile(HomeTile);
+        //super.setHomeTile(HomeTile);
     }
     
     @Override 

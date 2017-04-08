@@ -81,6 +81,9 @@ public class TribalCampObject {
 
     void setHomeTile(MapTile HomeTile) {
        this.HomeTile = HomeTile;
+       System.out.println(HomeTile.getCoordinates());
+       myBuildingHandler.forceBuild("Tribal Hut", HomeTile);
+       
     }
 
     public int getFreeCitizens() {
@@ -104,5 +107,9 @@ public class TribalCampObject {
 
     WarriorHandler getWarriorHandler() {
         return myWarriorHandler;
+    }
+
+    Object getMapTileLocation() {
+        return this.HomeTile;
     }
 }

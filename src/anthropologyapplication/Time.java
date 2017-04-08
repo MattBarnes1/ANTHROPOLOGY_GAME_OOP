@@ -154,6 +154,13 @@ public class Time implements java.io.Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+    
+    public float toMS()
+    {
+        return (((21600000*this.Hours + Minutes*360000) + Seconds*60000)*1 + Milleseconds);
+    }
+    
     public Time subtract(Time elapsedTime) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

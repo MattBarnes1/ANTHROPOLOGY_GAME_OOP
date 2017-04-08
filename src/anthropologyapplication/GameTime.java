@@ -33,14 +33,24 @@ public class GameTime implements java.io.Serializable {
 				Minutes++;
 				Seconds = 0;
 			} else {
-				return; //This is for speed
+                            if(lastUpdateCall == null)
+                            {
+                                lastUpdateCall = getTimeStructure();
+                            }
+                            newUpdateCall = getTimeStructure();
+                            return;
 			}
 			if (Minutes >= 60)
 			{
 				Hours++;
 				Minutes = 0;
 			} else {
-				return; //This is for speed
+                            if(lastUpdateCall == null)
+                            {
+                                lastUpdateCall = getTimeStructure();
+                            }
+                            newUpdateCall = getTimeStructure();
+                            return;
 			}
 			if (Hours > 23)
 			{
@@ -111,7 +121,7 @@ public class GameTime implements java.io.Serializable {
 	}
 
 	public Time getTimeStructure() {
-		return new Time(this.Hours, this.Minutes, this.Seconds);
+		return new Time(this.Hours, this.Minutes, this.Seconds, this.Millisecond);
 	}
 
 	
@@ -119,6 +129,7 @@ public class GameTime implements java.io.Serializable {
 	
 	public Time getElapsedTime() {
 		// TODO Auto-generated method stub
+                System.out.println(newUpdateCall.absDifference(lastUpdateCall).toString());
 		return newUpdateCall.absDifference(lastUpdateCall); // >23 1
 	}
 

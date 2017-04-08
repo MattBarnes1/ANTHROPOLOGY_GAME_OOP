@@ -57,10 +57,11 @@ public abstract class Building
             return Destroyable;
         }
         
-       
+       int BuilderRequired;
 
         protected Building(String Name, String Description, float BuildTimeMS, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
         {
+            this.BuildersRequired = BuilderRequired;
             this.ForegroundImageFileName = ForegroundImageFileName;
             this.ForegroundImageDestroyedFileName = ForegroundImageDestroyedFileName;
             this.BuildersRequired = BuildersRequired;
@@ -70,6 +71,15 @@ public abstract class Building
             timeTillBuilt = new Time(0,0,0,BuildTimeMS);
         }
         
+        public String getForeGroundImageName()
+        {
+            return this.ForegroundImageFileName;
+        }
+        
+        public String getForeGroundDestroyedImageName()
+        {
+            return this.ForegroundImageDestroyedFileName;
+        }
         public int getIndex()
         {
             return BuildingIndex;
@@ -94,6 +104,12 @@ public abstract class Building
                 isFinishedBuilding = timeTillBuilt.EqualTo(new Time(0,0,0));
             }
         }
+        
+        public int getBaseNumberOfBuilders()
+        {
+            return BuilderRequired;
+        }
+        
 
         boolean isFinishedBuilding() {
             return isFinishedBuilding;
@@ -114,8 +130,12 @@ public abstract class Building
         return timeTillBuilt;
     }
 
+    void forceBuildAtLocation(MapTile aLocation) {
+            BuiltOn = aLocation;
+            aLocation.setForegroundImage(ForegroundImageFileName);
+    }
 
-  
+
 
   
 }

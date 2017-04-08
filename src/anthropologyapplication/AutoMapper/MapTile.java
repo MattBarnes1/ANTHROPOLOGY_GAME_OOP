@@ -7,12 +7,14 @@ package anthropologyapplication.AutoMapper;
 
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.AutoMapper.*;
+import java.awt.AlphaComposite;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -113,7 +115,7 @@ public abstract class MapTile {
     {
         Explored = aBool;
     }  
-    
+    AlphaComposite Building = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75F);
     public void Draw(int x, int y, WritableImage aGameCanvas) 
     {//TODO: int or double here?
         if(!Explored)
@@ -124,7 +126,9 @@ public abstract class MapTile {
             aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);            
             if(tileBuilding != null)
             {
+                Color.rgb(255, 255, 255, 0);
                 aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileBuilding.getPixelReader(), 0, 0);
+                Color.rgb(255, 255, 255, 1);
             }
         }
     }
@@ -254,7 +258,8 @@ public abstract class MapTile {
     }
 
    public  void setForegroundImage(String ForegroundImageFileName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       int i = 0;
+       if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
   

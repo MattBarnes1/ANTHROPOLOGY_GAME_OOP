@@ -97,6 +97,7 @@ private MapTile[] getPossibleSettlementPosition()
     private boolean isValidMap()
     {
         ValidSettlementPositions = getPossibleSettlementPosition();
+        PlayerCampTile = ValidSettlementPositions[possibleSettlements+1];
         if(ValidSettlementPositions.length < possibleSettlements + 1)
         {
             return false;

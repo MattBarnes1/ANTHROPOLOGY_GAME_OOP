@@ -40,7 +40,11 @@ public class AutoMapperGui extends Service {
     int MidPointX;
     int MidPointY;
     Vector3 RoomsToDrawZero;
-    
+    private static boolean RoomFocusHasShifted = false;
+    public static void redrawMap()
+    {
+        RoomFocusHasShifted = true;
+    }
    
     
     private void PlaceRoomsInWorld(MapTile[] myRooms) {//TODO:Remove debugging hsit
@@ -200,7 +204,6 @@ public class AutoMapperGui extends Service {
        private boolean CheckIfCoordinateExists(Vector3 aVectorToCheck) {
         return (aVectorToCheck.isConfinedToRegion(WorldMaxXY, Vector3.Zero));
     }
-    boolean RoomFocusHasShifted = false;
 
     public void setRoomFocus(Vector3 myFocus) {
         RoomFocusHasShifted = true;////Tells us to redraw
@@ -254,13 +257,32 @@ public class AutoMapperGui extends Service {
 
         int XCoord = (int)((sceneX - sceneX % MapTile.getTileWidth())/MapTile.getTileWidth());
         int YCoord = (int)((sceneY - sceneY % MapTile.getTileHeight())/MapTile.getTileHeight());
-        
-        MapTile debug = this.getRoomAtCoordinate(new Vector3(XCoord, YCoord, 0));
-        System.out.println(debug.getCoordinates());
-        return debug;
+        Vector3 output = new Vector3(XCoord, YCoord, 0);
+        //Vector3 Transform = new Vector3(-MidPointX, -MidPointY, 0);
+        //output = output.Transform(Transform);
+        MapTile aTile = this.onClickRoomCheck(output);
+        return aTile;
         
     }
 
+    
+    
+    
+    private MapTile onClickRoomCheck(Vector3 aVector)
+    {
+        if(RoomsToDraw != null)
+        {
+            if(aVector.X > 0 && aVector.X < RoomsToDraw.length)
+            {
+                if(aVector.Y > 0 && aVector.Y < RoomsToDraw.length)
+                {  
+                    return RoomsToDraw[aVector.X][aVector.Y];
+                }
+            }
+        }
+        return null;
+    }
+    
     @Override
     protected Task createTask() {
         Task NewTask = new Task<Integer>(){

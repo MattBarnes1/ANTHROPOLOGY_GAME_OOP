@@ -40,6 +40,14 @@ public class String extends Value{
             //Moves us past the final " so we don't activate the string again;
         }
 
+        public String(java.lang.String aString)
+        {
+            for(int i = 0; i < aString.length(); i++)
+            {
+                myInputData.write(Byte.parseByte(""+aString.charAt(i)));
+            }
+        }
+        
         @Override
         public void PrettyPrint(OutputStream aStream, int tabdepth) throws IOException
         {

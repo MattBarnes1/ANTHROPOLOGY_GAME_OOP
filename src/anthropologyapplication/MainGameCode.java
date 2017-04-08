@@ -107,12 +107,15 @@ public class MainGameCode {
     public void createSocietyValues(ArrayList<SocialValues> myValues) {
         myPlayerSocietyChoices = new SocietyChoices(myValues);
         playersCamp = new TribalCampObject(myPlayerSocietyChoices);
-        if(myMap.isRunning())
+        if(myMap.isRunning() || this.myDisplay.getAutomapper().isRunning())
         {
             this.myDisplay.displayCreatingWorldScreen(this);
         }
         else {
-            finishMapSetup();
+            if(playersCamp.getMapTileLocation() == null)
+            {
+                finishMapSetup();
+            }
         }
     }
 
@@ -121,10 +124,10 @@ public class MainGameCode {
     
     public void finishMapSetup()
     {
-        playersCamp.setHomeTile(myMap.getPlayerMapTile());
-        myDisplay.displayMainGameScreen(this);
-        myEnemyArray = myMap.getCamps();
         myDisplay.getAutomapper().setRoomFocus(myMap.getPlayerMapTile().getCoordinates());
+        myEnemyArray = myMap.getCamps();
+        myDisplay.displayMainGameScreen(this);
+        playersCamp.setHomeTile(myMap.getPlayerMapTile());
         myTimer.start();
     }
     

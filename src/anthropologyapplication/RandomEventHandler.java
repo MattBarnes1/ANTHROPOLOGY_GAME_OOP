@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.OperationNotSupportedException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -50,6 +51,8 @@ public class RandomEventHandler implements Runnable
             RandomEventTree = new RandomEvent(FileName);
         } catch (IOException ex) {
             Logger.getLogger(RandomEventHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }           catch (OperationNotSupportedException ex) {
+                        Logger.getLogger(RandomEventHandler.class.getName()).log(Level.SEVERE, null, ex);
+                    }
     }
 }

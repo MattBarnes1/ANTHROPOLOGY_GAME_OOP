@@ -17,6 +17,11 @@ public class Workshop extends Building {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
+    private Workshop(Workshop aThis) {
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime().toMS(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+    
+    }
+
     @Override
     public boolean canBuildOnTile(MapTile aTile) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,14 +29,10 @@ public class Workshop extends Building {
 
   
 
-    @Override
-    public void startBuildingAtLocation(MapTile aTile) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public Building Copy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return new Workshop(this);
     }
 
     @Override

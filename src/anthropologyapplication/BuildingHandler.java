@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.internalLockers.internalBuildingLocker;
@@ -12,6 +13,7 @@ import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
 import anthropologyapplication.Buildings.Workshop;
 import anthropologyapplication.Buildings.Field;
 import anthropologyapplication.Buildings.Granary;
+import anthropologyapplication.Buildings.TribalHut;
 import java.util.ArrayList;
 import java.util.Iterator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -21,10 +23,12 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * @author Duke
  */
 public class BuildingHandler {
-                private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] {
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage", 5000, 0, 2, "NoFile", "NoFile"), true),
-                    new internalBuildingLocker(new Field ("Field", "A field", 5000, 1, 4, "NoFile", "NoFile"), true),
-                    new internalBuildingLocker(new Workshop("Workship", "A workshop", 5000, 2, 2, "NoFile", "NoFile"), true)                    
+                private final String NoFile = "NoFile";
+                private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", 5000, 0, 2,"TribalCamp.jpg", NoFile), true),
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage", 5000, 0, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field", 5000, 1, 4, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Workshop("Workship", "A workshop", 5000, 2, 2, NoFile, NoFile), true)                    
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<String> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
@@ -51,6 +55,9 @@ public class BuildingHandler {
                     }
                     
                 }
+                
+               
+                
                 
 		public void lockBuilding(Class<? extends Building> aBuilding, TribalCampObject anObject)
                 {
@@ -95,7 +102,33 @@ public class BuildingHandler {
                     }
                 }
                 
-		
+		public void forceBuild(String aBuildingName, MapTile aLocation)
+                {
+			for(internalBuildingLocker A : internalBuildingList)
+                        {
+                            if(A.myBuilding.getBuildingName().compareTo(aBuildingName) == 0)
+                            {
+                                if(BuildingsBuilt.contains(A))
+                                {
+                                  if(A.myBuilding.canBuildMultiples())
+                                  {
+                                      Building newBuilding = A.myBuilding.Copy();
+                                      newBuilding.forceBuildAtLocation(aLocation);
+                                      BuildingsBuilt.add(newBuilding);
+                                      AutoMapperGui.redrawMap();
+                                      return;
+                                  }
+                                } else {
+                                      Building newBuilding = A.myBuilding.Copy();
+                                      newBuilding.forceBuildAtLocation(aLocation);
+                                      BuildingsBuilt.add(newBuilding);
+                                      AutoMapperGui.redrawMap();
+                                      return;
+                                }
+                            }
+                        }
+                        throw new UnsupportedOperationException("Attempted to force build a building, but couldn't find it!");
+                }
 
 		public BuildingConstructionDisplayData startBuilding(String aBuildingName, MapTile aTile)
 		{//TODO: Valid maptile check

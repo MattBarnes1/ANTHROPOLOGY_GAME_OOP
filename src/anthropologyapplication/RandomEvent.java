@@ -8,14 +8,15 @@ package anthropologyapplication;
 import anthropologyapplication.JSON.JSON;
 import anthropologyapplication.JSON.Value;
 import anthropologyapplication.JSON.aObject;
-import anthropologyapplication.JSON.array;
-import anthropologyapplication.JSON.string;
+import anthropologyapplication.JSON.Array;
+//import anthropologyapplication.JSON.String;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
+import javax.naming.OperationNotSupportedException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -32,21 +33,21 @@ public class RandomEvent
         String[] theEventChoices;
         SocialValues[] SocialValueForChoices;
                 
-        public RandomEvent(String localFileName) throws IOException
+        public RandomEvent(String localFileName) throws IOException, OperationNotSupportedException
         {
                 File Location = new File(localFileName);
                 InputStream newStream  = null;//getResourceAsStream(); //This will be embedded stuff
                 JSON myJSON = new JSON(newStream);
                 aObject myObject = myJSON.getObject();
                 
-                Value EventString = myObject.getValueInObject(new string("EventString"));
-                Value EventChoices = myObject.getValueInObject(new string("EventChoices"));
-                Value EventResults = myObject.getValueInObject(new string("EventResults"));
-                Value EventTimeDelay = myObject.getValueInObject(new string("Timedelay"));
-                Value nextEvents = myObject.getValueInObject(new string("nextEvents"));
+                Value EventString = myObject.getValueInObject(new anthropologyapplication.JSON.String("EventString"));
+                Value EventChoices = myObject.getValueInObject(new anthropologyapplication.JSON.String("EventChoices"));
+                Value EventResults = myObject.getValueInObject(new anthropologyapplication.JSON.String("EventResults"));
+                Value EventTimeDelay = myObject.getValueInObject(new anthropologyapplication.JSON.String("Timedelay"));
+                Value nextEvents = myObject.getValueInObject(new anthropologyapplication.JSON.String("nextEvents"));
                 
                 ArrayList<RandomEvent> SubEvents = new ArrayList<>();
-                Iterator<Value> myArrayIter = ((array)nextEvents).getIterator();
+                Iterator<Value> myArrayIter = ((Array)nextEvents).getIterator();
                 while(myArrayIter.hasNext())
                 {
                     SubEvents.add(new RandomEvent((aObject)myArrayIter.next()));
@@ -58,14 +59,14 @@ public class RandomEvent
         private RandomEvent(aObject anObject)
         {
                 
-                Value EventString = anObject.getValueInObject(new string("EventString"));
-                Value EventChoices = anObject.getValueInObject(new string("EventChoices"));
-                Value EventResults = anObject.getValueInObject(new string("EventResults"));
-                Value EventTimeDelay = anObject.getValueInObject(new string("Timedelay"));
-                Value nextEvents = anObject.getValueInObject(new string("nextEvents"));
+                Value EventString = anObject.getValueInObject(new anthropologyapplication.JSON.String("EventString"));
+                Value EventChoices = anObject.getValueInObject(new anthropologyapplication.JSON.String("EventChoices"));
+                Value EventResults = anObject.getValueInObject(new anthropologyapplication.JSON.String("EventResults"));
+                Value EventTimeDelay = anObject.getValueInObject(new anthropologyapplication.JSON.String("Timedelay"));
+                Value nextEvents = anObject.getValueInObject(new anthropologyapplication.JSON.String("nextEvents"));
 
             ArrayList<RandomEvent> SubEvents = new ArrayList<>();
-            Iterator<Value> myArrayIter = ((array)nextEvents).getIterator();
+            Iterator<Value> myArrayIter = ((Array)nextEvents).getIterator();
             while(myArrayIter.hasNext())
             {
                 SubEvents.add(new RandomEvent((aObject)myArrayIter.next()));

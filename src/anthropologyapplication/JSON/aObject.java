@@ -147,4 +147,8 @@ public class aObject extends Value {
         throw new UnsupportedOperationException("Unhandled Character: " + character + " at character position: ");
     }
 
+    public Value getValueInObject(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
