@@ -53,7 +53,7 @@
                         <Label fx:id="GameWorldTimeObject112" layoutX="221.0" layoutY="14.0" text="Workers:" />
                         <Label fx:id="assignCitizensWorkersCount1" layoutX="268.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
                         <Label fx:id="GameWorldTimeObject1112" layoutX="353.0" layoutY="14.0" text="Warriors:" />
-                        <Label fx:id="assignCitizensWarriorsCount1" layoutX="401.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
+                        <Label fx:id="assignCitizenWarriorsCount" layoutX="401.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
                         <Label fx:id="GameWorldTimeObject11112" layoutX="491.0" layoutY="14.0" text="Builders:" />
                         <Label fx:id="assignCitizensBuildersCount" layoutX="536.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
                         <Label fx:id="GameWorldTimeObject111111" layoutX="646.0" layoutY="14.0" text="Farmers:" />
@@ -63,9 +63,9 @@
                         <Button fx:id="increaseWarriorsButton" layoutX="351.0" layoutY="49.0" mnemonicParsing="false" onAction="#increaseWarriorsButtonClick" text="/\" />
                         <Button fx:id="decreaseWarriorsButton" layoutX="351.0" layoutY="78.0" mnemonicParsing="false" onAction="#decreaseWarriorsButtonClick" text="\\/" />
                         <Button fx:id="increaseBuildersButton" layoutX="498.0" layoutY="48.0" mnemonicParsing="false" onAction="#increaseBuildersButtonClick" text="/\" />
-                        <Button fx:id="decreaseWorkersButton" layoutX="498.0" layoutY="77.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
+                        <Button fx:id="decreaseWorkersButton" layoutX="498.0" layoutY="77.0" mnemonicParsing="false" onAction="#decreaseBuildersButtonClick" text="\\/" />
                         <Button fx:id="increaseFarmersButton" layoutX="653.0" layoutY="50.0" mnemonicParsing="false" onAction="#increaseFarmersButtonClick" text="/\" />
-                        <Button fx:id="decreaseFarmersButton" layoutX="653.0" layoutY="79.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
+                        <Button fx:id="decreaseFarmersButton" layoutX="653.0" layoutY="79.0" mnemonicParsing="false" onAction="#decreaseFarmersButtonClick" text="\\/" />
                      </children>
                   </AnchorPane>
               </content>

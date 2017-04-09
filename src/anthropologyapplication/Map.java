@@ -39,6 +39,8 @@ public class Map extends Service{
     MainGameCode myCode;
     AutoMapperGui Automap;
     Map(int mapXAndYLength, MainGameCode aThis, AutoMapperGui automapper) {
+        
+        TerrainGenerator = new PerlinNoiseGeneratorForTerrain(0, mapXAndYLength, mapXAndYLength); 
         myCode = aThis;
         Automap = automapper;
         this.mapXAndYLength = mapXAndYLength;
@@ -225,7 +227,8 @@ private MapTile[] getPossibleSettlementPosition()
         return myMap;
     }
 
-
+    PerlinNoiseGeneratorForTerrain TerrainGenerator;
+        
     @Override
     protected Task createTask() {
         Task aTask = new Task<String>() {
@@ -235,6 +238,8 @@ private MapTile[] getPossibleSettlementPosition()
                 double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
                 double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
                 double counter = 0;
+                while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
+                float[][] values = (float[][])TerrainGenerator.getValue();
                 for(int x = 0; x < mapXAndYLength; x++)
                 {
                     for(int y = 0; y < mapXAndYLength; y++)

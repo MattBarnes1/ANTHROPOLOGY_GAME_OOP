@@ -214,7 +214,7 @@ public class BuildingHandler {
                         {
                             BuildersBuilding = 0;
                         } else {
-                            BuildersBuilding += 0;
+                            BuildersBuilding -= amount;
                         }
 		}
 

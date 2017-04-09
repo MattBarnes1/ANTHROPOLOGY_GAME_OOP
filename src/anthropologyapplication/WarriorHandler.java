@@ -9,9 +9,9 @@ package anthropologyapplication;
  *
  * @author Duke
  */
-class WarriorHandler {
+public class WarriorHandler {
     ProductionHandler myProductionHandler;
-    int TrainedWarriors = 5;
+    int TrainedWarriors = 0;
     int WarriorsToTrain = 0;
     WarriorHandler(ProductionHandler aProductionHandler) {
         myProductionHandler = aProductionHandler;
@@ -19,28 +19,33 @@ class WarriorHandler {
 
     public void incWarriorsToTrain()
     {
-        
+            TrainedWarriors++;
     }
     public void decWarriorsToTrain()
     {
-        
+
     }
     
     
-    void update(GameTime MS) {
+    public void update(GameTime MS) {
         
     }
 
-    void addWarriors(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addWarriors(int i) {
+        TrainedWarriors++;//To change body of generated methods, choose Tools | Templates.
     }
 
-    int getWarriorsAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getWarriorsAmount() {
+        return TrainedWarriors;
     }
 
-    void removeWarriors(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeWarriors(int i) {
+        if(TrainedWarriors - i < 0)
+        {
+            TrainedWarriors = 0;
+        } else {
+            TrainedWarriors -= i;
+        }
     }
     
 }

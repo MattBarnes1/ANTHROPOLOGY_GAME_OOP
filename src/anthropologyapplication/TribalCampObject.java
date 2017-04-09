@@ -105,7 +105,7 @@ public class TribalCampObject {
         this.TotalAvailableCitizens++;
     }
 
-    WarriorHandler getWarriorHandler() {
+    public WarriorHandler getWarriorHandler() {
         return myWarriorHandler;
     }
 

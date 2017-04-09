@@ -52,8 +52,6 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private Label GameWorldTimeObject1112;
     @FXML
-    private Label assignCitizensWarriorsCount1;
-    @FXML
     private Label GameWorldTimeObject11112;
     @FXML
     private Label assignCitizensBuildersCount;
@@ -105,6 +103,8 @@ public class MainGameScreenController implements Initializable {
     private Label worldDisplayTime;
     @FXML
     private FlowPane BuildingItemList;
+    @FXML
+    private Label assignCitizenWarriorsCount;
     
     /**
      * Initializes the controller class.
@@ -205,6 +205,7 @@ public class MainGameScreenController implements Initializable {
         worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -213,18 +214,25 @@ public class MainGameScreenController implements Initializable {
         worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
     private void increaseWarriorsButtonClick(ActionEvent event) {
         myMain.increaseWarriors();
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        worldDisplayWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizenWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
     }
 
     @FXML
     private void decreaseWarriorsButtonClick(ActionEvent event) {
         myMain.decreaseWarriors();
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        worldDisplayWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
+        assignCitizenWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -234,6 +242,7 @@ public class MainGameScreenController implements Initializable {
         worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -242,6 +251,7 @@ public class MainGameScreenController implements Initializable {
         worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -285,6 +295,8 @@ public class MainGameScreenController implements Initializable {
 
     @FXML
     private void MouseDraggedMe(MouseEvent event) {
+        
+            BuildingSelectedForBuilding = null;//to prevent the thing from thinking the user clicked somethign;
           MouseScreenX = event.getSceneX();
             MouseScreenY = event.getSceneY();
             int TileWidth = myAutomapper.getTileWidth();
@@ -352,6 +364,26 @@ public class MainGameScreenController implements Initializable {
 
     private void setScreenXYSize(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void decreaseBuildersButtonClick(ActionEvent event) {
+        this.myMain.decreaseBuilders();
+        worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+        worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+    }
+
+    @FXML
+    private void decreaseFarmersButtonClick(ActionEvent event) {
+        
+        this.myMain.decreaseFarmers();
+        
+        worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+        worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
     }
 
     
