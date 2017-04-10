@@ -11,33 +11,97 @@ package anthropologyapplication;
  */
 public class WarriorHandler {
     ProductionHandler myProductionHandler;
-    int TrainedWarriors = 0;
-    int WarriorsToTrain = 0;
-    WarriorHandler(ProductionHandler aProductionHandler) {
+    internalWarriorLocker[] warriorList = {};
+
+    ArrayList<Warrior> myTrainedWarriors = new ArrayList<Warrior>();
+    ArrayList<Warrior> myWarriorsInTraining = new ArrayList<Warrior>();
+
+
+    public WarriorHandler(ProductionHandler aProductionHandler) {
         myProductionHandler = aProductionHandler;
     }
 
     
     
     public void update(GameTime MS) {
-        
+        Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+	while(myIterator.hasNext())
+	{
+		myIterator.Next();
+		myIterator.update(MS);
+		if(myIterator.isDoneBuilding())
+		{
+			myTrainedWarrior.add(myIterator);
+			myIterator.remove();
+		}
+	}
     }
 
-    public void addWarriors(int i) {
+    public void addWarriors(Warrior myType) {
+	if(myType.checkIfCanBuild(aProduction))
+	{
+		myWarriorsInTraining.add(myType);
+	}
+
         TrainedWarriors++;//To change body of generated methods, choose Tools | Templates.
     }
 
-    public int getWarriorsAmount() {
-        return TrainedWarriors;
+    public int getWarriorsAmountByType(String Name) {
+	int retVal = 0;
+	Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+	while(myIterator.hasNext())
+	{
+		myIterator.Next();
+		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		{
+			retVal++;
+		}
+	}
+        return retVal;
     }
 
-    public void removeWarriors(int i) {
-        if(TrainedWarriors - i < 0)
-        {
-            TrainedWarriors = 0;
-        } else {
-            TrainedWarriors -= i;
-        }
+    public int getWarriorsAmount() {
+        return myTrainedWarriors.size();
+    }
+
+    public void removeWarriorsFromTraining(String myName) {
+	Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+	boolean wasDeleted = false;
+	while(myIterator.hasNext())
+	{
+		myIterator.Next();
+		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		{
+		
+			wasDeleted = true;
+			myIterator.remove();
+		}
+	}
+	if(wasDeleted)
+	{
+		return;
+	} else {
+		//Report error
+	}
     }
     
+    public void removeWarriors(String myName) {
+	Iterator<Warrior> myIterator = myTrainedWarriors.Iterator();
+	boolean wasDeleted = false;
+	while(myIterator.hasNext())
+	{
+		myIterator.Next();
+		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		{
+			wasDeleted = true;
+			myIterator.remove();
+		}
+	}
+	if(wasDeleted)
+	{
+		return;
+	} else {
+		//Report error
+	}
+    }
 }
