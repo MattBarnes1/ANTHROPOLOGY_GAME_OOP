@@ -59,7 +59,7 @@ public abstract class Building
         
        int BuilderRequired;
 
-        protected Building(String Name, String Description, float BuildTimeMS, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+        protected Building(String Name, String Description, Time BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
         {
             this.BuildersRequired = BuilderRequired;
             this.ForegroundImageFileName = ForegroundImageFileName;
@@ -68,7 +68,7 @@ public abstract class Building
             BuildingIndex = Index;
             this.BuilidingName = Name;
             this.Description = Description;
-            timeTillBuilt = new Time(0,0,0,BuildTimeMS);
+            timeTillBuilt = BuildTime;
         }
         
         public String getForeGroundImageName()

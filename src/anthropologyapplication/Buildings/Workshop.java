@@ -7,18 +7,19 @@ package anthropologyapplication.Buildings;
 
 import anthropologyapplication.Building;
 import anthropologyapplication.AutoMapper.MapTile;
+import anthropologyapplication.Time;
 
 /**
  *
  * @author Duke
  */
 public class Workshop extends Building {
-    public Workshop(String Name, String Description, float BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+    public Workshop(String Name, String Description, Time BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
     private Workshop(Workshop aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime().toMS(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     
     }
 

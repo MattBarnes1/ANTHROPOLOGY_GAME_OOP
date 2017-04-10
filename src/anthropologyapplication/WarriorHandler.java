@@ -17,14 +17,6 @@ public class WarriorHandler {
         myProductionHandler = aProductionHandler;
     }
 
-    public void incWarriorsToTrain()
-    {
-            TrainedWarriors++;
-    }
-    public void decWarriorsToTrain()
-    {
-
-    }
     
     
     public void update(GameTime MS) {

@@ -40,23 +40,23 @@ public class TradeGood
             }
         }
 
-        public TradeGood(String Name, int startingTradeGood, float productionTimeMS, int baseSellVal)
+        public TradeGood(String Name, int startingTradeGood, Time ProductionTime, int baseSellVal)
         {
                 this.baseSellValue = baseSellValue;
                 TradeGoodName = Name;
                 TotalAmount = startingTradeGood;
-                productionTime = new Time(0,0,0,productionTimeMS);
+                productionTime = ProductionTime;
         }
 
 
-        public TradeGood(String Name, int Tier, int startingTradeGood, ProductionHandler aHandler, float ProductionTimeMS, int[] AmountPerGood, String[] GoodsNeedForProduction, int baseSellVal)
+        public TradeGood(String Name, int Tier, int startingTradeGood, ProductionHandler aHandler, Time ProductionTime, int[] AmountPerGood, String[] GoodsNeedForProduction, int baseSellVal)
         {
             this.amountPerGood = AmountPerGood;
             myHandler = aHandler;
             this.baseSellValue = baseSellValue;
             TradeGoodName = Name;
             TotalAmount = startingTradeGood;
-            productionTime = new Time(0,0,0,ProductionTimeMS);
+            productionTime = ProductionTime;
         }
 
     String getName() {

@@ -7,6 +7,7 @@ package anthropologyapplication.Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Building;
+import anthropologyapplication.Time;
 
 /**
  *
@@ -14,13 +15,13 @@ import anthropologyapplication.Building;
  */
 public class TribalHut extends Building {
 
-    public TribalHut(String Name, String Description, float BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+    public TribalHut(String Name, String Description, Time BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
         
     }
 
     private TribalHut(TribalHut aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime().toMS(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     }
 
     @Override
