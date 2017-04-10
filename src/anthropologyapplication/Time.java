@@ -5,6 +5,13 @@
  */
 package anthropologyapplication;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 /**
  *
  * @author Duke
@@ -25,31 +32,7 @@ public class Time implements java.io.Serializable {
 		this.Seconds = Seconds;
 	}
 	
-	public Time(int Hours, int Minutes, int Seconds, boolean isAM)
-	{
-		this.Hours = Hours;
-		this.Minutes = Minutes;
-		this.Seconds = Seconds;
-		if(isAM)
-		{
-			if(Hours == 12)
-			{
-				this.Hours = 0;
-				this.Minutes = Minutes;
-				this.Seconds = Seconds;
-			} else {
-				this.Hours = Hours;
-				this.Minutes = Minutes;
-				this.Seconds = Seconds;
-			}
-		} else {
-			this.Hours = Hours + 12;
-			this.Minutes = Minutes;
-			this.Seconds = Seconds;
-		}
-		
-	}
-
+	
         String[] CalendarDayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
         String[] CalendarMonthNames = { "Month1", "Month2", "Month3" };
         short[] numberOfDaysPerCalendarMonth = { 30, 30, 30};
@@ -64,13 +47,21 @@ public class Time implements java.io.Serializable {
         this.currentMonthNameIndex = Month;
         assert(this.currentMonthNameIndex < CalendarMonthNames.length);
         this.currentDayNumber = Day;
-        this.currentDayNameIndex = Day % currentDayNumber;
+	if(Day > 0)
+	{
+        	this.currentDayNameIndex = Day % currentDayNumber;
+	} else {
+		this.currentDayNameIndex = 0;
+	}
         assert(this.currentMonthNameIndex < CalendarDayNames.length);
         this.Milliseconds = MS;
         this.Hours = Hours;
         this.Minutes = Minutes;
         this.Seconds = Seconds;
-        correctTime();
+
+	assert(isNonNegative(this));
+        
+	correctTime();
     }
 	
 	public String getTimeString12Hour() {
@@ -179,60 +170,85 @@ public class Time implements java.io.Serializable {
         return (((21600000*this.Hours + Minutes*360000) + Seconds*60000)*1 + Milliseconds);
     }
     
-    public Time subtract(Time lastUpdateCall) {        
-        return new Time(
-        Math.abs(this.Year - lastUpdateCall.Year),
-        Math.abs(this.currentMonthNameIndex - lastUpdateCall.currentMonthNameIndex),
-        Math.abs(this.currentDayNumber - lastUpdateCall.currentDayNumber),
-        Math.abs(this.Hours - lastUpdateCall.Hours),
-        Math.abs(this.Minutes - lastUpdateCall.Minutes),
-        Math.abs(this.Seconds - lastUpdateCall.Seconds),
-        Math.abs(this.Milliseconds - lastUpdateCall.Milliseconds)
+
+//if less than the other just return 0 because you can't have negative times
+    public Time subtract(Time lastUpdateCall) {
+	int localYear = 0;
+	int localMonth = 0;
+	int localDay = 0;
+	int localHours = 0;
+	int localMinutes = 0;
+	int localSeconds = 0;
+	float localMilliseconds = 0;
+	assert(this.LesserThan(lastUpdateCall));
+	if(this.LesserThan(lastUpdateCall))        
+	{
+		localYear = this.Year - lastUpdateCall.Year;
+		localMonth = this.currentMonthNameIndex - lastUpdateCall.currentMonthNameIndex;
+		localDay = this.currentDayNumber - lastUpdateCall.currentDayNumber;
+		localHours = this.Hours - lastUpdateCall.Hours;
+		localMinutes = this.Minutes - lastUpdateCall.Minutes;
+		localSeconds = this.Seconds - lastUpdateCall.Seconds;
+		localMilliseconds = this.Milliseconds - lastUpdateCall.Milliseconds;
+	}
+	
+    return new Time(
+        Math.abs(localYear),
+        Math.abs(localMonth),
+        Math.abs(localDay),
+        Math.abs(localHours),
+        Math.abs(localMinutes),
+        Math.abs(localSeconds),
+        Math.abs(localMilliseconds)
         );
     }
+
+	private boolean isNonNegative(Time aTime)
+	{
+		return (aTime.Year < 0 || aTime.currentMonthNameIndex < 0 || aTime.currentDayNumber < 0 
+			|| aTime.Hours < 0 || aTime.Minutes < 0 || aTime.Seconds < 0 || aTime.Milliseconds < 0);
+
+	}
+
+
+
+
+
 
     public String getTimeString() {
         return Hours + ":" + Minutes + ":" + Seconds + ":" + Milliseconds;
     }
 
     private void correctTime() {
-         if (Milliseconds > 1000)
+         if (Milliseconds >= 1000)
         {
             
             int Remainder = (int)Milliseconds % 1000;
             int totalSeconds = (int)((Milliseconds-Remainder)/1000);
             Milliseconds = Remainder;
             Seconds += totalSeconds;
-        } else {
-            return;
         }
-        if (Seconds > 60)
+        if (Seconds >= 60)
         {
             
             int Remainder = Seconds % 60;
             int totalMinutes = (int)((Seconds-Remainder)/60);
             Seconds = (short)Remainder;
             Minutes += totalMinutes;
-        } else {
-            return;
         }
-        if (Minutes > 60)
+        if (Minutes >= 60)
         {
             int Remainder = Minutes % 60;
             int totalHours = (int)((Minutes-Remainder)/60);
             Minutes = (short)Remainder;
             Hours += totalHours;
-        } else {
-            return;
         }
-        if (Hours > 24)
+        if (Hours >= 24)
         {
             int Remainder = Hours % 24;
             int totalDays = (int)((Hours-Remainder)/24);
             Hours = (short)Remainder;
             currentDayNumber += totalDays;
-        } else {
-            return;
         }
         
         if(currentDayNumber > numberOfDaysPerCalendarMonth[currentMonthNameIndex])
@@ -242,16 +258,15 @@ public class Time implements java.io.Serializable {
                 currentDayNumber = Remainder;
                 currentDayNameIndex = Remainder % CalendarDayNames.length;
                 currentMonthNameIndex += totalMonths;
-        } else {
-            return;
         }
         
         if(currentMonthNameIndex > CalendarMonthNames.length)
         {
-            currentMonthNameIndex = 0;
+		int Remainder = currentMonthNameIndex % CalendarMonthNames.length;
+		int totalYears = (currentMonthNameIndex-Remainder)%CalendarMonthNames.length;
+		currentMonthNameIndex = Remainder;
+            	Year += totalYears;
             Year++;
-        } else {
-            currentMonthNameIndex++;
         }
     }
 }

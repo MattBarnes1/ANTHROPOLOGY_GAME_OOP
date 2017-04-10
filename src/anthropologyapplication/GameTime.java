@@ -134,36 +134,30 @@ public class GameTime implements java.io.Serializable {
 	}
 
         private void correctTime() {
-        if (Millisecond > 1000)
+        if (Millisecond >= 1000)
         {
             
             int Remainder = Millisecond % 1000;
             int totalSeconds = (int)((Millisecond-Remainder)/1000);
             Millisecond = Remainder;
             Seconds += totalSeconds;
-        } else {
-            return;
         }
-        if (Seconds > 60)
+        if (Seconds >= 60)
         {
             
             int Remainder = Seconds % 60;
             int totalMinutes = (int)((Seconds-Remainder)/60);
             Seconds = (short)Remainder;
             Minutes += totalMinutes;
-        } else {
-            return;
         }
-        if (Minutes > 60)
+        if (Minutes >= 60)
         {
             int Remainder = Minutes % 60;
             int totalHours = (int)((Minutes-Remainder)/60);
             Minutes = (short)Remainder;
             Hours += totalHours;
-        } else {
-            return;
         }
-        if (Hours > 24)
+        if (Hours >= 24)
         {
             int Remainder = Hours % 24;
             int totalDays = (int)((Hours-Remainder)/24);
@@ -180,8 +174,6 @@ public class GameTime implements java.io.Serializable {
                 currentDayNumber = Remainder;
                 currentDayNameIndex = Remainder % CalendarDayNames.length;
                 currentMonthNameIndex += totalMonths;
-        } else {
-            return;
         }
         
         if(currentMonthNameIndex > CalendarMonthNames.length)
@@ -196,7 +188,7 @@ public class GameTime implements java.io.Serializable {
         
         
 	public String getTimeString() {
-		if(Minutes > 10)
+		if(Minutes >= 10)
 		{
 			return Hours + ":" + Minutes;
 		} else {
