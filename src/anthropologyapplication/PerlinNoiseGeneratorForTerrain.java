@@ -21,7 +21,8 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
     private final int arrayX;
     private final int arrayY;
     private float[][] smoothArray;
-    private double[][] WhiteNoiseArray;
+    private float[][] WhiteNoiseArray;
+    
     private float currentOctave;
     private final float maxOctave = 0.5F;
     public PerlinNoiseGeneratorForTerrain(int Seed, int arrayX, int arrayY)
@@ -36,6 +37,8 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
         Task aTask = new Task<String>() {
             @Override
             protected String call() throws Exception {
+                smoothArray = null;
+                WhiteNoiseArray = null;
                 this.updateMessage("Creating White Noise for Perlin...");
                 generateWhiteNoise();
                 this.updateMessage("Creating Smooth Noise for Perlin...");
@@ -50,13 +53,13 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
 
             private void generateWhiteNoise() {
                 Random random = new Random(Seed); //Seed to 0 for testing
-                WhiteNoiseArray = new double[arrayX][arrayY];
+                WhiteNoiseArray = new float[arrayX][arrayY];
                 smoothArray = new float[arrayX][arrayY];
                 for (int i = 0; i < arrayX; i++)
                 {
                     for (int j = 0; j < arrayY; j++)
                     {
-                        WhiteNoiseArray[i][j] = (double)random.nextDouble();
+                        WhiteNoiseArray[i][j] = (float)random.nextDouble();
                     }
                 }
             }
@@ -96,10 +99,16 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
                return x0 * (1 - alpha) + alpha * x1;
             }
 
+            private int startingOct = 1;
+            
             private void generatePerlinNoise() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                int localOctave = startingOct;
+                for(int i = 0; i < 3; i++)
+                {
+                    WhiteNoiseArray = generateSmoothNoise(localOctave);
+                    localOctave *= 0.5F;
+                }
             }
-
         };         
         return aTask;  
     }

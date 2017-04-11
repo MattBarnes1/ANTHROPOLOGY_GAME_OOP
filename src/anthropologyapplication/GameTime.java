@@ -73,11 +73,9 @@ public class GameTime implements java.io.Serializable {
                 }
                 newUpdateCall = getTimeStructure();
             }
+            CalendarData.updateCalendar(this);
 	}
 
-        String[] CalendarDayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
-        String[] CalendarMonthNames = { "Month1", "Month2", "Month3" };
-        short[] numberOfDaysPerCalendarMonth = { 30, 30, 30};
         int Year = 0000;
         
         int currentMonthNameIndex = 0;
@@ -87,7 +85,7 @@ public class GameTime implements java.io.Serializable {
         
         public String getDayName()
         {
-            return CalendarDayNames[currentDayNameIndex];
+            return CalendarData.CalendarDayNames[currentDayNameIndex];
         }
         
         public int getDayIndex()
@@ -100,27 +98,20 @@ public class GameTime implements java.io.Serializable {
             return currentMonthNameIndex;
         }
         
-        public String getMonthName()
-        {
-            return CalendarMonthNames[currentMonthNameIndex];
-        }
         
         public int getNumberOfDaysIntoMonth()
         {
             return currentDayNumber + 1; //Plus one to fix 0
         }
         
-        public String getDateString()
-        {
-            return getDayName() + " the " + currentDayNumber + " of " + getMonthName();
-        }
+
         
 	private void IncrementCalender() {
-                if(currentDayNumber + 1 > numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+                if(currentDayNumber + 1 > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
                 {
                     currentDayNumber = 0;
                     currentDayNameIndex = 0;
-                    if(currentMonthNameIndex + 1 > CalendarMonthNames.length)
+                    if(currentMonthNameIndex + 1 > CalendarData.CalendarMonthNames.length)
                     {
                         currentMonthNameIndex = 0;
                         Year ++;
@@ -129,7 +120,7 @@ public class GameTime implements java.io.Serializable {
                     }
                 } else {
                     currentDayNumber++;
-                    currentDayNameIndex = currentDayNumber % CalendarDayNames.length;
+                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
                 }
 	}
 
@@ -167,16 +158,16 @@ public class GameTime implements java.io.Serializable {
             return;
         }
         
-        if(currentDayNumber > numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+        if(currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
         {
-                int Remainder = currentDayNumber % numberOfDaysPerCalendarMonth[currentMonthNameIndex];
-                int totalMonths = (int)((currentDayNumber-Remainder)/numberOfDaysPerCalendarMonth[currentMonthNameIndex]);
+                int Remainder = currentDayNumber % CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex];
+                int totalMonths = (int)((currentDayNumber-Remainder)/CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex]);
                 currentDayNumber = Remainder;
-                currentDayNameIndex = Remainder % CalendarDayNames.length;
+                currentDayNameIndex = Remainder % CalendarData.CalendarDayNames.length;
                 currentMonthNameIndex += totalMonths;
         }
         
-        if(currentMonthNameIndex > CalendarMonthNames.length)
+        if(currentMonthNameIndex > CalendarData.CalendarMonthNames.length)
         {
             currentMonthNameIndex = 0;
             Year++;
@@ -245,7 +236,7 @@ public class GameTime implements java.io.Serializable {
 	
 	public Time getElapsedTime() {
 		// TODO Auto-generated method stub
-                System.out.println(newUpdateCall.absDifference(lastUpdateCall).toString());
+                System.out.println(newUpdateCall.subtract(lastUpdateCall).toString());
 		return newUpdateCall.subtract(lastUpdateCall); // >23 1
 	}
 
@@ -253,6 +244,10 @@ public class GameTime implements java.io.Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+    int getYear() {
+        return this.Year;
+    }
 	
 
 

@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 package anthropologyapplication;
+import anthropologyapplication.Warriors.Warrior;
+import anthropologyapplication.internalLockers.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
 
 /**
  *
@@ -21,37 +27,64 @@ public class WarriorHandler {
         myProductionHandler = aProductionHandler;
     }
 
+    public int getFightingStrength()
+    {
+        double retVal = 0;
+        Iterator<Warrior> myTrainedWarriorsIterator = myTrainedWarriors.iterator();
+        Iterator<Warrior> myTrainingWarriorsIterator = myWarriorsInTraining.iterator();
+        
+        while(myTrainedWarriorsIterator.hasNext())
+        {
+            Warrior myWarrior = myTrainedWarriorsIterator.next();
+            retVal += myWarrior.getStrength();
+        }
+        
+        while(myTrainingWarriorsIterator.hasNext())
+        {
+            Warrior myWarrior = myTrainingWarriorsIterator.next();
+            retVal += (myWarrior.getStrength()*0.5);
+        }
+        
+        return (int)Math.floor(retVal);
+    }
+    
+    
     
     
     public void update(GameTime MS) {
-        Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+        Iterator<Warrior> myIterator = myWarriorsInTraining.iterator();
 	while(myIterator.hasNext())
 	{
-		myIterator.Next();
-		myIterator.update(MS);
-		if(myIterator.isDoneBuilding())
+		Warrior aWarrior = myIterator.next();
+		aWarrior.update(MS);
+		if(aWarrior.isDoneBuilding())
 		{
-			myTrainedWarrior.add(myIterator);
+			myTrainedWarriors.add(aWarrior);
 			myIterator.remove();
 		}
 	}
+        myIterator = myTrainedWarriors.iterator();
     }
 
-    public void addWarriors(Warrior myType) {
-	if(myType.checkIfCanBuild(aProduction))
-	{
-		myWarriorsInTraining.add(myType);
-	}
-
-        TrainedWarriors++;//To change body of generated methods, choose Tools | Templates.
+    public void addWarriors(String myWarrior) {
+        for(int i = 0; i < warriorList.length; i++)
+        {
+           if(warriorList[i].getName().compareTo(myWarrior))
+           {
+                if(warriorList[i].getWarrior().checkIfCanBuild(myProductionHandler))
+                {
+                        myWarriorsInTraining.add(warriorList[i].Copy());
+                }
+           }
+        }
     }
 
-    public int getWarriorsAmountByType(String Name) {
+    public int getWarriorsAmountByName(String Name) {
 	int retVal = 0;
 	Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
 	while(myIterator.hasNext())
 	{
-		myIterator.Next();
+		Warrior myWarrior = myIterator.Next();
 		if(myIterator.getWarriorName().compareTo(myName) == 0)
 		{
 			retVal++;
@@ -69,7 +102,7 @@ public class WarriorHandler {
 	boolean wasDeleted = false;
 	while(myIterator.hasNext())
 	{
-		myIterator.Next();
+		Warrior myWarrior = myIterator.Next();
 		if(myIterator.getWarriorName().compareTo(myName) == 0)
 		{
 		
@@ -90,7 +123,7 @@ public class WarriorHandler {
 	boolean wasDeleted = false;
 	while(myIterator.hasNext())
 	{
-		myIterator.Next();
+		Warrior myWarrior = myIterator.Next();
 		if(myIterator.getWarriorName().compareTo(myName) == 0)
 		{
 			wasDeleted = true;

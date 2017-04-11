@@ -5,6 +5,7 @@
  */
 package anthropologyapplication.Warriors;
 
+import anthropologyapplication.GameTime;
 import anthropologyapplication.Time;
 import anthropologyapplication.TradeGood;
 
@@ -14,8 +15,20 @@ import anthropologyapplication.TradeGood;
  */
 public class Warrior {
     final Time TimeCountDown;
-    public Warrior(TradeGood[] forProduction, float TrainingTimeMS)
+    public Warrior(TradeGood[] forProduction, Time TrainingTimeMS)
     {
-        TimeCountDown = new Time(0,0,0,TrainingTimeMS);
+        TimeCountDown = TrainingTimeMS;
+    }
+
+    public double getStrength() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isDoneBuilding() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void update(GameTime MS) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

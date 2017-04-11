@@ -66,20 +66,100 @@ public class Map extends Service{
 private MapTile[] getPossibleSettlementPosition()
 {
     ArrayList<MapTile> habitable = new ArrayList<MapTile>();
-    for(int x = 0; x < myMap.length; x++) //using length in case we eventually implement a scaling map
+    Random myRandom = new Random();
+    Boolean[][] myLocationsValidLines = new Boolean[possibleSettlements + 1][possibleSettlements + 1]; 
+    int Count = 0;
+    while(Count <= possibleSettlements + 1)
     {
-        for(int y = 0; y < myMap[0].length; y++)
+        while(Count <= possibleSettlements + 1)
         {
-           if(myMap[x][y].isLand());
-           {
-               habitable.add(myMap[x][y]);
-           }
-        }
+            int xLocation = 0;
+            while (xLocation < 5 || xLocation > myMap.length-5)
+            {
+                xLocation = myRandom.nextInt(myMap.length);
+            }
+            int yLocation = 0;
+            while (yLocation < 5 || yLocation > myMap.length-5)
+            {
+                yLocation = myRandom.nextInt(myMap.length);
+            }
+            if (!myMap[xLocation][yLocation].isLand())
+            {
+                continue;
+            }
+            int waterTiles = 0;
+            int landTiles = 0;
+            for(int x = xLocation - 1; x < xLocation + 2; x++)
+            {
+                for(int y = yLocation - 1; y < yLocation + 2; y++)
+                {
+                    if(myMap[x][y].isLand())
+                    {
+                        landTiles++;
+                    } else {
+                        waterTiles++;
+                    }
+                }
+            }
+            if ((landTiles - 1) < waterTiles)
+            {
+                continue;
+            }
+            if(Count == 0)
+            {
+                habitable.add(myMap[xLocation][yLocation]);
+            } else {
+                int StartCount = 0;
+                for(int i = 0; i < habitable.size(); i++)
+                {
+                    //if(canDrawline(habitable.get(i), myMap[xLocation][yLocation]))
+                    //{
+                      //  myLocationsValidLines[habitable.size()][i] = true;
+                        habitable.add(myMap[xLocation][yLocation]);
+                        Count++;
+                    //} else {
+
+                    //}
+                }
+
+            }
+
+            for(int i = 0; i < habitable.size(); i++)
+            {
+                for(int g = 0; g < habitable.size(); g++)
+                {
+                    if(pathFindFromTo(habitable.get(i), habitable.get(g)))
+                    {
+                        if(CheckPathNumber(habitable.get(i), habitable) < CheckPathNumber(habitable.get(g),habitable))
+                        {
+                            habitable.remove(i);
+                            Count--;
+                        } 
+                        else if (CheckPathNumber(habitable.get(i), habitable) == CheckPathNumber(habitable.get(g), habitable))
+                        {
+                            habitable.remove(i);
+                            Count--;
+                        }
+                        else 
+                        {
+                            habitable.remove(g);
+                            Count--;
+                        }
+                    }
+                }
+            }
+        
     }
+        
+        
+        
+    
+
     MapTile[] myLocations = new MapTile[habitable.size()];
     habitable.toArray(myLocations);
     return myLocations;
 }
+
     
     private void clearMap()
     {
@@ -234,18 +314,31 @@ private MapTile[] getPossibleSettlementPosition()
         Task aTask = new Task<String>() {
             @Override
             protected String call() throws Exception {
+                TerrainGenerator.start();
                 maxMapCoordinates = new Vector3(mapXAndYLength,mapXAndYLength,0);
                 double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
                 double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
                 double counter = 0;
                 while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
                 float[][] values = (float[][])TerrainGenerator.getValue();
+                InterpretPerlinNoise(AmountOfWater, AmountOfLand);
+                if(isValidMap())
+                {
+                  generateSettlements();
+                }
+                
+                Automap.setMap(aJumper, myCode);
+                
+                return null;
+            }         
+
+            private void InterpretPerlinNoise(double AmountOfWater, double AmountOfLand) throws SecurityException {
                 for(int x = 0; x < mapXAndYLength; x++)
                 {
                     for(int y = 0; y < mapXAndYLength; y++)
                     {
                         //counter += ((double)((x+1)*(y+1)));
-                        Value = myRandomNumberGen.nextInt(101);
+                        //Value = myRandomNumberGen.nextInt(101);
                         generateWorldMap(x,y,0,AmountOfWater, AmountOfLand);
                         linkMapTiles(x,y);
                         if(getMapTile(x,y).getClass().getDeclaringClass() == MapTile_Land.class)
@@ -257,18 +350,28 @@ private MapTile[] getPossibleSettlementPosition()
                     }
                     super.updateProgress((double)(x+1)*mapXAndYLength,(double)(mapXAndYLength*mapXAndYLength));
                 }
-                if(isValidMap())
-                {
-                  generateSettlements();
-                }
-                
-                Automap.setMap(aJumper, myCode);
-                
-                return null;
             }         
         };         
         return aTask;  
     }        
+
+   
+    private int CheckPathNumber(MapTile toCheck, ArrayList<MapTile> aMap)
+    {
+        int Counter = 0;
+        for(int i = 0; i < aMap.size(); i++)
+        {
+            if(pathFindFromTo(toCheck, aMap.get(i)) != null)
+            {
+              Counter++;  
+            }
+        }
+        return Counter;
+    }
+
+    private boolean pathFindFromTo(MapTile get, MapTile get0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     
 }

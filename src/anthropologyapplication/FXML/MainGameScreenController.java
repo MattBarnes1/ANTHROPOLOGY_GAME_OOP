@@ -9,6 +9,8 @@ import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
+import anthropologyapplication.DisplayData.ProductProductionDisplayData;
+import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
 import anthropologyapplication.MainGameCode;
 import anthropologyapplication.Map;
 import java.net.URL;
@@ -130,11 +132,45 @@ public class MainGameScreenController implements Initializable {
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         //this.assignCitizensWarriorsCount1
         
+        Iterator<ProductProductionDisplayData> aProductIterator =  aThis.getPlayersCamp().getProductionHandler().getTradeGoodsAvailable();
+        while(aProductIterator.hasNext())
+        {
+            ProductProductionDisplayData myData = aProductIterator.next();
+            Button aButton = new Button(myData.getName());
+            aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                Button myButton = aButton;
+                
+                @Override
+                public void handle(MouseEvent event) {
+                    myMain.setProductionFocus(aButton.getText());
+                }           
+            });
+        }
+        
+        Iterator<WarriorTrainingDisplayData> aWarriorIterator =  aThis.getPlayersCamp().getWarriorHandler().getWarriorsAvailable();
+        while(aProductIterator.hasNext())
+        {
+            WarriorTrainingDisplayData myData = aWarriorIterator.next();
+            Button aButton = new Button(myData.getName());
+            aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                Button myButton = aButton;
+                
+                @Override
+                public void handle(MouseEvent event) {
+                    myMain.addWarrior(aButton.getText());
+                }           
+            });
+        }
+        
+        
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        Iterator<String> anIterator = aThis.getPlayersCamp().getBuildingHandler().getBuildable().iterator();
+        Iterator<BuildingConstructionDisplayData> anIterator = aThis.getPlayersCamp().getBuildingHandler().getBuildable().iterator();
         while(anIterator.hasNext())
         {
-            Button aButton = new Button(anIterator.next());
+            BuildingConstructionDisplayData myData = anIterator.next();
+            Button aButton = new Button(myData.getName()); //For now use button later override it
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -146,6 +182,8 @@ public class MainGameScreenController implements Initializable {
             });
             BuildingItemList.getChildren().add(aButton);
         }
+        
+        
     }
 
     
@@ -287,10 +325,8 @@ public class MainGameScreenController implements Initializable {
     }
 
     private void MousedMovedWithinMe(MouseEvent event) {
-        if(Dragging)
-        {
-          
-        }
+        MapTile aTile = this.myAutomapper.getTileAtMouseCoordinates(event.getSceneX(), event.getSceneY());
+        displayMapInfo.setText(aTile.toString());
     }
 
     @FXML
@@ -384,6 +420,14 @@ public class MainGameScreenController implements Initializable {
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+    }
+
+    public void setMapMessage(String aMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void showErrorMessage(String ErrorString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

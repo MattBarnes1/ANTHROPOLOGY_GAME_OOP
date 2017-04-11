@@ -25,13 +25,13 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", 5000, 0, 2,"TribalCamp.jpg", NoFile), true),
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage", 5000, 0, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Field ("Field", "A field", 5000, 1, 4, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Workshop("Workship", "A workshop", 5000, 2, 2, NoFile, NoFile), true)                    
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Time(0,0,0,0,0,0,5000), 0, 2,"TribalCamp.jpg", NoFile), true),
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage", new Time(0,0,0,0,0,0,5000), 0, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field", new Time(0,0,0,0,0,0,5000), 1, 4, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Workshop("Workship", "A workshop",  new Time(0,0,0,0,0,0,5000), 2, 2, NoFile, NoFile), true)                    
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
-		private ArrayList<String> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
+		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
                  //This is updated for the player when they call so we don't have to iterate through a list.
                 private int currentlyAllowedTier = 0; //Unlocked level
 		private ArrayList<Building> BuildingsBeingConstructed = new ArrayList<>();
@@ -50,7 +50,7 @@ public class BuildingHandler {
                     {
                         if(aVal.Available)
                         {
-                            BuildingsThatCanBeBuilt.add(aVal.myBuilding.getBuildingName());
+                            BuildingsThatCanBeBuilt.add(new BuildingConstructionDisplayData(aVal.myBuilding));
                         }
                     }
                     
@@ -157,12 +157,12 @@ public class BuildingHandler {
                     return retVal;
 		}
 
-		public ArrayList<String> getBuiltBuildings()
+		public ArrayList<BuildingConstructionDisplayData> getBuiltBuildings()
 		{
-			ArrayList<String> myRetString = new ArrayList<String>();
+			ArrayList<BuildingConstructionDisplayData> myRetString = new ArrayList<BuildingConstructionDisplayData>();
                         for(Building B : BuildingsBuilt)
                         {
-                            myRetString.add(B.getBuildingName() + " " + countBuildingsInList(BuildingsBuilt, B.getClass()) + "x");
+                            myRetString.add(new BuildingConstructionDisplayData(B));
                         }
                         return myRetString;
 		}
@@ -193,7 +193,7 @@ public class BuildingHandler {
                 }
                 
                 
-		public ArrayList<String> getBuildable()
+		public ArrayList<BuildingConstructionDisplayData> getBuildable()
 		{
 			return BuildingsThatCanBeBuilt;
 		}

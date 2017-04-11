@@ -159,8 +159,10 @@ public class GuiHandler {
         mainGameScreenController.updateMap();
     }
 
+    public void setErrorMessage(String ErrorString)
+    {
+        mainGameScreenController.showErrorMessage(ErrorString);
+    }
    
-   
-
 
 }

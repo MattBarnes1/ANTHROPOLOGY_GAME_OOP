@@ -154,6 +154,8 @@ public class MainGameCode {
         {
             playersCamp.removeFreeCitizen();
             playersCamp.getProductionHandler().addProducers(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
 
@@ -162,6 +164,8 @@ public class MainGameCode {
         {
             playersCamp.addFreeCitizen();
             playersCamp.getProductionHandler().removeProducers(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
 
@@ -170,6 +174,8 @@ public class MainGameCode {
         {
             playersCamp.removeFreeCitizen();
             playersCamp.getWarriorHandler().addWarriors(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
 
@@ -178,6 +184,8 @@ public class MainGameCode {
         {
             playersCamp.addFreeCitizen();
             playersCamp.getWarriorHandler().removeWarriors(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
 
@@ -186,6 +194,8 @@ public class MainGameCode {
         {
             playersCamp.removeFreeCitizen();
             playersCamp.getBuildingHandler().addBuilders(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
     
@@ -194,6 +204,8 @@ public class MainGameCode {
         {
             playersCamp.addFreeCitizen();
             playersCamp.getBuildingHandler().removeBuilders(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
     public void increaseFarmers() {
@@ -201,13 +213,17 @@ public class MainGameCode {
         {
             playersCamp.removeFreeCitizen();
             playersCamp.getFoodHandler().addFarmers(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     } 
     public void decreaseFarmers() {
-        if(playersCamp.getFoodHandler().getFarmersAmount() != 0)
+        if(playersCamp.getFoodHandler().getFarmersAmount() > 0)
         {
             playersCamp.addFreeCitizen();
             playersCamp.getFoodHandler().removeFarmers(1);
+        } else {
+            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
     }
 
@@ -220,6 +236,7 @@ public class MainGameCode {
            return myDisplay.getAutomapper().getMessage();
        }
     }
+    
     
     public double getProgress() {
        if(myMap.isRunning())

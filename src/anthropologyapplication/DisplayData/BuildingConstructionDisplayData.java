@@ -28,10 +28,6 @@ public class BuildingConstructionDisplayData {
     {
         return aBuilding.getBuildTime().getTimeString();
     }
-    
-    public void Cancel()
-    {
-            
-    }
+
     
 }
