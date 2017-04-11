@@ -19,4 +19,17 @@ public class internalProductLocker {
         this.Available = isAvailable;
         myTradeGood = aTradeGood;
     }
+
+    public TradeGood getTradeGood()
+    {
+        return myTradeGood;
+    }
+    
+    public String getName() {
+        return myTradeGood.getName();
+    }
+
+    public int getAmount() {
+        return myTradeGood.getAmount();
+    }
 }

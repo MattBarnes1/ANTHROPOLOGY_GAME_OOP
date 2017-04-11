@@ -19,6 +19,8 @@ package anthropologyapplication;
 
 public class Time implements java.io.Serializable {
 
+    public static Time Zero = new Time(0,0,0,0,0,0,0);
+
 	protected int Hours = 0;
 	protected int Minutes = 0;
 	protected int Seconds = 0;

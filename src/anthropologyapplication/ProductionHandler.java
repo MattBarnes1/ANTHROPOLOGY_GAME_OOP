@@ -6,6 +6,7 @@
 package anthropologyapplication;
 
 
+import anthropologyapplication.DisplayData.ProductProductionDisplayData;
 import anthropologyapplication.internalLockers.internalProductLocker;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +24,7 @@ public class ProductionHandler
                                      
                 };
        
-                private ArrayList<String> ProductsThatCanBeBuilt = new ArrayList<>();
+                private ArrayList<ProductProductionDisplayData> ProductsThatCanBeBuilt = new ArrayList<>();
                 private ArrayList<TradeGood> ProductsBeingMade = new ArrayList<>();
                 
                 
@@ -87,7 +88,7 @@ public class ProductionHandler
                     {
                         if(aVal.Available)
                         {
-                            ProductsThatCanBeBuilt.add(aVal.myTradeGood.getName());
+                            ProductsThatCanBeBuilt.add(new ProductProductionDisplayData(aVal.myTradeGood));
                         }
                     }
             }
@@ -95,4 +96,19 @@ public class ProductionHandler
     public int getProducersAmount() {
         return ProducersAmount;
     }
-	}
+
+    public Iterator<ProductProductionDisplayData> getTradeGoodsAvailable() {
+        return ProductsThatCanBeBuilt.iterator();
+    }
+
+    public int getAmountByString(String string) {
+        for(int i = 0; i < internalProductList.length; i++)
+        {
+            if(internalProductList[i].getName().compareTo(string) == 0)
+            {
+                return internalProductList[i].getAmount();
+            }
+        }
+        assert(false);
+    }
+}

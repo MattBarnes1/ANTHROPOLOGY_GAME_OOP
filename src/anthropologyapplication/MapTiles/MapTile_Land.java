@@ -33,6 +33,16 @@ public class MapTile_Land extends MapTile{
         return "L";
     }
 
+    @Override
+    public boolean canBlockMovement() {
+        return false; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
+
   
 
     

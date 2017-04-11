@@ -128,7 +128,7 @@ private MapTile[] getPossibleSettlementPosition()
             {
                 for(int g = 0; g < habitable.size(); g++)
                 {
-                    if(pathFindFromTo(habitable.get(i), habitable.get(g)))
+                    if(pathFindFromTo(habitable.get(i), habitable.get(g))!= null)
                     {
                         if(CheckPathNumber(habitable.get(i), habitable) < CheckPathNumber(habitable.get(g),habitable))
                         {
@@ -321,7 +321,7 @@ private MapTile[] getPossibleSettlementPosition()
                 double counter = 0;
                 while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
                 float[][] values = (float[][])TerrainGenerator.getValue();
-                InterpretPerlinNoise(AmountOfWater, AmountOfLand);
+                InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
                 if(isValidMap())
                 {
                   generateSettlements();
@@ -332,21 +332,17 @@ private MapTile[] getPossibleSettlementPosition()
                 return null;
             }         
 
-            private void InterpretPerlinNoise(double AmountOfWater, double AmountOfLand) throws SecurityException {
+            private void InterpretPerlinNoise(double AmountOfWater, double AmountOfLand, float[][] PerlinNoiseGeneration) throws SecurityException {
                 for(int x = 0; x < mapXAndYLength; x++)
                 {
                     for(int y = 0; y < mapXAndYLength; y++)
                     {
-                        //counter += ((double)((x+1)*(y+1)));
-                        //Value = myRandomNumberGen.nextInt(101);
-                        generateWorldMap(x,y,0,AmountOfWater, AmountOfLand);
-                        linkMapTiles(x,y);
-                        if(getMapTile(x,y).getClass().getDeclaringClass() == MapTile_Land.class)
-                        {
-                            AmountOfLand--;
-                        } else {
-                            AmountOfWater--;
-                        }
+                           if(PerlinNoiseGeneration[x][y] < 0.7)
+                           {
+                               myMap[x][y] = new MapTile_Land();
+                           } else {
+                               myMap[x][y] = new MapTile_Water();
+                           }
                     }
                     super.updateProgress((double)(x+1)*mapXAndYLength,(double)(mapXAndYLength*mapXAndYLength));
                 }
@@ -369,9 +365,58 @@ private MapTile[] getPossibleSettlementPosition()
         return Counter;
     }
 
-    private boolean pathFindFromTo(MapTile get, MapTile get0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int maxSearchDistance = 20;
+    ArrayList<MapTile> TilesConsideredFail = new ArrayList<MapTile>();
+    //ArrayList<MapTile> TilesToBeConsidered = new ArrayList<MapTile>();
+    private Path pathFindFromTo(MapTile startTile, MapTile endTile) {
+        Path myPath = new Path(); 
+        MapTile currentlyLookingAt = startTile;
+        //MapTile[][] myTile = this.getSurroundingTiles(startTile.getCoordinates().X, startTile.getCoordinates().Y);
+        int maxDepth = 0;
+        while (maxDepth < maxSearchDistance) 
+        {
+            if(currentlyLookingAt == endTile)
+            {
+            
+                break; //We've found it;
+            }
+            
+            MapTile[][] myTile = getSurroundingTiles(currentlyLookingAt.getCoordinates().X, currentlyLookingAt.getCoordinates().Y);
+            MapTile ExpectedNext = null;
+            for(int x = 0; x < myTile.length; x++)
+            {
+                for(int y = 0; y < myTile[x].length; y++)
+                {
+                   if(ExpectedNext != null)
+                   {
+                       if(basicHeuristic(ExpectedNext, endTile) + ExpectedNext.getCost() >= basicHeuristic(myTile[x][y], endTile) + myTile[x][y].getCost() 
+                               && !TilesConsideredFail.contains(myTile[x][y]) && myTile[x][y].isLand() && !myTile[x][y].canBlockMovement())
+                       {
+                            ExpectedNext = myTile[x][y];
+                            myPath.appendStep(currentlyLookingAt.getCoordinates());
+                            currentlyLookingAt = ExpectedNext;
+                       }
+                   } else {
+                       myPath.appendStep(currentlyLookingAt.getCoordinates());
+                       currentlyLookingAt = ExpectedNext;
+                   }
+                  
+                }
+            }
+            
+        }
+        return myPath;
     }
-        
+
+    private int basicHeuristic(MapTile Current, MapTile Next)
+    {
+        Vector3 nextCoords = Next.getCoordinates();
+        Vector3 currentCoords = Current.getCoordinates(); 
+        int dx = Math.abs(nextCoords.X - currentCoords.X);
+        int dy = Math.abs(nextCoords.Y - currentCoords.Y);
+        return dx+dy;
+    }       
     
 }
+
+

@@ -69,9 +69,9 @@ public class WarriorHandler {
     public void addWarriors(String myWarrior) {
         for(int i = 0; i < warriorList.length; i++)
         {
-           if(warriorList[i].getName().compareTo(myWarrior))
+           if(warriorList[i].getName().compareTo(myWarrior)==0)
            {
-                if(warriorList[i].getWarrior().checkIfCanBuild(myProductionHandler))
+                if(warriorList[i].checkIfCanBuild(myProductionHandler))
                 {
                         myWarriorsInTraining.add(warriorList[i].Copy());
                 }
@@ -81,11 +81,11 @@ public class WarriorHandler {
 
     public int getWarriorsAmountByName(String Name) {
 	int retVal = 0;
-	Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+	Iterator<Warrior> myIterator = myWarriorsInTraining.iterator();
 	while(myIterator.hasNext())
 	{
-		Warrior myWarrior = myIterator.Next();
-		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		Warrior myWarrior = myIterator.next();
+		if(myWarrior.getName().compareTo(Name) == 0)
 		{
 			retVal++;
 		}
@@ -98,12 +98,12 @@ public class WarriorHandler {
     }
 
     public void removeWarriorsFromTraining(String myName) {
-	Iterator<Warrior> myIterator = myWarriorsInTraining.Iterator();
+	Iterator<Warrior> myIterator = myWarriorsInTraining.iterator();
 	boolean wasDeleted = false;
 	while(myIterator.hasNext())
 	{
-		Warrior myWarrior = myIterator.Next();
-		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		Warrior myWarrior = myIterator.next();
+		if(myWarrior.getName().compareTo(myName) == 0)
 		{
 		
 			wasDeleted = true;
@@ -119,12 +119,12 @@ public class WarriorHandler {
     }
     
     public void removeWarriors(String myName) {
-	Iterator<Warrior> myIterator = myTrainedWarriors.Iterator();
+	Iterator<Warrior> myIterator = myTrainedWarriors.iterator();
 	boolean wasDeleted = false;
 	while(myIterator.hasNext())
 	{
-		Warrior myWarrior = myIterator.Next();
-		if(myIterator.getWarriorName().compareTo(myName) == 0)
+		Warrior myWarrior = myIterator.next();
+		if(myWarrior.getName().compareTo(myName) == 0)
 		{
 			wasDeleted = true;
 			myIterator.remove();

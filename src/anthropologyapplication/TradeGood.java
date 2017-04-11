@@ -59,7 +59,13 @@ public class TradeGood
             productionTime = ProductionTime;
         }
 
-    String getName() {
+    public String getName() {
         return TradeGoodName;
+    }
+
+    int amount = 0;
+    
+    public int getAmount() {
+        return amount;
     }
 }

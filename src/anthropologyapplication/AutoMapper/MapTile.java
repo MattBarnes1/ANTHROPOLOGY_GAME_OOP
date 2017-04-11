@@ -262,7 +262,9 @@ public abstract class MapTile {
        if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
-  
+    public abstract boolean canBlockMovement();
+
+    public abstract int getCost();
 
     
 

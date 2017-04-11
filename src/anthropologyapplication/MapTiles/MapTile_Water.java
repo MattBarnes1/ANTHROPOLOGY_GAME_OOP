@@ -24,6 +24,16 @@ public class MapTile_Water extends MapTile {
     public void generateSubType(MapTile[][] surroundingTilesAndThis, Random myRandom, double tilesAvailable) {
         super.setSubtype("Ocean");
     }
+
+    @Override
+    public boolean canBlockMovement() {
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getCost() {
+        return 0; //To change body of generated methods, choose Tools | Templates.
+    }
     
     enum SubType
     {
