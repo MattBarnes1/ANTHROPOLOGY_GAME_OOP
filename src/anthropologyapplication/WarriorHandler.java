@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package anthropologyapplication;
+import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
 import anthropologyapplication.Warriors.Warrior;
 import anthropologyapplication.internalLockers.*;
 import java.util.ArrayList;
@@ -118,7 +119,7 @@ public class WarriorHandler {
 	}
     }
     
-    public void removeWarriors(String myName) {
+    public void forceRemoveWarriors(String myName) {
 	Iterator<Warrior> myIterator = myTrainedWarriors.iterator();
 	boolean wasDeleted = false;
 	while(myIterator.hasNext())
@@ -136,5 +137,21 @@ public class WarriorHandler {
 	} else {
 		//Report error
 	}
+    }
+
+    public Iterator<WarriorTrainingDisplayData> getWarriorsAvailable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void forceAddWarrior(String warrior) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void addWarriorToTraining(String warrior) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void removeWarriorFromTraining(String warrior) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -8,13 +8,14 @@ package anthropologyapplication.Buildings;
 import anthropologyapplication.Building;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Time;
+import anthropologyapplication.Timer;
 
 /**
  *
  * @author Duke
  */
 public class Workshop extends Building {
-    public Workshop(String Name, String Description, Time BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+    public Workshop(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 

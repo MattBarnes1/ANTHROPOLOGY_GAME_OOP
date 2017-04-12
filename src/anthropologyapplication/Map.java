@@ -151,7 +151,7 @@ private MapTile[] getPossibleSettlementPosition()
         
     }
         
-        
+    }    
         
     
 
@@ -307,21 +307,25 @@ private MapTile[] getPossibleSettlementPosition()
         return myMap;
     }
 
+
+    
     PerlinNoiseGeneratorForTerrain TerrainGenerator;
         
     @Override
     protected Task createTask() {
         Task aTask = new Task<String>() {
             @Override
+            @SuppressWarnings("empty-statement")
             protected String call() throws Exception {
-                TerrainGenerator.start();
                 maxMapCoordinates = new Vector3(mapXAndYLength,mapXAndYLength,0);
                 double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
                 double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
                 double counter = 0;
-                while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
-                float[][] values = (float[][])TerrainGenerator.getValue();
+                TerrainGenerator.start();
+                while(!TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
+                float[][] values = TerrainGenerator.getPerlin();
                 InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
+                System.out.println(this.toString());
                 if(isValidMap())
                 {
                   generateSettlements();

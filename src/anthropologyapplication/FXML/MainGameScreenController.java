@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +25,10 @@ import javafx.geometry.Bounds;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -45,7 +50,6 @@ public class MainGameScreenController implements Initializable {
     private Canvas CanvasMapDisplay;
     @FXML
     private Label GameWorldTimeObject;
-    @FXML
     private Label assignCitizensFreeCitizensCount;
     @FXML
     private Label GameWorldTimeObject112;
@@ -63,8 +67,6 @@ public class MainGameScreenController implements Initializable {
     private Label assignCitizensFarmersCount;
     @FXML
     private Button increaseWorkersButton;
-    @FXML
-    private Button decreaseWorkersButton;
     @FXML
     private Button increaseWarriorsButton;
     @FXML
@@ -107,6 +109,32 @@ public class MainGameScreenController implements Initializable {
     private FlowPane BuildingItemList;
     @FXML
     private Label assignCitizenWarriorsCount;
+    @FXML
+    private Tab BuildingsTab;
+    @FXML
+    private Button decreaseBuildersButton;
+    @FXML
+    private Tab TradeGoodsTab;
+    @FXML
+    private Button decreaseWorkersButton1;
+    @FXML
+    private Label TradeGoodTabErrorText;
+    @FXML
+    private Tab FarmersTab;
+    @FXML
+    private Label FarmerTabErrorText;
+    @FXML
+    private Tab WarriorTab;
+    @FXML
+    private FlowPane WarriorFlowPane;
+    @FXML
+    private Label WarriorsTabErrorText;
+    @FXML
+    private ScrollPane WarriorsTrainedInTraining;
+    @FXML
+    private TreeView<?> WarriorsTotal;
+    @FXML
+    private Label displayMapInfo;
     
     /**
      * Initializes the controller class.
@@ -137,6 +165,9 @@ public class MainGameScreenController implements Initializable {
         {
             ProductProductionDisplayData myData = aProductIterator.next();
             Button aButton = new Button(myData.getName());
+            Tooltip myTip = new Tooltip();
+            myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            aButton.setTooltip(myTip);
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -153,10 +184,12 @@ public class MainGameScreenController implements Initializable {
         {
             WarriorTrainingDisplayData myData = aWarriorIterator.next();
             Button aButton = new Button(myData.getName());
+            Tooltip myTip = new Tooltip();
+            myTip.setText(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
+            aButton.setTooltip(myTip);
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
-                
                 @Override
                 public void handle(MouseEvent event) {
                     myMain.addWarrior(aButton.getText());
@@ -171,6 +204,9 @@ public class MainGameScreenController implements Initializable {
         {
             BuildingConstructionDisplayData myData = anIterator.next();
             Button aButton = new Button(myData.getName()); //For now use button later override it
+            Tooltip myTip = new Tooltip();
+            myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            aButton.setTooltip(myTip);
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -428,6 +464,22 @@ public class MainGameScreenController implements Initializable {
 
     public void showErrorMessage(String ErrorString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void BuildingsTabSelected(Event event) {
+    }
+
+    @FXML
+    private void TradeGoodTabSelected(Event event) {
+    }
+
+    @FXML
+    private void FarmersTabSelected(Event event) {
+    }
+
+    @FXML
+    private void WarriorTabSelected(Event event) {
     }
 
     

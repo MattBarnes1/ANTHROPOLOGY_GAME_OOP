@@ -18,6 +18,22 @@ public class WarriorTrainingDisplayData {
     {
         this.myData = myData;
     }
+
+    public String getDescription() {
+       return myData.getDescription();
+    }
+
+    public String getTotalBuildTime() {
+       return myData.getTotalBuildTime().toString();
+    }
+
+    public String getName() {
+        return myData.getName();
+    }
+
+    public String getStrength() {
+        return "" + myData.getStrength();
+    }
     
     
 }

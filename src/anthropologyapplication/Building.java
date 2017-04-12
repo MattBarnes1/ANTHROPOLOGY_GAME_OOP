@@ -24,6 +24,7 @@ public abstract class Building
         private boolean Destroyable = true;
         private int BuildingIndex;
         private int BuildersRequired;
+        
         private MapTile BuiltOn;
         private final String ForegroundImageFileName;
         private final String ForegroundImageDestroyedFileName;
@@ -59,7 +60,7 @@ public abstract class Building
         
        int BuilderRequired;
 
-        protected Building(String Name, String Description, Time BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+        protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
         {
             this.BuildersRequired = BuilderRequired;
             this.ForegroundImageFileName = ForegroundImageFileName;
@@ -95,13 +96,13 @@ public abstract class Building
             return Description;
         }
 
-        Time timeTillBuilt;
+        Timer timeTillBuilt;
         boolean isFinishedBuilding = false;
         void update(GameTime T) {
             timeTillBuilt = timeTillBuilt.subtract(T.getElapsedTime());
             if(!isFinishedBuilding)
             {
-                isFinishedBuilding = timeTillBuilt.EqualTo(new Time(0,0,0));
+                isFinishedBuilding = timeTillBuilt.EqualTo(new Timer(0,0,0));
             }
         }
         
@@ -126,13 +127,17 @@ public abstract class Building
         }
 
 
-    public Time getBuildTime() {
+    public Timer getBuildTime() {
         return timeTillBuilt;
     }
 
     void forceBuildAtLocation(MapTile aLocation) {
             BuiltOn = aLocation;
             aLocation.setForegroundImage(ForegroundImageFileName);
+    }
+
+    public String getTotalBuildTime() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

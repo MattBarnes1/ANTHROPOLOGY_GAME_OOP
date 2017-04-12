@@ -5,6 +5,8 @@
  */
 package anthropologyapplication.DisplayData;
 
+import anthropologyapplication.TradeGood;
+
 /**
  *
  * @author Duke
@@ -12,5 +14,21 @@ package anthropologyapplication.DisplayData;
 public class ProductProductionDisplayData {
     public String ProductName;
     public String ProductTimeToComplete;
+
+    public ProductProductionDisplayData(TradeGood myTradeGood) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getTotalBuildTime() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

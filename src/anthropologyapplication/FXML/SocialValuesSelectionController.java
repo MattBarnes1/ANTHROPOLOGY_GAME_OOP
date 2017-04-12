@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -45,14 +46,14 @@ public class SocialValuesSelectionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        myChoices = new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal",SocialValues.Matrilineal, SocialValues.Patrilineal);
-        myChoices.setNext(new SocialChoice("SCENARIOTEXT", "Exogamy", "Endogamy",SocialValues.Exogamy, SocialValues.Endogamy));
+        myChoices = new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal","MatrilinialDefinition","PatrilinealDefinition", SocialValues.Matrilineal, SocialValues.Patrilineal);
+        myChoices.setNext(new SocialChoice("SCENARIOTEXT", "Exogamy", "Endogamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
         currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Monogamy", "Polygamy",SocialValues.Exogamy, SocialValues.Endogamy));
+        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Monogamy", "Polygamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
         currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Matriarchal", "Patriarchal",SocialValues.Exogamy, SocialValues.Endogamy));
+        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Matriarchal", "Patriarchal","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
         currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Horticultural", "Pastoral",SocialValues.Exogamy, SocialValues.Endogamy));
+        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Horticultural", "Pastoral","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
         //currentChoice = myChoices.getNext();
         currentChoice = myChoices;
         updateQuestionFields();
@@ -63,9 +64,9 @@ public class SocialValuesSelectionController implements Initializable {
        
         if(Choice1.isSelected())
         {
-            myValues.add(currentChoice.getChoiceSocialValue(1));
+            myValues.add(currentChoice.getChoiceSocialValue(0));
         } else if (Choice2.isSelected()) {
-            myValues.add(currentChoice.getChoiceSocialValue(2));
+            myValues.add(currentChoice.getChoiceSocialValue(1));
         }
         currentChoice = currentChoice.getNext();
         //Add social value to myValues
@@ -76,6 +77,7 @@ public class SocialValuesSelectionController implements Initializable {
     MainGameCode myMain;
     
     public void setMainGameCode(MainGameCode aThis) {
+       
         myMain = aThis;
     }
 
@@ -116,8 +118,18 @@ public class SocialValuesSelectionController implements Initializable {
         ScenarioDisplay.setText(currentChoice.getScenarioString());
         Choice1.selectedProperty().set(false);
         Choice2.selectedProperty().set(false);
-        Choice1.setText(currentChoice.getChoiceString(1));
-        Choice2.setText(currentChoice.getChoiceString(2));
+        Choice1.setText(currentChoice.getChoiceString(0));
+        Choice2.setText(currentChoice.getChoiceString(1));
+    }
+
+    @FXML
+    private void CheckBox1HoveredOn(MouseEvent event) {
+        ScenarioDisplay.setText(currentChoice.getDefinition(0));
+    }
+
+    @FXML
+    private void CheckBox2HoveredOn(MouseEvent event) {
+        ScenarioDisplay.setText(currentChoice.getDefinition(1));
     }
     
 }

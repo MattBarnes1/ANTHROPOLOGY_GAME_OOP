@@ -14,17 +14,15 @@ import anthropologyapplication.SocialValues;
 public class SocialChoice {
     private SocialChoice Next = null;
     private String ScenarioString;
-    private String ChoiceString1;
-    private String ChoiceString2;
-    private SocialValues withChoice1;
-    private SocialValues withChoice2;
-    public SocialChoice(String Scenario, String Choice1, String Choice2, SocialValues withChoice1,SocialValues withChoice2)
+    private String[] ChoiceStrings;
+    private SocialValues[] SocialValuesForChoice;
+    private String[] ChoiceExplanation;
+    public SocialChoice(String Scenario, String Choice1, String Choice2, String Choice1Explanation, String Choice2Explanation, SocialValues withChoice1, SocialValues withChoice2)
     {
+        ChoiceStrings = new String[] { Choice1, Choice2 };
         ScenarioString = Scenario;
-        ChoiceString1 = Choice1;
-        ChoiceString2 = Choice2;
-        this.withChoice1 = withChoice1;
-        this.withChoice2 = withChoice2;
+        SocialValuesForChoice = new SocialValues[]{withChoice1, withChoice2};
+        ChoiceExplanation = new String[] { Choice1Explanation, Choice2Explanation};
     }
     
     public void setNext(SocialChoice aChoice)
@@ -38,35 +36,19 @@ public class SocialChoice {
     }
 
     String getChoiceString(int i) {
-        if(i == 1)
-        {
-            return ChoiceString1;
-        } 
-        else if (i == 2)
-        {
-            return ChoiceString2;
-        }
-        else {
-            return "";
-        }
+      return ChoiceStrings[i];
     }
 
     SocialValues getChoiceSocialValue(int i) {
-        if(i == 1)
-        {
-            return withChoice1;
-        } 
-        else if (i == 2)
-        {
-            return withChoice2;
-        }
-        else {
-            return null;
-        }
+        return SocialValuesForChoice[i];
     }
 
     String getScenarioString() {
         return ScenarioString;
     }   
+
+    String getDefinition(int i) {
+       return ChoiceExplanation[i];
+    }
     
 }

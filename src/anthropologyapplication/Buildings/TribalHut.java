@@ -8,6 +8,7 @@ package anthropologyapplication.Buildings;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Building;
 import anthropologyapplication.Time;
+import anthropologyapplication.Timer;
 
 /**
  *
@@ -15,7 +16,7 @@ import anthropologyapplication.Time;
  */
 public class TribalHut extends Building {
 
-    public TribalHut(String Name, String Description, Time BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+    public TribalHut(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
         
     }

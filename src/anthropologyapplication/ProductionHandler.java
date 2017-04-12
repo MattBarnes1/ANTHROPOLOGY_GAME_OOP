@@ -110,5 +110,6 @@ public class ProductionHandler
             }
         }
         assert(false);
+        return -1;
     }
 }

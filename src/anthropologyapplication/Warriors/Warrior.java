@@ -70,4 +70,12 @@ public class Warrior {
         }
         return true;
     }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public Time getTotalBuildTime() {
+        return BuildTime;
+    }
 }

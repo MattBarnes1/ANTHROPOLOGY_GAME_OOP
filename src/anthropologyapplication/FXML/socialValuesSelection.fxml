@@ -13,7 +13,7 @@
    <children>
       <TextArea fx:id="ScenarioDisplay" layoutX="14.0" layoutY="14.0" prefHeight="272.0" prefWidth="771.0" />
       <Button fx:id="NextButton" layoutX="358.0" layoutY="537.0" mnemonicParsing="false" onAction="#onNextClicked" prefHeight="25.0" prefWidth="82.0" text="Next" />
-      <CheckBox fx:id="Choice1" layoutX="31.0" layoutY="331.0" mnemonicParsing="false" onAction="#onCheckBox1Clicked" text="CheckBox" />
-      <CheckBox fx:id="Choice2" layoutX="31.0" layoutY="429.0" mnemonicParsing="false" onAction="#onCheckBox2Clicked" text="CheckBox" />
+      <CheckBox fx:id="Choice1" layoutX="31.0" layoutY="331.0" mnemonicParsing="false" onAction="#onCheckBox1Clicked" onMouseEntered="#CheckBox1HoveredOn" text="CheckBox" />
+      <CheckBox fx:id="Choice2" layoutX="31.0" layoutY="429.0" mnemonicParsing="false" onAction="#onCheckBox2Clicked" onMouseEntered="#CheckBox2HoveredOn" text="CheckBox" />
    </children>
 </AnchorPane>

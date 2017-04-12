@@ -26,7 +26,15 @@ public class BuildingConstructionDisplayData {
     
     public String getTimeToCompleteString()
     {
-        return aBuilding.getBuildTime().getTimeString();
+        return "";
+    }
+
+    public String getDescription() {
+        return aBuilding.getDescription();
+    }
+
+    public String getTotalBuildTime() {
+        return "" + aBuilding.getTotalBuildTime();
     }
 
     

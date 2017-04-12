@@ -25,10 +25,10 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Time(0,0,0,0,0,0,5000), 0, 2,"TribalCamp.jpg", NoFile), true),
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage", new Time(0,0,0,0,0,0,5000), 0, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Field ("Field", "A field", new Time(0,0,0,0,0,0,5000), 1, 4, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Workshop("Workship", "A workshop",  new Time(0,0,0,0,0,0,5000), 2, 2, NoFile, NoFile), true)                    
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2,"TribalCamp.jpg", NoFile), true),
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage", new Timer(0,0,0,5), 0, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field", new Timer(0,0,0,5), 1, 4, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Workshop("Workship", "A workshop",  new Timer(0,0,0,5), 2, 2, NoFile, NoFile), true)                    
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu

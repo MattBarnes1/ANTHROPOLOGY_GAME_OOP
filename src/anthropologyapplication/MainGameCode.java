@@ -30,6 +30,7 @@ public class MainGameCode {
         myMap = new Map(100, this, myDisplay.getAutomapper());
         myDisplay.setupMap();
         //myMap.run();
+        
         myMap.start();
         myRandomEvents = new RandomEventHandler("an/RandomEvents.json");
         RandomEventsThread = new Thread(myRandomEvents);
@@ -173,7 +174,7 @@ public class MainGameCode {
         if(playersCamp.hasFreeCitizens())
         {
             playersCamp.removeFreeCitizen();
-            playersCamp.getWarriorHandler().addWarriors(1);
+            playersCamp.getWarriorHandler().addWarriorToTraining("Warrior");
         } else {
             myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
@@ -183,7 +184,7 @@ public class MainGameCode {
         if(playersCamp.getWarriorHandler().getWarriorsAmount() != 0)
         {
             playersCamp.addFreeCitizen();
-            playersCamp.getWarriorHandler().removeWarriors(1);
+            playersCamp.getWarriorHandler().removeWarriorFromTraining("Warrior");
         } else {
             myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }
@@ -247,4 +248,14 @@ public class MainGameCode {
        }
            return -1;
        }
+
+    public void addWarrior(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setProductionFocus(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+ 
 }

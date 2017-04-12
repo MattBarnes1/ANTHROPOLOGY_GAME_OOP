@@ -5,6 +5,8 @@
  */
 package anthropologyapplication;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,34 +22,31 @@ package anthropologyapplication;
 public class Time implements java.io.Serializable {
 
     public static Time Zero = new Time(0,0,0,0,0,0,0);
-
+	protected int Year = 0;
+        protected int Days;
 	protected int Hours = 0;
 	protected int Minutes = 0;
 	protected int Seconds = 0;
         protected float Milliseconds;
 	protected boolean isAM = false;
 	protected boolean is24Hour = true;
-	public Time(int Hours, int Minutes, int Seconds)
-	{
-		this.Hours = Hours;
-		this.Minutes = Minutes;
-		this.Seconds = Seconds;
-	}
+        protected boolean isTimer = false;
+
 	
-	
-        String[] CalendarDayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
-        String[] CalendarMonthNames = { "Month1", "Month2", "Month3" };
-        short[] numberOfDaysPerCalendarMonth = { 30, 30, 30};
-        int Year = 0000;
+        CalendarData myData;
+
         
         int currentMonthNameIndex = 0;
         int currentDayNameIndex = 0;
         int currentDayNumber = 0;
 
+        boolean isCountdown = false;
+    //Time References a specific time in history;    
     public Time(int year, int Month, int Day, int Hours, int Minutes, int Seconds, float MS) {
         this.Year = year;
-        this.currentMonthNameIndex = Month;
-        assert(this.currentMonthNameIndex < CalendarMonthNames.length);
+        this.currentMonthNameIndex = Month; //TODO: fix problem with month
+
+        assert(this.currentMonthNameIndex < CalendarData.CalendarMonthNames.length);
         this.currentDayNumber = Day;
 	if(Day > 0)
 	{
@@ -55,7 +54,7 @@ public class Time implements java.io.Serializable {
 	} else {
 		this.currentDayNameIndex = 0;
 	}
-        assert(this.currentMonthNameIndex < CalendarDayNames.length);
+        assert(this.currentMonthNameIndex < CalendarData.CalendarDayNames.length);
         this.Milliseconds = MS;
         this.Hours = Hours;
         this.Minutes = Minutes;
@@ -185,13 +184,50 @@ public class Time implements java.io.Serializable {
 	assert(this.LesserThan(lastUpdateCall));
 	if(this.LesserThan(lastUpdateCall))        
 	{
-		localYear = this.Year - lastUpdateCall.Year;
-		localMonth = this.currentMonthNameIndex - lastUpdateCall.currentMonthNameIndex;
-		localDay = this.currentDayNumber - lastUpdateCall.currentDayNumber;
-		localHours = this.Hours - lastUpdateCall.Hours;
-		localMinutes = this.Minutes - lastUpdateCall.Minutes;
-		localSeconds = this.Seconds - lastUpdateCall.Seconds;
 		localMilliseconds = this.Milliseconds - lastUpdateCall.Milliseconds;
+                if(localMilliseconds < 0)
+                {
+                    Seconds--;
+                    localMilliseconds += 1000;
+                }
+		localSeconds = this.Seconds - lastUpdateCall.Seconds;
+                if(localSeconds < 0)
+                {
+                    Minutes--;
+                    localSeconds += 60;
+                }
+		localMinutes = this.Minutes - lastUpdateCall.Minutes;
+                if(localMinutes < 0)
+                {
+                    Hours--;
+                    localMinutes += 60;
+                }
+		localHours = this.Hours - lastUpdateCall.Hours;
+                 if(localHours < 0)
+                {
+                    Days--;
+                    localHours += 24;
+                }
+		localDay = this.currentDayNumber - lastUpdateCall.currentDayNumber;
+                if(localDay < 0)
+                {
+                    localMonth--;
+                    this.currentMonthNameIndex--;
+                    if(this.currentMonthNameIndex < 0)
+                    {
+                        currentMonthNameIndex = CalendarData.getTotalMonths()-1;
+                    }
+                    localDay += CalendarData.getDaysPerMonthByIndex(currentMonthNameIndex);
+                    
+                }
+		localMonth += (this.currentMonthNameIndex - lastUpdateCall.currentMonthNameIndex);
+                if(localMonth < 0)
+                {
+                    localYear--;
+                        localMonth += CalendarData.getTotalMonths();
+                
+                }
+		localYear += this.Year - lastUpdateCall.Year;
 	}
 	
     return new Time(
@@ -217,12 +253,16 @@ public class Time implements java.io.Serializable {
 
 
 
-    public String getTimeString() {
+    public String getTimeStringDHMS() {
+       
+        
         return Hours + ":" + Minutes + ":" + Seconds + ":" + Milliseconds;
     }
 
+
+    
     private void correctTime() {
-         if (Milliseconds >= 1000)
+        while (Milliseconds >= 1000)
         {
             
             int Remainder = (int)Milliseconds % 1000;
@@ -230,7 +270,7 @@ public class Time implements java.io.Serializable {
             Milliseconds = Remainder;
             Seconds += totalSeconds;
         }
-        if (Seconds >= 60)
+        while (Seconds >= 60)
         {
             
             int Remainder = Seconds % 60;
@@ -238,14 +278,14 @@ public class Time implements java.io.Serializable {
             Seconds = (short)Remainder;
             Minutes += totalMinutes;
         }
-        if (Minutes >= 60)
+        while (Minutes >= 60)
         {
             int Remainder = Minutes % 60;
             int totalHours = (int)((Minutes-Remainder)/60);
             Minutes = (short)Remainder;
             Hours += totalHours;
         }
-        if (Hours >= 24)
+        while (Hours >= 24)
         {
             int Remainder = Hours % 24;
             int totalDays = (int)((Hours-Remainder)/24);
@@ -253,22 +293,20 @@ public class Time implements java.io.Serializable {
             currentDayNumber += totalDays;
         }
         
-        if(currentDayNumber > numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+        while (currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
         {
-                int Remainder = currentDayNumber % numberOfDaysPerCalendarMonth[currentMonthNameIndex];
-                int totalMonths = (int)((currentDayNumber-Remainder)/numberOfDaysPerCalendarMonth[currentMonthNameIndex]);
-                currentDayNumber = Remainder;
-                currentDayNameIndex = Remainder % CalendarDayNames.length;
-                currentMonthNameIndex += totalMonths;
+                 int Remainder = currentDayNumber % CalendarData.getDaysPerMonthByIndex(currentMonthNameIndex);
+                 currentDayNumber  = (int)(currentDayNumber-Remainder);
+                 currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+                if(currentMonthNameIndex + 1 > CalendarData.getTotalMonths()-1)
+                {
+                    Year++;
+                    currentMonthNameIndex = 0;
+                } else {
+                    currentMonthNameIndex++;
+                }
         }
-        
-        if(currentMonthNameIndex > CalendarMonthNames.length)
-        {
-		int Remainder = currentMonthNameIndex % CalendarMonthNames.length;
-		int totalYears = (currentMonthNameIndex-Remainder)%CalendarMonthNames.length;
-		currentMonthNameIndex = Remainder;
-            	Year += totalYears;
-            Year++;
-        }
+         
+
     }
 }
