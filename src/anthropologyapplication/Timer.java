@@ -23,15 +23,12 @@ public class Timer {
         this.Seconds = Seconds;
     }
 
-    Timer(int i, int i0, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     private void CorrectTime()
     {
         while(Seconds >= 60)
         {
-            
             int Remainder = Seconds % 60;
             int totalMinutes = (int)((Seconds-Remainder)/60);
             Seconds = (short)Remainder;
@@ -52,14 +49,81 @@ public class Timer {
             Days += totalDays;
         }
     }
-
+    int subtractLocalDay;
+    int subtractLocalHours;
+    int subtractLocalMinutes;
+    int subtractLocalSeconds;
+            
     Timer subtract(Time elapsedTime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	int subtractLocalDay = this.Days - elapsedTime.Days;
+	int subtractLocalHours = this.Hours - elapsedTime.Hours;
+	int subtractLocalMinutes = this.Minutes - elapsedTime.Minutes;
+	int subtractLocalSeconds = this.Seconds - elapsedTime.Seconds;
+        CheckDays();
+        CheckHours();
+        CheckMinutes();
+        CheckSeconds(); 
+        return new Timer(subtractLocalDay,subtractLocalHours,subtractLocalMinutes,subtractLocalSeconds);
     }
 
-    boolean EqualTo(Timer timer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void CheckDays()
+    {
+        if(subtractLocalDay < 0)
+        {
+            subtractLocalDay = 0;
+            subtractLocalHours = 0;
+            subtractLocalMinutes = 0;
+            subtractLocalSeconds = 0;
+        }
     }
+    
+    private void CheckHours()
+    {
+        while(subtractLocalHours < 0)
+        {
+            subtractLocalDay--;
+            subtractLocalHours += 24;
+            CheckDays();
+        }
+    }
+    
+    private void CheckMinutes() {
+        while(subtractLocalMinutes < 0)
+        {
+            --subtractLocalHours;
+            subtractLocalMinutes+=60;
+        }
+        CheckHours();
+        CheckDays();
+    }
+    
+    private void CheckSeconds() {
+        while(subtractLocalSeconds < 0)
+        {
+            --subtractLocalMinutes;
+            subtractLocalSeconds += 60;
+        }
+        CheckMinutes();
+        CheckHours();
+        CheckDays();
+    }
+
+    
+    
+    @Override
+    public String toString()
+    {
+        return "Days: " + this.Days + "Hours: " + this.Hours + "Minutes: " + this.Minutes;
+    }
+    
+    
+    
+    boolean EqualTo(Timer timer) {
+       return (timer.Hours == this.Hours && timer.Minutes == this.Minutes && this.Seconds == timer.Seconds && this.Days == timer.Days);
+    }
+
+    
+
     
 
 }

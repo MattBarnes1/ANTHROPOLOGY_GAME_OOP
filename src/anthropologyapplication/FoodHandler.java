@@ -5,6 +5,9 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.Buildings.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -48,7 +51,6 @@ public class FoodHandler {
                 
 		public int calculateMaxCropYield()
 		{
-			throw new NotImplementedException();
 		}
                 
                 public boolean canRemoveMore()
@@ -59,6 +61,26 @@ public class FoodHandler {
    
 
     void update(GameTime MS) {
+       ArrayList<Building> aBuildingHandler = myBuildingHandler.getAllBuiltBuildingsByType(Field.class);
+       int Check = FarmerAmount;
+       Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
+       while(BuildingIterator.hasNext())
+       {
+           if(Check >= 0)
+           {
+                Building aBuilding = BuildingIterator.next();
+                int RequiredFarmers = ((Field)aBuilding).getRequiredNumberOfFarmers();
+                float foodAmountPerFarmer = ((Field)aBuilding).getYield();
+                Check -= RequiredFarmers;
+                if(Check < 0)
+                {
+                   foodPerDay += foodAmountPerFarmer*((Check + RequiredFarmers)/RequiredFarmers);
+                } else if (Check > 0){
+                    foodPerDay += foodAmountPerFarmer;
+                }
+           }
+       }
+      
     }
 
     public int getFarmersAmount() {

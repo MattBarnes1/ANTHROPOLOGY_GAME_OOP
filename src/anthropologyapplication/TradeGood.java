@@ -68,4 +68,8 @@ public class TradeGood
     public int getAmount() {
         return amount;
     }
+
+    void update(GameTime MS) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

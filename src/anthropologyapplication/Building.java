@@ -59,7 +59,7 @@ public abstract class Building
         }
         
        int BuilderRequired;
-
+        final Timer BuildTimeToBuild;
         protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
         {
             this.BuildersRequired = BuilderRequired;
@@ -70,6 +70,7 @@ public abstract class Building
             this.BuilidingName = Name;
             this.Description = Description;
             timeTillBuilt = BuildTime;
+            BuildTimeToBuild = BuildTime;
         }
         
         public String getForeGroundImageName()
@@ -102,7 +103,7 @@ public abstract class Building
             timeTillBuilt = timeTillBuilt.subtract(T.getElapsedTime());
             if(!isFinishedBuilding)
             {
-                isFinishedBuilding = timeTillBuilt.EqualTo(new Timer(0,0,0));
+                isFinishedBuilding = timeTillBuilt.EqualTo(new Timer(0,0,0,0));
             }
         }
         
@@ -136,8 +137,9 @@ public abstract class Building
             aLocation.setForegroundImage(ForegroundImageFileName);
     }
 
-    public String getTotalBuildTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getTotalBuildTime()
+    {
+        return BuildTimeToBuild.toString();
     }
 
 

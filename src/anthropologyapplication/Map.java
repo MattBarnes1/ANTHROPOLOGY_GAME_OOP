@@ -45,6 +45,8 @@ public class Map extends Service{
         Automap = automapper;
         this.mapXAndYLength = mapXAndYLength;
         myMap = new MapTile[mapXAndYLength][mapXAndYLength];
+        
+        TerrainGenerator.start();
     }
     public void generateWorldMap(int xCoord, int yCoord, int zCoord, double WaterTilesRemaining, double LandTilesRemaining)
     {
@@ -321,8 +323,7 @@ private MapTile[] getPossibleSettlementPosition()
                 double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
                 double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
                 double counter = 0;
-                TerrainGenerator.start();
-                while(!TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
+                while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
                 float[][] values = TerrainGenerator.getPerlin();
                 InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
                 System.out.println(this.toString());

@@ -18,7 +18,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class ProductionHandler
 	{
-		TradeGood[] TradeGoodList;
+		//TradeGood[] TradeGoodList;
 		int ProducersAmount = 0;
                 private internalProductLocker[] internalProductList = new internalProductLocker[] {
                                      
@@ -35,7 +35,12 @@ public class ProductionHandler
 
 		public void update(GameTime MS)
 		{
-                    
+                   Iterator<TradeGood> myTradeGood = ProductsBeingMade.iterator();
+                   while(myTradeGood.hasNext())
+                   {
+                       TradeGood stuff = myTradeGood.next();
+                       stuff.update(MS);
+                   }
 		}
                 public boolean canRemoveMore()
                 {

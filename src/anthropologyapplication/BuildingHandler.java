@@ -167,6 +167,12 @@ public class BuildingHandler {
                         return myRetString;
 		}
                 
+                public int countBuildingsInList(Class<? extends Building> aClass)
+                {
+                    return countBuildingsInList(BuildingsBuilt, aClass);
+                }
+                
+                
                 private int countBuildingsInList(ArrayList<Building> aBuildingList, Class<? extends Building> aClass)
                 {
                     int Count = 0;

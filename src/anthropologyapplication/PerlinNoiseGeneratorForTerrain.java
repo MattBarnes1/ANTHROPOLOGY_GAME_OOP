@@ -99,7 +99,7 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
 
             private int startingOct = 2;
 
-            private float[][] generatePerlinNoise() {
+            public float[][] generatePerlinNoise() {
                 int LocalOctaveCount = startingOct;
                 int width = arrayX;
                 int height = arrayY;
