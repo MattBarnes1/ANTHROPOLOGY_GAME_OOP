@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package anthropologyapplication.Warriors;
+import anthropologyapplication.Warriors.Clubmen;
+import TradeGoods.ProductionHandler;
 import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
+import anthropologyapplication.GameTime;
+import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Warrior;
 import anthropologyapplication.internalLockers.*;
 import java.util.ArrayList;
@@ -18,14 +22,19 @@ import java.util.Iterator;
  */
 public class WarriorHandler {
     ProductionHandler myProductionHandler;
-    internalWarriorLocker[] warriorList = {};
+    internalWarriorLocker[] warriorList = {
+        new internalWarriorLocker(new Clubmen("Clubmen")),
+        new internalWarriorLocker(new Spearmen("Spearmen")),
+        };
 
     ArrayList<Warrior> myTrainedWarriors = new ArrayList<Warrior>();
     ArrayList<Warrior> myWarriorsInTraining = new ArrayList<Warrior>();
 
+    TribalCampObject myObject;
+    
 
-    public WarriorHandler(ProductionHandler aProductionHandler) {
-        myProductionHandler = aProductionHandler;
+    public WarriorHandler(TribalCampObject myCamp) {
+        myObject = myCamp;
     }
 
     public int getFightingStrength()

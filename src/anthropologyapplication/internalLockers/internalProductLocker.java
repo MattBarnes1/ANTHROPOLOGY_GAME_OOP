@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.internalLockers;
 
-import anthropologyapplication.TradeGood;
+import TradeGoods.TradeGood;
 
 /**
  *

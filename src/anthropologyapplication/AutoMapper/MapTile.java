@@ -7,6 +7,7 @@ package anthropologyapplication.AutoMapper;
 
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.AutoMapper.*;
+import anthropologyapplication.TribalCampObject;
 import java.awt.AlphaComposite;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -262,6 +263,28 @@ public abstract class MapTile {
        if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
+    TribalCampObject myTerritory = null;
+   
+    public void setTerritory(TribalCampObject myObject)
+    {
+        myTerritory = myObject;
+    }
+   
+    public TribalCampObject getTerritory()
+    {
+        return myTerritory;
+    }
+    
+    public void isTerritoryOf(TribalCampObject territoryToTest)
+    {
+        
+    }
+    
+    public void clearTerritory()
+    {
+        myTerritory = null;
+    }
+    
     public abstract boolean canBlockMovement();
 
     public abstract int getCost();

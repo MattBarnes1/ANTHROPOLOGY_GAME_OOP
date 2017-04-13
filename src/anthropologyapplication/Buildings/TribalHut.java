@@ -6,7 +6,7 @@
 package anthropologyapplication.Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
-import anthropologyapplication.Building;
+import Buildings.Building;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
 

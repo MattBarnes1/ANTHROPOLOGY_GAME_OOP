@@ -54,7 +54,7 @@ public class Timer {
     int subtractLocalMinutes;
     int subtractLocalSeconds;
             
-    Timer subtract(Time elapsedTime) {
+    public Timer subtract(Time elapsedTime) {
 	int subtractLocalDay = this.Days - elapsedTime.Days;
 	int subtractLocalHours = this.Hours - elapsedTime.Hours;
 	int subtractLocalMinutes = this.Minutes - elapsedTime.Minutes;
@@ -118,7 +118,7 @@ public class Timer {
     
     
     
-    boolean EqualTo(Timer timer) {
+    public boolean EqualTo(Timer timer) {
        return (timer.Hours == this.Hours && timer.Minutes == this.Minutes && this.Seconds == timer.Seconds && this.Days == timer.Days);
     }
 

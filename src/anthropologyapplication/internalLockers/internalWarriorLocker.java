@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.internalLockers;
 
-import anthropologyapplication.ProductionHandler;
+import TradeGoods.ProductionHandler;
 import anthropologyapplication.Warriors.Warrior;
 
 /**

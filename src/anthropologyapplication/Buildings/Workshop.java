@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.Buildings;
 
-import anthropologyapplication.Building;
+import Buildings.Building;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;

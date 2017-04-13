@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
+import anthropologyapplication.GameTime;
+import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**

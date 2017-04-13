@@ -3,19 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package TradeGoods;
 
+import TradeGoods.ProductionHandler;
+import anthropologyapplication.GameTime;
+import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
  * @author Duke
  */
-public class TradeGood
+public abstract class TradeGood
 {
         int TotalAmount = 0;
         String TradeGoodName;
-        Time productionTime;
+        Timer productionTime;
         int baseSellValue;
         ProductionHandler myHandler;
         String[] GoodsNeededForProduction;
@@ -40,25 +44,16 @@ public class TradeGood
             }
         }
 
-        public TradeGood(String Name, int startingTradeGood, Time ProductionTime, int baseSellVal)
+        public TradeGood(String Name, int startingTradeGoodAmount, Timer ProductionTime, int baseSellVal)
         {
                 this.baseSellValue = baseSellValue;
                 TradeGoodName = Name;
-                TotalAmount = startingTradeGood;
+                TotalAmount = startingTradeGoodAmount;
                 productionTime = ProductionTime;
         }
 
-
-        public TradeGood(String Name, int Tier, int startingTradeGood, ProductionHandler aHandler, Time ProductionTime, int[] AmountPerGood, String[] GoodsNeedForProduction, int baseSellVal)
-        {
-            this.amountPerGood = AmountPerGood;
-            myHandler = aHandler;
-            this.baseSellValue = baseSellValue;
-            TradeGoodName = Name;
-            TotalAmount = startingTradeGood;
-            productionTime = ProductionTime;
-        }
-
+        
+        
     public String getName() {
         return TradeGoodName;
     }
@@ -68,8 +63,8 @@ public class TradeGood
     public int getAmount() {
         return amount;
     }
-
-    void update(GameTime MS) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
+    
+    public abstract void update(GameTime MS, TribalCampObject myObject);
 }

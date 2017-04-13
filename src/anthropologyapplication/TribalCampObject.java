@@ -5,6 +5,9 @@
  */
 package anthropologyapplication;
 
+import Buildings.BuildingHandler;
+import anthropologyapplication.Warriors.WarriorHandler;
+import TradeGoods.ProductionHandler;
 import anthropologyapplication.AutoMapper.MapTile;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -17,6 +20,7 @@ public class TribalCampObject {
     private ProductionHandler myProductionHandler;
     private BuildingHandler myBuildingHandler;
     private SocietyChoices mySocietyChoices;
+    private PopulationHandler myPopulationHandler;
     private int TotalAvailableCitizens = 10;
     private FoodHandler myFoodHandler;
     private WarriorHandler myWarriorHandler;
@@ -25,20 +29,18 @@ public class TribalCampObject {
     private AICampObject[] myEnemyArray;
     private MapTile HomeTile;
     
+    
     public TribalCampObject(SocietyChoices mySocietyChoices) {
-        myProductionHandler = new ProductionHandler();
-        myWarriorHandler = new WarriorHandler(myProductionHandler);
-        myBuildingHandler = new BuildingHandler();
-        myFoodHandler = new FoodHandler(myBuildingHandler);
+        myProductionHandler = new ProductionHandler(this);
+        myWarriorHandler = new WarriorHandler(this);
+        myBuildingHandler = new BuildingHandler(this);
+        myFoodHandler = new FoodHandler(this);
+        myPopulationHandler = new PopulationHandler(this);
         this.mySocietyChoices = mySocietyChoices;
     }
 
     public SocietyChoices getPlayerSocietyChoices() {
         return mySocietyChoices;
-    }
-
-    public void setBirthRate(float PercentageOfBase) {
-        throw new NotImplementedException();
     }
 
     public ProductionHandler getProductionHandler() {
@@ -57,10 +59,11 @@ public class TribalCampObject {
     
     public void update(GameTime MS)
     {
-        myFoodHandler.update(MS);
-        myWarriorHandler.update(MS);
         myProductionHandler.update(MS);
         myBuildingHandler.update(MS);
+        myWarriorHandler.update(MS);
+        myFoodHandler.update(MS);
+        myPopulationHandler.update(MS);
     }
 
     void saveAntagonists(AICampObject[] myEnemyArray) {

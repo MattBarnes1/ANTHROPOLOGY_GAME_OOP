@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.DisplayData;
 
-import anthropologyapplication.Building;
+import Buildings.Building;
 
 /**
  *

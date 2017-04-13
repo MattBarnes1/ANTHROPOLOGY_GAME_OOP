@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package Buildings;
 
 import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
@@ -14,6 +14,9 @@ import anthropologyapplication.Buildings.Workshop;
 import anthropologyapplication.Buildings.Field;
 import anthropologyapplication.Buildings.Granary;
 import anthropologyapplication.Buildings.TribalHut;
+import anthropologyapplication.GameTime;
+import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -26,9 +29,12 @@ public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
                     new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2,"TribalCamp.jpg", NoFile), true),
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage", new Timer(0,0,0,5), 0, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Field ("Field", "A field", new Timer(0,0,0,5), 1, 4, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Workshop("Workship", "A workshop",  new Timer(0,0,0,5), 2, 2, NoFile, NoFile), true)                    
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,0,0,5), 2, 4, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, NoFile, NoFile), false),
+                    new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, NoFile, NoFile), true),
+                    new internalBuildingLocker(new Smelterer("Homes", "A workshop",  new Timer(0,0,0,5), 6, 2, NoFile, NoFile), true)  
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
@@ -36,11 +42,13 @@ public class BuildingHandler {
                 private int currentlyAllowedTier = 0; //Unlocked level
 		private ArrayList<Building> BuildingsBeingConstructed = new ArrayList<>();
                 private ArrayList<Building> BuildingsBuilt = new ArrayList<>();
+    private final TribalCampObject myTribe;
                 
                 
-		public BuildingHandler()
+		public BuildingHandler(TribalCampObject myObject)
 		{
-                        updatePossibleBuildings();
+                    this.myTribe = myObject;
+                    updatePossibleBuildings();
 		}
 
                 private void updatePossibleBuildings()
@@ -59,27 +67,27 @@ public class BuildingHandler {
                
                 
                 
-		public void lockBuilding(Class<? extends Building> aBuilding, TribalCampObject anObject)
+		public void lockBuilding(Class<? extends Building> aBuilding)
                 {
                     for(internalBuildingLocker A : internalBuildingList)
                     {
                         if(A.myBuilding.getClass() == aBuilding)
                         {
                             A.Available = false;
-                            A.myBuilding.onLock(anObject);
+                            A.myBuilding.onLock(myTribe);
                             
                         }
                     }
                 }
                 
-                public void unlockBuilding(Class<? extends Building> aBuilding, TribalCampObject anObject)
+                public void unlockBuilding(Class<? extends Building> aBuilding)
                 {
                     for(internalBuildingLocker A : internalBuildingList)
                     {
                         if(A.myBuilding.getClass() == aBuilding)
                         {
                             A.Available = true;
-                            A.myBuilding.onUnlock(anObject);
+                            A.myBuilding.onUnlock(myTribe);
                         }
                     }
                 }

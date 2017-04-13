@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package TradeGoods;
 
 
+import TradeGoods.Wood;
 import anthropologyapplication.DisplayData.ProductProductionDisplayData;
+import anthropologyapplication.GameTime;
+import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.internalLockers.internalProductLocker;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,18 +22,28 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class ProductionHandler
 	{
-		//TradeGood[] TradeGoodList;
+		
 		int ProducersAmount = 0;
                 private internalProductLocker[] internalProductList = new internalProductLocker[] {
-                                     
+                    new internalProductLocker(new Clay("Clay", 100, new Timer(0,0,0,1), 0), true),
+                    new internalProductLocker(new Wood("Wood", 100, new Timer(0,0,0,1), 0), true),
+                    new internalProductLocker(new Stone("Stone", 100, new Timer(0,0,0,1), 0), true),
+                    new internalProductLocker(new Smelted_Copper("Smelted Copper", 0, new Timer(0,0,0,1), 0), false),
+                    new internalProductLocker(new Unsmelted_Copper("Unsmelted Copper", 0, new Timer(0,0,0,1), 0), false)
                 };
+                
+                private TribalCampObject myTribe;
        
+                
                 private ArrayList<ProductProductionDisplayData> ProductsThatCanBeBuilt = new ArrayList<>();
                 private ArrayList<TradeGood> ProductsBeingMade = new ArrayList<>();
                 
                 
-		public ProductionHandler()
+                
+                
+		public ProductionHandler(TribalCampObject myObject)
 		{
+                        this.myTribe = myObject;
 			updatePossibleItems();
 		}
 
@@ -39,13 +53,14 @@ public class ProductionHandler
                    while(myTradeGood.hasNext())
                    {
                        TradeGood stuff = myTradeGood.next();
-                       stuff.update(MS);
+                       stuff.update(MS, myTribe);
                    }
 		}
                 public boolean canRemoveMore()
                 {
                     return ((ProducersAmount - 1) > 0);
                 }
+                
                 public void lockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
                      for(internalProductLocker A : internalProductList)
@@ -57,6 +72,7 @@ public class ProductionHandler
                     }
                     
                 }
+                
                 public void unlockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
                      for(internalProductLocker A : internalProductList)
@@ -67,6 +83,7 @@ public class ProductionHandler
                         }
                     }
                 }
+                
 		public TradeGood[] getTradeGoodInventory()
 		{
 			throw new NotImplementedException();

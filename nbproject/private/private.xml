@@ -3,33 +3,48 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/Smelted_Copper.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/DisplayData/BuildingConstructionDisplayData.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/MapTiles/MapTile_Land.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/JSON/String.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/CalendarData.java</file>
-            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/ProductionHandler.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/Buildings/Building.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Buildings/TribalHut.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/Buildings/Homes.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/JSON/Number.java</file>
-            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Building.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/Buildings/Smelterer.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/Buildings/BuildingHandler.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Buildings/Field.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/GuiHandler.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/Clay.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/Unsmelted_Copper.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/Buildings/Blacksmith.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/Stone.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Warriors/WarriorHandler.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/ProductionHandler.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/AutoMapper/AutoMapperGui.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Timer.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/TradeGood.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Territory.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/internalLockers/internalWarriorLocker.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Warriors/Warrior.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/PopulationHandler.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/MainGameCode.java</file>
-            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/WarriorHandler.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/PerlinNoiseGeneratorForTerrain.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/AutoMapper/MapTile.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/FXML/CreatingWorldScreenController.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Time.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Map.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/RaidHandler.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Warriors/Spearmen.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/GameTime.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/FXML/MainGameScreenController.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/JSON/Array.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/TribalCampObject.java</file>
-            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/BuildingHandler.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/FoodHandler.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/TradeGoods/Wood.java</file>
             <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/AnthropologyApplication.java</file>
+            <file>file:/home/noone/Desktop/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/Warriors/Clubmen.java</file>
         </group>
     </open-files>
 </project-private>

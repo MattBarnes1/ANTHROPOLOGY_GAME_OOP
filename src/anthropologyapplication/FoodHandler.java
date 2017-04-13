@@ -5,6 +5,8 @@
  */
 package anthropologyapplication;
 
+import Buildings.Building;
+import Buildings.BuildingHandler;
 import anthropologyapplication.Buildings.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,11 +19,14 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class FoodHandler {
     
 		BuildingHandler myBuildingHandler;
+                float totalFood = 100;
                 int FarmerAmount = 0;
                 float foodPerDay = 0;
-		public FoodHandler(BuildingHandler CurrentBuildingHandler)
+                private final TribalCampObject myTribe;
+		public FoodHandler(TribalCampObject myObject)
 		{
-                    myBuildingHandler = CurrentBuildingHandler;
+                        this.myTribe = myObject;
+                    myBuildingHandler = myTribe.getBuildingHandler();
 		}
 
 		public void addFarmers(int amount)
@@ -64,23 +69,15 @@ public class FoodHandler {
        ArrayList<Building> aBuildingHandler = myBuildingHandler.getAllBuiltBuildingsByType(Field.class);
        int Check = FarmerAmount;
        Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
+       int RequiredFarmers = 0;
+       float maxFoodProduced = 0;
        while(BuildingIterator.hasNext())
        {
-           if(Check >= 0)
-           {
                 Building aBuilding = BuildingIterator.next();
-                int RequiredFarmers = ((Field)aBuilding).getRequiredNumberOfFarmers();
-                float foodAmountPerFarmer = ((Field)aBuilding).getYield();
-                Check -= RequiredFarmers;
-                if(Check < 0)
-                {
-                   foodPerDay += foodAmountPerFarmer*((Check + RequiredFarmers)/RequiredFarmers);
-                } else if (Check > 0){
-                    foodPerDay += foodAmountPerFarmer;
-                }
-           }
+                RequiredFarmers += ((Field)aBuilding).getRequiredNumberOfFarmers();
+                maxFoodProduced += ((Field)aBuilding).getYield();
        }
-      
+       totalFood += (((RequiredFarmers/FarmerAmount)*maxFoodProduced));
     }
 
     public int getFarmersAmount() {
