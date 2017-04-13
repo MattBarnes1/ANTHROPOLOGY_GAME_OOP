@@ -7,7 +7,7 @@ package anthropologyapplication;
 
 import Buildings.Building;
 import Buildings.BuildingHandler;
-import anthropologyapplication.Buildings.Field;
+import Buildings.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -54,9 +54,7 @@ public class FoodHandler {
                     
                 }
                 
-		public int calculateMaxCropYield()
-		{
-		}
+		
                 
                 public boolean canRemoveMore()
                 {

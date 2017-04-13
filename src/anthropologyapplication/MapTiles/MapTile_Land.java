@@ -30,7 +30,13 @@ public class MapTile_Land extends MapTile{
 
     @Override
     public String toString() {
-        return "L";
+        
+        if(!super.debug)
+        {
+            return "L";
+        } else {
+            return "P";
+        }
     }
 
     @Override

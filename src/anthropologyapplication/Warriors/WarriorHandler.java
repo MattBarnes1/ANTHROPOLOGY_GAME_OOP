@@ -8,6 +8,7 @@ import anthropologyapplication.Warriors.Clubmen;
 import TradeGoods.ProductionHandler;
 import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
 import anthropologyapplication.GameTime;
+import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Warrior;
 import anthropologyapplication.internalLockers.*;
@@ -23,10 +24,11 @@ import java.util.Iterator;
 public class WarriorHandler {
     ProductionHandler myProductionHandler;
     internalWarriorLocker[] warriorList = {
-        new internalWarriorLocker(new Clubmen("Clubmen")),
-        new internalWarriorLocker(new Spearmen("Spearmen")),
+        new internalWarriorLocker(new Clubmen("Clubmen", "Clubbers",new Timer(0,0,0,1),5)),
+        new internalWarriorLocker(new Spearmen("Spearmen", "Spearers", new Timer(0,0,0,1),15))
         };
-
+//(String Name, String Description,  Timer TrainingTimeMS, int Strength)
+    
     ArrayList<Warrior> myTrainedWarriors = new ArrayList<Warrior>();
     ArrayList<Warrior> myWarriorsInTraining = new ArrayList<Warrior>();
 

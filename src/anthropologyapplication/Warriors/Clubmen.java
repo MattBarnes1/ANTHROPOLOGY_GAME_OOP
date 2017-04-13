@@ -5,6 +5,7 @@
  */
 package anthropologyapplication.Warriors;
 
+import anthropologyapplication.Timer;
 import anthropologyapplication.Warriors.Warrior;
 
 /**
@@ -13,7 +14,9 @@ import anthropologyapplication.Warriors.Warrior;
  */
 class Clubmen extends Warrior {
 
-    public Clubmen(String clubmen) {
+    public Clubmen(String Name, String Description,  Timer TrainingTimeMS, int Strength)
+    { 
+        super(Name, Description,  TrainingTimeMS, Strength);
     }
     
 }

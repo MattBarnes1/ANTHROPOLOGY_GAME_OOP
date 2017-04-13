@@ -7,6 +7,7 @@ package Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 
 /**
  *
@@ -21,7 +22,7 @@ class Smelterer extends Building {
     }
 
     @Override
-    public boolean canBuildOnTile(MapTile aTile) {
+    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

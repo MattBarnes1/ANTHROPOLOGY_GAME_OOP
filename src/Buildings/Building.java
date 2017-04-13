@@ -36,13 +36,13 @@ public abstract class Building
             BuiltOn.clearForeground();
         }
         
-        public abstract boolean canBuildOnTile(MapTile aTile);
+        public abstract boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile);
         public abstract Building Copy();
         
         public void startBuildingAtLocation(MapTile aTile)
         {
             BuiltOn = aTile;
-            aTile.setForegroundImage(ForegroundImageFileName);
+            aTile.setForeground1Image(ForegroundImageFileName);
         }
        
         
@@ -137,7 +137,7 @@ public abstract class Building
 
     void forceBuildAtLocation(MapTile aLocation) {
             BuiltOn = aLocation;
-            aLocation.setForegroundImage(ForegroundImageFileName);
+            aLocation.setForeground1Image(ForegroundImageFileName);
     }
 
     public String getTotalBuildTime()

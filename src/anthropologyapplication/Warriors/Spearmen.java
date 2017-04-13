@@ -5,13 +5,17 @@
  */
 package anthropologyapplication.Warriors;
 
+import anthropologyapplication.Timer;
+
 /**
  *
  * @author noone
  */
 class Spearmen extends Warrior {
 
-    public Spearmen(String spearmen) {
+    public Spearmen(String Name, String Description,  Timer TrainingTimeMS, int Strength)
+    { 
+        super(Name, Description,  TrainingTimeMS, Strength);
     }
     
 }

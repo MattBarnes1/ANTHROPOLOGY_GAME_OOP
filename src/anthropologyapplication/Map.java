@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import AIStuff.AICampObject;
 import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
@@ -292,6 +293,24 @@ private MapTile[] getPossibleSettlementPosition()
         return Map.toString();
     }
 
+    private public String toMapString()
+    {
+        StringBuilder Map = new StringBuilder();
+        for(int x = 0; x < mapXAndYLength; x++)
+        {
+            for(int y = 0; y < mapXAndYLength; y++)
+            {
+                if(myMap[x][y] != null) 
+                {
+                    Map.append(myMap[x][y]);
+                }
+            }
+            Map.append("\n");
+        }
+        return Map.toString();
+    }
+    
+    
     private void linkMapTiles(int xCoordinate, int yCoordinate) {
        MapTile ourTile = getMapTile(xCoordinate, yCoordinate);
        MapTile[][] surroundingTiles = getSurroundingTiles(xCoordinate, yCoordinate);
@@ -323,10 +342,11 @@ private MapTile[] getPossibleSettlementPosition()
                 double AmountOfWater = Math.floor((mapXAndYLength*mapXAndYLength*.3));
                 double AmountOfLand = Math.floor((mapXAndYLength*mapXAndYLength*.7));
                 double counter = 0;
-                while(TerrainGenerator.isRunning()){}; //Wait for Terrain Generator to be done;
-                float[][] values = TerrainGenerator.getPerlin();
+                 //Wait for Terrain Generator to be done;
+                 float[][] values = null;
+                while((values = TerrainGenerator.getPerlin()) == null){};
                 InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
-                System.out.println(this.toString());
+                System.out.println(toMapString());
                 if(isValidMap())
                 {
                   generateSettlements();
@@ -404,6 +424,8 @@ private MapTile[] getPossibleSettlementPosition()
                    } else {
                        myPath.appendStep(currentlyLookingAt.getCoordinates());
                        currentlyLookingAt = ExpectedNext;
+                   
+                       
                    }
                   
                 }
@@ -413,6 +435,11 @@ private MapTile[] getPossibleSettlementPosition()
         return myPath;
     }
 
+    private PathFinderDebug()
+    {
+        
+    }
+    
     private int basicHeuristic(MapTile Current, MapTile Next)
     {
         Vector3 nextCoords = Next.getCoordinates();

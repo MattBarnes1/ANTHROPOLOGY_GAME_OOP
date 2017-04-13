@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import AIStuff.AICampObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;

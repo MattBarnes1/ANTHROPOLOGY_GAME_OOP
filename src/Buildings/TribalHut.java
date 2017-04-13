@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication.Buildings;
+package Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import Buildings.Building;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 
 /**
  *
@@ -35,8 +36,8 @@ public class TribalHut extends Building {
     
     
     @Override
-    public boolean canBuildOnTile(MapTile aTile) {
-        return true;
+    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject));
     }
 
     @Override

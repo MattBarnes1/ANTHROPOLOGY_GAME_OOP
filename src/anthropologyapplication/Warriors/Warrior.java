@@ -9,6 +9,7 @@ import anthropologyapplication.GameTime;
 import TradeGoods.ProductionHandler;
 import anthropologyapplication.Time;
 import TradeGoods.TradeGood;
+import anthropologyapplication.Timer;
 import anthropologyapplication.internalLockers.internalWarriorLocker;
 
 /**
@@ -16,22 +17,19 @@ import anthropologyapplication.internalLockers.internalWarriorLocker;
  * @author Duke
  */
 public class Warrior {
-    protected final Time BuildTime;
-    protected Time BuildTimeCountDown;
+    protected final Timer BuildTime;
+    protected Timer BuildTimeCountDown;
     protected String[] itemsNeededForProduction;
     protected int[] quantityofItemsNeededForProduction;
     protected int Strength = 0;
     protected String Name;
     protected String Description;
-    public Warrior(String Name, String Description, String[] forProduction, int[] quantityofItemsNeededForProduction, Time TrainingTimeMS, int Strength)
+    public Warrior(String Name, String Description,  Timer TrainingTimeMS, int Strength)
     {
-        assert(forProduction.length == quantityofItemsNeededForProduction.length);
-        this.quantityofItemsNeededForProduction = quantityofItemsNeededForProduction;
         this.Name = Name;
         this.Description = Description;
         this.Strength = Strength;
         
-        itemsNeededForProduction = forProduction;
         BuildTime = TrainingTimeMS;
         BuildTimeCountDown = BuildTime;
     }
@@ -42,7 +40,7 @@ public class Warrior {
     }
 
     public boolean isDoneBuilding() {
-        return (BuildTimeCountDown.EqualTo(Time.Zero));
+        return (BuildTimeCountDown.EqualTo(new Timer(0,0,0,0)));
     }
 
     public void update(GameTime MS) {
@@ -75,7 +73,7 @@ public class Warrior {
         return Description;
     }
 
-    public Time getTotalBuildTime() {
+    public Timer getTotalBuildTime() {
         return BuildTime;
     }
 }

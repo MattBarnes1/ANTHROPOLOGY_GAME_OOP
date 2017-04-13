@@ -131,6 +131,10 @@ public abstract class MapTile {
                 aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileBuilding.getPixelReader(), 0, 0);
                 Color.rgb(255, 255, 255, 1);
             }
+            if(getTerritory() != null)
+            {
+                
+            }
         }
     }
 
@@ -258,16 +262,23 @@ public abstract class MapTile {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   public  void setForegroundImage(String ForegroundImageFileName) {
+    public  void setForeground1Image(String ForegroundImageFileName) {
        int i = 0;
        if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
+    Image tileTerritory;
+    private void setForeground2Image(String ForegroundImageFileName)
+    {
+       if(ForegroundImageFileName.compareTo("NoFile") != 0) tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/" + ForegroundImageFileName);
+    }
+    
     TribalCampObject myTerritory = null;
    
     public void setTerritory(TribalCampObject myObject)
     {
         myTerritory = myObject;
+        //TODO: make Territory update surrounding maptiles and blend them together
     }
    
     public TribalCampObject getTerritory()
@@ -275,9 +286,9 @@ public abstract class MapTile {
         return myTerritory;
     }
     
-    public void isTerritoryOf(TribalCampObject territoryToTest)
+    public boolean isTerritoryOf(TribalCampObject territoryToTest)
     {
-        
+        return (myTerritory == territoryToTest);
     }
     
     public void clearTerritory()
@@ -289,8 +300,11 @@ public abstract class MapTile {
 
     public abstract int getCost();
 
-    
-
+    protected boolean debug = false;
+    public void doPathfinderDebug()
+    {
+        debug = true;
+    }
     
 
 }

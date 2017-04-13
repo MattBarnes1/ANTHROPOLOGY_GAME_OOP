@@ -10,10 +10,6 @@ import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.internalLockers.internalBuildingLocker;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
-import anthropologyapplication.Buildings.Workshop;
-import anthropologyapplication.Buildings.Field;
-import anthropologyapplication.Buildings.Granary;
-import anthropologyapplication.Buildings.TribalHut;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
@@ -34,7 +30,7 @@ public class BuildingHandler {
                     new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, NoFile, NoFile), true),
                     new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, NoFile, NoFile), false),
                     new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Smelterer("Homes", "A workshop",  new Timer(0,0,0,5), 6, 2, NoFile, NoFile), true)  
+                    new internalBuildingLocker(new Smelterer("Smelterer", "A workshop",  new Timer(0,0,0,5), 6, 2, NoFile, NoFile), true)  
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu

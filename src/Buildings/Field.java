@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication.Buildings;
+package Buildings;
 
 import Buildings.Building;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 
 /**
  *
@@ -26,8 +27,8 @@ public class Field extends Building {
     }
 
     @Override
-    public boolean canBuildOnTile(MapTile aTile) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject));
     }
 
     @Override

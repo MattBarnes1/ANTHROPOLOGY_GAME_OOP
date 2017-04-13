@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import AIStuff.AICampObject;
 import Buildings.BuildingHandler;
 import anthropologyapplication.Warriors.WarriorHandler;
 import TradeGoods.ProductionHandler;

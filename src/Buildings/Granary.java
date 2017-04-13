@@ -3,38 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication.Buildings;
+package Buildings;
 
 import Buildings.Building;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 
 /**
  *
  * @author Duke
  */
-public class Workshop extends Building {
-    public Workshop(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
+public class Granary extends Building {
+    
+    public Granary(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
-    private Workshop(Workshop aThis) {
+    private Granary(Granary aThis) {
         super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
-    
     }
 
     @Override
-    public boolean canBuildOnTile(MapTile aTile) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject));
     }
 
-  
+   
+
 
 
     @Override
     public Building Copy() {
-       return new Workshop(this);
+        return new Granary(this);
     }
 
     @Override
