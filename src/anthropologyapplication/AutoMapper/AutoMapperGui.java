@@ -24,6 +24,23 @@ public class AutoMapperGui extends Service {
     final int DEFAULT_ROOMTODRAWSIZE_X = 5;
     final int DEFAULT_ROOMTODRAWSIZE_Y = 5;
 
+    
+    String internalMessage = "";
+    public String getInternalMessage()
+    {
+        return internalMessage;
+    }
+    double internalWork = 0;
+    double internalWorkTotal = 1;
+    public double getInternalWorkCompleted()
+    {
+        return internalWork;
+    }
+    public double getInternalWorkTotal()
+    {
+        return internalWorkTotal;
+    }
+    
     Vector3 VectorZeroTransformData;
     Vector3 WorldMaxXY;
     static transient GraphicsContext aGameCanvas;//TODO Don't save this value
@@ -46,6 +63,11 @@ public class AutoMapperGui extends Service {
         RoomFocusHasShifted = true;
     }
    
+    public AutoMapperGui()
+    {
+        start();
+    }
+    
     
     private void PlaceRoomsInWorld(MapTile[] myRooms) {//TODO:Remove debugging hsit
         for (int i = 0; i < myRooms.length; i++) {
@@ -233,12 +255,14 @@ public class AutoMapperGui extends Service {
     
     MainGameCode myCode;
     Map mapData = null;
-    public void setMap(Map mapData, MainGameCode myCode) {
+boolean MapDataAdded = false;
+
+    public void setMap(Map mapData, MainGameCode myCode) throws InterruptedException {
         this.myCode = myCode;
         this.mapData = mapData;
         RoomsToDraw = new MapTile[(int)ScreenTileWidth][(int)ScreenTileHeight];
-        
-        this.start();
+        MapDataAdded = true;
+        unblockThread();
     }
     
     public int getTileWidth() {
@@ -283,12 +307,19 @@ public class AutoMapperGui extends Service {
         return null;
     }
     
+    private synchronized void unblockThread() throws InterruptedException
+    {
+        while(!MapDataAdded) wait();
+        notifyAll();
+    }
+    
+    
     @Override
     protected Task createTask() {
         Task NewTask = new Task<Integer>(){
             @Override
             protected Integer call() throws Exception {
-                
+                unblockThread();
                 
                 CalculateWorldZeroTransforms(mapData.getMinMapCoordinates());
                 CreateWorldRoomLocationsArray(mapData.getMaxMapCoordinates());
@@ -296,13 +327,15 @@ public class AutoMapperGui extends Service {
 
                 for(int i = 0; i < tempArray.length; i++)
                 {
-                    super.updateMessage("DAMMMMNNNN IIITTTT");
-                    super.updateProgress((i+1)*tempArray.length, tempArray.length*tempArray.length);
-                    System.out.println((i+1)*tempArray.length);
+                    internalMessage = "Adjusting Map Coordinates...";
+                    
+                    internalWork = ((i+1)*tempArray.length);
+                    internalWorkTotal = ((tempArray.length*tempArray.length));
+                   // System.out.println((i+1)*tempArray.length);
                     PlaceRoomsInWorld(tempArray[i]);
                 }
                 setRoomFocus(new Vector3(0,0,0));
-               
+               isFinished = true; //informs other threads that this has finished
                 return null;
             }
             
@@ -312,6 +345,11 @@ public class AutoMapperGui extends Service {
 
     public void setCanvas(GraphicsContext graphicsContext2D) {
        aGameCanvas = graphicsContext2D;
+    }
+    
+    boolean isFinished = false;
+    public boolean isDone() {
+        return this.isFinished;
     }
 
 }

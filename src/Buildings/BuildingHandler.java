@@ -24,13 +24,13 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2,"TribalCamp.jpg", NoFile), true),
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,0,0,5), 2, 4, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, NoFile, NoFile), false),
-                    new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, NoFile, NoFile), true),
-                    new internalBuildingLocker(new Smelterer("Smelterer", "A workshop",  new Timer(0,0,0,5), 6, 2, NoFile, NoFile), true)  
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2, 5,"TribalCamp.jpg", NoFile), true),
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, 3,NoFile, NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,0,0,5), 2, 4, 3,"Field.jpg", NoFile), true),
+                    new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, 3,NoFile, NoFile), true),
+                    new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, 3, NoFile, NoFile), false),
+                    new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, 3, NoFile,NoFile), true),
+                    new internalBuildingLocker(new Smelterer("Smelterer", "A workshop",  new Timer(0,0,0,5), 6, 2, 3,NoFile, NoFile), true)  
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
@@ -99,6 +99,7 @@ public class BuildingHandler {
                             myNext.update(T);
                             if(myNext.isFinishedBuilding())
                             {
+                                myNext.forceBuildAtLocation(myNext.getBuildingTile(), myTribe);
                                 BuildingsBuilt.add(myNext);
                                 buildingIterator.remove();
                             }
@@ -117,14 +118,14 @@ public class BuildingHandler {
                                   if(A.myBuilding.canBuildMultiples())
                                   {
                                       Building newBuilding = A.myBuilding.Copy();
-                                      newBuilding.forceBuildAtLocation(aLocation);
+                                      newBuilding.forceBuildAtLocation(aLocation, myTribe);
                                       BuildingsBuilt.add(newBuilding);
                                       AutoMapperGui.redrawMap();
                                       return;
                                   }
                                 } else {
                                       Building newBuilding = A.myBuilding.Copy();
-                                      newBuilding.forceBuildAtLocation(aLocation);
+                                      newBuilding.forceBuildAtLocation(aLocation, myTribe);
                                       BuildingsBuilt.add(newBuilding);
                                       AutoMapperGui.redrawMap();
                                       return;

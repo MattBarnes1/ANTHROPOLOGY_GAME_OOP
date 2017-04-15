@@ -83,7 +83,7 @@ public class TribalCampObject {
         return myMap;
     }
 
-    void setHomeTile(MapTile HomeTile) {
+    public void setHomeTile(MapTile HomeTile) {
        this.HomeTile = HomeTile;
        System.out.println(HomeTile.getCoordinates());
        myBuildingHandler.forceBuild("Tribal Hut", HomeTile);

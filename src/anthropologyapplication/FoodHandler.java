@@ -75,7 +75,11 @@ public class FoodHandler {
                 RequiredFarmers += ((Field)aBuilding).getRequiredNumberOfFarmers();
                 maxFoodProduced += ((Field)aBuilding).getYield();
        }
-       totalFood += (((RequiredFarmers/FarmerAmount)*maxFoodProduced));
+       if(FarmerAmount != 0)
+       {
+            totalFood += (((RequiredFarmers/FarmerAmount)*maxFoodProduced));
+       }
+      // System.out.println("Food: " + totalFood);
     }
 
     public int getFarmersAmount() {

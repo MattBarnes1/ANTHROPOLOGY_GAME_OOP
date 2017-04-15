@@ -16,13 +16,14 @@ import anthropologyapplication.TribalCampObject;
  * @author Duke
  */
 public class Field extends Building {
-    
-    public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
+    int RequiredAmountOfFarmers = 2;
+    float yield = 2;
+    public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
     private Field(Field aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     
     }
 
@@ -42,11 +43,11 @@ public class Field extends Building {
     }
 
     public int getRequiredNumberOfFarmers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return RequiredAmountOfFarmers;
     }
 
     public float getYield() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return yield;
     }
     
 }

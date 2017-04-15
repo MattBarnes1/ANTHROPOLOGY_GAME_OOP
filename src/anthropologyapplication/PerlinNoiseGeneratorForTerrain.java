@@ -26,6 +26,12 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
     private float currentOctave;
     private final float maxOctave = 0.5F;
 
+    String internalMessage;
+    public String getInternalMessage()
+    {
+        return internalMessage;
+    }
+    
     public PerlinNoiseGeneratorForTerrain(int Seed, int arrayX, int arrayY) {
         this.Seed = Seed;
         this.arrayX = arrayX;
@@ -45,9 +51,9 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
             protected float[][] call() throws Exception {
                 smoothArray = null;
                 WhiteNoiseArray = null;
-                this.updateMessage("Creating White Noise for Perlin...");
+                internalMessage = "Creating White Noise for Perlin...";
                 generateWhiteNoise();
-                this.updateMessage("Creating Smooth Noise for Perlin...");
+                internalMessage = "Creating Smooth Noise for Perlin...";
                 float[][] Debug = generatePerlinNoise();
                 return Debug;
 

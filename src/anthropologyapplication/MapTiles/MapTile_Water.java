@@ -44,7 +44,12 @@ public class MapTile_Water extends MapTile {
     
     @Override
     public String toString() {
-        return "W";
+        if(this.BuildingName == null)
+        {
+            return "Water";
+        } else {
+            return "Water, " + this.BuildingName;
+        }
     }
     
     public MapTile_Water() {

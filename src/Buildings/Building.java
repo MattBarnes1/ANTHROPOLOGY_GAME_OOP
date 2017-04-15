@@ -8,6 +8,7 @@ package Buildings;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.GameTime;
+import anthropologyapplication.TerritoryOverlay.Territory;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -27,7 +28,7 @@ public abstract class Building
         private boolean Destroyable = true;
         private int BuildingIndex;
         private int BuildersRequired;
-        
+        private Territory myTerritory;
         private MapTile BuiltOn;
         private final String ForegroundImageFileName;
         private final String ForegroundImageDestroyedFileName;
@@ -42,10 +43,13 @@ public abstract class Building
         public void startBuildingAtLocation(MapTile aTile)
         {
             BuiltOn = aTile;
-            aTile.setForeground1Image(ForegroundImageFileName);
+           // aTile.setForeground1Image(ForegroundImageFileName); //This will be the construction image of our file
         }
        
-        
+        protected int getTerritorySize()
+        {
+            return TerritorySize;
+        }
         public String getBuildingName()
         {
             return BuilidingName;
@@ -63,8 +67,12 @@ public abstract class Building
         
        int BuilderRequired;
         final Timer BuildTimeToBuild;
-        protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+       final int TerritorySize;
+        protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int territorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
         {
+            assert(territorySize % 2 != 0);
+            TerritorySize = territorySize;
+            myTerritory = new Territory(territorySize);
             this.BuildersRequired = BuilderRequired;
             this.ForegroundImageFileName = ForegroundImageFileName;
             this.ForegroundImageDestroyedFileName = ForegroundImageDestroyedFileName;
@@ -103,10 +111,12 @@ public abstract class Building
         Timer timeTillBuilt;
         boolean isFinishedBuilding = false;
         void update(GameTime T) {
-            timeTillBuilt = timeTillBuilt.subtract(T.getElapsedTime());
+            System.out.println("Build Time: " + timeTillBuilt);
             if(!isFinishedBuilding)
             {
-                isFinishedBuilding = timeTillBuilt.EqualTo(new Timer(0,0,0,0));
+                timeTillBuilt = timeTillBuilt.subtract(T.getElapsedTime());
+                isFinishedBuilding = (timeTillBuilt.EqualTo(new Timer(0,0,0,0)));;
+                
             }
         }
         
@@ -116,7 +126,7 @@ public abstract class Building
         }
         
 
-        boolean isFinishedBuilding() {
+        public boolean isFinishedBuilding() {
             return isFinishedBuilding;
         }
 
@@ -135,15 +145,26 @@ public abstract class Building
         return timeTillBuilt;
     }
 
-    void forceBuildAtLocation(MapTile aLocation) {
+    void forceBuildAtLocation(MapTile aLocation, TribalCampObject myOwner) {
             BuiltOn = aLocation;
-            aLocation.setForeground1Image(ForegroundImageFileName);
+            timeTillBuilt = new Timer(0,0,0,0);
+            this.myTerritory.placeTerritoryAt(aLocation, myOwner);
+            aLocation.setBuildingOnThis(this);
     }
 
     public String getTotalBuildTime()
     {
         return BuildTimeToBuild.toString();
     }
+
+    public double getCompletionAmount() {
+        return timeTillBuilt.dividedBy(BuildTimeToBuild);
+    }
+
+    public MapTile getBuildingTile() {
+        return BuiltOn;
+    }
+
 
 
 

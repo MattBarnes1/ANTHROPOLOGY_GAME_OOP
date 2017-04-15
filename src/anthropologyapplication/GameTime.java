@@ -70,6 +70,8 @@ public class GameTime implements java.io.Serializable {
                 if(lastUpdateCall == null)
                 {
                     lastUpdateCall = getTimeStructure();
+                } else {
+                    lastUpdateCall = newUpdateCall;
                 }
                 newUpdateCall = getTimeStructure();
             }
@@ -231,13 +233,18 @@ public class GameTime implements java.io.Serializable {
 		return new Time(this.Year, this.currentMonthNameIndex, this.currentDayNumber, this.Hours, this.Minutes, this.Seconds, this.Millisecond);
 	}
 
-	
+	@Override
+        public String toString()
+        {
+            return "MS: " + this.Millisecond;
+        }
 
 	
 	public Time getElapsedTime() {
 		// TODO Auto-generated method stub
-                System.out.println(newUpdateCall.subtract(lastUpdateCall).toString());
-		return newUpdateCall.subtract(lastUpdateCall); // >23 1
+                Time Check = newUpdateCall.subtract(lastUpdateCall);
+               ///System.out.println(Check.getTimeStringDHMS());
+		return Check; // >23 1
 	}
 
 	public boolean isNightTime() {

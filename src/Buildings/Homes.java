@@ -13,11 +13,11 @@ import anthropologyapplication.TribalCampObject;
  *
  * @author noone
  */
-class Homes extends Building {
+public class Homes extends Building {
 
-    public Homes(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+    public Homes(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired,  int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
     {
-        super(Name,Description, BuildTime, Index, BuildersRequired, ForegroundImageFileName, ForegroundImageDestroyedFileName);
+        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize, ForegroundImageFileName, ForegroundImageDestroyedFileName);
         
     }
 
@@ -28,6 +28,10 @@ class Homes extends Building {
 
     @Override
     public Building Copy() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getOccupancy() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

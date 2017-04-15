@@ -12,7 +12,7 @@ import anthropologyapplication.Warriors.Warrior;
  *
  * @author noone
  */
-class Clubmen extends Warrior {
+public class Clubmen extends Warrior {
 
     public Clubmen(String Name, String Description,  Timer TrainingTimeMS, int Strength)
     { 

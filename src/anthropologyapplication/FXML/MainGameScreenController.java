@@ -29,12 +29,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 
 /**
  * FXML Controller class
@@ -135,6 +137,10 @@ public class MainGameScreenController implements Initializable {
     private TreeView<?> WarriorsTotal;
     @FXML
     private Label displayMapInfo;
+    @FXML
+    private Label TradeGoodsTabErrorText;
+    @FXML
+    private Label BuildingsTabErrorText;
     
     /**
      * Initializes the controller class.
@@ -149,13 +155,18 @@ public class MainGameScreenController implements Initializable {
     
     MainGameCode myMain;
     public void setMainGameCode(MainGameCode aThis) {
+        
+            BuildingsTabErrorText.setText("");
+            TradeGoodsTabErrorText.setText("");
+            WarriorsTabErrorText.setText("");
+            FarmerTabErrorText.setText("");
+        displayMapInfo.setText("");
         //myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(),(int)CanvasMapDisplay.getHeight());
         myMain = aThis;
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         //this.assignCitizensWarriorsCount1
@@ -177,16 +188,18 @@ public class MainGameScreenController implements Initializable {
                     myMain.setProductionFocus(aButton.getText());
                 }           
             });
+            TradeFlowpane.getChildren().add(aButton);
         }
         
         Iterator<WarriorTrainingDisplayData> aWarriorIterator =  aThis.getPlayersCamp().getWarriorHandler().getWarriorsAvailable();
-        while(aProductIterator.hasNext())
+        while(aWarriorIterator.hasNext())
         {
             WarriorTrainingDisplayData myData = aWarriorIterator.next();
             Button aButton = new Button(myData.getName());
             Tooltip myTip = new Tooltip();
             myTip.setText(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
             aButton.setTooltip(myTip);
+            
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -195,6 +208,7 @@ public class MainGameScreenController implements Initializable {
                     myMain.addWarrior(aButton.getText());
                 }           
             });
+            WarriorFlowPane.getChildren().add(aButton);
         }
         
         
@@ -229,11 +243,7 @@ public class MainGameScreenController implements Initializable {
     
     
     
-    public void setMapData(Map mapData) {
-        
-        myAutomapper.setMap(mapData, myMain);
-    }
-
+   
     public void setTime(String aTime) {
         worldDisplayTime.setText(aTime);
     }
@@ -279,7 +289,6 @@ public class MainGameScreenController implements Initializable {
         worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -288,7 +297,6 @@ public class MainGameScreenController implements Initializable {
         worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -306,7 +314,6 @@ public class MainGameScreenController implements Initializable {
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         worldDisplayWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
         assignCitizenWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -316,7 +323,6 @@ public class MainGameScreenController implements Initializable {
         worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -325,7 +331,6 @@ public class MainGameScreenController implements Initializable {
         worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
     }
 
     @FXML
@@ -343,27 +348,13 @@ public class MainGameScreenController implements Initializable {
         myMain.pauseGame();
     }
 
-    @FXML
-    private void CanvasMapTrackMouseReleased(MouseEvent event) {
-        Dragging = false;
-    }
-
+    
     boolean Dragging = false;
     double MouseScreenX;
     double MouseScreenY;
     double startMouseScreenX;
     double startMouseScreenY;
-    @FXML
-    private void CanvasMapTrackMouseHeld(MouseEvent event) {
-        startMouseScreenX = event.getSceneX();
-        startMouseScreenY = event.getSceneY();
-        Dragging = true;
-    }
-
-    private void MousedMovedWithinMe(MouseEvent event) {
-        MapTile aTile = this.myAutomapper.getTileAtMouseCoordinates(event.getSceneX(), event.getSceneY());
-        displayMapInfo.setText(aTile.toString());
-    }
+   
 
     @FXML
     private void MouseDraggedMe(MouseEvent event) {
@@ -404,6 +395,17 @@ public class MainGameScreenController implements Initializable {
 
     @FXML
     private void MouseMovedWithinMe(MouseEvent event) {
+        if(BuildingSelectedForBuilding == null)
+        {
+            displayMapInfo.setTextFill(Paint.valueOf("white"));
+            MapTile aTile = this.myAutomapper.getTileAtMouseCoordinates(event.getSceneX() - CanvasMapDisplay.getLayoutX(), event.getSceneY() - CanvasMapDisplay.getLayoutY());
+            if(aTile != null)
+            {
+                displayMapInfo.setText(aTile.toString());
+            } else {
+                displayMapInfo.setText("");
+            }
+        }
     }
 
     @FXML
@@ -434,16 +436,12 @@ public class MainGameScreenController implements Initializable {
         return this.myAutomapper;
     }
 
-    private void setScreenXYSize(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @FXML
     private void decreaseBuildersButtonClick(ActionEvent event) {
         this.myMain.decreaseBuilders();
         worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
     }
 
@@ -454,32 +452,95 @@ public class MainGameScreenController implements Initializable {
         
         worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
     }
 
     public void setMapMessage(String aMessage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(aMessage != null)
+        {
+            displayMapInfo.setText(aMessage);
+        } else {
+             displayMapInfo.setText("");
+        }
     }
 
     public void showErrorMessage(String ErrorString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(CanvasMapDisplay.isFocused())
+        {
+            displayMapInfo.setTextFill(Paint.valueOf("red"));
+            setMapMessage(ErrorString);
+        } 
+        else if (WarriorTab.isSelected())
+        {
+            WarriorsTabErrorText.setTextFill(Paint.valueOf("red"));
+            WarriorsTabErrorText.setText(ErrorString);
+        } 
+        else if (FarmersTab.isSelected())
+        {
+            FarmerTabErrorText.setTextFill(Paint.valueOf("red"));
+            FarmerTabErrorText.setText(ErrorString);
+        }
+        else if (TradeGoodsTab.isSelected())
+        {
+            TradeGoodsTabErrorText.setTextFill(Paint.valueOf("red"));
+            TradeGoodsTabErrorText.setText(ErrorString);
+        }
+        else if (BuildingsTab.isSelected())
+        {
+            BuildingsTabErrorText.setTextFill(Paint.valueOf("red"));
+            BuildingsTabErrorText.setText(ErrorString);
+        }
     }
+    
+    
 
+    boolean FocusInBuildingsTab = false;
     @FXML
     private void BuildingsTabSelected(Event event) {
-    }
+        
 
+    }
+    
+    boolean FocusInTradeGoodTab = false;
     @FXML
     private void TradeGoodTabSelected(Event event) {
-    }
 
+    }
+    
+    boolean FocusInFarmersTab = false;
     @FXML
     private void FarmersTabSelected(Event event) {
+        
+  
+    }
+
+    boolean FocusInWarriorsTab = false;
+    @FXML
+    private void WarriorTabSelected(Event event) {
+
+    }
+
+    boolean CanvasCtrlHeld = false;
+    
+    @FXML
+    private void CanvasKeyPressed(KeyEvent event) {
+         CanvasCtrlHeld = event.isControlDown();
+            
     }
 
     @FXML
-    private void WarriorTabSelected(Event event) {
+    private void CanvasMapMouseExited(MouseEvent event) {
+    }
+
+    @FXML
+    private void CanvasMapMouseEntered(MouseEvent event) {
+        
+
+    }
+
+    @FXML
+    private void CanvasKeyReleased(KeyEvent event) {
+         CanvasCtrlHeld = event.isControlDown();
     }
 
     

@@ -5,6 +5,7 @@
  */
 package anthropologyapplication.AutoMapper;
 
+import Buildings.Building;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.AutoMapper.*;
 import anthropologyapplication.TribalCampObject;
@@ -35,6 +36,8 @@ public abstract class MapTile {
     private char Printout;
     
     private Vector3 MapCoordinates;
+    protected boolean debugTownPlacement = false;
+    protected boolean debugTownRemovePlacement = false;
     public MapTile(String filenameInAutomapperData)
     {
         ImageName = filenameInAutomapperData;
@@ -127,13 +130,11 @@ public abstract class MapTile {
             aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);            
             if(tileBuilding != null)
             {
-                Color.rgb(255, 255, 255, 0);
                 aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileBuilding.getPixelReader(), 0, 0);
-                Color.rgb(255, 255, 255, 1);
             }
-            if(getTerritory() != null)
+            if(tileTerritory != null)
             {
-                
+                aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
             }
         }
     }
@@ -267,18 +268,35 @@ public abstract class MapTile {
        if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
-    Image tileTerritory;
-    private void setForeground2Image(String ForegroundImageFileName)
-    {
-       if(ForegroundImageFileName.compareTo("NoFile") != 0) tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/" + ForegroundImageFileName);
-    }
+    
+    
+
     
     TribalCampObject myTerritory = null;
-   
+    protected String BuildingName;
+    public String getBuildingName()
+    {
+        return BuildingName;
+    }
+    
+    public void setBuildingName(String aString)
+    {
+        BuildingName = aString;
+    }
+    
     public void setTerritory(TribalCampObject myObject)
     {
-        myTerritory = myObject;
-        //TODO: make Territory update surrounding maptiles and blend them together
+        if(myTerritory == myObject)
+        {
+            return;
+        } else {
+            myTerritory = myObject;
+            if(getWest()!= null)
+            {
+                
+            }
+            //TODO: make Territory update surrounding maptiles and blend them together
+        }
     }
    
     public TribalCampObject getTerritory()
@@ -303,8 +321,60 @@ public abstract class MapTile {
     protected boolean debug = false;
     public void doPathfinderDebug()
     {
-        debug = true;
+        if(!debugTownPlacement)
+        {
+            debug = true;
+        }
+    }
+
+    public void setTown()
+    {
+         debugTownPlacement = true;
     }
     
+    public void resetTown()
+    {
+         debugTownPlacement = false;
+    }
+    
+    public void setRemove()
+    {
+         debugTownRemovePlacement = true;
+    }
+    
+    public void resetRemove()
+    {
+         debugTownRemovePlacement = false;
+    }
+    
+ 
+    
+    protected Building myBuilding = null;
+    public void setBuildingOnThis(Building aThis) {
+        myBuilding = aThis;
+        this.setForeground1Image(aThis.getForeGroundImageName());
+    }
+
+    public void clearPathfinderDebug() {
+        debug = false;
+    }
+
+    protected boolean ActiveLooker = false;
+    
+    public void setDebugActiveLooker() {
+        ActiveLooker = true;
+    }
+
+    public void resetDebugActiveLooker() {
+        ActiveLooker = false;
+    }
+    
+    Image tileTerritory;
+    protected String myFileName;
+    private void setForeground2Image(String ForegroundImageFileName)
+    {
+        myFileName = ForegroundImageFileName;
+       if(ForegroundImageFileName.compareTo("NoFile") != 0) tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/" + ForegroundImageFileName);
+    }
 
 }

@@ -24,6 +24,7 @@ public class Warrior {
     protected int Strength = 0;
     protected String Name;
     protected String Description;
+    protected boolean Available = false;
     public Warrior(String Name, String Description,  Timer TrainingTimeMS, int Strength)
     {
         this.Name = Name;
@@ -75,5 +76,17 @@ public class Warrior {
 
     public Timer getTotalBuildTime() {
         return BuildTime;
+    }
+
+    public String getCurrentBuildTime() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public double getCompletionPercentage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isUnlocked() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

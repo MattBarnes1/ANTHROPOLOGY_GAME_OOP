@@ -30,12 +30,36 @@ public class MapTile_Land extends MapTile{
 
     @Override
     public String toString() {
-        
-        if(!super.debug)
+        if(debugTownRemovePlacement)
         {
-            return "L";
+            return "R";
+        }
+        
+        if(!super.debugTownPlacement)
+        {
+            if(!super.debug)
+            {        
+                if(this.myBuilding != null)
+                {
+                    if(this.myBuilding.isFinishedBuilding())
+                    {
+                        return "Land, "+ this.myBuilding.getBuildingName();
+                    } else {
+                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionAmount();
+                    }
+                } else {
+                    return "Land" ;
+                }
+            } else {
+                return "X";
+            }
         } else {
-            return "P";
+            if(super.ActiveLooker)
+            {
+                return "A";
+            } else {
+                return "∎";
+            }
         }
     }
 
@@ -46,7 +70,7 @@ public class MapTile_Land extends MapTile{
 
     @Override
     public int getCost() {
-        return 0;
+        return 1;
     }
 
   

@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import java.util.ArrayList;
 
@@ -13,7 +14,9 @@ import java.util.ArrayList;
  * @author noone
  */
 public class Path {
-        ArrayList<Vector3> myVector = new ArrayList<Vector3>();
+        protected ArrayList<Vector3> myVector = new ArrayList<Vector3>();
+        protected ArrayList<Integer> totalCostOfTravel = new ArrayList<Integer>();
+        
 	public int getLength()
         {
             return myVector.size();
@@ -30,34 +33,49 @@ public class Path {
         {
             return myVector.get(index).Y;
         }
-	public void appendStep(Vector3 newStep)
+	public void appendStep(MapTile newStep)
         {
-            myVector.add(newStep);
+            totalCostOfTravel.add(newStep.getCost());
+            myVector.add(newStep.getCoordinates());
         }
-	public void prependStep(Vector3 newStep)
+	public void prependStep(MapTile newStep)
         {
-            myVector.add(0, newStep);
+            totalCostOfTravel.add(newStep.getCost());
+            myVector.add(0, newStep.getCoordinates());
         }
         
         public void removeLast()
         {
-            myVector.remove(myVector.size());
+            totalCostOfTravel = (ArrayList)totalCostOfTravel.subList(0, totalCostOfTravel.size()-2);
+            myVector = (ArrayList)myVector.subList(0, myVector.size()-2);
         }
         
 	public boolean contains(int x, int y)
         {
-            for(Vector3 aVector : myVector)
-            {
-                if(aVector.X == x && aVector.Y == y)
-                {
-                    return true;
-                }
-            }
-            return true;
+           
+            return myVector.contains(new Vector3(x,y,0));
         } //GT PreOrder/Post-Order level-order
         
         public void resetDebug()
         {
             
         }
+
+    int getTotalCost() {
+       int Cost = 0;
+       for(Integer X : totalCostOfTravel)
+       {
+           Cost += X.intValue();
+       }
+       return Cost;
+    }
+
+    void appendToPath(Path FirstPath) {
+      myVector.addAll(FirstPath.myVector);
+      totalCostOfTravel.addAll(FirstPath.totalCostOfTravel);
+    }
+
+    public Vector3 getLast() {
+       return myVector.get(myVector.size()-1);//TODO: is this right?
+    }
 }

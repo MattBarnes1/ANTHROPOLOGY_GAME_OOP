@@ -6,6 +6,7 @@
 package AIStuff;
 
 import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 
 /**
  *
@@ -18,6 +19,11 @@ public class AIHandler extends Service {
     public AIHandler(AICampObject myCampObject)
     {
         this.myCamp = myCampObject;
+    }
+
+    @Override
+    protected Task createTask() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

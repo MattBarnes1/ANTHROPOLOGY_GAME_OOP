@@ -88,7 +88,7 @@ public class SocialValuesSelectionController implements Initializable {
     }
 
     @FXML
-    private void onNextClicked(ActionEvent event) {
+    private void onNextClicked(ActionEvent event) throws Throwable {
         if(Choice1.isSelected() || Choice2.isSelected())
         {
             if(currentChoice.getNext() != null)

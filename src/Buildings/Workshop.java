@@ -16,12 +16,12 @@ import anthropologyapplication.TribalCampObject;
  * @author Duke
  */
 public class Workshop extends Building {
-    public Workshop(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, FileNameForegroundImage, FileNameForegroundDestroyedImage);
+    public Workshop(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, int TerritorySize, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize, FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
     private Workshop(Workshop aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getTerritorySize(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     
     }
 

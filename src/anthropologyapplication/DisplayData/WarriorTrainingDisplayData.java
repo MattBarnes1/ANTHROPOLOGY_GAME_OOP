@@ -36,4 +36,12 @@ public class WarriorTrainingDisplayData {
     }
     
     
+    public String getCurrentBuildTime() {
+        return myData.getCurrentBuildTime();
+    }
+    
+    public double getCompletionPercentage()
+    {
+        return myData.getCompletionPercentage();
+    }
 }

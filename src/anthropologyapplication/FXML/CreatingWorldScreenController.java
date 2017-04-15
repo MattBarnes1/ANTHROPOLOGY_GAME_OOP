@@ -8,6 +8,8 @@ package anthropologyapplication.FXML;
 import anthropologyapplication.MainGameCode;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,17 +43,21 @@ public class CreatingWorldScreenController implements Initializable {
     public void setMainGameCode(MainGameCode aThis) {
     myTimer =  new AnimationTimer()
     {
+        AnimationTimer InternalControl = myTimer;
         @Override
         public void handle(long now) {
-            
-            System.out.println(myMain.getProgress());
-            if(myMain.getProgress() == -1)
-            {
-                myMain.finishMapSetup();
-                this.stop();
+            try {
+                //System.out.println(myMain.getProgress());
+                if(myMain.getProgress() == -1)
+                {
+                    myMain.finishMapSetup();
+                    if(InternalControl != null)  InternalControl.stop();
+                }
+                creatingWorldMapProgressBar.setProgress(myMain.getProgress());
+                LoadScreenLabel.setText(myMain.getMessage());
+            } catch (Throwable ex) {
+                Logger.getLogger(CreatingWorldScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            creatingWorldMapProgressBar.setProgress(myMain.getProgress());
-            LoadScreenLabel.setText(myMain.getMessage());
         }
 
 

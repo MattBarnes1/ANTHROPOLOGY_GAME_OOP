@@ -11,7 +11,7 @@ import anthropologyapplication.Timer;
  *
  * @author noone
  */
-class Spearmen extends Warrior {
+public class Spearmen extends Warrior {
 
     public Spearmen(String Name, String Description,  Timer TrainingTimeMS, int Strength)
     { 

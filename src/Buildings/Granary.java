@@ -17,12 +17,12 @@ import anthropologyapplication.TribalCampObject;
  */
 public class Granary extends Building {
     
-    public Granary(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
+    public Granary(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
     private Granary(Granary aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(),aThis.getTerritorySize(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     }
 
     @Override

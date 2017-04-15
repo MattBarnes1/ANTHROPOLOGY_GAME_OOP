@@ -17,13 +17,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public abstract class TradeGood
 {
-        int TotalAmount = 0;
-        String TradeGoodName;
-        Timer productionTime;
-        int baseSellValue;
-        ProductionHandler myHandler;
-        String[] GoodsNeededForProduction;
-        int[] amountPerGood;
+        private int TotalAmount = 0;
+        private String TradeGoodName;
+        private final Timer productionTime;
+        private Timer currentProductionTime;
+        private int baseSellValue;
         public void incrementAmount()
         {
             TotalAmount++;
@@ -50,6 +48,7 @@ public abstract class TradeGood
                 TradeGoodName = Name;
                 TotalAmount = startingTradeGoodAmount;
                 productionTime = ProductionTime;
+                currentProductionTime = ProductionTime;
         }
 
         
@@ -67,4 +66,16 @@ public abstract class TradeGood
     
     
     public abstract void update(GameTime MS, TribalCampObject myObject);
+
+    public String getTotalTimeToBuild() {
+        return this.productionTime.toString();
+    }
+
+    public String getCurrentBuildTime() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public double getCompletionPercentage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

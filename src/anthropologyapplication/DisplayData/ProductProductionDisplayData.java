@@ -12,23 +12,30 @@ import TradeGoods.TradeGood;
  * @author Duke
  */
 public class ProductProductionDisplayData {
-    public String ProductName;
-    public String ProductTimeToComplete;
-
+    TradeGood myTradeGood;
     public ProductProductionDisplayData(TradeGood myTradeGood) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.myTradeGood = myTradeGood;
     }
 
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return myTradeGood.getName();
     }
 
     public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ""; //TODO:
     }
 
     public String getTotalBuildTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return myTradeGood.getTotalTimeToBuild();
+    }
+    
+    public String getCurrentBuildTime() {
+        return myTradeGood.getCurrentBuildTime();
+    }
+    
+    public double getCompletionPercentage()
+    {
+        return myTradeGood.getCompletionPercentage();
     }
     
 }

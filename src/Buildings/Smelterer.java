@@ -13,11 +13,11 @@ import anthropologyapplication.TribalCampObject;
  *
  * @author noone
  */
-class Smelterer extends Building {
+public class Smelterer extends Building {
 
-    public Smelterer(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+    public Smelterer(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
     {
-        super(Name,Description, BuildTime, Index, BuildersRequired, ForegroundImageFileName, ForegroundImageDestroyedFileName);
+        super(Name,Description, BuildTime, Index, BuildersRequired,  TerritorySize, ForegroundImageFileName, ForegroundImageDestroyedFileName);
         
     }
 

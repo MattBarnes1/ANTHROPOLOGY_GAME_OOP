@@ -24,8 +24,8 @@ import java.util.Iterator;
 public class WarriorHandler {
     ProductionHandler myProductionHandler;
     internalWarriorLocker[] warriorList = {
-        new internalWarriorLocker(new Clubmen("Clubmen", "Clubbers",new Timer(0,0,0,1),5)),
-        new internalWarriorLocker(new Spearmen("Spearmen", "Spearers", new Timer(0,0,0,1),15))
+        new internalWarriorLocker(new Clubmen("Clubmen", "Clubbers",new Timer(0,0,0,1),5), true),
+        new internalWarriorLocker(new Spearmen("Spearmen", "Spearers", new Timer(0,0,0,1),15), false)
         };
 //(String Name, String Description,  Timer TrainingTimeMS, int Strength)
     
@@ -151,18 +151,26 @@ public class WarriorHandler {
     }
 
     public Iterator<WarriorTrainingDisplayData> getWarriorsAvailable() {
+        ArrayList<WarriorTrainingDisplayData> myList = new ArrayList<>();
+        for(internalWarriorLocker A : warriorList)
+        {
+            //if(A.isAvailable())
+            //{
+                myList.add(new WarriorTrainingDisplayData(A.getWarrior()));
+            //}
+        }
+        return myList.iterator();
+    }
+
+    public void forceAddWarrior(String warrior) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void forceAddWarrior(String warrior) {
+    public void addWarriorToTraining(String warrior) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void addWarriorToTraining(String warrior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void removeWarriorFromTraining(String warrior) {
+    public void removeWarriorFromTraining(String warrior) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

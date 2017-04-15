@@ -6,6 +6,7 @@
 package anthropologyapplication.internalLockers;
 
 import TradeGoods.ProductionHandler;
+import anthropologyapplication.Warriors.Clubmen;
 import anthropologyapplication.Warriors.Warrior;
 
 /**
@@ -15,10 +16,12 @@ import anthropologyapplication.Warriors.Warrior;
 public class internalWarriorLocker {
 
     private final Warrior aWarrior;
-
+    private boolean Available = false;
     
-    public internalWarriorLocker(Warrior aWarrior)
-    {
+
+
+    public internalWarriorLocker(Warrior aWarrior, boolean b) {
+        Available = b;
         this.aWarrior = aWarrior;
     }
     
@@ -36,6 +39,14 @@ public class internalWarriorLocker {
 
     private Warrior Copy(Warrior aWarrior) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isAvailable() {
+        return Available;
+    }
+
+    public Warrior getWarrior() {
+        return aWarrior;
     }
     
 }

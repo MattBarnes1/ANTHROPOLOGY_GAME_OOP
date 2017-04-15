@@ -14,11 +14,11 @@ import anthropologyapplication.TribalCampObject;
  *
  * @author noone
  */
-class Blacksmith extends Building {
+public class Blacksmith extends Building {
 
-    public Blacksmith(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+    public Blacksmith(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
     {
-        super(Name,Description, BuildTime, Index, BuildersRequired, ForegroundImageFileName, ForegroundImageDestroyedFileName);
+        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize,ForegroundImageFileName, ForegroundImageDestroyedFileName);
         
     }
 

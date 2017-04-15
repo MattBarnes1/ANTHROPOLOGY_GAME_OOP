@@ -32,7 +32,7 @@ public class Map extends Service{
     int mapXAndYLength = 0;
     private final MapTile[] BaseTileTypes = new MapTile[]{ new MapTile_Land(), new MapTile_Water()};
     int possibleSettlements = 3;
-    Random myRandomNumberGen = new Random(47);//TODO better seeding
+    Random myRandomNumberGen = new Random();//TODO better seeding
 
     float BaseProbability_Water = 0.1F;
     float BaseProbability_Land = 0.9F;
@@ -108,50 +108,50 @@ private MapTile[] getPossibleSettlementPosition()
             {
                 continue;
             }
-            if(Count == 0)
+            
+            if(checkDistance(myMap[xLocation][yLocation], habitable))
             {
                 habitable.add(myMap[xLocation][yLocation]);
-            } else {
-                int StartCount = 0;
-                for(int i = 0; i < habitable.size(); i++)
-                {
-                    //if(canDrawline(habitable.get(i), myMap[xLocation][yLocation]))
-                    //{
-                      //  myLocationsValidLines[habitable.size()][i] = true;
-                        habitable.add(myMap[xLocation][yLocation]);
-                        Count++;
-                    //} else {
-
-                    //}
-                }
-
+                myMap[xLocation][yLocation].setTown();
+                Count++;
             }
 
-            for(int i = 0; i < habitable.size(); i++)
+          
+        }
+          for(int i = 0; i < habitable.size(); i++)
             {
                 for(int g = 0; g < habitable.size(); g++)
                 {
                     if(pathFindFromTo(habitable.get(i), habitable.get(g))!= null)
                     {
+                        resetDebug();
                         if(CheckPathNumber(habitable.get(i), habitable) < CheckPathNumber(habitable.get(g),habitable))
                         {
+                            System.out.println("Removing a town!");
+                            habitable.get(i).resetTown();
+                            habitable.get(i).setRemove();
+                            System.out.println(this.toMapString());
+                             habitable.get(i).resetRemove();
                             habitable.remove(i);
+                            
                             Count--;
                         } 
                         else if (CheckPathNumber(habitable.get(i), habitable) == CheckPathNumber(habitable.get(g), habitable))
                         {
-                            habitable.remove(i);
-                            Count--;
+                            System.out.println("All Towns can find eachother!");
                         }
                         else 
                         {
+                            System.out.println("Removing a town!");
+                            habitable.get(g).resetTown();
+                            habitable.get(g).setRemove();
+                            System.out.println(this.toMapString());
+                             habitable.get(i).resetRemove();
                             habitable.remove(g);
                             Count--;
                         }
                     }
                 }
-            }
-        
     }
         
     }    
@@ -160,6 +160,10 @@ private MapTile[] getPossibleSettlementPosition()
 
     MapTile[] myLocations = new MapTile[habitable.size()];
     habitable.toArray(myLocations);
+    for(MapTile aLocation : myLocations)
+    {
+        aLocation.resetTown(); //Mostly for the debug;
+    }
     return myLocations;
 }
 
@@ -293,7 +297,7 @@ private MapTile[] getPossibleSettlementPosition()
         return Map.toString();
     }
 
-    private public String toMapString()
+    private String toMapString()
     {
         StringBuilder Map = new StringBuilder();
         for(int x = 0; x < mapXAndYLength; x++)
@@ -302,7 +306,16 @@ private MapTile[] getPossibleSettlementPosition()
             {
                 if(myMap[x][y] != null) 
                 {
-                    Map.append(myMap[x][y]);
+                    if(myMap[x][y].toString().length() == 1)
+                    {
+                        Map.append(myMap[x][y].toString());
+                    }
+                    else if(myMap[x][y].getClass() == MapTile_Land.class)
+                    {
+                        Map.append("L");
+                    } else {
+                        Map.append("W");
+                    }
                 }
             }
             Map.append("\n");
@@ -328,6 +341,7 @@ private MapTile[] getPossibleSettlementPosition()
         return myMap;
     }
 
+    
 
     
     PerlinNoiseGeneratorForTerrain TerrainGenerator;
@@ -344,7 +358,10 @@ private MapTile[] getPossibleSettlementPosition()
                 double counter = 0;
                  //Wait for Terrain Generator to be done;
                  float[][] values = null;
-                while((values = TerrainGenerator.getPerlin()) == null){};
+                while((values = TerrainGenerator.getPerlin()) == null){
+                    this.updateMessage(TerrainGenerator.getInternalMessage());
+                };
+                this.updateMessage("Interpreting noise from generator");
                 InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
                 System.out.println(toMapString());
                 if(isValidMap())
@@ -353,6 +370,14 @@ private MapTile[] getPossibleSettlementPosition()
                 }
                 
                 Automap.setMap(aJumper, myCode);
+                while(!Automap.isDone())
+                {
+                    updateMessage(Automap.getInternalMessage());
+                    updateProgress(Automap.getInternalWorkCompleted(), Automap.getInternalWorkTotal());
+                }
+
+                
+                
                 
                 return null;
             }         
@@ -365,8 +390,10 @@ private MapTile[] getPossibleSettlementPosition()
                            if(PerlinNoiseGeneration[x][y] < 0.7)
                            {
                                myMap[x][y] = new MapTile_Land();
+                               myMap[x][y].setCoordinates(new Vector3(x,y,0));
                            } else {
                                myMap[x][y] = new MapTile_Water();
+                               myMap[x][y].setCoordinates(new Vector3(x,y,0));
                            }
                     }
                     super.updateProgress((double)(x+1)*mapXAndYLength,(double)(mapXAndYLength*mapXAndYLength));
@@ -382,65 +409,140 @@ private MapTile[] getPossibleSettlementPosition()
         int Counter = 0;
         for(int i = 0; i < aMap.size(); i++)
         {
+            toCheck.setDebugActiveLooker();
             if(pathFindFromTo(toCheck, aMap.get(i)) != null)
             {
+              resetDebug();
               Counter++;  
             }
+            toCheck.resetDebugActiveLooker();
         }
         return Counter;
     }
 
-    int maxSearchDistance = 20;
-    ArrayList<MapTile> TilesConsideredFail = new ArrayList<MapTile>();
     //ArrayList<MapTile> TilesToBeConsidered = new ArrayList<MapTile>();
     private Path pathFindFromTo(MapTile startTile, MapTile endTile) {
+        
+        float maxSearchDistance = mapXAndYLength*mapXAndYLength;
+        ArrayList<MapTile> TilesConsideredFail = new ArrayList<MapTile>();
         Path myPath = new Path(); 
         MapTile currentlyLookingAt = startTile;
+        if(startTile == endTile)
+        {
+            myPath.appendStep(currentlyLookingAt);
+            return myPath;
+        }
+        
         //MapTile[][] myTile = this.getSurroundingTiles(startTile.getCoordinates().X, startTile.getCoordinates().Y);
         int maxDepth = 0;
         while (maxDepth < maxSearchDistance) 
         {
             if(currentlyLookingAt == endTile)
             {
-            
+                System.out.println("Success! We found the town!");
+                myPath.appendStep(currentlyLookingAt);
                 break; //We've found it;
             }
             
+            
+            
             MapTile[][] myTile = getSurroundingTiles(currentlyLookingAt.getCoordinates().X, currentlyLookingAt.getCoordinates().Y);
-            MapTile ExpectedNext = null;
+            MapTile leastNextTile = null;
+            MapTile leastNextTile2 = null;
+            
             for(int x = 0; x < myTile.length; x++)
             {
                 for(int y = 0; y < myTile[x].length; y++)
                 {
-                   if(ExpectedNext != null)
-                   {
-                       if(basicHeuristic(ExpectedNext, endTile) + ExpectedNext.getCost() >= basicHeuristic(myTile[x][y], endTile) + myTile[x][y].getCost() 
-                               && !TilesConsideredFail.contains(myTile[x][y]) && myTile[x][y].isLand() && !myTile[x][y].canBlockMovement())
-                       {
-                            ExpectedNext = myTile[x][y];
-                            myPath.appendStep(currentlyLookingAt.getCoordinates());
-                            currentlyLookingAt = ExpectedNext;
-                       }
-                   } else {
-                       myPath.appendStep(currentlyLookingAt.getCoordinates());
-                       currentlyLookingAt = ExpectedNext;
-                   
-                       
-                   }
-                  
+                    if(myTile[x][y] != null)
+                    { 
+                        if (myTile[x][y].isLand() && !TilesConsideredFail.contains(myTile[x][y]) && !myTile[x][y].canBlockMovement())
+                        {
+                            if(leastNextTile == null)
+                            {
+                                leastNextTile = myTile[x][y];
+                            } else {
+                                int lnTile = distanceHeuristic(leastNextTile, endTile) + leastNextTile.getCost();
+                                int nTile = distanceHeuristic(myTile[x][y], endTile) + myTile[x][y].getCost();
+                                if(lnTile > nTile)
+                                {
+                                    leastNextTile = myTile[x][y];
+                                    leastNextTile2 = null; //Used for determining a second path if needed.
+                                } 
+                                else if (lnTile == nTile)
+                                {
+                                    leastNextTile2 = myTile[x][y];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if(leastNextTile2 != null)
+            {
+              System.out.println("Pathfinder is splitting here!");
+              System.out.println(this.toMapString());
+              Path FirstPath = pathFindFromTo(leastNextTile, endTile);
+              Path SecondPath = pathFindFromTo(leastNextTile2, endTile);
+              System.out.println("Pathfinder is splitting here!");
+              System.out.println(this.toMapString());
+              if(FirstPath.getTotalCost() >= SecondPath.getTotalCost())
+              {
+                  FirstPath = null;
+                  myPath.appendToPath(SecondPath);
+                    System.out.println("Map finished: Success");
+                  return myPath;
+              } else {
+                  SecondPath = null;
+                  myPath.appendToPath(FirstPath);
+                    System.out.println("Map finished: Success");
+                  return myPath;
+              }
+            } else {
+                Vector3 myVector3 = leastNextTile.getCoordinates();
+                if(myPath.contains(myVector3.X, myVector3.Y))
+                {
+                    if(myPath.getLast().isEqualTo(myVector3))
+                    {
+                        //currentlyLookingAt.doPathfinderDebug();
+                        TilesConsideredFail.add(currentlyLookingAt); //it's pointing us backwards
+                        currentlyLookingAt = leastNextTile;
+                    maxDepth--; //This will move us backwards to the tile
+                    } else {
+                        currentlyLookingAt.doPathfinderDebug();
+                        System.out.println(this.toMapString());
+                        System.out.println("Map finished: Failed");
+                        return null; //the thing did a loop which doesn't make any sense;
+                    }
+                } else {
+                    currentlyLookingAt.doPathfinderDebug();
+                    currentlyLookingAt = leastNextTile;
+                    currentlyLookingAt.doPathfinderDebug();
+                    myPath.appendStep(leastNextTile);
+                    maxDepth++;
                 }
             }
             
         }
+        assert(maxDepth < maxSearchDistance);
+        System.out.println(this.toMapString());
+         System.out.println("Map finished: Success");
         return myPath;
     }
 
-    private PathFinderDebug()
+    private void resetDebug()
     {
-        
+        for(int x = 0; x < this.mapXAndYLength; x++)
+        {
+            for(int y = 0; y < this.mapXAndYLength; y++)
+            {
+                  this.myMap[x][y].clearPathfinderDebug();
+            }
+        }
     }
     
-    private int basicHeuristic(MapTile Current, MapTile Next)
+    private int distanceHeuristic(MapTile Current, MapTile Next)
     {
         Vector3 nextCoords = Next.getCoordinates();
         Vector3 currentCoords = Current.getCoordinates(); 
@@ -448,6 +550,21 @@ private MapTile[] getPossibleSettlementPosition()
         int dy = Math.abs(nextCoords.Y - currentCoords.Y);
         return dx+dy;
     }       
+
+    PerlinNoiseGeneratorForTerrain getTerrainGenerator() {
+        return TerrainGenerator;
+    }
+
+    private boolean checkDistance(MapTile mapTile, ArrayList<MapTile> habitable) {
+       for(MapTile A : habitable)
+       {
+           if( distanceHeuristic(mapTile, A) < mapXAndYLength*0.25)
+           {
+               return false;
+           }
+       }
+       return true;
+    }
     
 }
 

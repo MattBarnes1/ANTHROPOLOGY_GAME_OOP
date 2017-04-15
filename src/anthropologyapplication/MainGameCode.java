@@ -9,6 +9,7 @@ import AIStuff.AICampObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
+import javafx.concurrent.Worker.State;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -28,7 +29,7 @@ public class MainGameCode {
     Thread MapThread;
     Thread RandomEventsThread;
     public void newGame() throws IOException {
-        myMap = new Map(100, this, myDisplay.getAutomapper());
+        myMap = new Map(20, this, myDisplay.getAutomapper());
         myDisplay.setupMap();
         //myMap.run();
         
@@ -106,14 +107,24 @@ public class MainGameCode {
         increaseSpeed = false;
     }
 
-    public void createSocietyValues(ArrayList<SocialValues> myValues) {
+    public void createSocietyValues(ArrayList<SocialValues> myValues) throws Throwable {
         myPlayerSocietyChoices = new SocietyChoices(myValues);
         playersCamp = new TribalCampObject(myPlayerSocietyChoices);
-        if(myMap.isRunning() || this.myDisplay.getAutomapper().isRunning())
+        if(myMap.stateProperty().get() ==  State.SCHEDULED || myMap.stateProperty().get() ==  State.RUNNING)
         {
             this.myDisplay.displayCreatingWorldScreen(this);
         }
+       else if (myMap.stateProperty().get() ==  State.FAILED)
+       {
+              if(myMap.getException() != null)
+              {
+                throw myMap.getException();
+              } else {
+                  throw new Exception("Unknown Map Builder Error");
+              }
+       }
         else {
+            System.out.println(myMap.stateProperty().get());
             if(playersCamp.getMapTileLocation() == null)
             {
                 finishMapSetup();
@@ -121,7 +132,11 @@ public class MainGameCode {
         }
     }
 
-    
+    public void resetMap()
+    {
+        myMap.getTerrainGenerator().start();
+        myMap.start();
+    }
     
     
     public void finishMapSetup()
@@ -229,25 +244,42 @@ public class MainGameCode {
         }
     }
 
-    public String getMessage()
+    public String getMessage() throws Throwable
     {
-       if(myMap.isRunning())
+       if(myMap.stateProperty().get() ==  State.SCHEDULED || myMap.stateProperty().get() ==  State.RUNNING)
        {
             return myMap.getMessage();
+       } 
+       else if (myMap.stateProperty().get() ==  State.FAILED)
+       {
+              if(myMap.getException() != null)
+              {
+                throw myMap.getException();
+              } else {
+                  throw new Exception("Unknown Map Builder Error");
+              }
        } else {
-           return myDisplay.getAutomapper().getMessage();
+           return "Error, this should never display";
        }
     }
     
     
-    public double getProgress() {
-       if(myMap.isRunning())
-       {
-            return myMap.getProgress();
-       } else  if(myDisplay.getAutomapper().isRunning()){
-           return myDisplay.getAutomapper().getProgress();
-       }
-           return -1;
+    public double getProgress() throws Throwable {
+           if(myMap.stateProperty().get() ==  State.SCHEDULED || myMap.stateProperty().get() ==  State.RUNNING)
+           {
+                return myMap.getProgress();
+           } 
+           else if (myMap.stateProperty().get() ==  State.FAILED)
+           {
+              if(myMap.getException() != null)
+              {
+                throw myMap.getException();
+              } else {
+                  throw new Exception("Unknown Map Builder Error");
+              }
+           } else {
+                return -1;
+           }
        }
 
     public void addWarrior(String text) {

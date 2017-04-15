@@ -5,13 +5,17 @@
  */
 package anthropologyapplication;
 
+import Buildings.Building;
+import Buildings.Homes;
+import java.util.ArrayList;
 /**
  *
  * @author noone
  */
 public class PopulationHandler {
     private TribalCampObject myTribe;
-    private int Population = 10; //Starting Population
+    private int TotalPopulation = 10; //Starting Population
+    private int FreeCitizens = TotalPopulation;
     public PopulationHandler(TribalCampObject myCamp)
     {
         initialTimer = new Timer(730, 0, 0, 0); //Ever 2 ingame years birth
@@ -32,7 +36,20 @@ public class PopulationHandler {
     }
 
     private void doPopulationGrowth() {
-        myTribe.getBuildingHandler().getAllBuiltBuildingsByType(Homes.class);
+       ArrayList<Building> myBuildings = myTribe.getBuildingHandler().getAllBuiltBuildingsByType(Homes.class);
+       int AmountInHomes = 0;
+       for(Building X : myBuildings)
+       {
+           AmountInHomes = ((Homes)X).getOccupancy();
+       }
+       
+       if(AmountInHomes > TotalPopulation)
+       {
+           TotalPopulation += ((TotalPopulation-(TotalPopulation%2))/2);
+       } else {
+           TotalPopulation += (int)Math.toIntExact((TotalPopulation-(TotalPopulation%2))/2);
+       }
+       
     }
     
     

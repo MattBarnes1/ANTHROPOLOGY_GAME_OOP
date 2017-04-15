@@ -17,13 +17,13 @@ import anthropologyapplication.TribalCampObject;
  */
 public class TribalHut extends Building {
 
-    public TribalHut(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,FileNameForegroundImage, FileNameForegroundDestroyedImage);
+    public TribalHut(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, int TerritorySize, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,  TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
         
     }
 
     private TribalHut(TribalHut aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     }
 
     @Override

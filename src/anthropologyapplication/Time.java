@@ -181,8 +181,8 @@ public class Time implements java.io.Serializable {
 	int localMinutes = 0;
 	int localSeconds = 0;
 	float localMilliseconds = 0;
-	assert(this.LesserThan(lastUpdateCall));
-	if(this.LesserThan(lastUpdateCall))        
+	assert(!this.LesserThan(lastUpdateCall) || this.EqualTo(lastUpdateCall));
+	if(lastUpdateCall.LesserThan(this) || this.EqualTo(lastUpdateCall))        
 	{
 		localMilliseconds = this.Milliseconds - lastUpdateCall.Milliseconds;
                 if(localMilliseconds < 0)
