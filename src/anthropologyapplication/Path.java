@@ -52,8 +52,14 @@ public class Path {
         
 	public boolean contains(int x, int y)
         {
-           
-            return myVector.contains(new Vector3(x,y,0));
+           for(Vector3 aVector : myVector)
+           {
+               if(aVector.X == x && aVector.Y == y)
+               {
+                   return true;
+               }
+           }
+           return false;
         } //GT PreOrder/Post-Order level-order
         
         public void resetDebug()
@@ -77,5 +83,9 @@ public class Path {
 
     public Vector3 getLast() {
        return myVector.get(myVector.size()-1);//TODO: is this right?
+    }
+
+    boolean isEmpty() {
+       return myVector.isEmpty();
     }
 }

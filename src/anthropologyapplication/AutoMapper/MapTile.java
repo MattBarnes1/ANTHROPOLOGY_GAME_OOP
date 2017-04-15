@@ -291,9 +291,20 @@ public abstract class MapTile {
             return;
         } else {
             myTerritory = myObject;
-            if(getWest()!= null)
+            MapTile West = getWest();
+            MapTile North = getNorth();
+            MapTile East = getEast();
+            MapTile South = getSouth();
+            boolean isNorthNull = true;
+            boolean isSouthNull = true;
+            boolean isEastNull = true;
+            boolean isWestNull = true;
+            if(West != null)
             {
-                
+                if(getWest().isTerritoryOf(myObject))
+                {
+                    
+                }
             }
             //TODO: make Territory update surrounding maptiles and blend them together
         }
@@ -369,12 +380,61 @@ public abstract class MapTile {
         ActiveLooker = false;
     }
     
-    Image tileTerritory;
-    protected String myFileName;
-    private void setForeground2Image(String ForegroundImageFileName)
+    protected enum TERRITORY_IMAGE
     {
-        myFileName = ForegroundImageFileName;
-       if(ForegroundImageFileName.compareTo("NoFile") != 0) tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/" + ForegroundImageFileName);
+        NONE,
+        NORTH,
+        EAST,
+        SOUTH,
+        WEST,
+        NORTHEAST,
+        NORTHWEST,
+        SOUTHEAST,
+        SOUTHWEST
+    }
+    
+    TERRITORY_IMAGE myTerritoryImage = TERRITORY_IMAGE.NONE;
+    Image tileTerritory;
+    
+    protected TERRITORY_IMAGE getTerritoryImage()
+    {
+        return myTerritoryImage;
+    }
+    
+    protected void setTerritoryImage(TERRITORY_IMAGE ForegroundImageFileName)
+    {
+        myTerritoryImage = ForegroundImageFileName;
+        switch(myTerritoryImage)
+        {
+            case NONE:
+                return;
+        case NORTH:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/TopSideTerritory.png");
+            return;
+        case EAST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/RightSideTerritory.png");
+            return;
+        case SOUTH:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/BottomSideTerritory.png");
+            return;
+        case WEST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/LeftSideTerritory.png");
+            return;
+        case NORTHEAST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/UpAndRightSideTerritory.png");
+            return;
+        case NORTHWEST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/UpAndLeftSideTerritory.png");
+            return;
+        case SOUTHEAST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/DownAndRightSideTerritory.png");
+            return;
+        case SOUTHWEST:
+            tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/DownAndLeftSideTerritory.png");
+            return;
+        }
+        
+        
     }
 
 }
