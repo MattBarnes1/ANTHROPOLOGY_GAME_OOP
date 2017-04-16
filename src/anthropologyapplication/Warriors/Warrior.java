@@ -59,15 +59,18 @@ public class Warrior {
 
     public boolean checkIfCanBuild(ProductionHandler myProductionHandler)
     {
-        for(int i = 0; i < itemsNeededForProduction.length; i++)
+        if(itemsNeededForProduction != null)
         {
-           String ItemName = itemsNeededForProduction[i];
-           int requiredAmount = quantityofItemsNeededForProduction[i];
-           int ItemAmount = myProductionHandler.getAmountByString(itemsNeededForProduction[i]);
-           if(requiredAmount > ItemAmount)
-           {
-               return false;
-           }
+            for(int i = 0; i < itemsNeededForProduction.length; i++)
+            {
+               String ItemName = itemsNeededForProduction[i];
+               int requiredAmount = quantityofItemsNeededForProduction[i];
+               int ItemAmount = myProductionHandler.getAmountByString(itemsNeededForProduction[i]);
+               if(requiredAmount > ItemAmount)
+               {
+                   return false;
+               }
+            }
         }
         return true;
     }

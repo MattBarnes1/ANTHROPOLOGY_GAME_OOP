@@ -52,13 +52,10 @@ public class MainGameScreenController implements Initializable {
     private Canvas CanvasMapDisplay;
     @FXML
     private Label GameWorldTimeObject;
-    private Label assignCitizensFreeCitizensCount;
     @FXML
     private Label GameWorldTimeObject112;
     @FXML
     private Label assignCitizensWorkersCount1;
-    @FXML
-    private Label GameWorldTimeObject1112;
     @FXML
     private Label GameWorldTimeObject11112;
     @FXML
@@ -70,37 +67,17 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private Button increaseWorkersButton;
     @FXML
-    private Button increaseWarriorsButton;
-    @FXML
-    private Button decreaseWarriorsButton;
-    @FXML
     private Button increaseBuildersButton;
     @FXML
     private Button increaseFarmersButton;
     @FXML
     private Button decreaseFarmersButton;
     @FXML
-    private Label GameWorldTimeObject11;
-    @FXML
-    private Label GameWorldTimeObject111;
-    @FXML
-    private Label GameWorldTimeObject1111;
-    @FXML
     private Label worldDisplayFreeCitizensCount;
-    @FXML
-    private Label worldDisplayWarriorsCount;
-    @FXML
-    private Label worldDisplayBuildersCount;
-    @FXML
-    private Label worldDisplayWorkersCount;
     @FXML
     private Button NormalSpeedButton;
     @FXML
     private Button Pause;
-    @FXML
-    private Label GameWorldTimeObject11111;
-    @FXML
-    private Label worldDisplayFarmersCount;
     @FXML
     private VBox BuildingQueueList;
 
@@ -109,8 +86,6 @@ public class MainGameScreenController implements Initializable {
     private Label worldDisplayTime;
     @FXML
     private FlowPane BuildingItemList;
-    @FXML
-    private Label assignCitizenWarriorsCount;
     @FXML
     private Tab BuildingsTab;
     @FXML
@@ -132,15 +107,21 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private Label WarriorsTabErrorText;
     @FXML
-    private ScrollPane WarriorsTrainedInTraining;
-    @FXML
-    private TreeView<?> WarriorsTotal;
-    @FXML
     private Label displayMapInfo;
     @FXML
     private Label TradeGoodsTabErrorText;
     @FXML
     private Label BuildingsTabErrorText;
+    @FXML
+    private FlowPane CropsFlowPanel;
+    @FXML
+    private Label FarmingTabFoodAvailable;
+    @FXML
+    private Label FarmingTabFoodConsumptionRate;
+    @FXML
+    private Label worldDisplayFoodAvailable;
+    @FXML
+    private Label SocialCohesionPercentage;
     
     /**
      * Initializes the controller class.
@@ -164,10 +145,7 @@ public class MainGameScreenController implements Initializable {
         //myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(),(int)CanvasMapDisplay.getHeight());
         myMain = aThis;
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
-        worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
-        worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         //this.assignCitizensWarriorsCount1
         
@@ -176,8 +154,8 @@ public class MainGameScreenController implements Initializable {
         {
             ProductProductionDisplayData myData = aProductIterator.next();
             Button aButton = new Button(myData.getName());
-            Tooltip myTip = new Tooltip();
-            myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            //myTip.setText();
             aButton.setTooltip(myTip);
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
@@ -196,8 +174,9 @@ public class MainGameScreenController implements Initializable {
         {
             WarriorTrainingDisplayData myData = aWarriorIterator.next();
             Button aButton = new Button(myData.getName());
-            Tooltip myTip = new Tooltip();
-            myTip.setText(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
+           //Tooltip myTip = new Tooltip();
+            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
+            //myTip.setText(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
             aButton.setTooltip(myTip);
             
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -218,8 +197,9 @@ public class MainGameScreenController implements Initializable {
         {
             BuildingConstructionDisplayData myData = anIterator.next();
             Button aButton = new Button(myData.getName()); //For now use button later override it
-            Tooltip myTip = new Tooltip();
-            myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            //Tooltip myTip = new Tooltip();
+            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
+            //myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
             aButton.setTooltip(myTip);
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
@@ -286,7 +266,6 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private void increaseWorkersButtonClick(ActionEvent event) {
         myMain.increaseWorkers();
-        worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
     }
@@ -294,33 +273,24 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private void decreaseWorkersButtonClick(ActionEvent event) {
         myMain.decreaseWorkers();
-        worldDisplayWorkersCount.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
     }
 
-    @FXML
     private void increaseWarriorsButtonClick(ActionEvent event) {
         myMain.increaseWarriors();
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        worldDisplayWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
-        assignCitizensFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        assignCitizenWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
     }
 
-    @FXML
     private void decreaseWarriorsButtonClick(ActionEvent event) {
         myMain.decreaseWarriors();
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        worldDisplayWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
-        assignCitizenWarriorsCount.setText("" + myMain.getPlayersCamp().getWarriorHandler().getWarriorsAmount());
     }
 
     @FXML
     private void increaseBuildersButtonClick(ActionEvent event) {
         
         myMain.increaseBuilders();
-        worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
     }
@@ -328,7 +298,7 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private void increaseFarmersButtonClick(ActionEvent event) {
         myMain.increaseFarmers();
-        worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+    
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
     }
@@ -440,7 +410,6 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private void decreaseBuildersButtonClick(ActionEvent event) {
         this.myMain.decreaseBuilders();
-        worldDisplayBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
     }
@@ -450,7 +419,7 @@ public class MainGameScreenController implements Initializable {
         
         this.myMain.decreaseFarmers();
         
-        worldDisplayFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
     }

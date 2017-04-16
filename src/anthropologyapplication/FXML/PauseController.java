@@ -8,6 +8,8 @@ package anthropologyapplication.FXML;
 import anthropologyapplication.MainGameCode;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -31,5 +33,21 @@ public class PauseController implements Initializable {
     
     public void setMainGameCode(MainGameCode aThis) {
         myMain = aThis;
+    }
+
+    @FXML
+    private void ReturnToMainMenuPressed(ActionEvent event) {
+    }
+
+    @FXML
+    private void SaveGamePressed(ActionEvent event) {
+    }
+
+    @FXML
+    private void LoadGamePressed(ActionEvent event) {
+    }
+
+    @FXML
+    private void ContinueGame(ActionEvent event) {
     }
 }

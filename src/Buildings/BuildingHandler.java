@@ -24,7 +24,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2, 5,"TribalCamp.jpg", NoFile), true),
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2, 5,"TribalCamp.jpg", NoFile), false),
                     new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, 3,NoFile, NoFile), true),
                     new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,0,0,5), 2, 4, 3,"Field.jpg", NoFile), true),
                     new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, 3,NoFile, NoFile), true),

@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
@@ -60,15 +59,20 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="GameWorldTimeObject1112" layoutX="353.0" layoutY="14.0" text="Warriors:" />
-                        <Label fx:id="assignCitizenWarriorsCount" layoutX="401.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="00" />
                         <Label fx:id="GameWorldTimeObject111111" layoutX="15.0" layoutY="17.0" text="Farmers:" />
-                        <Label fx:id="assignCitizensFarmersCount" layoutX="60.0" layoutY="17.0" prefHeight="17.0" prefWidth="28.0" text="0" />
-                        <Button fx:id="increaseWarriorsButton" layoutX="351.0" layoutY="49.0" mnemonicParsing="false" onAction="#increaseWarriorsButtonClick" text="/\" />
-                        <Button fx:id="decreaseWarriorsButton" layoutX="351.0" layoutY="78.0" mnemonicParsing="false" onAction="#decreaseWarriorsButtonClick" text="\\/" />
+                        <Label fx:id="assignCitizensFarmersCount" layoutX="68.0" layoutY="17.0" prefHeight="17.0" prefWidth="28.0" text="0" />
                         <Button fx:id="increaseFarmersButton" layoutX="22.0" layoutY="53.0" mnemonicParsing="false" onAction="#increaseFarmersButtonClick" text="/\" />
                         <Button fx:id="decreaseFarmersButton" layoutX="22.0" layoutY="82.0" mnemonicParsing="false" onAction="#decreaseFarmersButtonClick" text="\\/" />
                         <Label fx:id="FarmerTabErrorText" layoutX="22.0" layoutY="127.0" text="Error" />
+                        <ScrollPane layoutX="281.0" layoutY="14.0" prefHeight="129.0" prefWidth="480.0">
+                           <content>
+                              <FlowPane fx:id="CropsFlowPanel" prefHeight="127.0" prefWidth="477.0" />
+                           </content>
+                        </ScrollPane>
+                        <Label layoutX="107.0" layoutY="17.0" text="Food Available:" />
+                        <Label fx:id="FarmingTabFoodAvailable" layoutX="223.0" layoutY="17.0" prefHeight="17.0" prefWidth="28.0" text="0" />
+                        <Label layoutX="107.0" layoutY="45.0" text="Food Consumption:" />
+                        <Label fx:id="FarmingTabFoodConsumptionRate" layoutX="223.0" layoutY="45.0" prefHeight="17.0" prefWidth="28.0" text="0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -83,11 +87,6 @@
                            </content>
                         </ScrollPane>
                         <Label fx:id="WarriorsTabErrorText" layoutX="215.0" layoutY="142.0" text="Error" />
-                        <ScrollPane fx:id="WarriorsTrainedInTraining" layoutX="113.0" layoutY="10.0" prefHeight="126.0" prefWidth="184.0">
-                           <content>
-                              <TreeView fx:id="WarriorsTotal" prefHeight="124.0" prefWidth="181.0" />
-                           </content>
-                        </ScrollPane>
                      </children>
                   </AnchorPane>
               </content>
@@ -96,22 +95,18 @@
       </TabPane>
       <Label fx:id="GameWorldTimeObject" layoutX="14.0" layoutY="14.0" text="Building Queue" />
       <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
-      <Label layoutX="185.0" layoutY="400.0" text="Free Citizens:" />
-      <Label fx:id="GameWorldTimeObject11" layoutX="302.0" layoutY="400.0" text="Workers:" />
-      <Label fx:id="GameWorldTimeObject111" layoutX="383.0" layoutY="400.0" text="Warriors:" />
-      <Label fx:id="GameWorldTimeObject1111" layoutX="479.0" layoutY="400.0" text="Builders:" />
-      <Label fx:id="worldDisplayFreeCitizensCount" layoutX="267.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
-      <Label fx:id="worldDisplayWarriorsCount" layoutX="443.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
-      <Label fx:id="worldDisplayBuildersCount" layoutX="530.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
-      <Label fx:id="worldDisplayWorkersCount" layoutX="358.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
+      <Label layoutX="220.0" layoutY="400.0" text="Free Citizens:" />
+      <Label fx:id="worldDisplayFreeCitizensCount" layoutX="302.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
       <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" onMouseClicked="#FastForwardButtonClicked" text="&gt;&gt;" />
       <Button fx:id="NormalSpeedButton" layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickedNormalSpeed" onMouseClicked="#RegularSpeedButtonClicked" text="&gt;" />
       <Button fx:id="Pause" layoutX="665.0" layoutY="396.0" mnemonicParsing="false" onAction="#openPauseMenu" text="Pause" />
-      <Label fx:id="GameWorldTimeObject11111" layoutX="571.0" layoutY="400.0" text="Farmers:" />
-      <Label fx:id="worldDisplayFarmersCount" layoutX="622.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
       <VBox fx:id="BuildingQueueList" layoutX="6.0" layoutY="31.0" prefHeight="363.0" prefWidth="170.0" />
       <Label layoutX="14.0" layoutY="400.0" text="Time:" />
       <Label fx:id="worldDisplayTime" layoutX="55.0" layoutY="400.0" prefHeight="17.0" prefWidth="67.0" />
       <Label fx:id="displayMapInfo" layoutX="220.0" layoutY="368.0" text="Label" textFill="WHITE" />
+      <Label layoutX="330.0" layoutY="400.0" text="Food Available:" />
+      <Label fx:id="worldDisplayFoodAvailable" layoutX="418.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
+      <Label layoutX="446.0" layoutY="400.0" text="Social Cohesion:" />
+      <Label fx:id="SocialCohesionPercentage" layoutX="533.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
    </children>
 </AnchorPane>

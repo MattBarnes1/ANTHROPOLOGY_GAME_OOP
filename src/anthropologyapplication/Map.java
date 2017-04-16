@@ -6,15 +6,19 @@
 package anthropologyapplication;
 
 import AIStuff.AICampObject;
+import Logger.FileLogger;
 import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.MapTiles.MapTile_Land;
 import anthropologyapplication.MapTiles.MapTile_Water;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -31,7 +35,10 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class Map extends Service{
 
-
+    
+    
+    
+    
     MapTile[][] myMap;
     int mapXAndYLength = 0;
     private final MapTile[] BaseTileTypes = new MapTile[]{ new MapTile_Land(), new MapTile_Water()};
@@ -58,7 +65,7 @@ public class Map extends Service{
     
     
     
-private MapTile[] getPossibleSettlementPosition()
+private MapTile[] getPossibleSettlementPosition() throws InterruptedException, IOException
 {
     ArrayList<MapTile> habitable = new ArrayList<MapTile>();
     Random myRandom = new Random();
@@ -123,25 +130,43 @@ private MapTile[] getPossibleSettlementPosition()
                         resetDebug();
                         if(CheckPathNumber(habitable.get(0), habitable) < CheckPathNumber(habitable.get(g),habitable))
                         {
-                            System.out.println("Removing a town!");
                             habitable.get(i).resetTown();
                             habitable.get(i).setRemove();
-                            System.out.println(this.toMapString());
-                             habitable.get(i).resetRemove();
+                            try {
+                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            habitable.get(i).resetRemove();
                             habitable.remove(i);
                             
                             Count--;
                         } 
                         else if (CheckPathNumber(habitable.get(i), habitable) == CheckPathNumber(habitable.get(g), habitable))
                         {
-                            System.out.println("All Towns can find eachother!");
+                            try {
+                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "All Towns can find eachother!" + System.getProperty("line.separator"));
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
                         else 
                         {
-                            System.out.println("Removing a town!");
+                            
                             habitable.get(g).resetTown();
                             habitable.get(g).setRemove();
-                            System.out.println(this.toMapString());
+                            System.out.println();
+                            try {
+                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                              habitable.get(i).resetRemove();
                             habitable.remove(g);
                             Count--;
@@ -180,7 +205,7 @@ private MapTile[] getPossibleSettlementPosition()
     
     MapTile[] ValidSettlementPositions;
     
-    private boolean isValidMap()
+    private boolean isValidMap() throws InterruptedException, IOException
     {
         ValidSettlementPositions = getPossibleSettlementPosition();
         PlayerCampTile = ValidSettlementPositions[possibleSettlements+1];
@@ -289,7 +314,7 @@ private MapTile[] getPossibleSettlementPosition()
                     Map.append(myMap[x][y]);
                 }
             }
-            Map.append("\n");
+            Map.append(System.getProperty("line.separator"));
         }
         return Map.toString();
     }
@@ -315,7 +340,7 @@ private MapTile[] getPossibleSettlementPosition()
                     }
                 }
             }
-            Map.append("\n");
+            Map.append(System.getProperty("line.separator"));
         }
         return Map.toString();
     }
@@ -427,7 +452,7 @@ private MapTile[] getPossibleSettlementPosition()
     }        
 
    
-    private int CheckPathNumber(MapTile toCheck, ArrayList<MapTile> aMap)
+    private int CheckPathNumber(MapTile toCheck, ArrayList<MapTile> aMap) throws InterruptedException, IOException
     {
         int Counter = 0;
         for(int i = 0; i < aMap.size(); i++)
@@ -455,14 +480,30 @@ private MapTile[] getPossibleSettlementPosition()
         aMapToPrint.resetDebug();
     }
    
-    private Path pathFindFromTo(MapTile startTile, MapTile endTile) {
+    private Path pathFindFromTo(MapTile startTile, MapTile endTile) throws InterruptedException, IOException {
         aMapToPrint = this;
+        assert(startTile != null && endTile != null);
         Path P = new Path(startTile, endTile);
         if(P.isValidPath())
         {
+           Iterator<MapTile> g = P.getInternalPath();
+            while(g.hasNext())
+            {
+                g.next().doPathfinderDebug();
+            }
+            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Success!"  + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+            resetDebug();
             return P;
         }
-        return null;
+        Iterator<MapTile> g = P.getInternalPath();
+         while(g.hasNext())
+         {
+             g.next().doPathfinderDebug();
+         }
+        FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Failed!"  + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+
+         resetDebug();
+         return null;
 
     }
     
@@ -491,7 +532,7 @@ private MapTile[] getPossibleSettlementPosition()
     private boolean checkDistance(MapTile mapTile, ArrayList<MapTile> habitable) {
             for(MapTile X : habitable)
             {
-                if(getDistance(mapTile, X) < this.mapXAndYLength*.5)
+                if(getDistance(mapTile, X) < this.mapXAndYLength*.25)
                 {
                     return false;
                 }

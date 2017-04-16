@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import Logger.FileLogger;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -41,5 +42,11 @@ public class AnthropologyApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public void stop() throws Exception {
+        FileLogger.flushLogsToFiles();
+    }
+    
     
 }

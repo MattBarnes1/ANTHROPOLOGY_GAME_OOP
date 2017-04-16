@@ -8,6 +8,8 @@ package anthropologyapplication;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.function.Consumer;
 
 /**
  *
@@ -42,7 +44,49 @@ public class Path {
         }
         return false;
     }
+
+
     
+
+        protected class internalIterator implements Iterator<MapTile>
+        {
+
+        Iterator<internalPath> aPathIterator;
+        internalIterator(ArrayList<internalPath> aPathToFollow)
+        {
+           aPathIterator = aPathToFollow.iterator();
+        }
+        
+        @Override
+        public boolean hasNext() {
+            return aPathIterator.hasNext();
+        }
+
+        @Override
+        public MapTile next() {
+            return aPathIterator.next().aTile;
+        }
+
+        @Override
+        public void remove() {
+        }
+
+        @Override
+        public void forEachRemaining(Consumer<? super MapTile> action) {
+        
+        }
+        
+        
+    }
+    
+        
+        public Iterator<MapTile> getInternalPath()
+        {
+            return new internalIterator(this.cameFromPath);
+        }
+        
+
+        
         private class internalPath
         {
             public MapTile aTile;
@@ -77,20 +121,14 @@ public class Path {
                 if(Current.aTile == endTile )
                 {
                     convertToPath(Current);
-                    Map.resetMap();
-                    for(internalPath X : cameFromPath)
-                    {
-                        X.aTile.doPathfinderDebug();
-                    }
-                    Map.printMap();
-                    Map.resetMap();
+                    OpenList = null;
+                    ClosedList = null; //cleared for memory reasons
                     return;
                 }
                 OpenList.remove(Current);
                 ClosedList.add(Current);
                 ArrayList<MapTile> mySurroundingTiles = getNeighbors(Current.aTile);
                 startTile.doPathfinderDebug();
-                int Heuristic = getDistance(startTile, endTile);
                 for(MapTile X : mySurroundingTiles)
                 {
                     if(X.isLand())
@@ -112,16 +150,19 @@ public class Path {
                                 continue;
                             }
                             
-                            X.doPathfinderDebug();
                             newPath.CameFrom = Current;
                             newPath.CostFromStartToHere = Score;
                             newPath.CostFromHereToGoal =  Score + getDistance(X, endTile);
-                            Map.printMap();
+                            //Map.printMap();
                     }
+                }
+                if(OpenList.isEmpty())
+                {
+                    convertToPath(Current); //It failed to find the right location
+                    ValidPath = false;
                 }
             }
 
-            cameFromPath = null;
         }
         
         
@@ -137,7 +178,7 @@ public class Path {
             }
         }
         
-        
+        boolean ValidPath = true;
         public boolean isValidPath()
         {
             return cameFromPath != null;
