@@ -38,6 +38,8 @@ public abstract class MapTile {
     private Vector3 MapCoordinates;
     protected boolean debugTownPlacement = false;
     protected boolean debugTownRemovePlacement = false;
+    protected boolean isMover = false;
+    protected boolean Destination;
     public MapTile(String filenameInAutomapperData)
     {
         ImageName = filenameInAutomapperData;
@@ -171,7 +173,11 @@ public abstract class MapTile {
         if(Northwest == null)
         {
             Northwest = mapTile;
-            mapTile.setSoutheast(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getSoutheast() == null)
+                    mapTile.setSoutheast(this);
+            }
         }
     }
 
@@ -183,7 +189,11 @@ public abstract class MapTile {
         if(North == null)
         {
             North = mapTile;
-            mapTile.setSouth(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getSouth() == null)
+                    mapTile.setSouth(this);
+            }
         }
     }
 
@@ -195,7 +205,11 @@ public abstract class MapTile {
         if(Northeast == null)
         {
             Northeast = mapTile;
-            mapTile.setSouthwest(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getSouthwest() == null)
+                    mapTile.setSouthwest(this);
+            }
         }
     }
 
@@ -207,7 +221,11 @@ public abstract class MapTile {
         if(East == null)
         {
             East = mapTile;
-            mapTile.setWest(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getWest() == null)
+                    mapTile.setWest(this);
+            }
         }
     }
 
@@ -231,7 +249,11 @@ public abstract class MapTile {
         if(Southeast == null)
         {
         Southeast = mapTile;
-        mapTile.setNorthwest(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getNorthwest() == null)
+                    mapTile.setNorthwest(this);
+            }
         }
     }
 
@@ -239,7 +261,11 @@ public abstract class MapTile {
         if(South == null)
         {
         South = mapTile;
-        mapTile.setNorth(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getNorth() == null)
+                    mapTile.setNorth(this);
+            }
         }
     }
 
@@ -247,7 +273,11 @@ public abstract class MapTile {
         if(Southwest == null)
         {
         Southwest = mapTile;
-        mapTile.setNortheast(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getNortheast() == null)
+                    mapTile.setNortheast(this);
+            }
         }
     }
 
@@ -255,7 +285,11 @@ public abstract class MapTile {
         if(West == null)
         {
             West = mapTile;
-            mapTile.setEast(this);
+            if(mapTile != null)
+            {
+                if(mapTile.getEast() == null)
+                    mapTile.setEast(this);
+            }
         }
     }
 
@@ -291,24 +325,9 @@ public abstract class MapTile {
             return;
         } else {
             myTerritory = myObject;
-            MapTile West = getWest();
-            MapTile North = getNorth();
-            MapTile East = getEast();
-            MapTile South = getSouth();
-            boolean isNorthNull = true;
-            boolean isSouthNull = true;
-            boolean isEastNull = true;
-            boolean isWestNull = true;
-            if(West != null)
-            {
-                if(getWest().isTerritoryOf(myObject))
-                {
-                    
-                }
-            }
-            //TODO: make Territory update surrounding maptiles and blend them together
         }
     }
+
    
     public TribalCampObject getTerritory()
     {
@@ -378,6 +397,23 @@ public abstract class MapTile {
 
     public void resetDebugActiveLooker() {
         ActiveLooker = false;
+    }
+
+    public void clearMover() {
+        this.isMover = false;
+    }
+    
+    public void setMover()
+    {
+        this.isMover = true;
+    }
+
+    public void setDestinationMarker() {
+        this.Destination = true;
+    }
+
+    public void resetDestinationMarker() {
+        this.Destination = false;
     }
     
     protected enum TERRITORY_IMAGE

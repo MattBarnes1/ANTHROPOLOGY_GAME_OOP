@@ -78,17 +78,8 @@ public class WarriorHandler {
         myIterator = myTrainedWarriors.iterator();
     }
 
-    public void addWarriors(String myWarrior) {
-        for(int i = 0; i < warriorList.length; i++)
-        {
-           if(warriorList[i].getName().compareTo(myWarrior)==0)
-           {
-                if(warriorList[i].checkIfCanBuild(myProductionHandler))
-                {
-                        myWarriorsInTraining.add(warriorList[i].Copy());
-                }
-           }
-        }
+    public void addWarrior(String myWarrior) {
+       
     }
 
     public int getWarriorsAmountByName(String Name) {
@@ -162,15 +153,50 @@ public class WarriorHandler {
         return myList.iterator();
     }
 
-    public void forceAddWarrior(String warrior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void forceAddWarrior(String myWarrior) {
+        for(int i = 0; i < warriorList.length; i++)
+        {
+           if(warriorList[i].getName().compareTo(myWarrior)==0)
+           {
+                    myTrainedWarriors.add(warriorList[i].Copy());
+           }
+        }
     }
 
-    public void addWarriorToTraining(String warrior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addWarriorToTraining(String myWarrior) { 
+        for(int i = 0; i < warriorList.length; i++)
+        {
+           if(warriorList[i].getName().compareTo(myWarrior)==0)
+           {
+                if(warriorList[i].checkIfCanBuild(myProductionHandler))
+                {
+                    myWarriorsInTraining.add(warriorList[i].Copy());
+                } else {
+                    Error = "Not enough trade goods for this to be built!";
+                }
+           }
+        }
     }
 
-    public void removeWarriorFromTraining(String warrior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeWarriorFromTraining(String myWarrior) { 
+        for(int i = 0; i < warriorList.length; i++)
+        {
+           if(warriorList[i].getName().compareTo(myWarrior)==0)
+           {
+                myWarriorsInTraining.remove(warriorList[i].Copy());
+           }
+        }
+    }
+
+    String Error = null;
+    
+    public boolean hasError() {
+        return Error != null;
+    }
+
+    public String getError() {
+        String myRet = Error;
+        Error = null;
+        return myRet;
     }
 }

@@ -44,10 +44,12 @@ public class Warrior {
         return (BuildTimeCountDown.EqualTo(new Timer(0,0,0,0)));
     }
 
+    boolean hasBeenBuilt = false;
     public void update(GameTime MS) {
-        if(!isDoneBuilding())
+        if(!hasBeenBuilt)
         {
            BuildTimeCountDown = BuildTimeCountDown.subtract(MS.getElapsedTime());
+           hasBeenBuilt = isDoneBuilding();
         }
     }
 
@@ -79,11 +81,11 @@ public class Warrior {
     }
 
     public String getCurrentBuildTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BuildTime.toString();
     }
 
     public double getCompletionPercentage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BuildTimeCountDown.dividedBy(BuildTime);
     }
 
     public boolean isUnlocked() {

@@ -283,7 +283,20 @@ public class MainGameCode {
        }
 
     public void addWarrior(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(playersCamp.hasFreeCitizens())
+        {
+            playersCamp.getWarriorHandler().addWarriorToTraining(text);
+            if(playersCamp.getWarriorHandler().hasError())
+            {
+               this.myDisplay.setErrorMessage(playersCamp.getWarriorHandler().getError());
+            } else {
+                playersCamp.removeFreeCitizen();
+            }
+            
+        } else {
+            this.myDisplay.setErrorMessage("Not enough citizens to build this!");
+            
+        }
     }
 
     public void setProductionFocus(String text) {

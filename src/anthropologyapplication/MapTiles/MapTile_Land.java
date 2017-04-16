@@ -30,6 +30,14 @@ public class MapTile_Land extends MapTile{
 
     @Override
     public String toString() {
+        if(super.Destination)
+        {
+            return "□";
+        }
+        if(super.isMover)
+        {
+            return "M";
+        }
         if(debugTownRemovePlacement)
         {
             return "R";

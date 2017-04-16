@@ -7,6 +7,7 @@ package AIStuff;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.GameTime;
+import anthropologyapplication.Map;
 import anthropologyapplication.SocietyChoices;
 import anthropologyapplication.TribalCampObject;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -16,10 +17,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * @author Duke
  */
 public class AICampObject extends TribalCampObject {
-    
-    public AICampObject(SocietyChoices mySocietyChoices, MapTile HomeTile) {
+    private Map myWorldMap;
+    public AICampObject(SocietyChoices mySocietyChoices, Map myMap, MapTile HomeTile) {
         super(mySocietyChoices);
         super.setHomeTile(HomeTile);
+        myWorldMap = myMap;
     }
     
     @Override 
@@ -31,9 +33,7 @@ public class AICampObject extends TribalCampObject {
     
   
 
-    public void doFoodUpdate() {
-        throw new NotImplementedException();
-    }
+ 
 
     
 }
