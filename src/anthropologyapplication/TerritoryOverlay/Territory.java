@@ -6,6 +6,7 @@
 package anthropologyapplication.TerritoryOverlay;
 
 import anthropologyapplication.AutoMapper.MapTile;
+import anthropologyapplication.AutoMapper.MapTile.TERRITORY_IMAGE;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.Map;
 import anthropologyapplication.TribalCampObject;
@@ -108,58 +109,242 @@ public class Territory {
     private void decideTerritoryImage(int x, int y)
     {
         
-        if(x == 0 && y != 0)//Left Edge
+        if(x == 0 && y != 0 && y < gridsizeY-1)//Left Edge
         {
             if(myTerritoryLocation[x][y] != null)
             {
-                
+                if(myTerritoryLocation[x][y].getWest() != null)
+                {
+                    MapTile aTerritory = myTerritoryLocation[x][y].getWest();
+                    if(aTerritory.isTerritoryOf(whoOwnsIt))
+                    {
+                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
+                    } else {
+                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                    }
+                }
             }
         }
-        else if(y == 0 && x != 0) //Top Edge
+        else if(y == 0 && x != 0 && x < gridsizeX-1) //Top, not corner Edge
         {
             if(myTerritoryLocation[x][y] != null)
             {
-                
+                    if(myTerritoryLocation[x][y].getNorth() != null)
+                    {
+                       MapTile aTerritory = myTerritoryLocation[x][y].getNorth();
+                       if(aTerritory.isTerritoryOf(whoOwnsIt))
+                       {
+                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);                          
+                       } else {
+                            myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
+                       }
+                    }
             }
         }
-        else if(x == 0 && y == 0) //Top Left Edge
+        else if(x == 0 && y == 0) //Top Left Corner Edge
         {
+            boolean ownsNorth = false;
+            boolean ownsWest = false;
+            boolean ownsNorthWest = false; //Used for determining if we're using a corner piece only
             if(myTerritoryLocation[x][y] != null)
             {
-                
-            }
-        }   
-        else if(x == gridsizeX && y != gridsizeY) //Right side
-        {
-            if(myTerritoryLocation[x][y] != null)
-            {
-                
+                MapTile aTile = myTerritoryLocation[x][y].getNorth();
+                if(aTile != null)
+                {       
+                     ownsNorth = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getWest();
+                if(aTile != null)
+                {       
+                     ownsWest = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getNorthwest();
+                if(aTile != null)
+                {       
+                     ownsNorthWest = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                if(ownsNorth && !ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                } 
+                else if (!ownsNorth && ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
+                }
+                else if (!ownsNorth && !ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTHWEST);
+                }
+                else if (ownsNorth && ownsWest && !ownsNorthWest)
+                {
+                    //TODO: Corner Piece
+                }
             }
         }
-        else if(y == gridsizeY && x != gridsizeX) //Right side
+        else if(x == 0 && y == gridsizeY-1) //Bottom Left
+        {
+                boolean ownsSouth = false;
+                boolean ownsWest = false;
+                boolean ownsSouthwest = false; //Used for determining if we're using a corner piece only      
+                
+                MapTile aTile = myTerritoryLocation[x][y].getSouth();
+                if(aTile != null)
+                {       
+                     ownsSouth = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getWest();
+                if(aTile != null)
+                {       
+                     ownsWest = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getSouthwest();
+                if(aTile != null)
+                {       
+                     ownsSouthwest = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                if(ownsSouth && !ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                } 
+                else if (!ownsSouth && ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+                }
+                else if (!ownsSouth && !ownsWest)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTHWEST);
+                }
+                else if (ownsSouth && ownsWest && !ownsSouthwest)
+                {
+                    //TODO: Corner Piece
+                }
+        }
+        else if(x == gridsizeX && y == 0) //Upper left
+        {
+            boolean ownsNorth = false;
+                boolean ownsEast = false;
+                boolean ownsNorthEast = false; //Used for determining if we're using a corner piece only      
+                
+                MapTile aTile = myTerritoryLocation[x][y].getNorth();
+                if(aTile != null)
+                {       
+                     ownsNorth = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getEast();
+                if(aTile != null)
+                {       
+                     ownsEast = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getNortheast();
+                if(aTile != null)
+                {       
+                     ownsNorthEast = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                if(ownsNorth && !ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
+                } 
+                else if (!ownsNorth && ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
+                }
+                else if (!ownsNorth && !ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTHEAST);
+                }
+                else if (ownsNorth && ownsEast && !ownsNorthEast)
+                {
+                    //TODO: Corner Piece
+                }
+        }
+        else if(x == gridsizeX && y < gridsizeY-1 && y > 0) //Right side side
         {
             if(myTerritoryLocation[x][y] != null)
             {
-                
+                if(myTerritoryLocation[x][y].getEast() != null)
+                {
+                    MapTile aTerritory = myTerritoryLocation[x][y].getEast();
+                    if(aTerritory == null)
+                    {
+                        if(aTerritory.isTerritoryOf(whoOwnsIt))
+                        {
+                             myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
+                        } else {
+                             myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
+                        }
+                    }
+                        
+                }
+            }
+        }
+        else if(y == gridsizeY && x > 0 && x < gridsizeX-1) //Bottom Edge
+        {
+            if(myTerritoryLocation[x][y] != null)
+            { 
+                if(myTerritoryLocation[x][y].getWest() != null)
+                {
+                    MapTile aTerritory = myTerritoryLocation[x][y].getWest();
+                   if(aTerritory.isTerritoryOf(whoOwnsIt))
+                   {
+                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                   }
+                        
+                } 
             } 
         }
-        else if(x == gridsizeX && y == gridsizeY)
+        else if(x == gridsizeX && y == gridsizeY) //Bottom Right Corner
         {
             if(myTerritoryLocation[x][y] != null)
             {
+                boolean ownsSouth = false;
+                boolean ownsEast = false;
+                boolean ownsSouthEast = false; //Used for determining if we're using a corner piece only      
                 
+                MapTile aTile = myTerritoryLocation[x][y].getSouth();
+                if(aTile != null)
+                {       
+                     ownsSouth = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getEast();
+                if(aTile != null)
+                {       
+                     ownsEast = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                aTile = myTerritoryLocation[x][y].getSoutheast();
+                if(aTile != null)
+                {       
+                     ownsSouthEast = aTile.isTerritoryOf(whoOwnsIt);
+                }
+                if(ownsSouth && !ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
+                } 
+                else if (!ownsSouth && ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+                }
+                else if (!ownsSouth && !ownsEast)
+                {
+                    myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTHEAST);
+                }
+                else if (ownsSouth && ownsEast && !ownsSouthEast)
+                {
+                    //TODO: Corner Piece
+                }   
             }
         }   
         else
         {
             if(myTerritoryLocation[x][y] != null)
-            {
-                
+            { 
+                myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
             }
         }
             
         
     }
+    
+    
     
     public void removeTerritoryFrom()
     {

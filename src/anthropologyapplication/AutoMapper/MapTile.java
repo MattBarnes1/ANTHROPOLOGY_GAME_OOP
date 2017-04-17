@@ -336,6 +336,7 @@ public abstract class MapTile {
     
     public boolean isTerritoryOf(TribalCampObject territoryToTest)
     {
+        if(myTerritory == null) return false;
         return (myTerritory == territoryToTest);
     }
     
@@ -420,7 +421,7 @@ public abstract class MapTile {
         return (this.myBuilding != null);
     }
     
-    protected enum TERRITORY_IMAGE
+    public enum TERRITORY_IMAGE
     {
         NONE,
         NORTH,
@@ -436,12 +437,12 @@ public abstract class MapTile {
     TERRITORY_IMAGE myTerritoryImage = TERRITORY_IMAGE.NONE;
     Image tileTerritory;
     
-    protected TERRITORY_IMAGE getTerritoryImage()
+    public TERRITORY_IMAGE getTerritoryImage()
     {
         return myTerritoryImage;
     }
     
-    protected void setTerritoryImage(TERRITORY_IMAGE ForegroundImageFileName)
+    public void setTerritoryImage(TERRITORY_IMAGE ForegroundImageFileName)
     {
         myTerritoryImage = ForegroundImageFileName;
         switch(myTerritoryImage)

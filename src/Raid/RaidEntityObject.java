@@ -7,6 +7,8 @@ package Raid;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.GameTime;
+import anthropologyapplication.Path;
+import anthropologyapplication.Warriors.Warrior;
 import java.util.Random;
 
 /**
@@ -15,13 +17,16 @@ import java.util.Random;
  */
 public class RaidEntityObject {
     Random myRandom = new Random();
-    private final MapTile Destination;
-    private final MapTile StartingPoint;
     private RaidEntityAI myRaider;
-    public RaidEntityObject(MapTile Destination, MapTile StartingPoint)
+    private MapTile currentMapTile;
+    private MapTile onUpdateMapTile; 
+    private Path myPathFinding;//Will be created in AI Thread
+    int currentPathIndex = 0;
+    private Image myImageOnMap;
+    public RaidEntityObject(MapTile Destination, MapTile StartingPoint, Warrior[] myWarriors)
     {
-        this.Destination = Destination;
-        this.StartingPoint = StartingPoint;
+        currentMapTile = StartingPoint;
+        myPathFinding = new Path(StartingPoint, Destination);        
         myRaider = new RaidEntityAI(this); 
     }
     
