@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
-
-import java.util.Random;
+package AIStuff;
 
 /**
  *
- * @author noone
+ * @author Duke
  */
-public class RaidHandler {
-    Random myRandom = new Random();
-    
-    
-    
+public class CampDataStruct {
+    public CampDataStruct()
+    {
+        
+    }
 }

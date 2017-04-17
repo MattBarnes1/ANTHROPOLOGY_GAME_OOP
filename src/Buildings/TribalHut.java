@@ -39,7 +39,7 @@ public class TribalHut extends Building {
     
     @Override
     public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
-        return (aTile.isLand() && aTile.isTerritoryOf(myObject));
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject) && aTile.hasBuilding());
     }
 
     @Override

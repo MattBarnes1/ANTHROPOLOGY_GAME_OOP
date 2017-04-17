@@ -5,6 +5,7 @@
  */
 package AIStuff;
 
+import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.TribalCampObject;
 import java.util.ArrayList;
 
@@ -17,10 +18,18 @@ public class NoisyAIData {
     
     public static void addCamp(TribalCampObject aCampObject)
     {
+        myCampObjects.add(aCampObject);
+    }
+    
+    public static void getCampDataByIndex(int i)
+    {
         
     }
     
-    
+    public static void getCampDataByTile(MapTile aTile)
+    {
+        
+    }
     
     
     

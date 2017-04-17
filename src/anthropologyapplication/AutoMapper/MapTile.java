@@ -415,6 +415,10 @@ public abstract class MapTile {
     public void resetDestinationMarker() {
         this.Destination = false;
     }
+
+    public boolean hasBuilding() {
+        return (this.myBuilding != null);
+    }
     
     protected enum TERRITORY_IMAGE
     {

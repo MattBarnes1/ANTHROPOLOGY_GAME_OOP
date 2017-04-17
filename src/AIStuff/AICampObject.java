@@ -18,6 +18,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class AICampObject extends TribalCampObject {
     private Map myWorldMap;
+    private final static String[] PossibleNames = { "A", "B", "C", "D", "E" };
+    private final static boolean[] isNameInUse = new boolean[PossibleNames.length];
     public AICampObject(SocietyChoices mySocietyChoices, Map myMap, MapTile HomeTile) {
         super(mySocietyChoices);
         super.setHomeTile(HomeTile);
@@ -30,7 +32,10 @@ public class AICampObject extends TribalCampObject {
         
     }
     
-    
+    private static String generateRandomName()
+    {
+        return "";
+    }
   
 
  

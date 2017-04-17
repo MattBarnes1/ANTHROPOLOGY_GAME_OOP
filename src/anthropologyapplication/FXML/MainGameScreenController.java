@@ -267,6 +267,11 @@ public class MainGameScreenController implements Initializable {
         int i = 0;
     }
 
+    public void setSocialCohesion(int Amount)
+    {
+        SocialCohesionPercentage.setText(""+Amount);
+    }
+    
     public void updateMap() {
         myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(), (int)CanvasMapDisplay.getHeight());
         myAutomapper.setCanvas(CanvasMapDisplay.getGraphicsContext2D(), CanvasMapDisplay.getWidth(), CanvasMapDisplay.getHeight());

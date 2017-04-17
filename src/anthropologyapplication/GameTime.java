@@ -34,27 +34,13 @@ public class GameTime implements java.io.Serializable {
 			{
 				Minutes++;
 				Seconds = 0;
-			}/*else {
-                            if(lastUpdateCall == null)
-                            {
-                                lastUpdateCall = getTimeStructure();
-                            }
-                            newUpdateCall = getTimeStructure();
-                            return;
-			}*/
+			}
 			
 			if (Minutes >= 60)
 			{
 				Hours++;
 				Minutes = 0;
-			} /*else {
-                            if(lastUpdateCall == null)
-                            {
-                                lastUpdateCall = getTimeStructure();
-                            }
-                            newUpdateCall = getTimeStructure();
-                            return;
-			}*/
+			} 
 			if (Hours > 23)
 			{
 				IncrementCalender();
@@ -63,9 +49,9 @@ public class GameTime implements java.io.Serializable {
 			} 
                     } else {
                         Millisecond += i;
-                        System.out.println("Before Correct 60000: " + this.toString());
+                        //System.out.println("Before Correct 60000: " + this.toString());
                         correctTime();
-                        System.out.println("After Correct 60000: " + this.toString());
+                        //System.out.println("After Correct 60000: " + this.toString());
                         int I = 0;
                         
                     }

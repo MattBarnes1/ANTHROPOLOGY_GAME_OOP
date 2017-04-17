@@ -17,7 +17,7 @@ import anthropologyapplication.TribalCampObject;
  */
 public class Field extends Building {
     int RequiredAmountOfFarmers = 2;
-    float yield = 2;
+    float yield = 0.1F;
     public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }

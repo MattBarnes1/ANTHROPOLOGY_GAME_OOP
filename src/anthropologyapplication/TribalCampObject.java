@@ -29,7 +29,7 @@ public class TribalCampObject {
     private Map myMap;
     private AICampObject[] myEnemyArray;
     private MapTile HomeTile;
-    
+    private String myName;
     
     public TribalCampObject(SocietyChoices mySocietyChoices) {
         myProductionHandler = new ProductionHandler(this);
@@ -40,6 +40,11 @@ public class TribalCampObject {
         this.mySocietyChoices = mySocietyChoices;
     }
 
+    public void setName(String aName)
+    {
+        myName = aName;
+    }
+    
     public SocietyChoices getPlayerSocietyChoices() {
         return mySocietyChoices;
     }
@@ -87,9 +92,8 @@ public class TribalCampObject {
 
     public void setHomeTile(MapTile HomeTile) {
        this.HomeTile = HomeTile;
-       System.out.println(HomeTile.getCoordinates());
        myBuildingHandler.forceBuild("Tribal Hut", HomeTile);
-       
+
     }
 
     public int getFreeCitizens() {

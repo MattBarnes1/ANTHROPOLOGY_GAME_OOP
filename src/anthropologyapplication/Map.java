@@ -68,7 +68,6 @@ public class Map extends Service{
 private MapTile[] getPossibleSettlementPosition() throws InterruptedException, IOException
 {
     ArrayList<MapTile> habitable = new ArrayList<MapTile>();
-    Random myRandom = new Random();
     Boolean[][] myLocationsValidLines = new Boolean[possibleSettlements + 1][possibleSettlements + 1]; 
     int Count = 0;
     while(Count <= possibleSettlements + 1)
@@ -78,12 +77,12 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
             int xLocation = 0;
             while (xLocation < 5 || xLocation > myMap.length-5)
             {
-                xLocation = myRandom.nextInt(myMap.length);
+                xLocation = myRandomNumberGen.nextInt(myMap.length);
             }
             int yLocation = 0;
             while (yLocation < 5 || yLocation > myMap.length-5)
             {
-                yLocation = myRandom.nextInt(myMap.length);
+                yLocation = myRandomNumberGen.nextInt(myMap.length);
             }
             if (!myMap[xLocation][yLocation].isLand())
             {
@@ -224,7 +223,6 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
     
     private AICampObject[] generateSettlements()
     {
-        Random myRandomNumber = new Random();
         ArrayList<SocialValues> AISocialValues = new ArrayList<>();
         myCamps = new AICampObject[possibleSettlements];
         SocialValues[] mySocialValues = SocialValues.values();
@@ -247,6 +245,10 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
         return myCamps;
     }
 
+    
+    
+    
+    
     AICampObject[] myCamps;
     MapTile PlayerCampTile;
     public AICampObject[] getCamps()

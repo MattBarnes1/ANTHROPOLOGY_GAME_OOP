@@ -32,15 +32,15 @@ public class Territory {
         whoOwnsIt = whoseTerritory;
         Vector3 Coordinates = HomeTile.getCoordinates();
         Vector3 StartingCoordinatesLoop = new Vector3(Coordinates.X - gridsizeX, Coordinates.Y - gridsizeY, 0);
-        MapTile MovingTile = HomeTile;
+        MapTile leftUpperCorner = HomeTile;
         int MidPoint = (int)Math.ceil(gridsizeX/2);
         for(int i = 1; i < MidPoint; i++)
         {
-            if(MovingTile != null)
+            if(leftUpperCorner != null)
             {
-                MovingTile.setTerritory(whoOwnsIt);
-                MovingTile = MovingTile.getNorthwest();
-                myTerritoryLocation[MidPoint-1-i][MidPoint-1-i] = MovingTile;
+                leftUpperCorner.setTerritory(whoOwnsIt);
+                leftUpperCorner = leftUpperCorner.getNorthwest();
+                myTerritoryLocation[MidPoint-1-i][MidPoint-1-i] = leftUpperCorner;
             } else {
                 gridsizeX--;
                 myTerritoryLocation[MidPoint-1-i][MidPoint-1-i] = null;
@@ -49,18 +49,7 @@ public class Territory {
        
         fillRecursion(0, 0);
         
-        for(int x = 0; x < gridsizeX; x++)
-        {
-            for(int y = 0; y < gridsizeY; y++)
-            {
-                if(myTerritoryLocation[x][y] != null)
-                {
-                    fillRecursion(x,y);//Finds first example to recurse from;
-                    break;
-                }
-            }
-        }    
-        
+  
     }
     
     
@@ -116,6 +105,61 @@ public class Territory {
         }
     }
     
+    private void decideTerritoryImage(int x, int y)
+    {
+        
+        if(x == 0 && y != 0)//Left Edge
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }
+        else if(y == 0 && x != 0) //Top Edge
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }
+        else if(x == 0 && y == 0) //Top Left Edge
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }   
+        else if(x == gridsizeX && y != gridsizeY) //Right side
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }
+        else if(y == gridsizeY && x != gridsizeX) //Right side
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            } 
+        }
+        else if(x == gridsizeX && y == gridsizeY)
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }   
+        else
+        {
+            if(myTerritoryLocation[x][y] != null)
+            {
+                
+            }
+        }
+            
+        
+    }
     
     public void removeTerritoryFrom()
     {

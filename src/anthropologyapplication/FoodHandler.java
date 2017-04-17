@@ -80,7 +80,7 @@ public class FoodHandler {
        }
        if(FarmerAmount != 0)
        {
-            totalFood += (((RequiredFarmers/FarmerAmount)*maxFoodProduced));
+            totalFood += (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
        }
       // System.out.println("Food: " + totalFood);
     }
