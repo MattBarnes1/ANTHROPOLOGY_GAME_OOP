@@ -73,9 +73,9 @@ public class AutoMapperGui extends Service {
         for (int i = 0; i < myRooms.length; i++) {
             if (myRooms[i].getCoordinates() != null) {
                 
-                System.out.println(myRooms[i].getClass() + "\nCoordsBeforeTransform: " + myRooms[i].getCoordinates());
+                //System.out.println(myRooms[i].getClass() + "\nCoordsBeforeTransform: " + myRooms[i].getCoordinates());
                 Vector3 Coordinate = myRooms[i].getCoordinates().Transform(VectorZeroTransformData);
-                System.out.println("CoordsAfterTransform: " + Coordinate);
+                //System.out.println("CoordsAfterTransform: " + Coordinate);
                 WorldRoomLocations[Coordinate.X][Coordinate.Y][Coordinate.Z] = myRooms[i];
             }
         }
@@ -191,7 +191,7 @@ public class AutoMapperGui extends Service {
                 Vector3 myVector = new Vector3(x, y, 0);
                 output = aZeroZeroRoom.Transform(myVector);
                 MapTile aRoom = getRoomAtCoordinate(output);
-                System.out.println("X: " + x + "Y: " + y + " :\tmyVectorTransform: " + myVector + " \toutput" + output);
+               // System.out.println("X: " + x + "Y: " + y + " :\tmyVectorTransform: " + myVector + " \toutput" + output);
                 RoomsToDraw[x][y] = aRoom;
             }
         }
@@ -351,5 +351,7 @@ boolean MapDataAdded = false;
     public boolean isDone() {
         return this.isFinished;
     }
+
+   
 
 }

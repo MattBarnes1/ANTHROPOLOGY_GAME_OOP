@@ -143,16 +143,15 @@ public class Path {
                             if(!checkListHasTile(OpenList, X))
                             {
                                 newPath = new internalPath(X, Score,  Score + getDistance(X, endTile));
+                                newPath.CameFrom = Current;
+                                newPath.CostFromStartToHere = Score;
+                                newPath.CostFromHereToGoal =  Score + getDistance(X, endTile);
                                 OpenList.add(newPath);
                             }
                             else if (Score + getDistance(X, endTile) >= Current.CostFromHereToGoal)
                             {
                                 continue;
                             }
-                            
-                            newPath.CameFrom = Current;
-                            newPath.CostFromStartToHere = Score;
-                            newPath.CostFromHereToGoal =  Score + getDistance(X, endTile);
                             //Map.printMap();
                     }
                 }

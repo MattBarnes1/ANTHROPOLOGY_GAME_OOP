@@ -53,7 +53,10 @@ public class FoodHandler {
                 {
                     
                 }
-                
+                public int getTotalFood()
+                {
+                    return (int) Math.floor(this.totalFood);
+                }
 		
                 
                 public boolean canRemoveMore()

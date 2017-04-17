@@ -53,6 +53,8 @@ public class TribalCampObject {
         return myBuildingHandler;
     }
     
+    
+    
     public FoodHandler getFoodHandler()
     {
         return myFoodHandler;

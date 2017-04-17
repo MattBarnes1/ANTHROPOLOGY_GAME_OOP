@@ -81,12 +81,12 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutX="297.0" layoutY="9.0" prefHeight="127.0" prefWidth="484.0">
+                        <ScrollPane layoutX="130.0" layoutY="9.0" prefHeight="127.0" prefWidth="651.0">
                            <content>
                               <FlowPane fx:id="WarriorFlowPane" prefHeight="124.0" prefWidth="482.0" />
                            </content>
                         </ScrollPane>
-                        <Label fx:id="WarriorsTabErrorText" layoutX="215.0" layoutY="142.0" text="Error" />
+                        <Label fx:id="WarriorsTabErrorText" layoutX="130.0" layoutY="143.0" text="Error" />
                      </children>
                   </AnchorPane>
               </content>

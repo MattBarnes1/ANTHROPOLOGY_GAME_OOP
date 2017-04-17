@@ -44,6 +44,11 @@ public class GuiHandler {
     private final Scene creatingWorldScreen;
     private final CreatingWorldScreenController creatingWorldScreenLoader;
     
+    public void updateBuildQueue()
+    {
+        mainGameScreenController.updateBuildNodes();
+    }
+    
     public GuiHandler(Stage aStage, int WindowWidth, int WindowHeight) throws IOException
     {
         currentStage = aStage;
@@ -162,6 +167,10 @@ public class GuiHandler {
     public void setErrorMessage(String ErrorString)
     {
         mainGameScreenController.showErrorMessage(ErrorString);
+    }
+
+    void updateFood(int totalFood) {
+        mainGameScreenController.setFoodAvailable(totalFood);
     }
    
 

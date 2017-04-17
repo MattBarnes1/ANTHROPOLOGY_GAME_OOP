@@ -65,7 +65,6 @@ public abstract class Building
             return Destroyable;
         }
         
-       int BuilderRequired;
         final Timer BuildTimeToBuild;
        final int TerritorySize;
         protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int territorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
@@ -73,7 +72,6 @@ public abstract class Building
             assert(territorySize % 2 != 0);
             TerritorySize = territorySize;
             myTerritory = new Territory(territorySize);
-            this.BuildersRequired = BuilderRequired;
             this.ForegroundImageFileName = ForegroundImageFileName;
             this.ForegroundImageDestroyedFileName = ForegroundImageDestroyedFileName;
             this.BuildersRequired = BuildersRequired;
@@ -110,19 +108,21 @@ public abstract class Building
 
         Timer timeTillBuilt;
         boolean isFinishedBuilding = false;
-        void update(GameTime T) {
-            System.out.println("Build Time: " + timeTillBuilt);
+        void update(GameTime T, double Ratio) {
+            //System.out.println("Build Time: " + timeTillBuilt);
             if(!isFinishedBuilding)
             {
-                timeTillBuilt = timeTillBuilt.subtract(T.getElapsedTime());
+               // System.out.println("T.Elapsed: " + T.getElapsedTime());
+                timeTillBuilt = ((timeTillBuilt.subtract(T.getElapsedTime().multiply(Ratio))));
+               // System.out.println("timeTillBuilt.subtract(T.getElapsedTime()): " + timeTillBuilt.subtract(T.getElapsedTime()));
                 isFinishedBuilding = (timeTillBuilt.EqualTo(new Timer(0,0,0,0)));;
                 
             }
         }
         
-        public int getBaseNumberOfBuilders()
+        public int getRequiredBuildersAmount()
         {
-            return BuilderRequired;
+            return BuildersRequired;
         }
         
 
@@ -157,13 +157,17 @@ public abstract class Building
         return BuildTimeToBuild.toString();
     }
 
-    public double getCompletionAmount() {
+    public double getCompletionPercentage() {
         return timeTillBuilt.dividedBy(BuildTimeToBuild);
     }
 
     public MapTile getBuildingTile() {
         return BuiltOn;
     }
+
+   
+
+   
 
 
 

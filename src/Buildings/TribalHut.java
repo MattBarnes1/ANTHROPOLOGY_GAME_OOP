@@ -25,7 +25,7 @@ public class TribalHut extends Building {
     
     
     private TribalHut(TribalHut aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getRequiredBuildersAmount(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     }
 
     @Override

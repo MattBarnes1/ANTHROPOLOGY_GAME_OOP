@@ -88,7 +88,13 @@ public class Time implements java.io.Serializable {
 		return retString;
 	}
 	
-
+@Override
+public String toString()
+{
+    return "Y: " + this.Year + " M: " + this.currentMonthNameIndex + "D: " + this.currentDayNumber + "H: " + this.Hours + "M: " + this.Minutes + "S: " + this.Seconds + "MS: " + this.Milliseconds + "\n";
+}
+        
+        
 	private String CorrectMinutes() {
 		if(Minutes > 10)
 		{
@@ -295,9 +301,13 @@ public class Time implements java.io.Serializable {
         
         while (currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
         {
-                 int Remainder = currentDayNumber % CalendarData.getDaysPerMonthByIndex(currentMonthNameIndex);
-                 currentDayNumber  = (int)(currentDayNumber-Remainder);
-                 currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+                int Remainder = 0;
+                if(currentDayNumber - CalendarData.getDaysPerMonthByIndex(currentMonthNameIndex) > 0)
+                {
+                     currentDayNumber =- CalendarData.getDaysPerMonthByIndex(currentMonthNameIndex);
+                } else {
+                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+                }
                 if(currentMonthNameIndex + 1 > CalendarData.getTotalMonths()-1)
                 {
                     Year++;
@@ -309,4 +319,9 @@ public class Time implements java.io.Serializable {
          
 
     }
+
+     public Time multiply(double Ratio) {
+        return new Time(this.Year, this.currentMonthNameIndex, (int)Math.floor(this.Days*Ratio), (int)Math.floor(this.Hours * Ratio),(int)Math.floor(this.Minutes*Ratio), (int)Math.floor(this.Seconds*Ratio), (int)Math.floor(this.Milliseconds*Ratio));
+    }
+
 }

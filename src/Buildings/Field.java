@@ -23,7 +23,7 @@ public class Field extends Building {
     }
 
     private Field(Field aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getBaseNumberOfBuilders(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getRequiredBuildersAmount(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     
     }
 

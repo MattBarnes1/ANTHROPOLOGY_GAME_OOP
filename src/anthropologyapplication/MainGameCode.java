@@ -72,7 +72,7 @@ public class MainGameCode {
                 {
                     if(increaseSpeed)
                     {
-                        WorldTime.Update(60000);
+                        WorldTime.Update(6000000);
                     } else {
                         WorldTime.Update(10);
                     }
@@ -80,6 +80,8 @@ public class MainGameCode {
                     {
                         anObject.update(WorldTime);
                     }
+                    mainHandler.updateFood(playersCamp.getFoodHandler().getTotalFood());
+                    mainHandler.updateBuildQueue();
                     mainHandler.updateTime(WorldTime.getTimeString12Hour());
                     mainHandler.drawMainGameScreenMap();
                     playersCamp.update(WorldTime);

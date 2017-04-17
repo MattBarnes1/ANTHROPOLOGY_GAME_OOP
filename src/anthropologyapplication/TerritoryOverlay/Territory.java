@@ -68,38 +68,50 @@ public class Territory {
     {
         if(x + 1 < gridsizeX)
         {
-            if(myTerritoryLocation[x+1][y] == null && myTerritoryLocation[x][y].getEast() != null)
+            if(myTerritoryLocation[x][y] != null)
             {
-                myTerritoryLocation[x+1][y] = myTerritoryLocation[x][y].getEast();
-                myTerritoryLocation[x][y].getEast().setTerritory(whoOwnsIt);
-                fillRecursion(x+1, y);
+                if(myTerritoryLocation[x+1][y] == null && myTerritoryLocation[x][y].getEast() != null)
+                {
+                    myTerritoryLocation[x+1][y] = myTerritoryLocation[x][y].getEast();
+                    myTerritoryLocation[x][y].getEast().setTerritory(whoOwnsIt);
+                    fillRecursion(x+1, y);
+                }
             }
         }
         if(x-1 > 0)
         {
-            if(myTerritoryLocation[x-1][y] == null && myTerritoryLocation[x][y].getWest() != null)
+            if(myTerritoryLocation[x][y] != null)
             {
-                myTerritoryLocation[x-1][y] = myTerritoryLocation[x][y].getWest();
-                myTerritoryLocation[x][y].getWest().setTerritory(whoOwnsIt);
-                fillRecursion(x-1, y);
+                if(myTerritoryLocation[x-1][y] == null && myTerritoryLocation[x][y].getWest() != null)
+                {
+                    myTerritoryLocation[x-1][y] = myTerritoryLocation[x][y].getWest();
+                    myTerritoryLocation[x][y].getWest().setTerritory(whoOwnsIt);
+                    fillRecursion(x-1, y);
+                }
             }
         }
         if(y+1 < gridsizeY)
         {
-            if(myTerritoryLocation[x][y+1] == null && myTerritoryLocation[x][y].getNorth() != null)
+            if(myTerritoryLocation[x][y] != null)
             {
-                myTerritoryLocation[x][y+1] = myTerritoryLocation[x][y].getNorth();
-                myTerritoryLocation[x][y].getNorth().setTerritory(whoOwnsIt);
-                fillRecursion(x, y+1);
+                if(myTerritoryLocation[x][y+1] == null && myTerritoryLocation[x][y].getNorth() != null)
+                {
+                    myTerritoryLocation[x][y+1] = myTerritoryLocation[x][y].getNorth();
+                    myTerritoryLocation[x][y].getNorth().setTerritory(whoOwnsIt);
+                    fillRecursion(x, y+1);
+                }
             }
         }
         if(y-1 > 0)
         {
-            if(myTerritoryLocation[x][y-1] == null && myTerritoryLocation[x][y].getSouth() != null)
+            if(myTerritoryLocation[x][y] != null)
             {
-                myTerritoryLocation[x-1][y-1] = myTerritoryLocation[x][y].getSouth();
-                myTerritoryLocation[x][y].getSouth().setTerritory(whoOwnsIt);
-                fillRecursion(x, y-1);
+                if(myTerritoryLocation[x][y-1] == null && myTerritoryLocation[x][y].getSouth() != null)
+                {
+                    myTerritoryLocation[x-1][y-1] = myTerritoryLocation[x][y].getSouth();
+                    myTerritoryLocation[x][y].getSouth().setTerritory(whoOwnsIt);
+                    fillRecursion(x, y-1);
+                }
             }
         }
     }

@@ -17,10 +17,7 @@ public class NoisyAIData {
     
     public static void addCamp(TribalCampObject aCampObject)
     {
-        if(myCoreData == null)
-        {
-            
-        }
+        
     }
     
     

@@ -22,6 +22,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -138,9 +139,9 @@ public class MainGameScreenController implements Initializable {
     public void setMainGameCode(MainGameCode aThis) {
         
             BuildingsTabErrorText.setText("");
-            TradeGoodsTabErrorText.setText("");
-            WarriorsTabErrorText.setText("");
-            FarmerTabErrorText.setText("");
+        TradeGoodsTabErrorText.setText("");
+        WarriorsTabErrorText.setText("");
+        FarmerTabErrorText.setText("");
         displayMapInfo.setText("");
         //myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(),(int)CanvasMapDisplay.getHeight());
         myMain = aThis;
@@ -153,10 +154,7 @@ public class MainGameScreenController implements Initializable {
         while(aProductIterator.hasNext())
         {
             ProductProductionDisplayData myData = aProductIterator.next();
-            Button aButton = new Button(myData.getName());
-            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
-            //myTip.setText();
-            aButton.setTooltip(myTip);
+            QuickTipsProductionButton aButton = new QuickTipsProductionButton(myData, new Tooltip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime()));
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -173,11 +171,8 @@ public class MainGameScreenController implements Initializable {
         while(aWarriorIterator.hasNext())
         {
             WarriorTrainingDisplayData myData = aWarriorIterator.next();
-            Button aButton = new Button(myData.getName());
-           //Tooltip myTip = new Tooltip();
-            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
-            //myTip.setText(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime());
-            aButton.setTooltip(myTip);
+            QuickTipsWarriorTraining aButton  = new QuickTipsWarriorTraining(myData, new Tooltip(myData.getDescription() + "\nStrength" + myData.getStrength() +"\n\n" + myData.getTotalBuildTime()));
+
             
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
@@ -196,11 +191,7 @@ public class MainGameScreenController implements Initializable {
         while(anIterator.hasNext())
         {
             BuildingConstructionDisplayData myData = anIterator.next();
-            Button aButton = new Button(myData.getName()); //For now use button later override it
-            //Tooltip myTip = new Tooltip();
-            InstantToolTip myTip = new InstantToolTip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
-            //myTip.setText(myData.getDescription() + "\n\n" + myData.getTotalBuildTime());
-            aButton.setTooltip(myTip);
+            Button aButton = new QuickTipsBuildButton(myData, new Tooltip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime())); //For now use button later override it
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
             {
                 Button myButton = aButton;
@@ -228,9 +219,34 @@ public class MainGameScreenController implements Initializable {
         worldDisplayTime.setText(aTime);
     }
     
+    public void updateBuildNodes()
+    {
+       Iterator<Node> aNode = BuildingQueueList.getChildren().iterator();
+       while(aNode.hasNext())
+       {
+           Node A = aNode.next();
+           ((QuickTipsBuildButton)A).update();
+            if(((QuickTipsBuildButton)A).isDone())
+            {
+                aNode.remove();
+            }
+       }
+       AutoMapperGui.redrawMap();
+    }
+    
+    public void setFoodAvailable(int amount)
+    {
+        worldDisplayFoodAvailable.setText("" + amount);
+        FarmingTabFoodAvailable.setText("" + amount);
+    }
+    
     
     @FXML
     private void CanvasMapDisplayClicked(MouseEvent event) {
+        
+
+       
+        
         if (event.getButton() == MouseButton.SECONDARY && BuildingSelectedForBuilding != null)
         {
             BuildingSelectedForBuilding = null;
@@ -241,7 +257,7 @@ public class MainGameScreenController implements Initializable {
                 BuildingConstructionDisplayData myConstruction = myMain.getPlayersCamp().getBuildingHandler().startBuilding(BuildingSelectedForBuilding, aTile);
                 if(myConstruction != null)
                 {
-                    BuildingQueueList.getChildren().add(new QueueButton(myConstruction));
+                    BuildingQueueList.getChildren().add(new QuickTipsBuildButton(myConstruction));
                 }
            }
         }

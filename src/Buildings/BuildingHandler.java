@@ -24,9 +24,9 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,0,0,5), 0, 2, 5,"TribalCamp.jpg", NoFile), false),
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,1,1,0), 0, 2, 5,"TribalCamp.jpg", NoFile), false),
                     new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, 3,NoFile, NoFile), true),
-                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,0,0,5), 2, 4, 3,"Field.jpg", NoFile), true),
+                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,5,5,5), 2, 4, 3,"Field.jpg", NoFile), true),
                     new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, 3,NoFile, NoFile), true),
                     new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, 3, NoFile, NoFile), false),
                     new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, 3, NoFile,NoFile), true),
@@ -90,22 +90,41 @@ public class BuildingHandler {
                 
                 public void update(GameTime T)
                 {
+                    if(this.BuildersBuilding != 0)
+                    {
+                        Iterator<Building> buildingIterator = BuildingsBeingConstructed.iterator();
+                        float J = getNumberofBuildersRequired();
+                        if(J == 0) return;
+                        float Ratio = (float)(BuildersBuilding/J);
+                        while(buildingIterator.hasNext())
+                        {
+                            Building myNext = buildingIterator.next();
+                            if(internalBuildingList[myNext.getIndex()].Available)
+                            {
+                                myNext.update(T, Ratio);
+                                if(myNext.isFinishedBuilding())
+                                {
+                                    myNext.forceBuildAtLocation(myNext.getBuildingTile(), myTribe);
+                                    BuildingsBuilt.add(myNext);
+                                    buildingIterator.remove();
+                                }
+                            }   
+                        }
+                    }
+                }
+                
+                private int getNumberofBuildersRequired()
+                {
+                    int ret = 0;
                     Iterator<Building> buildingIterator = BuildingsBeingConstructed.iterator();
                     while(buildingIterator.hasNext())
                     {
-                        Building myNext = buildingIterator.next();
-                        if(internalBuildingList[myNext.getIndex()].Available)
-                        {
-                            myNext.update(T);
-                            if(myNext.isFinishedBuilding())
-                            {
-                                myNext.forceBuildAtLocation(myNext.getBuildingTile(), myTribe);
-                                BuildingsBuilt.add(myNext);
-                                buildingIterator.remove();
-                            }
-                        }   
+                        Building aBuilding = buildingIterator.next();
+                        ret += aBuilding.getRequiredBuildersAmount();
                     }
+                    return ret;
                 }
+                
                 
 		public void forceBuild(String aBuildingName, MapTile aLocation)
                 {

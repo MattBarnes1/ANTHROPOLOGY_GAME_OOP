@@ -53,7 +53,7 @@ public class MapTile_Land extends MapTile{
                     {
                         return "Land, "+ this.myBuilding.getBuildingName();
                     } else {
-                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionAmount();
+                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionPercentage()*100 + "%";
                     }
                 } else {
                     return "Land" ;

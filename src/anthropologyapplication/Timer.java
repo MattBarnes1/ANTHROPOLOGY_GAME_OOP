@@ -25,23 +25,39 @@ public class Timer {
         CorrectTime();
     }
 
+    private Timer(int Days, int Hours, int Minutes, int Seconds, int MS) {
+        this.Days = Days;
+        this.Hours = Hours;
+        this.Minutes = Minutes;
+        this.Seconds = Seconds;
+        this.Milliseconds = MS;
+        CorrectTime();
+    }
+
     private void CorrectTime() {
+        while(Milliseconds >= 1000)
+        {
+            int Remainder = Milliseconds % 1000;
+            int totalSeconds = (int)((Milliseconds-Remainder)/1000);
+            Milliseconds = Remainder;
+            Seconds += totalSeconds; 
+        }
         while (Seconds >= 60) {
             int Remainder = Seconds % 60;
             int totalMinutes = (int) ((Seconds - Remainder) / 60);
-            Seconds = (short) Remainder;
+            Seconds = Remainder;
             Minutes += totalMinutes;
         }
         while (Minutes >= 60) {
             int Remainder = Minutes % 60;
             int totalHours = (int) ((Minutes - Remainder) / 60);
-            Minutes = (short) Remainder;
+            Minutes =  Remainder;
             Hours += totalHours;
         }
         while (Hours >= 24) {
             int Remainder = Hours % 24;
             int totalDays = (int) ((Hours - Remainder) / 24);
-            Hours = (short) Remainder;
+            Hours = Remainder;
             Days += totalDays;
         }
     }
@@ -62,7 +78,7 @@ public class Timer {
         CheckMinutes();
         CheckSeconds();
         CheckMilliseconds();
-        return new Timer(subtractLocalDay, subtractLocalHours, subtractLocalMinutes, subtractLocalSeconds);
+        return new Timer(subtractLocalDay, subtractLocalHours, subtractLocalMinutes, subtractLocalSeconds, (int)subtractLocalMilliseconds);
     }
 
     private void CheckDays() {
@@ -114,7 +130,7 @@ public class Timer {
 
     @Override
     public String toString() {
-        return "Days: " + this.Days + "Hours: " + this.Hours + "Minutes: " + this.Minutes + "Seconds: " + this.Seconds;
+        return "Days: " + this.Days + "Hours: " + this.Hours + "Minutes: " + this.Minutes + "Seconds: " + this.Seconds + "Milliseconds: " + this.Milliseconds;
     }
 
     public boolean EqualTo(Timer timer) {
@@ -151,6 +167,8 @@ public class Timer {
         return 0;
     }
 
-    
+    public Timer multiply(double Ratio) {
+        return new Timer((int)Math.floor(this.Days*Ratio), (int)Math.floor(this.Hours * Ratio),(int)Math.floor(this.Minutes*Ratio), (int)Math.floor(this.Seconds*Ratio), (int)Math.floor(this.Milliseconds*Ratio));
+    }
 
 }

@@ -44,4 +44,7 @@ public class WarriorTrainingDisplayData {
     {
         return myData.getCompletionPercentage();
     }
+    
+    
+    
 }

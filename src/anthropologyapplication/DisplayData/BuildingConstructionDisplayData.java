@@ -36,6 +36,10 @@ public class BuildingConstructionDisplayData {
     public String getTotalBuildTime() {
         return "" + aBuilding.getTotalBuildTime();
     }
-
+    
+    public double getCompletionPercentage()
+    {
+        return aBuilding.getCompletionPercentage();
+    }
     
 }

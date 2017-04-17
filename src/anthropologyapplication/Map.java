@@ -409,7 +409,7 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
                 InterpretPerlinNoise(AmountOfWater, AmountOfLand, values);
                 this.updateMessage("Linking map tiles!");
                 
-                System.out.println(toMapString());
+                //System.out.println(toMapString());
                 if(isValidMap())
                 {
                   generateSettlements();

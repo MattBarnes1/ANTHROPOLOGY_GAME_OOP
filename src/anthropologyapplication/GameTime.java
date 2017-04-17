@@ -63,8 +63,10 @@ public class GameTime implements java.io.Serializable {
 			} 
                     } else {
                         Millisecond += i;
+                        System.out.println("Before Correct 60000: " + this.toString());
                         correctTime();
-                        
+                        System.out.println("After Correct 60000: " + this.toString());
+                        int I = 0;
                         
                     }
                 if(lastUpdateCall == null)
@@ -127,7 +129,7 @@ public class GameTime implements java.io.Serializable {
 	}
 
         private void correctTime() {
-        if (Millisecond >= 1000)
+        while(Millisecond >= 1000)
         {
             
             int Remainder = Millisecond % 1000;
@@ -135,7 +137,7 @@ public class GameTime implements java.io.Serializable {
             Millisecond = Remainder;
             Seconds += totalSeconds;
         }
-        if (Seconds >= 60)
+        while(Seconds >= 60)
         {
             
             int Remainder = Seconds % 60;
@@ -143,39 +145,41 @@ public class GameTime implements java.io.Serializable {
             Seconds = (short)Remainder;
             Minutes += totalMinutes;
         }
-        if (Minutes >= 60)
+        while (Minutes >= 60)
         {
             int Remainder = Minutes % 60;
             int totalHours = (int)((Minutes-Remainder)/60);
             Minutes = (short)Remainder;
             Hours += totalHours;
         }
-        if (Hours >= 24)
+        while(Hours >= 24)
         {
             int Remainder = Hours % 24;
             int totalDays = (int)((Hours-Remainder)/24);
             Hours = (short)Remainder;
             currentDayNumber += totalDays;
-        } else {
-            return;
         }
         
-        if(currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+        while(currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
         {
-                int Remainder = currentDayNumber % CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex];
-                int totalMonths = (int)((currentDayNumber-Remainder)/CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex]);
-                currentDayNumber = Remainder;
-                currentDayNameIndex = Remainder % CalendarData.CalendarDayNames.length;
-                currentMonthNameIndex += totalMonths;
+                int Remainder = 0;
+                if(currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex] > 0)
+                {
+                    currentDayNumber = currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex];
+                    if(currentMonthNameIndex + 1 >= CalendarData.CalendarMonthNames.length)
+                    {
+                        currentMonthNameIndex = 0;
+                        Year++;
+                    } else {
+                        currentMonthNameIndex++;
+                    }
+                }
+                else {
+                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+                }
         }
+
         
-        if(currentMonthNameIndex > CalendarData.CalendarMonthNames.length)
-        {
-            currentMonthNameIndex = 0;
-            Year++;
-        } else {
-            currentMonthNameIndex++;
-        }
         
     }
         
@@ -236,7 +240,7 @@ public class GameTime implements java.io.Serializable {
 	@Override
         public String toString()
         {
-            return "MS: " + this.Millisecond;
+            return "Years: " + this.Year + "Months: " + this.currentMonthNameIndex + "Days: " + this.currentDayNumber + "Hours: " + Hours + ":" + Minutes + ":" + Seconds + ":" + this.Millisecond;
         }
 
 	
