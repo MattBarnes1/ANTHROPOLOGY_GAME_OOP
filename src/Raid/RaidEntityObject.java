@@ -8,7 +8,10 @@ package Raid;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Path;
+import anthropologyapplication.Timer;
+import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Warrior;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -23,16 +26,46 @@ public class RaidEntityObject {
     private Path myPathFinding;//Will be created in AI Thread
     int currentPathIndex = 0;
     private Image myImageOnMap;
-    public RaidEntityObject(MapTile Destination, MapTile StartingPoint, Warrior[] myWarriors)
+    Iterator<MapTile> myTiles = myPathFinding.getInternalPath();
+    Warrior[] myWarriors;
+    private final Timer updateTime;
+    private Timer countdownTimer;
+    private TribalCampObject myOwner;
+    public RaidEntityObject(TribalCampObject Owner, MapTile Destination, MapTile StartingPoint, Warrior[] myWarriors)
     {
+        this.myOwner = Owner;
+        updateTime = new Timer(1,0,0,0);
+        countdownTimer = new Timer(1,0,0,0);
+        this.myWarriors = myWarriors;
         currentMapTile = StartingPoint;
-        myPathFinding = new Path(StartingPoint, Destination);        
-        myRaider = new RaidEntityAI(this); 
+        myPathFinding = new Path(StartingPoint, Destination);   
+    }
+    boolean startedRaid = false;
+    public void startRaid()
+    {
+        startedRaid = true;
     }
     
     public void update(GameTime MS)
     {
-        
+        if(startedRaid)
+        {
+            countdownTimer = countdownTimer.subtract(MS.getElapsedTime());
+            if(countdownTimer.EqualTo(new Timer(0,0,0,0)))
+            {
+                MapTile hiddenTile = myTiles.next();
+                if(hiddenTile == null)
+                {
+                    Raid(currentMapTile);
+                } else {
+                    currentMapTile = hiddenTile;
+                }
+            }
+        }
     }
     
+    private void Raid(MapTile aTile)
+    {
+        
+    }
 }

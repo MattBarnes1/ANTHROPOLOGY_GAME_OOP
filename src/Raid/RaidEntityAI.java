@@ -12,7 +12,7 @@ import javafx.concurrent.Task;
  *
  * @author Duke
  */
-public class RaidEntityAI extends Service{
+public class RaidEntityAI extends Service {
     RaidEntityObject myObject;
     RaidEntityAI(RaidEntityObject aThis) {
         myObject = aThis;
@@ -20,7 +20,7 @@ public class RaidEntityAI extends Service{
 
     @Override
     protected Task createTask() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

@@ -147,6 +147,10 @@ public class MainGameCode {
         myEnemyArray = myMap.getCamps();
         myDisplay.displayMainGameScreen(this);
         playersCamp.setHomeTile(myMap.getPlayerMapTile());
+        for(AICampObject A : myEnemyArray)
+        {
+            A.startAI();
+        }
         myTimer.start();
     }
     

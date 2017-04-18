@@ -28,6 +28,12 @@ import java.util.logging.Logger;
  * @author Duke
  */
 public class FileLogger {
+    
+    public enum LOGTO
+    {
+        PATHFINDER, //Only need to modify this to make new log file
+        CAMP_AI
+    }
     protected static Lock aLock;
     protected FileWriter myWriter = null;
     protected static FileLogger myInternalLogger;
@@ -79,10 +85,6 @@ public class FileLogger {
         return salt;
     }
     
-    public enum LOGTO
-    {
-        PATHFINDER //Only need to modify this to make new log file
-    }
     
     public static void enableWriteToLog()
     {
