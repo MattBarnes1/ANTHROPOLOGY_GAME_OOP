@@ -5,6 +5,7 @@
  */
 package TradeGoods;
 
+import Buildings.Smelterer;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
@@ -20,7 +21,12 @@ class Unsmelted_Copper extends TradeGood {
     }
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.getAmount() > 10 && myObject.getBuildingHandler().hasWorking(Smelterer.class))
+        {
+            myObject.getProductionHandler().unlockTradeGood(Unsmelted_Copper.class);
+        } else {
+            myObject.getProductionHandler().unlockTradeGood(Unsmelted_Copper.class);
+        }
     }
     
 }

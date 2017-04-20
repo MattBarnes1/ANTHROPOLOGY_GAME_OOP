@@ -279,7 +279,7 @@ public class MainGameScreenController implements Initializable {
 
     public void redrawMap()
     {
-        
+        AutoMapperGui.redrawMap();
         //myAutomapper.setCanvas(CanvasMapDisplay.getGraphicsContext2D(), CanvasMapDisplay.getWidth(), CanvasMapDisplay.getHeight());
         myAutomapper.Draw();
     }

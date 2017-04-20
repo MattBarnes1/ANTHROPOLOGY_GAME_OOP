@@ -61,7 +61,7 @@ public class PerlinNoiseGeneratorForTerrain extends Service {
             }
 
             private void generateWhiteNoise() {
-                Random random = new Random(Seed); //Seed to 0 for testing
+                Random random = new Random(); //Seed to 0 for testing
                 WhiteNoiseArray = new float[arrayX][arrayY];
                 smoothArray = new float[arrayX][arrayY];
                 for (int i = 0; i < arrayX; i++) {

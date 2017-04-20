@@ -8,6 +8,7 @@ package TradeGoods;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
+import anthropologyapplication.Warriors.Spearmen;
 
 /**
  *
@@ -21,7 +22,7 @@ class Smelted_Copper extends TradeGood {
 
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
 }

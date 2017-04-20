@@ -81,6 +81,7 @@ public class FoodHandler {
        if(FarmerAmount != 0)
        {
             totalFood += (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
+            totalFood -= this.myTribe.getPopulationHandler().getFoodConsumptionPerDayInPerMilliSecond();
        }
       // System.out.println("Food: " + totalFood);
     }

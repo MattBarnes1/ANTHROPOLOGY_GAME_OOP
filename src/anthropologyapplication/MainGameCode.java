@@ -6,6 +6,7 @@
 package anthropologyapplication;
 
 import AIStuff.AICampObject;
+import Raid.RaidEntityWorldProducer;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
@@ -76,15 +77,16 @@ public class MainGameCode {
                     } else {
                         WorldTime.Update(10);
                     }
+                    RaidEntityWorldProducer.update(WorldTime);
                     for(AICampObject anObject : myEnemyArray)
                     {
                         anObject.update(WorldTime);
                     }
+                    playersCamp.update(WorldTime);
                     mainHandler.updateFood(playersCamp.getFoodHandler().getTotalFood());
                     mainHandler.updateBuildQueue();
                     mainHandler.updateTime(WorldTime.getTimeString12Hour());
                     mainHandler.drawMainGameScreenMap();
-                    playersCamp.update(WorldTime);
                     //myMapper.Draw(Automapper.getGraphicsContext2D());
 
                     updateInternalTime = 0D;
@@ -306,7 +308,37 @@ public class MainGameCode {
     }
 
     public void setProductionFocus(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(playersCamp.getProductionHandler().canAddTradeGood())
+        {
+            playersCamp.getProductionHandler().addProductionItem(text);
+        } else {
+            this.myDisplay.setErrorMessage("You're not able to add a new item because there's not enough producers!");
+        }
+    }
+
+    public void continueGamePressed() {
+        this.myDisplay.displayMainGameScreen(this);
+        this.unpauseGame();
+    }
+
+    public void loadGameHasBeenPressed() {
+        myDisplay.displayLoadGameDisplay(this);
+    }
+
+    public void startLoadingFromFile(File theFileToLoadFrom)
+    {
+        
+    }
+    
+    public void SaveGameHasBeenPressed() {
+        this.saveGame();
+        myDisplay.displaySaveGameGUI(this, playersCamp); //so they can name it and save it
+    }
+
+    public void returningToMainMenu() {
+        myEnemyArray = null;
+        playersCamp = null;
+        myDisplay.displayMainMenuGUI(this);
     }
 
  

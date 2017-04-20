@@ -122,4 +122,8 @@ public class TribalCampObject {
     Object getMapTileLocation() {
         return this.HomeTile;
     }
+
+    PopulationHandler getPopulationHandler() {
+        return this.myPopulationHandler;
+    }
 }

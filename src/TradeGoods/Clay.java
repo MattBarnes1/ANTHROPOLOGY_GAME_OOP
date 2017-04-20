@@ -5,6 +5,9 @@
  */
 package TradeGoods;
 
+import Buildings.Blacksmith;
+import Buildings.Homes;
+import Buildings.Smelterer;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
@@ -21,7 +24,27 @@ class Clay extends TradeGood {
 
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         if(super.getAmount() > 20 && myObject.getProductionHandler().getAmountByString("Wood") > 20)
+         {
+            myObject.getBuildingHandler().unlockBuilding(Homes.class);
+         }
+         else {
+            myObject.getBuildingHandler().lockBuilding(Homes.class);
+         }
+         if(super.getAmount() > 50 && myObject.getProductionHandler().getAmountByString("Wood") > 50
+                 && myObject.getProductionHandler().getAmountByString("Stone") > 50)
+         {
+            myObject.getBuildingHandler().unlockBuilding(Smelterer.class);
+         } else {
+             myObject.getBuildingHandler().lockBuilding(Smelterer.class);
+         }
+         if(super.getAmount() > 100 && myObject.getProductionHandler().getAmountByString("Wood") > 100
+                 && myObject.getProductionHandler().getAmountByString("Stone") > 100)
+         {
+            myObject.getBuildingHandler().unlockBuilding(Blacksmith.class);
+         } else {
+             myObject.getBuildingHandler().lockBuilding(Blacksmith.class);
+         }
     }
 
 

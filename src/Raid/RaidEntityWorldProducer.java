@@ -30,7 +30,7 @@ public class RaidEntityWorldProducer {
     
     public static void createEntity(TribalCampObject OriginTribe, MapTile Origin, MapTile Destination, Warrior[] WarriorsToSend)
     {
-        myEntities.add(new RaidEntityObject(Origin, Destination, OriginTribe, WarriorsToSend));
+        myEntities.add(new RaidEntityObject(OriginTribe, Origin, Destination, WarriorsToSend));
     }
     
     

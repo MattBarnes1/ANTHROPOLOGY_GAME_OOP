@@ -21,14 +21,33 @@ public class Smelterer extends Building {
         
     }
 
-    @Override
-    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Smelterer(Smelterer aThis) {
+        super(aThis.getBuildingName(),aThis.getDescription(), aThis.BuildTimeToBuild, aThis.getIndex(),aThis.getRequiredBuildersAmount(),  aThis.getTerritorySize(), aThis.getForeGroundImageName(), aThis.getForeGroundDestroyedImageName());
     }
 
     @Override
+    public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
+        
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject));
+    }
+
+    @Override
+    void onUnlock(TribalCampObject anObject) {
+        anObject.getProductionHandler().unlockTradeGood(Unsmelted_Copper.class);
+        anObject.getProductionHandler().unlockTradeGood(Smelted_Copper.class);
+    }
+
+    @Override
+    void onLock(TribalCampObject anObject) {
+        anObject.getProductionHandler().lockTradeGood(Unsmelted_Copper.class);
+        anObject.getProductionHandler().lockTradeGood(Smelted_Copper.class);
+    }
+
+    
+    
+    @Override
     public Building Copy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return new Smelterer(this);
     }
     
 }

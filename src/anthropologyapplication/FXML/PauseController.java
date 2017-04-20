@@ -27,8 +27,6 @@ public class PauseController implements Initializable {
         // TODO
     }    
     
-    MainGameCode myCode;
-    
     MainGameCode myMain;
     
     public void setMainGameCode(MainGameCode aThis) {
@@ -37,17 +35,21 @@ public class PauseController implements Initializable {
 
     @FXML
     private void ReturnToMainMenuPressed(ActionEvent event) {
+        myMain.returningToMainMenu();
     }
 
     @FXML
     private void SaveGamePressed(ActionEvent event) {
+        myMain.SaveGameHasBeenPressed();
     }
 
     @FXML
     private void LoadGamePressed(ActionEvent event) {
+        myMain.loadGameHasBeenPressed();
     }
 
     @FXML
     private void ContinueGame(ActionEvent event) {
+        myMain.continueGamePressed();
     }
 }

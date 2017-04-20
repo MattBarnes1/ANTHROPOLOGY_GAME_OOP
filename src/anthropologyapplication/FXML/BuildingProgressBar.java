@@ -5,10 +5,19 @@
  */
 package anthropologyapplication.FXML;
 
+import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
+
 /**
  *
  * @author noone
  */
-public class BuildingProgressBar {
+public class BuildingProgressBar extends javafx.scene.control.ProgressBar {
+    private javafx.scene.control.Label;
+    private final BuildingConstructionDisplayData BuildingData;
+    public BuildingProgressBar(BuildingConstructionDisplayData myData)
+    {
+        this.BuildingData = myData;
+        //Programmatically create Label over the bar
+    }
     
 }

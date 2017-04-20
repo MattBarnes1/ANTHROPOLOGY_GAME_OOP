@@ -39,6 +39,7 @@ public class SocialValuesSelectionController implements Initializable {
     private Button NextButton;
     @FXML
     private CheckBox Choice1;
+
     @FXML
     private CheckBox Choice2;
     /**

@@ -33,6 +33,7 @@ public class RaidEntityObject {
     private TribalCampObject myOwner;
     public RaidEntityObject(TribalCampObject Owner, MapTile Destination, MapTile StartingPoint, Warrior[] myWarriors)
     {
+        myImageOnMap = new Image("anthropologyapplication/UnexploredTile.jpeg");
         this.myOwner = Owner;
         updateTime = new Timer(1,0,0,0);
         countdownTimer = new Timer(1,0,0,0);
@@ -63,6 +64,13 @@ public class RaidEntityObject {
             }
         }
     }
+    
+    public Warrior[] getWarriors()
+    {
+        return this.myWarriors;
+    }
+    
+    
     
     private void Raid(MapTile aTile)
     {

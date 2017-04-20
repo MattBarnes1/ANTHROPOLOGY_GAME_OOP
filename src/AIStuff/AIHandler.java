@@ -123,7 +123,7 @@ public class AIHandler extends Service {
             public void onEnter() {
                 writeToCampAILog("Entering State: Expanding");
                 /////////////////////////////////////////////////////////////////////////
-                //We could possibly pregenerate data here to make Execute execute faster
+                //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
