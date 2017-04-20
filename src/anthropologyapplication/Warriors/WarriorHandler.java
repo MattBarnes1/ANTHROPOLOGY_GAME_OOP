@@ -199,4 +199,12 @@ public class WarriorHandler {
         Error = null;
         return myRet;
     }
+
+    public void unlockWarrior(Class<Spearmen> aClass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void lockWarrior(Class<Spearmen> aClass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

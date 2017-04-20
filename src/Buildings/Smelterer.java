@@ -33,14 +33,14 @@ public class Smelterer extends Building {
 
     @Override
     void onUnlock(TribalCampObject anObject) {
-        anObject.getProductionHandler().unlockTradeGood(Unsmelted_Copper.class);
-        anObject.getProductionHandler().unlockTradeGood(Smelted_Copper.class);
+        anObject.getProductionHandler().unlockTradeGood(TradeGoods.Unsmelted_Copper.class);
+        anObject.getProductionHandler().unlockTradeGood(TradeGoods.Smelted_Copper.class);
     }
 
     @Override
     void onLock(TribalCampObject anObject) {
-        anObject.getProductionHandler().lockTradeGood(Unsmelted_Copper.class);
-        anObject.getProductionHandler().lockTradeGood(Smelted_Copper.class);
+        anObject.getProductionHandler().lockTradeGood(TradeGoods.Unsmelted_Copper.class);
+        anObject.getProductionHandler().lockTradeGood(TradeGoods.Smelted_Copper.class);
     }
 
     

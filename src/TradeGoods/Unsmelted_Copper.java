@@ -14,7 +14,7 @@ import anthropologyapplication.TribalCampObject;
  *
  * @author noone
  */
-class Unsmelted_Copper extends TradeGood {
+public class Unsmelted_Copper extends TradeGood {
 
     public Unsmelted_Copper(String Name, int startingTradeGoodAmount, Timer ProductionTime, int baseSellVal) {
         super(Name, startingTradeGoodAmount,ProductionTime, baseSellVal);
