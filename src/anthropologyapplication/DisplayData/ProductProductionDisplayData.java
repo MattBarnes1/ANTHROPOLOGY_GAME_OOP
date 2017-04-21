@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.DisplayData;
 
-import TradeGoods.TradeGood;
+import anthropologyapplication.TradeGoods.TradeGood;
 
 /**
  *

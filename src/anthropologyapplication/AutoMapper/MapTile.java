@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.AutoMapper;
 
-import Buildings.Building;
+import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.AutoMapper.*;
 import anthropologyapplication.TribalCampObject;
@@ -42,6 +42,7 @@ public abstract class MapTile {
     protected boolean Destination;
     public MapTile(String filenameInAutomapperData)
     {
+        
         ImageName = filenameInAutomapperData;
         myImage = new Image("anthropologyapplication/AutoMapper/" + filenameInAutomapperData);
         while(myImage.isBackgroundLoading());
@@ -121,7 +122,7 @@ public abstract class MapTile {
     {
         Explored = aBool;
     }  
-    AlphaComposite Building = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75F);
+    //AlphaComposite Building = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75F);
     public void Draw(int x, int y, WritableImage aGameCanvas) 
     {//TODO: int or double here?
         if(!Explored)
@@ -129,15 +130,22 @@ public abstract class MapTile {
             aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), DefaultImageUnexplored.getPixelReader(), 0, 0);
         } 
         else {
-            aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);            
-            if(tileBuilding != null)
-            {
-                aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileBuilding.getPixelReader(), 0, 0);
-            }
+            //aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);   
+       
             if(tileTerritory != null)
             {
-                aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
+               aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
             }
+            
+            if(tileBuilding != null)
+            {
+                if(this.myBuilding.isFinishedBuilding())
+                {
+                    aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileBuilding.getPixelReader(), 0, 0);
+                } else {
+                    aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myConstruction.getPixelReader(), 0, 0);    
+                }
+            }  
         }
     }
 
@@ -151,6 +159,8 @@ public abstract class MapTile {
         b_isLand = b;
     }
 
+    private static Image myConstruction = new Image("anthropologyapplication/AutoMapper/Construction.jpg");;
+    
     private String TileSubType;
     public void setSubtype(String subType) {
         TileSubType = subType;
@@ -302,6 +312,11 @@ public abstract class MapTile {
        if(ForegroundImageFileName.compareTo("NoFile") != 0) tileBuilding = new Image("anthropologyapplication/AutoMapper/" + ForegroundImageFileName);
     }
 
+    public boolean hasBuilding()
+    {
+        return (myBuilding != null);
+    }
+    
     
     
 
@@ -313,10 +328,10 @@ public abstract class MapTile {
         return BuildingName;
     }
     
-    public void setBuildingName(String aString)
-    {
-        BuildingName = aString;
-    }
+    //public void setBuildingName(String aString)
+    //{
+     //   BuildingName = aString;
+    //}
     
     public void setTerritory(TribalCampObject myObject)
     {
@@ -383,6 +398,7 @@ public abstract class MapTile {
     protected Building myBuilding = null;
     public void setBuildingOnThis(Building aThis) {
         myBuilding = aThis;
+        this.BuildingName = myBuilding.getBuildingName();
         this.setForeground1Image(aThis.getForeGroundImageName());
     }
 
@@ -417,9 +433,6 @@ public abstract class MapTile {
         this.Destination = false;
     }
 
-    public boolean hasBuilding() {
-        return (this.myBuilding != null);
-    }
     
     public enum TERRITORY_IMAGE
     {
@@ -441,7 +454,7 @@ public abstract class MapTile {
     {
         return myTerritoryImage;
     }
-    
+   
     public void setTerritoryImage(TERRITORY_IMAGE ForegroundImageFileName)
     {
         myTerritoryImage = ForegroundImageFileName;

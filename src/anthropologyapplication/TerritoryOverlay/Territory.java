@@ -18,6 +18,8 @@ import anthropologyapplication.TribalCampObject;
 public class Territory {
     int gridsizeX;
     int gridsizeY;
+    int gridsizeXOffset = 0;
+    int gridsizeYOffset = 0;
     MapTile[][] myTerritoryLocation;
     TribalCampObject whoOwnsIt;
     public Territory(int gridsize)
@@ -32,84 +34,81 @@ public class Territory {
     {
         whoOwnsIt = whoseTerritory;
         Vector3 Coordinates = HomeTile.getCoordinates();
-        Vector3 StartingCoordinatesLoop = new Vector3(Coordinates.X - gridsizeX, Coordinates.Y - gridsizeY, 0);
-        MapTile leftUpperCorner = HomeTile;
-        int MidPoint = (int)Math.ceil(gridsizeX/2);
-        for(int i = 1; i < MidPoint; i++)
+        int MidPoint = (int)Math.ceil(((float)gridsizeX)/2);
+        myTerritoryLocation[MidPoint][MidPoint] = HomeTile;
+        MapTile OriginTile = HomeTile;
+        for(int i = MidPoint-1; i > 0; i--)
         {
-            if(leftUpperCorner != null)
+            if(OriginTile.getNorthwest() != null)
             {
-                leftUpperCorner.setTerritory(whoOwnsIt);
-                leftUpperCorner = leftUpperCorner.getNorthwest();
-                myTerritoryLocation[MidPoint-1-i][MidPoint-1-i] = leftUpperCorner;
+                OriginTile = OriginTile.getNorthwest();
+            } else {
+                if(OriginTile != null)
+                {
+                    if(OriginTile.getNorth() != null && OriginTile.getWest() == null)
+                    {
+                        gridsizeXOffset++;
+                    }
+                    else if(OriginTile.getNorth() == null && OriginTile.getWest() != null)
+                    {
+                        gridsizeYOffset++;
+                    }
+                    else {
+                        gridsizeXOffset++;
+                        gridsizeYOffset++;
+                    }
+                }
+            }
+        }
+        myTerritoryLocation[gridsizeXOffset][gridsizeYOffset] = OriginTile;
+                
+        for(int x = gridsizeXOffset; x < gridsizeX; x++)
+        {
+            if(myTerritoryLocation[x][0] != null)
+            {
+                for(int y = gridsizeYOffset; y < gridsizeY; y++)
+                {
+                    if(myTerritoryLocation[x][y] != null)
+                    {
+                        if(myTerritoryLocation[x][y].getSouth() != null)
+                        {
+                            if(y+1 < gridsizeY) //to prevent index problem
+                            {
+                                myTerritoryLocation[x][y+1] = myTerritoryLocation[x][y].getSouth();
+                                myTerritoryLocation[x][y+1].setTerritory(whoOwnsIt);
+                            }
+                            if(x+1 < gridsizeX)
+                            {
+                                myTerritoryLocation[x+1][y] = myTerritoryLocation[x][y].getEast();
+                                myTerritoryLocation[x+1][y].setTerritory(whoOwnsIt);
+                            }
+                        } else {
+                            gridsizeY--;
+                        }
+                    }
+                }
             } else {
                 gridsizeX--;
-                myTerritoryLocation[MidPoint-1-i][MidPoint-1-i] = null;
             }
         }
-       
-        fillRecursion(0, 0);
         
-  
+        for(int x = gridsizeXOffset; x < gridsizeX; x++)
+        {
+           for(int y = gridsizeYOffset; y < gridsizeY; y++)
+           {
+               decideTerritoryImage(x,y);
+           }
+        }
+        
     }
     
     
-    private void fillRecursion(int x, int y)
-    {
-        if(x + 1 < gridsizeX)
-        {
-            if(myTerritoryLocation[x][y] != null)
-            {
-                if(myTerritoryLocation[x+1][y] == null && myTerritoryLocation[x][y].getEast() != null)
-                {
-                    myTerritoryLocation[x+1][y] = myTerritoryLocation[x][y].getEast();
-                    myTerritoryLocation[x][y].getEast().setTerritory(whoOwnsIt);
-                    fillRecursion(x+1, y);
-                }
-            }
-        }
-        if(x-1 > 0)
-        {
-            if(myTerritoryLocation[x][y] != null)
-            {
-                if(myTerritoryLocation[x-1][y] == null && myTerritoryLocation[x][y].getWest() != null)
-                {
-                    myTerritoryLocation[x-1][y] = myTerritoryLocation[x][y].getWest();
-                    myTerritoryLocation[x][y].getWest().setTerritory(whoOwnsIt);
-                    fillRecursion(x-1, y);
-                }
-            }
-        }
-        if(y+1 < gridsizeY)
-        {
-            if(myTerritoryLocation[x][y] != null)
-            {
-                if(myTerritoryLocation[x][y+1] == null && myTerritoryLocation[x][y].getNorth() != null)
-                {
-                    myTerritoryLocation[x][y+1] = myTerritoryLocation[x][y].getNorth();
-                    myTerritoryLocation[x][y].getNorth().setTerritory(whoOwnsIt);
-                    fillRecursion(x, y+1);
-                }
-            }
-        }
-        if(y-1 > 0)
-        {
-            if(myTerritoryLocation[x][y] != null)
-            {
-                if(myTerritoryLocation[x][y-1] == null && myTerritoryLocation[x][y].getSouth() != null)
-                {
-                    myTerritoryLocation[x-1][y-1] = myTerritoryLocation[x][y].getSouth();
-                    myTerritoryLocation[x][y].getSouth().setTerritory(whoOwnsIt);
-                    fillRecursion(x, y-1);
-                }
-            }
-        }
-    }
+    
     
     private void decideTerritoryImage(int x, int y)
     {
         
-        if(x == 0 && y != 0 && y < gridsizeY-1)//Left Edge
+        if(x == gridsizeXOffset && y != gridsizeYOffset && y < gridsizeY-1)//Left Edge
         {
             if(myTerritoryLocation[x][y] != null)
             {
@@ -119,13 +118,14 @@ public class Territory {
                     if(aTerritory.isTerritoryOf(whoOwnsIt))
                     {
                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
+                        changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getWest());
                     } else {
                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
                     }
                 }
             }
         }
-        else if(y == 0 && x != 0 && x < gridsizeX-1) //Top, not corner Edge
+        else if(y == gridsizeYOffset && x != gridsizeXOffset && x < gridsizeX-1) //Top, not corner Edge
         {
             if(myTerritoryLocation[x][y] != null)
             {
@@ -134,14 +134,15 @@ public class Territory {
                        MapTile aTerritory = myTerritoryLocation[x][y].getNorth();
                        if(aTerritory.isTerritoryOf(whoOwnsIt))
                        {
-                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);                          
+                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
+                         changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getNorth());                          
                        } else {
                             myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
                        }
                     }
             }
         }
-        else if(x == 0 && y == 0) //Top Left Corner Edge
+        else if(x == gridsizeXOffset && y == gridsizeYOffset) //Top Left Corner Edge
         {
             boolean ownsNorth = false;
             boolean ownsWest = false;
@@ -166,10 +167,12 @@ public class Territory {
                 if(ownsNorth && !ownsWest)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getNorth());
                 } 
                 else if (!ownsNorth && ownsWest)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getWest());
                 }
                 else if (!ownsNorth && !ownsWest)
                 {
@@ -181,7 +184,7 @@ public class Territory {
                 }
             }
         }
-        else if(x == 0 && y == gridsizeY-1) //Bottom Left
+        else if(x == gridsizeXOffset && y == gridsizeY-1) //Bottom Left
         {
                 boolean ownsSouth = false;
                 boolean ownsWest = false;
@@ -205,10 +208,12 @@ public class Territory {
                 if(ownsSouth && !ownsWest)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getSouth());
                 } 
                 else if (!ownsSouth && ownsWest)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getWest());
                 }
                 else if (!ownsSouth && !ownsWest)
                 {
@@ -219,9 +224,9 @@ public class Territory {
                     //TODO: Corner Piece
                 }
         }
-        else if(x == gridsizeX && y == 0) //Upper left
+        else if(x == gridsizeX-1 && y == gridsizeYOffset) //Upper left
         {
-            boolean ownsNorth = false;
+                boolean ownsNorth = false;
                 boolean ownsEast = false;
                 boolean ownsNorthEast = false; //Used for determining if we're using a corner piece only      
                 
@@ -243,10 +248,12 @@ public class Territory {
                 if(ownsNorth && !ownsEast)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getEast());
                 } 
                 else if (!ownsNorth && ownsEast)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NORTH);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getNorth());
                 }
                 else if (!ownsNorth && !ownsEast)
                 {
@@ -257,42 +264,43 @@ public class Territory {
                     //TODO: Corner Piece
                 }
         }
-        else if(x == gridsizeX && y < gridsizeY-1 && y > 0) //Right side side
+        else if(x == gridsizeX-1 && y < gridsizeY-1 && y > gridsizeYOffset) //Right side side
         {
             if(myTerritoryLocation[x][y] != null)
             {
                 if(myTerritoryLocation[x][y].getEast() != null)
                 {
                     MapTile aTerritory = myTerritoryLocation[x][y].getEast();
-                    if(aTerritory == null)
+
+                    if(aTerritory.isTerritoryOf(whoOwnsIt))
                     {
-                        if(aTerritory.isTerritoryOf(whoOwnsIt))
-                        {
-                             myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
-                        } else {
-                             myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
-                        }
+                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getEast());
+                    } else {
+                         myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
                     }
-                        
                 }
             }
         }
-        else if(y == gridsizeY && x > 0 && x < gridsizeX-1) //Bottom Edge
+        else if(y == gridsizeY-1 && x > gridsizeXOffset && x < gridsizeX-1) //Bottom Edge
         {
             if(myTerritoryLocation[x][y] != null)
             { 
-                if(myTerritoryLocation[x][y].getWest() != null)
+                if(myTerritoryLocation[x][y].getSouth() != null)
                 {
-                    MapTile aTerritory = myTerritoryLocation[x][y].getWest();
+                    MapTile aTerritory = myTerritoryLocation[x][y].getSouth();
                    if(aTerritory.isTerritoryOf(whoOwnsIt))
-                   {
-                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.WEST);
+                   {     
+                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.NONE); 
+                        changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getSouth());              
+                   } else {
+                        myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTH);  
                    }
                         
                 } 
             } 
         }
-        else if(x == gridsizeX && y == gridsizeY) //Bottom Right Corner
+        else if(x == gridsizeX-1 && y == gridsizeY-1) //Bottom Right Corner
         {
             if(myTerritoryLocation[x][y] != null)
             {
@@ -318,10 +326,12 @@ public class Territory {
                 if(ownsSouth && !ownsEast)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.EAST);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getSouth());
                 } 
                 else if (!ownsSouth && ownsEast)
                 {
                     myTerritoryLocation[x][y].setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+                    changeAdjacentTerritory(myTerritoryLocation[x][y], myTerritoryLocation[x][y].getEast());
                 }
                 else if (!ownsSouth && !ownsEast)
                 {
@@ -370,6 +380,69 @@ public class Territory {
                 {
                     myTerritoryLocation[x][y].setTerritory(whoOwnsIt);
                 }
+            }
+        }
+    }
+
+    private void changeAdjacentTerritory(MapTile changedTile, MapTile Changee) {
+        if(Changee.getNorth() == changedTile)
+        {
+            if(Changee.getTerritoryImage() == TERRITORY_IMAGE.NORTH)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NONE);  
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.NORTHEAST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.EAST);
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.NORTHWEST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.WEST);
+            }
+        }
+        if(Changee.getSouth() == changedTile)
+        {
+            if(Changee.getTerritoryImage() == TERRITORY_IMAGE.SOUTH)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NONE);  
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.SOUTHEAST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.EAST);
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.SOUTHWEST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.WEST);
+            }
+        }
+        if(Changee.getEast() == changedTile)
+        {
+            if(Changee.getTerritoryImage() == TERRITORY_IMAGE.EAST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NONE);  
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.SOUTHEAST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.NORTHEAST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NORTH);
+            }
+        }
+        if(Changee.getWest() == changedTile)
+        {
+            if(Changee.getTerritoryImage() == TERRITORY_IMAGE.WEST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NONE);  
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.SOUTHWEST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.SOUTH);
+            }
+            else if(Changee.getTerritoryImage() == TERRITORY_IMAGE.NORTHWEST)
+            {
+                Changee.setTerritoryImage(TERRITORY_IMAGE.NORTH);
             }
         }
     }

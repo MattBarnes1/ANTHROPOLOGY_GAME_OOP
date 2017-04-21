@@ -5,8 +5,8 @@
  */
 package anthropologyapplication;
 
-import Buildings.Building;
-import Buildings.Homes;
+import anthropologyapplication.Buildings.Building;
+import anthropologyapplication.Buildings.Homes;
 import java.util.ArrayList;
 /**
  *
@@ -19,6 +19,7 @@ public class PopulationHandler {
     private final float CONSUMPTION_WARRIORS = 1F; //Eat the most food per person
     private final float CONSUMPTION_BUILDERS = 0.75F; //Eat the 2nd most etc
     private final float CONSUMPTION_WORKERS = 0.5F;
+    private final float CONSUMPTION_FARMERS = 0.5F;
     private final float CONSUMPTION_FREE_CITIZENS = 0.25F; //eat the least
     private float dailyFoodUse = 0;
     public PopulationHandler(TribalCampObject myCamp)
@@ -31,33 +32,40 @@ public class PopulationHandler {
     private final Timer initialTimer;
     private Timer currentTimer;
     
-    private void updateTotalFoodUse() {
+    private void updateTotalFoodUse(GameTime MS) {
+        dailyFoodUse = 0;
         int freeCitizens = myTribe.getFreeCitizens();
         int Warriors = myTribe.getWarriorHandler().getWarriorsAmount();
         int Builders = myTribe.getBuildingHandler().getBuildersAmount();
         int Workers = myTribe.getProductionHandler().getProducersAmount();
-        dailyFoodUse += freeCitizens*CONSUMPTION_FREE_CITIZENS;
-        dailyFoodUse += Warriors*CONSUMPTION_WARRIORS;
-        dailyFoodUse += Builders*CONSUMPTION_BUILDERS;
-        dailyFoodUse += Workers*CONSUMPTION_WORKERS;
+        int farmers = myTribe.getProductionHandler().getProducersAmount();
+        dailyFoodUse += (freeCitizens*CONSUMPTION_FREE_CITIZENS);
+        dailyFoodUse += (farmers * CONSUMPTION_FARMERS);
+        dailyFoodUse += (Warriors*CONSUMPTION_WARRIORS);
+        dailyFoodUse += (Builders*CONSUMPTION_BUILDERS);
+        dailyFoodUse += (Workers*CONSUMPTION_WORKERS);
     }
     
     void update(GameTime MS) {
+        
         currentTimer.subtract(MS.getElapsedTime());
         if(currentTimer.EqualTo(new Timer(0,0,0,0)))
         {
             currentTimer = initialTimer;
             doPopulationGrowth();
         }
-        updateTotalFoodUse();
+        updateTotalFoodUse(MS);
     }
 
-    public float getFoodConsumptionPerDayInPerMilliSecond()
+    public float getFoodConsumptionPerDay()
     {
-        return ((((dailyFoodUse/24)/60)/60)/1000);//TODO: Fix
+        return dailyFoodUse;//TODO: Fix
     }
     
-    
+    public float getFoodConsumptionPerMS()
+    {
+        return dailyFoodUse/86400000;
+    }
     private void doPopulationGrowth() {
        ArrayList<Building> myBuildings = myTribe.getBuildingHandler().getAllBuiltBuildingsByType(Homes.class);
        int AmountInHomes = 0;

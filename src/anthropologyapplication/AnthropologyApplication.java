@@ -5,7 +5,7 @@
  */
 package anthropologyapplication;
 
-import Logger.FileLogger;
+import anthropologyapplication.Logger.FileLogger;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

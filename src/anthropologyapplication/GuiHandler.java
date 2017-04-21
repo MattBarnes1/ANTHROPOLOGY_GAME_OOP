@@ -172,6 +172,11 @@ public class GuiHandler {
     void updateFood(int totalFood) {
         mainGameScreenController.setFoodAvailable(totalFood);
     }
+
+    void setFarmingTabData(float foodProducedPerDay, float foodConsumptionPerDay) {
+        mainGameScreenController.setFoodConsumptionTab(foodConsumptionPerDay);
+        mainGameScreenController.setFoodProductionTab(foodProducedPerDay);
+    }
    
 
 }

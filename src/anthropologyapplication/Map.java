@@ -5,8 +5,8 @@
  */
 package anthropologyapplication;
 
-import AIStuff.AICampObject;
-import Logger.FileLogger;
+import anthropologyapplication.AIStuff.AICampObject;
+import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.AutoMapper.AutoMapperGui;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
@@ -52,7 +52,7 @@ public class Map extends Service{
     AutoMapperGui Automap;
     Map(int mapXAndYLength, MainGameCode aThis, AutoMapperGui automapper) {
     
-        
+        aMapToPrint = this;
         TerrainGenerator = new PerlinNoiseGeneratorForTerrain(0, mapXAndYLength, mapXAndYLength); 
         myCode = aThis;
         Automap = automapper;
@@ -126,7 +126,7 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
                {
                     if(pathFindFromTo(habitable.get(0), habitable.get(g))!= null)
                     {
-                        resetDebug();
+                        //resetDebug();
                         if(CheckPathNumber(habitable.get(0), habitable) < CheckPathNumber(habitable.get(g),habitable))
                         {
                             habitable.get(i).resetTown();
@@ -321,6 +321,8 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
         return Map.toString();
     }
 
+    private Map myMapClass;
+    
     String toMapString()
     {
         StringBuilder Map = new StringBuilder();
@@ -463,7 +465,7 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
             aMap.get(i).setDestinationMarker();
             if(pathFindFromTo(toCheck, aMap.get(i)) != null)
             {
-              resetDebug();
+//              resetDebug();
               Counter++;  
             }
             aMap.get(i).resetDestinationMarker();
@@ -474,56 +476,27 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
 
     
     private static Map aMapToPrint;
-    public static void printMap()
+    public static String getMapString()
     {
-        System.out.println(aMapToPrint.toMapString());
+        return aMapToPrint.toMapString();
     }
-    static void resetMap() {
-        aMapToPrint.resetDebug();
-    }
+    
    
     private Path pathFindFromTo(MapTile startTile, MapTile endTile) throws InterruptedException, IOException {
-        aMapToPrint = this;
+        
         assert(startTile != null && endTile != null);
         Path P = new Path(startTile, endTile);
         if(P.isValidPath())
         {
-           Iterator<MapTile> g = P.getInternalPath();
-            while(g.hasNext())
-            {
-                g.next().doPathfinderDebug();
-            }
-            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Success!"  + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
-            resetDebug();
             return P;
         }
-        Iterator<MapTile> g = P.getInternalPath();
-         while(g.hasNext())
-         {
-             g.next().doPathfinderDebug();
-         }
-        FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Failed!"  + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
-
-         resetDebug();
          return null;
-
     }
     
     
     
     //ArrayList<MapTile> TilesToBeConsidered = new ArrayList<MapTile>();
  
-
-    private void resetDebug()
-    {
-        for(int x = 0; x < this.mapXAndYLength; x++)
-        {
-            for(int y = 0; y < this.mapXAndYLength; y++)
-            {
-                  this.myMap[x][y].clearPathfinderDebug();
-            }
-        }
-    }
     
       
 

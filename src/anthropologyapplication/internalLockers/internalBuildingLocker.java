@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.internalLockers;
 
-import Buildings.Building;
+import anthropologyapplication.Buildings.Building;
 
 /**
  *

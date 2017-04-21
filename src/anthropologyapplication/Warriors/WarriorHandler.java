@@ -5,7 +5,7 @@
  */
 package anthropologyapplication.Warriors;
 import anthropologyapplication.Warriors.Clubmen;
-import TradeGoods.ProductionHandler;
+import anthropologyapplication.TradeGoods.ProductionHandler;
 import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.Timer;

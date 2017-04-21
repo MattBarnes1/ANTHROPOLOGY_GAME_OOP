@@ -5,11 +5,16 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,7 +50,51 @@ public class Path {
         return false;
     }
 
+    private void doPathfindingDebugSuccess() {
+        if(isValidPath())
+        {
+           Iterator<MapTile> g = getInternalPath();
+            while(g.hasNext())
+            {
+                g.next().doPathfinderDebug();
+            }
+            try {
+                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Success!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
+            } catch (IOException ex) {
+                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            g = getInternalPath();
+            while(g.hasNext())
+            {
+                g.next().clearPathfinderDebug();
+            }
+        }
+    }
 
+private void doPathfindingDebugFailure() {
+        if(isValidPath())
+        {
+           Iterator<MapTile> g = getInternalPath();
+            while(g.hasNext())
+            {
+                g.next().doPathfinderDebug();
+            }
+            try {
+                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Failure!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
+            } catch (IOException ex) {
+                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            g = getInternalPath();
+            while(g.hasNext())
+            {
+                g.next().clearPathfinderDebug();
+            }
+        }
+    }
     
 
         protected class internalIterator implements Iterator<MapTile>
@@ -123,6 +172,7 @@ public class Path {
                     convertToPath(Current);
                     OpenList = null;
                     ClosedList = null; //cleared for memory reasons
+                    doPathfindingDebugSuccess();
                     return;
                 }
                 OpenList.remove(Current);
@@ -162,6 +212,7 @@ public class Path {
                 }
             }
 
+            doPathfindingDebugFailure();
         }
         
         

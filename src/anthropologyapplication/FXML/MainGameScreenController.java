@@ -272,6 +272,8 @@ public class MainGameScreenController implements Initializable {
         SocialCohesionPercentage.setText(""+Amount);
     }
     
+    
+    
     public void updateMap() {
         myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(), (int)CanvasMapDisplay.getHeight());
         myAutomapper.setCanvas(CanvasMapDisplay.getGraphicsContext2D(), CanvasMapDisplay.getWidth(), CanvasMapDisplay.getHeight());
@@ -298,16 +300,6 @@ public class MainGameScreenController implements Initializable {
         this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
     }
 
-    private void increaseWarriorsButtonClick(ActionEvent event) {
-        myMain.increaseWarriors();
-        worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-    }
-
-    private void decreaseWarriorsButtonClick(ActionEvent event) {
-        myMain.decreaseWarriors();
-        worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-    }
-
     @FXML
     private void increaseBuildersButtonClick(ActionEvent event) {
         
@@ -321,7 +313,7 @@ public class MainGameScreenController implements Initializable {
         myMain.increaseFarmers();
     
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-        this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+        this.assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
     }
 
     @FXML
@@ -437,10 +429,7 @@ public class MainGameScreenController implements Initializable {
 
     @FXML
     private void decreaseFarmersButtonClick(ActionEvent event) {
-        
         this.myMain.decreaseFarmers();
-        
-
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
     }
@@ -531,6 +520,14 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private void CanvasKeyReleased(KeyEvent event) {
          CanvasCtrlHeld = event.isControlDown();
+    }
+
+    public void setFoodConsumptionTab(float foodConsumptionPerDay) {
+        FarmingTabFoodConsumptionRate.setText("" + (int)Math.floor(foodConsumptionPerDay));
+    }
+
+    public void setFoodProductionTab(float foodProducedPerDay) {
+        FarmingTabFoodAvailable.setText("" + (int)Math.floor(foodProducedPerDay));
     }
 
     

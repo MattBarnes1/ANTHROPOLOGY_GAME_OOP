@@ -37,7 +37,7 @@ public class QuickTipsBuildButton extends javafx.scene.control.Button  {
             public void handle(MouseEvent event) {
             Bounds WindowBounds = boundsInLocalProperty().get();
 
-            Point2D p = localToScreen(WindowBounds.getMaxX(), WindowBounds.getMaxY()); //I position the tooltip at bottom right of the node (see below for explanation)
+            Point2D p = localToScreen(WindowBounds.getMaxX(), WindowBounds.getMaxY()); //get from the window coordinates to the screens coordinates;
             myToolTip.show(toPass, p.getX(), p.getY());
             }
         });

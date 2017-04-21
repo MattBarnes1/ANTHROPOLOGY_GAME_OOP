@@ -51,12 +51,12 @@ public class MapTile_Land extends MapTile{
                 {
                     if(this.myBuilding.isFinishedBuilding())
                     {
-                        return "Land, "+ this.myBuilding.getBuildingName();
+                        return "Land, "+ this.myBuilding.getBuildingName() + "DEBUG: " + this.getCoordinates().toString();
                     } else {
-                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionPercentage()*100 + "%";
+                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionPercentage()*100 + "%" + "DEBUG: " + this.getCoordinates().toString();
                     }
                 } else {
-                    return "Land" ;
+                    return "Land" + "DEBUG: " + this.getCoordinates().toString() + "ForegroundImageFileName: " + super.getTerritoryImage();
                 }
             } else {
                 return "X";

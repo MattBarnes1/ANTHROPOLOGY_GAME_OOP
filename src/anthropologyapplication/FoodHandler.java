@@ -5,9 +5,9 @@
  */
 package anthropologyapplication;
 
-import Buildings.Building;
-import Buildings.BuildingHandler;
-import Buildings.Field;
+import anthropologyapplication.Buildings.Building;
+import anthropologyapplication.Buildings.BuildingHandler;
+import anthropologyapplication.Buildings.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -49,15 +49,22 @@ public class FoodHandler {
 			throw new NotImplementedException();
 		}
 
-                public void updateFoodForDay()
+                public float getFoodProducedPerDay()
                 {
-                    
+                    return currentFoodProductionRate;
                 }
+
+                public void updateFoodForDayPerMS()
+                {
+                    //return currentFoodProductionRate;
+                }
+                
                 public int getTotalFood()
                 {
                     return (int) Math.floor(this.totalFood);
                 }
 		
+                
                 
                 public boolean canRemoveMore()
                 {
@@ -65,7 +72,7 @@ public class FoodHandler {
                 }
 
    
-
+    float currentFoodProductionRate = 0;
     void update(GameTime MS) {
        ArrayList<Building> aBuildingHandler = myBuildingHandler.getAllBuiltBuildingsByType(Field.class);
        int Check = FarmerAmount;
@@ -74,16 +81,31 @@ public class FoodHandler {
        float maxFoodProduced = 0;
        while(BuildingIterator.hasNext())
        {
+                
                 Building aBuilding = BuildingIterator.next();
                 RequiredFarmers += ((Field)aBuilding).getRequiredNumberOfFarmers();
-                maxFoodProduced += ((Field)aBuilding).getYield();
+                maxFoodProduced += ((Field)aBuilding).getYield() * MS.getElapsedTime().toMS();
        }
        if(FarmerAmount != 0)
        {
-            totalFood += (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
-            totalFood -= this.myTribe.getPopulationHandler().getFoodConsumptionPerDayInPerMilliSecond();
+            if(FarmerAmount > RequiredFarmers)
+            {
+                currentFoodProductionRate = (maxFoodProduced);
+            } 
+            else
+            {
+                currentFoodProductionRate = (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
+            }
+            totalFood += currentFoodProductionRate;
+       } else {
+           currentFoodProductionRate = 0;
        }
-      // System.out.println("Food: " + totalFood);
+       totalFood -= (this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
+       if(totalFood < 0)
+       {
+            totalFood = 0;
+       }
+       
     }
 
     public int getFarmersAmount() {

@@ -5,8 +5,10 @@
  */
 package anthropologyapplication;
 
-import AIStuff.AICampObject;
-import Raid.RaidEntityWorldProducer;
+import anthropologyapplication.AIStuff.AICampObject;
+import anthropologyapplication.Raid.RaidEntityWorldProducer;
+import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
@@ -67,10 +69,10 @@ public class MainGameCode {
             Double updateInternalTime = 0D;
             public void handle(long currentNanoTime)
             {
-                
                 updateInternalTime += currentNanoTime;
                 if(updateInternalTime >= updateInterval)
                 {
+                    //float startTime =  System.nanoTime();
                     if(increaseSpeed)
                     {
                         WorldTime.Update(6000000);
@@ -83,6 +85,8 @@ public class MainGameCode {
                         anObject.update(WorldTime);
                     }
                     playersCamp.update(WorldTime);
+                    //int amount = (int)Math.floor(((float)playersCamp.getFoodHandler().getTotalFood() -  playersCamp.getPopulationHandler().getFoodConsumptionPerDayInPerMilliSecond()*10));
+                    mainHandler.setFarmingTabData(playersCamp.getFoodHandler().getFoodProducedPerDay(),  playersCamp.getPopulationHandler().getFoodConsumptionPerDay());
                     mainHandler.updateFood(playersCamp.getFoodHandler().getTotalFood());
                     mainHandler.updateBuildQueue();
                     mainHandler.updateTime(WorldTime.getTimeString12Hour());
@@ -90,6 +94,9 @@ public class MainGameCode {
                     //myMapper.Draw(Automapper.getGraphicsContext2D());
 
                     updateInternalTime = 0D;
+                   // float endTime =  System.nanoTime();
+                   // System.out.println("Update Loop Time: " + (endTime-startTime));
+                    
                 }
             }
         };
@@ -180,7 +187,7 @@ public class MainGameCode {
             playersCamp.removeFreeCitizen();
             playersCamp.getProductionHandler().addProducers(1);
         } else {
-            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
+            myDisplay.setErrorMessage("You don't have enough people!"); //Error messages are red
         }
     }
 
@@ -220,7 +227,7 @@ public class MainGameCode {
             playersCamp.removeFreeCitizen();
             playersCamp.getBuildingHandler().addBuilders(1);
         } else {
-            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
+            myDisplay.setErrorMessage("You don't have enough people!"); //Error messages are red
         }
     }
     
@@ -230,7 +237,7 @@ public class MainGameCode {
             playersCamp.addFreeCitizen();
             playersCamp.getBuildingHandler().removeBuilders(1);
         } else {
-            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
+            myDisplay.setErrorMessage("You have no builders to remove!"); //Error messages are red
         }
     }
     public void increaseFarmers() {
@@ -239,7 +246,7 @@ public class MainGameCode {
             playersCamp.removeFreeCitizen();
             playersCamp.getFoodHandler().addFarmers(1);
         } else {
-            myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
+            myDisplay.setErrorMessage("You don't have enough people!"); //Error messages are red
         }
     } 
     public void decreaseFarmers() {
@@ -339,6 +346,10 @@ public class MainGameCode {
         myEnemyArray = null;
         playersCamp = null;
         myDisplay.displayMainMenuGUI(this);
+    }
+
+    public void removeBuildingFromConstruction(BuildingConstructionDisplayData myData) {
+        playersCamp.getBuildingHandler().removeBuildingFromConstruction(myData);
     }
 
  

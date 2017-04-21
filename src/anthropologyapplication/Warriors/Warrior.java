@@ -6,9 +6,9 @@
 package anthropologyapplication.Warriors;
 
 import anthropologyapplication.GameTime;
-import TradeGoods.ProductionHandler;
+import anthropologyapplication.TradeGoods.ProductionHandler;
 import anthropologyapplication.Time;
-import TradeGoods.TradeGood;
+import anthropologyapplication.TradeGoods.TradeGood;
 import anthropologyapplication.Timer;
 import anthropologyapplication.internalLockers.internalWarriorLocker;
 

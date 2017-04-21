@@ -5,10 +5,10 @@
  */
 package anthropologyapplication;
 
-import AIStuff.AICampObject;
-import Buildings.BuildingHandler;
+import anthropologyapplication.AIStuff.AICampObject;
+import anthropologyapplication.Buildings.BuildingHandler;
 import anthropologyapplication.Warriors.WarriorHandler;
-import TradeGoods.ProductionHandler;
+import anthropologyapplication.TradeGoods.ProductionHandler;
 import anthropologyapplication.AutoMapper.MapTile;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

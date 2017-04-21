@@ -58,9 +58,11 @@ public class AutoMapperGui extends Service {
     int MidPointY;
     Vector3 RoomsToDrawZero;
     private static boolean RoomFocusHasShifted = false;
+
     public static void redrawMap()
     {
         RoomFocusHasShifted = true;
+        
     }
    
     public AutoMapperGui()
@@ -88,6 +90,11 @@ public class AutoMapperGui extends Service {
             updateRoomsToDraw();
             RoomFocusHasShifted = false;
             myWorldImage = new WritableImage((int) width, (int) height);
+            if(myWorldImage.isError())
+            {
+                Exception e= myWorldImage.exceptionProperty().get();
+                e.printStackTrace();
+            }
             for (int x = 0; x < RoomsToDraw.length; x++) {
                 for (int y = 0; y < RoomsToDraw[x].length; y++) {
                     if (RoomsToDraw[x][y] != null) {
@@ -98,11 +105,17 @@ public class AutoMapperGui extends Service {
                 }
             }
         }
+            if(myWorldImage.isError())
+            {
+                Exception e= myWorldImage.exceptionProperty().get();
+                e.printStackTrace();
+            }
     }
     
     public void Draw() {
         CreateBackground();
         //aGameCanvas = GC;
+        aGameCanvas.fill();
         aGameCanvas.drawImage(myWorldImage, 0, 0);  
     }
     
