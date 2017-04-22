@@ -123,18 +123,18 @@ public abstract class MapTile {
         Explored = aBool;
     }  
     //AlphaComposite Building = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75F);
-    public void Draw(int x, int y, WritableImage aGameCanvas) 
+    public void Draw(int x, int y, WritableImage aGameCanvas, WritableImage aTerritoryCanvas) 
     {//TODO: int or double here?
         if(!Explored)
         {
             aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), DefaultImageUnexplored.getPixelReader(), 0, 0);
         } 
         else {
-            //aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);   
+            aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);   
        
             if(tileTerritory != null)
             {
-               aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
+               aTerritoryCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
             }
             
             if(tileBuilding != null)

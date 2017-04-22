@@ -16,6 +16,8 @@
         <URL value="@maingamescreen.css" />
     </stylesheets>
    <children>
+      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
+      <Canvas fx:id="CanvasMapDisplayTerritoryLayer" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
       <TabPane layoutX="6.0" layoutY="424.0" prefHeight="194.0" prefWidth="781.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="BuildingsTab" onSelectionChanged="#BuildingsTabSelected" text="Buildings">
@@ -94,7 +96,6 @@
         </tabs>
       </TabPane>
       <Label fx:id="GameWorldTimeObject" layoutX="14.0" layoutY="14.0" text="Building Queue" />
-      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
       <Label layoutX="220.0" layoutY="400.0" text="Free Citizens:" />
       <Label fx:id="worldDisplayFreeCitizensCount" layoutX="302.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
       <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" onMouseClicked="#FastForwardButtonClicked" text="&gt;&gt;" />

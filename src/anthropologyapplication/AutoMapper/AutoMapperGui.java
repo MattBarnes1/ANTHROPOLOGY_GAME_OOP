@@ -26,6 +26,7 @@ public class AutoMapperGui extends Service {
 
     
     String internalMessage = "";
+    private WritableImage myTerritoryImage;
     public String getInternalMessage()
     {
         return internalMessage;
@@ -90,6 +91,8 @@ public class AutoMapperGui extends Service {
             updateRoomsToDraw();
             RoomFocusHasShifted = false;
             myWorldImage = new WritableImage((int) width, (int) height);
+            Territory.clearRect(0, 0, this.TerritoryWidth, this.TerritoryHeight);
+            myTerritoryImage = new WritableImage((int) width, (int) height);
             if(myWorldImage.isError())
             {
                 Exception e= myWorldImage.exceptionProperty().get();
@@ -98,7 +101,7 @@ public class AutoMapperGui extends Service {
             for (int x = 0; x < RoomsToDraw.length; x++) {
                 for (int y = 0; y < RoomsToDraw[x].length; y++) {
                     if (RoomsToDraw[x][y] != null) {
-                        RoomsToDraw[x][y].Draw(x, y, myWorldImage);
+                        RoomsToDraw[x][y].Draw(x, y, myWorldImage, myTerritoryImage);
                     } else {
                        MapTile.DrawUndefinedTile(x, y, myWorldImage);
                     }
@@ -117,9 +120,10 @@ public class AutoMapperGui extends Service {
         //aGameCanvas = GC;
         aGameCanvas.fill();
         aGameCanvas.drawImage(myWorldImage, 0, 0);  
+        this.Territory.drawImage(myTerritoryImage, 0, 0);
     }
     
-    public void setCanvas(GraphicsContext gc, double Width, double Height) {
+    public void setCanvasBackgroundLayer(GraphicsContext gc, double Width, double Height) {
         aGameCanvas = gc;
         System.out.println("AUTOMAP WIDTH" + " " + Width + "\tHeight" + Height);
         canvasResized(Width, Height);
@@ -363,6 +367,15 @@ boolean MapDataAdded = false;
     boolean isFinished = false;
     public boolean isDone() {
         return this.isFinished;
+    }
+
+    GraphicsContext Territory;
+    double TerritoryWidth;
+    double TerritoryHeight;
+    public void setCanvasBackgroundLayer2(GraphicsContext graphicsContext2D, double width, double height) {
+        Territory = graphicsContext2D;
+        TerritoryWidth = width;
+        TerritoryHeight = height;
     }
 
    

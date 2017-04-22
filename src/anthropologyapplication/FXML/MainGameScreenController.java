@@ -123,6 +123,8 @@ public class MainGameScreenController implements Initializable {
     private Label worldDisplayFoodAvailable;
     @FXML
     private Label SocialCohesionPercentage;
+    @FXML
+    private Canvas CanvasMapDisplayTerritoryLayer;
     
     /**
      * Initializes the controller class.
@@ -276,7 +278,8 @@ public class MainGameScreenController implements Initializable {
     
     public void updateMap() {
         myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(), (int)CanvasMapDisplay.getHeight());
-        myAutomapper.setCanvas(CanvasMapDisplay.getGraphicsContext2D(), CanvasMapDisplay.getWidth(), CanvasMapDisplay.getHeight());
+        myAutomapper.setCanvasBackgroundLayer(CanvasMapDisplay.getGraphicsContext2D(), CanvasMapDisplay.getWidth(), CanvasMapDisplay.getHeight());
+        myAutomapper.setCanvasBackgroundLayer2(CanvasMapDisplayTerritoryLayer.getGraphicsContext2D(), CanvasMapDisplayTerritoryLayer.getWidth(), CanvasMapDisplayTerritoryLayer.getHeight());
     }
 
     public void redrawMap()
