@@ -18,7 +18,7 @@ import anthropologyapplication.TribalCampObject;
 public class TribalHut extends Building {
 
     public TribalHut(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, int TerritorySize, String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,  TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired,  TerritorySize, FileNameForegroundImage, FileNameForegroundDestroyedImage);
         
     }
 

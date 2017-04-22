@@ -239,7 +239,7 @@ public class MainGameScreenController implements Initializable {
     public void setFoodAvailable(int amount)
     {
         worldDisplayFoodAvailable.setText("" + amount);
-        FarmingTabFoodAvailable.setText("" + amount);
+        //.setText("" + amount);
     }
     
     

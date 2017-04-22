@@ -83,9 +83,10 @@ public class FoodHandler {
        {
                 
                 Building aBuilding = BuildingIterator.next();
-                RequiredFarmers += ((Field)aBuilding).getRequiredNumberOfFarmers();
-                maxFoodProduced += ((Field)aBuilding).getYield() * MS.getElapsedTime().toMS();
+                RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
+                maxFoodProduced += (((Field)aBuilding).getYield() * MS.getElapsedTime().toMS());
        }
+       System.out.println("Food PRODUCTION MS: " + (MS.getElapsedTime().toMS() * maxFoodProduced));
        if(FarmerAmount != 0)
        {
             if(FarmerAmount > RequiredFarmers)
@@ -94,13 +95,19 @@ public class FoodHandler {
             } 
             else
             {
-                currentFoodProductionRate = (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
+                currentFoodProductionRate = ((((float)FarmerAmount/(float)RequiredFarmers)*maxFoodProduced));
+            }
+            if(currentFoodProductionRate > 1)
+            {
+                System.out.println("Inside: " + (MS.getElapsedTime()));
+                int i = 0;
             }
             totalFood += currentFoodProductionRate;
        } else {
            currentFoodProductionRate = 0;
        }
        totalFood -= (this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
+       System.out.println("Food Consumption: "+this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
        if(totalFood < 0)
        {
             totalFood = 0;

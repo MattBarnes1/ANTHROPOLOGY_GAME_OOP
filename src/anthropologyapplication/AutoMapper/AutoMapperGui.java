@@ -117,8 +117,9 @@ public class AutoMapperGui extends Service {
     
     public void Draw() {
         CreateBackground();
-        //aGameCanvas = GC;
-        aGameCanvas.fill();
+        
+        Territory.clearRect(0, 0, this.TerritoryWidth, this.TerritoryHeight);
+        aGameCanvas.clearRect(0,0, canvasWidth, canvasWidth);
         aGameCanvas.drawImage(myWorldImage, 0, 0);  
         this.Territory.drawImage(myTerritoryImage, 0, 0);
     }

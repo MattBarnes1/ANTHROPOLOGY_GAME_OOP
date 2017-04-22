@@ -461,6 +461,7 @@ public abstract class MapTile {
         switch(myTerritoryImage)
         {
             case NONE:
+                 tileTerritory = null;
                 return;
         case NORTH:
             tileTerritory = new Image("anthropologyapplication/TerritoryOverlay/TopSideTerritory.png");

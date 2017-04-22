@@ -24,7 +24,7 @@ public class Territory {
     TribalCampObject whoOwnsIt;
     public Territory(int gridsize)
     {
-        assert(gridsize % 2 == 1);
+        assert(gridsize % 2 != 1);
         this.gridsizeX = gridsize;
         this.gridsizeY = gridsize;
         this.myTerritoryLocation = new MapTile[gridsizeX][gridsizeY];
@@ -32,6 +32,7 @@ public class Territory {
     
     public void placeTerritoryAt(MapTile HomeTile, TribalCampObject whoseTerritory)
     {
+        
         whoOwnsIt = whoseTerritory;
         Vector3 Coordinates = HomeTile.getCoordinates();
         int MidPoint = (int)Math.ceil(((float)gridsizeX)/2);

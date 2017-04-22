@@ -71,7 +71,7 @@
                               <FlowPane fx:id="CropsFlowPanel" prefHeight="127.0" prefWidth="477.0" />
                            </content>
                         </ScrollPane>
-                        <Label layoutX="107.0" layoutY="17.0" text="Food Available:" />
+                        <Label layoutX="107.0" layoutY="17.0" text="Food Production:" />
                         <Label fx:id="FarmingTabFoodAvailable" layoutX="223.0" layoutY="17.0" prefHeight="17.0" prefWidth="28.0" text="0" />
                         <Label layoutX="107.0" layoutY="45.0" text="Food Consumption:" />
                         <Label fx:id="FarmingTabFoodConsumptionRate" layoutX="223.0" layoutY="45.0" prefHeight="17.0" prefWidth="28.0" text="0" />

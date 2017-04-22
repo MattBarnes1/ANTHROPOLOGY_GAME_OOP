@@ -256,7 +256,8 @@ public class BuildingHandler {
                     ArrayList<Building> retBuilding = new ArrayList<Building>();
                     for(Building A : BuildingsBuilt)
                     {
-                        if(A.getClass().getDeclaringClass() == theClass)
+                       //System.out.println(A.getClass());
+                        if(A.getClass() == theClass)
                         {
                            retBuilding.add(A);
                         }

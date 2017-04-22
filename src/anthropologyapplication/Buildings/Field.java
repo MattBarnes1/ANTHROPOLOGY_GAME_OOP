@@ -17,13 +17,13 @@ import anthropologyapplication.TribalCampObject;
  */
 public class Field extends Building {
     int RequiredAmountOfFarmers = 2;
-    float yield = 0.1F;
+    float yield = 0.00001F;
     public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
 
     private Field(Field aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getTerritorySize(), aThis.getRequiredBuildersAmount(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(),  aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
     
     }
 

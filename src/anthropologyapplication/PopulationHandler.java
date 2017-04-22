@@ -16,11 +16,11 @@ public class PopulationHandler {
     private TribalCampObject myTribe;
     private int TotalPopulation = 10; //Starting Population
     private int FreeCitizens = TotalPopulation;
-    private final float CONSUMPTION_WARRIORS = 1F; //Eat the most food per person
-    private final float CONSUMPTION_BUILDERS = 0.75F; //Eat the 2nd most etc
-    private final float CONSUMPTION_WORKERS = 0.5F;
-    private final float CONSUMPTION_FARMERS = 0.5F;
-    private final float CONSUMPTION_FREE_CITIZENS = 0.25F; //eat the least
+    private final float CONSUMPTION_WARRIORS = 10F; //Eat the most food per person
+    private final float CONSUMPTION_BUILDERS = 7.5F; //Eat the 2nd most etc
+    private final float CONSUMPTION_WORKERS = 5F;
+    private final float CONSUMPTION_FARMERS = 5F;
+    private final float CONSUMPTION_FREE_CITIZENS = 2.5F; //eat the least
     private float dailyFoodUse = 0;
     public PopulationHandler(TribalCampObject myCamp)
     {
