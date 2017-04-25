@@ -5,13 +5,14 @@
  */
 package anthropologyapplication.DisplayData;
 
+import anthropologyapplication.MainGameCode;
 import anthropologyapplication.TradeGoods.TradeGood;
 
 /**
  *
  * @author Duke
  */
-public class ProductProductionDisplayData {
+public class ProductProductionDisplayData implements DisplayData {
     TradeGood myTradeGood;
     public ProductProductionDisplayData(TradeGood myTradeGood) {
         this.myTradeGood = myTradeGood;
@@ -37,5 +38,21 @@ public class ProductProductionDisplayData {
     {
         return myTradeGood.getCompletionPercentage();
     }
+    
+        @Override
+    public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
+        myGameCode.remove(this);
+    }
+
+    @Override
+    public String getTimeToCompleteString() {
+        return myTradeGood.getCurrentBuildTime().toString();
+    }
+
+    @Override
+    public boolean shouldBeRemoved() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }

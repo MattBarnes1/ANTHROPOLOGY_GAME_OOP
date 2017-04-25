@@ -5,9 +5,13 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.RandomEvents.RandomEventHandler;
 import anthropologyapplication.AIStuff.AICampObject;
-import anthropologyapplication.Raid.RaidEntityWorldProducer;
+import anthropologyapplication.WorldEntityHandler.WorldMapEntityProducer;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
+import anthropologyapplication.DisplayData.ProductProductionDisplayData;
+import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
+import anthropologyapplication.DisplayData.DisplayData;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,7 +83,7 @@ public class MainGameCode {
                     } else {
                         WorldTime.Update(10);
                     }
-                    RaidEntityWorldProducer.update(WorldTime);
+                    WorldMapEntityProducer.update(WorldTime);
                     for(AICampObject anObject : myEnemyArray)
                     {
                         anObject.update(WorldTime);
@@ -348,9 +352,19 @@ public class MainGameCode {
         myDisplay.displayMainMenuGUI(this);
     }
 
-    public void removeBuildingFromConstruction(BuildingConstructionDisplayData myData) {
-        playersCamp.getBuildingHandler().removeBuildingFromConstruction(myData);
+
+    public void remove(BuildingConstructionDisplayData ProgressData) {
+        playersCamp.getBuildingHandler().removeBuildingFromConstruction(ProgressData);
     }
 
- 
+    public void remove(ProductProductionDisplayData ProgressData)
+    {
+        playersCamp.getProductionHandler().removeProductFromProduction(ProgressData);
+    }
+    
+    public void remove(WarriorTrainingDisplayData ProgressData)
+    {
+        playersCamp.getWarriorHandler().removeWarriorFromTraining(ProgressData);
+    }
+    
 }

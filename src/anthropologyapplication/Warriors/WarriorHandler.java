@@ -207,4 +207,8 @@ public class WarriorHandler {
     public void lockWarrior(Class<Spearmen> aClass) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void removeWarriorFromTraining(WarriorTrainingDisplayData ProgressData) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

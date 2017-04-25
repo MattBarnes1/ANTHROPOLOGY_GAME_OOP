@@ -6,12 +6,13 @@
 package anthropologyapplication.DisplayData;
 
 import anthropologyapplication.Buildings.Building;
+import anthropologyapplication.MainGameCode;
 
 /**
  *
  * @author Duke
  */
-public class BuildingConstructionDisplayData {
+public class BuildingConstructionDisplayData implements DisplayData {
     private Building aBuilding;
     
     public BuildingConstructionDisplayData(Building aBuilding)
@@ -26,7 +27,7 @@ public class BuildingConstructionDisplayData {
     
     public String getTimeToCompleteString()
     {
-        return "";
+        return aBuilding.getBuildTime().toString();
     }
 
     public String getDescription() {
@@ -40,6 +41,18 @@ public class BuildingConstructionDisplayData {
     public double getCompletionPercentage()
     {
         return aBuilding.getCompletionPercentage();
+    }
+    
+    
+
+    @Override
+    public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
+        myGameCode.remove(this);
+    }
+
+    @Override
+    public boolean shouldBeRemoved() {
+        return true;
     }
     
 }

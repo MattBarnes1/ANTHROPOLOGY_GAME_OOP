@@ -20,6 +20,9 @@ public class SocietyChoices
             HashMap mySocialValueScores = new HashMap();
             short[] socialValueShortArray = new short[SocialValues.values().length];
             SocialValues[] socialValueArray = SocialValues.values();
+            
+            
+            
             public SocietyChoices(ArrayList<SocialValues> myValues)
             {
                 assert(socialValueArray.length%2 != 0) : "Improper length of social values table! (Did you make sure to add the opposite to the table?";
@@ -97,6 +100,15 @@ public class SocietyChoices
                         adjustSocialValue(oppositeIndexValue, (short)-ChangeAmount[i]);
                     }
             }
+            
+            public short[] getSocialValuesArrayCopy()
+            {
+                short[] retSocialValueArray = new short[SocialValues.values().length];
+                System.arraycopy(socialValueArray, 0, retSocialValueArray, 0, socialValueArray.length);
+                //Since array is an object it's modifiable by the one receiving it. We don't want that.
+                return retSocialValueArray;
+            }
+                
             public boolean shouldDisintegrate()
             {
                     return (CohesionPoints == 0);
@@ -129,4 +141,6 @@ public class SocietyChoices
             socialValueShortArray[indexValue] += s;
         }
     }
+
+   
    }

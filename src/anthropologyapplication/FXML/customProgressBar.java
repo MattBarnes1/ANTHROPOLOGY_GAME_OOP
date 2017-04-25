@@ -6,6 +6,7 @@
 package anthropologyapplication.FXML;
 
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
+import anthropologyapplication.DisplayData.DisplayData;
 import anthropologyapplication.MainGameCode;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
@@ -18,21 +19,29 @@ import javafx.scene.input.MouseEvent;
  *
  * @author noone
  */
-public class BuildingProgressBar extends javafx.scene.control.ProgressBar {
+public class customProgressBar extends javafx.scene.control.ProgressBar {
     private Label myLabel;
-    private final BuildingConstructionDisplayData BuildingData;
+    private final DisplayData ProgressData;
     private Tooltip myToolTip;
-    //private final MainGameCode CodeObject;
-    public BuildingProgressBar(BuildingConstructionDisplayData myData, MainGameCode myCode)
+    boolean isDoneNow = false;
+    MainGameCode myCode;
+    public boolean isDone()
     {
+        return isDoneNow;
+    }
+    
+    //private final MainGameCode CodeObject;
+    public customProgressBar(DisplayData myData, MainGameCode myCode)
+    {
+        this.myCode = myCode;
         //CodeObject = myCode;
-        this.BuildingData = myData;
-        myLabel.setText(BuildingData.getName());
+        this.ProgressData = myData;
+        myLabel.setText(ProgressData.getName());
         Bounds WindowBounds = boundsInLocalProperty().get();
         myLabel.setTranslateX(WindowBounds.getWidth()*0.5 - myLabel.getBoundsInLocal().getWidth()*0.5);
         myLabel.setTranslateY(WindowBounds.getHeight()*0.5 - myLabel.getBoundsInLocal().getHeight()*0.5);
         myToolTip.setText(myData.getTimeToCompleteString());
-        BuildingProgressBar toPass = this;
+        customProgressBar toPass = this;
         setOnMouseEntered(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -46,7 +55,8 @@ public class BuildingProgressBar extends javafx.scene.control.ProgressBar {
             public void handle(MouseEvent event) {
                 if(event.isSecondaryButtonDown())
                 {
-                    myCode.removeBuildingFromConstruction(myData);
+                    ProgressData.acceptRemoverAsVisitor(myCode);//Pass as a visitor
+                    isDoneNow = ProgressData.shouldBeRemoved();
                 }
             }
             
@@ -63,9 +73,9 @@ public class BuildingProgressBar extends javafx.scene.control.ProgressBar {
     
     public void update()
     {
-        if(BuildingData.getCompletionPercentage() == 1.0D)
+        if(ProgressData.getCompletionPercentage() == 1.0D && !isDoneNow)
         {
-            
+            isDoneNow = (ProgressData.getCompletionPercentage() == 1.0D);
         }
     }
     

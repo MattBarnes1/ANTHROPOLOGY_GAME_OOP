@@ -227,13 +227,36 @@ public class MainGameScreenController implements Initializable {
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((QuickTipsBuildButton)A).update();
-            if(((QuickTipsBuildButton)A).isDone())
+           ((customProgressBar)A).update();
+            if(((customProgressBar)A).isDone())
+            {
+                aNode.remove();
+                AutoMapperGui.redrawMap();
+            }
+       }
+       
+       /*Iterator<Node> aNode = ProductionQueueList.getChildren().iterator();
+       while(aNode.hasNext())
+       {
+           Node A = aNode.next();
+           ((ProductionProgressBar)A).update();
+            if(((ProductionProgressBar)A).isDone())
             {
                 aNode.remove();
             }
-       }
-       AutoMapperGui.redrawMap();
+       }*/
+       
+       /*Iterator<Node> aNode = WarriorTrainingQueueList.getChildren().iterator();
+       while(aNode.hasNext())
+       {
+           Node A = aNode.next();
+           ((WarriorTrainingProgressBar)A).update();
+            if(((WarriorTrainingProgressBar)A).isDone())
+            {
+                aNode.remove();
+                AutoMapperGui.redrawMap();
+            }
+       }*/
     }
     
     public void setFoodAvailable(int amount)
@@ -244,11 +267,7 @@ public class MainGameScreenController implements Initializable {
     
     
     @FXML
-    private void CanvasMapDisplayClicked(MouseEvent event) {
-        
-
-       
-        
+    private void CanvasMapDisplayClicked(MouseEvent event) {        
         if (event.getButton() == MouseButton.SECONDARY && BuildingSelectedForBuilding != null)
         {
             BuildingSelectedForBuilding = null;
@@ -259,7 +278,7 @@ public class MainGameScreenController implements Initializable {
                 BuildingConstructionDisplayData myConstruction = myMain.getPlayersCamp().getBuildingHandler().startBuilding(BuildingSelectedForBuilding, aTile);
                 if(myConstruction != null)
                 {
-                    BuildingQueueList.getChildren().add(new QuickTipsBuildButton(myConstruction));
+                    BuildingQueueList.getChildren().add(new customProgressBar(myConstruction, this.myMain));
                 }
            }
         }

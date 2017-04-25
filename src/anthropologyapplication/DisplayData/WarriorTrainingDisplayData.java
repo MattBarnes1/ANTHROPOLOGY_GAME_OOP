@@ -5,13 +5,14 @@
  */
 package anthropologyapplication.DisplayData;
 
+import anthropologyapplication.MainGameCode;
 import anthropologyapplication.Warriors.Warrior;
 
 /**
  *
  * @author Duke
  */
-public class WarriorTrainingDisplayData {
+public class WarriorTrainingDisplayData implements DisplayData {
 
     private final Warrior myData;
     public WarriorTrainingDisplayData(Warrior myData)
@@ -43,6 +44,21 @@ public class WarriorTrainingDisplayData {
     public double getCompletionPercentage()
     {
         return myData.getCompletionPercentage();
+    }
+
+    @Override
+    public String getTimeToCompleteString() {
+       return myData.getCurrentBuildTime();
+    }
+
+    @Override
+    public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
+        myGameCode.remove(this);
+    }
+
+    @Override
+    public boolean shouldBeRemoved() {
+        return true;
     }
     
     

@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.Reputation.ReputationHandler;
 import anthropologyapplication.AIStuff.AICampObject;
 import anthropologyapplication.Buildings.BuildingHandler;
 import anthropologyapplication.Warriors.WarriorHandler;
@@ -30,8 +31,9 @@ public class TribalCampObject {
     private AICampObject[] myEnemyArray;
     private MapTile HomeTile;
     private String myName;
-    
+    private ReputationHandler myReputationHandler;
     public TribalCampObject(SocietyChoices mySocietyChoices) {
+        myReputationHandler = new ReputationHandler();
         myProductionHandler = new ProductionHandler(this);
         myWarriorHandler = new WarriorHandler(this);
         myBuildingHandler = new BuildingHandler(this);
@@ -45,7 +47,7 @@ public class TribalCampObject {
         myName = aName;
     }
     
-    public SocietyChoices getPlayerSocietyChoices() {
+    public SocietyChoices getSocietyChoices() {
         return mySocietyChoices;
     }
 
@@ -125,5 +127,9 @@ public class TribalCampObject {
 
     PopulationHandler getPopulationHandler() {
         return this.myPopulationHandler;
+    }
+
+    public ReputationHandler getReputationHandler() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

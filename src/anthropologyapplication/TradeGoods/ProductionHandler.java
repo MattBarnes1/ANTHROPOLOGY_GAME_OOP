@@ -56,10 +56,7 @@ public class ProductionHandler
                        stuff.update(MS, myTribe);
                    }
 		}
-                public boolean canRemoveMore()
-                {
-                    return ((ProducersAmount - 1) > 0);
-                }
+               
                 
                 public void lockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
@@ -91,7 +88,8 @@ public class ProductionHandler
 
 		public void addProducers(int amount)
 		{
-			ProducersAmount++;
+                    ProducersAmount++;
+                    calculateMaxNumberOfGoodsCanWorkOn();
 		}
 
 		public void removeProducers(int Amount)
@@ -102,6 +100,7 @@ public class ProductionHandler
                     } else {
                         ProducersAmount = 0;
                     }
+                    calculateMaxNumberOfGoodsCanWorkOn();
 		}
 
             private void updatePossibleItems() { 
@@ -119,6 +118,7 @@ public class ProductionHandler
         return ProducersAmount;
     }
 
+    
     public Iterator<ProductProductionDisplayData> getTradeGoodsAvailable() {
         return ProductsThatCanBeBuilt.iterator();
     }
@@ -134,7 +134,19 @@ public class ProductionHandler
         assert(false);
         return -1;
     }
-
+    
+    int maxActiveTradeGoods = 0;
+    
+    public void calculateMaxNumberOfGoodsCanWorkOn()
+    {
+        
+    }
+    
+    public boolean canRemoveMore()
+    {
+        return ((ProducersAmount - 1) > 0);
+    }
+    
     public boolean canAddTradeGood() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -142,4 +154,9 @@ public class ProductionHandler
     public void addProductionItem(String text) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void removeProductFromProduction(ProductProductionDisplayData ProgressData) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

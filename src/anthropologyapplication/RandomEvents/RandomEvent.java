@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package anthropologyapplication.RandomEvents;
 
+import anthropologyapplication.GameTime;
 import anthropologyapplication.JSON.JSON;
 import anthropologyapplication.JSON.Value;
 import anthropologyapplication.JSON.aObject;
 import anthropologyapplication.JSON.Array;
+import anthropologyapplication.SocialValues;
+import anthropologyapplication.SocietyChoices;
 //import anthropologyapplication.JSON.String;
 import java.io.File;
 import java.io.IOException;
