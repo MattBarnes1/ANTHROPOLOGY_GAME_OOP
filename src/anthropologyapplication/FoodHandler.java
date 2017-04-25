@@ -22,6 +22,8 @@ public class FoodHandler {
                 float totalFood = 100;
                 int FarmerAmount = 0;
                 float foodPerDay = 0;
+                private final Timer StarvationCountDown = new Timer(7,0,0,0);
+                private Timer timeToStarvation = StarvationCountDown;
                 private final TribalCampObject myTribe;
 		public FoodHandler(TribalCampObject myObject)
 		{
@@ -74,6 +76,15 @@ public class FoodHandler {
    
     float currentFoodProductionRate = 0;
     void update(GameTime MS) {
+       if(isStarving())
+       {
+           timeToStarvation = timeToStarvation.subtract(MS.getElapsedTime());
+           if(timeToStarvation == new Timer(0,0,0,0))
+           {
+               timeToStarvation = StarvationCountDown;
+               myTribe.getPopulationHandler().doStarvation();
+           }
+       }
        ArrayList<Building> aBuildingHandler = myBuildingHandler.getAllBuiltBuildingsByType(Field.class);
        int Check = FarmerAmount;
        Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
@@ -108,14 +119,33 @@ public class FoodHandler {
        }
        totalFood -= (this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
        System.out.println("Food Consumption: "+this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
-       if(totalFood < 0)
+       if(totalFood <= 0)
        {
             totalFood = 0;
+            startStarvation();
+       } else {
+            endStarvation();
        }
        
     }
-
+    private boolean Starvation = false;
+    public boolean isStarving()
+    {
+        return Starvation;
+    }
+    
+    private void startStarvation()
+    {
+        Starvation = true;
+    }
+    
+    
     public int getFarmersAmount() {
         return FarmerAmount;
+    }
+
+    private void endStarvation() {
+        Starvation = false;
+        timeToStarvation = StarvationCountDown;
     }
 }

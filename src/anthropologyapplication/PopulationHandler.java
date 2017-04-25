@@ -6,8 +6,12 @@
 package anthropologyapplication;
 
 import anthropologyapplication.Buildings.Building;
+import anthropologyapplication.Buildings.BuildingHandler;
 import anthropologyapplication.Buildings.Homes;
+import anthropologyapplication.TradeGoods.ProductionHandler;
+import anthropologyapplication.Warriors.WarriorHandler;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author noone
@@ -22,6 +26,7 @@ public class PopulationHandler {
     private final float CONSUMPTION_FARMERS = 5F;
     private final float CONSUMPTION_FREE_CITIZENS = 2.5F; //eat the least
     private float dailyFoodUse = 0;
+    private Random myRandom = new Random();
     public PopulationHandler(TribalCampObject myCamp)
     {
         initialTimer = new Timer(730, 0, 0, 0); //Ever 2 ingame years birth
@@ -78,9 +83,87 @@ public class PopulationHandler {
        {
            TotalPopulation += ((TotalPopulation-(TotalPopulation%2))/2);
        } else {
-           TotalPopulation += (int)Math.toIntExact((TotalPopulation-(TotalPopulation%2))/2);
+           int newCitizens = (int)Math.toIntExact((TotalPopulation-(TotalPopulation%2))/2);
+           TotalPopulation += newCitizens;
+           myTribe.addFreeCitizens(newCitizens);
        }
        
+    }
+
+    void doStarvation() {
+      int amountToDecimate = (int)Math.floor((float)TotalPopulation * ((float)1/(float)myRandom.nextInt(4)));
+      boolean isWarriorsEmpty = false;
+      boolean isFreeCitizenEmpty = false;
+      boolean isBuildersEmpty = false;
+      boolean isFarmersEmpty = false; 
+      boolean isProducersEmpty = false;
+      
+      for(int i = 0; i < amountToDecimate; i++)
+      {
+          int Choice = myRandom.nextInt(6);
+          if(Choice == 1)
+          {
+              if(myTribe.getFreeCitizens() > 0)
+              {
+                  myTribe.removeFreeCitizen();
+              } else {
+                  isFreeCitizenEmpty = true;
+                  i++; //this didn't count because no free citizens
+              }
+          }
+          else if(Choice == 2)
+          {
+                BuildingHandler myHandle = myTribe.getBuildingHandler();
+                if(myHandle.canRemoveMore())
+                {
+                    myHandle.removeBuilders(Choice);
+                }
+                else {
+                    isBuildersEmpty = true;
+                    i++; //this didn't count because no free citizens
+                }
+          }
+          else if(Choice == 3)
+          {
+                FoodHandler myHandle = myTribe.getFoodHandler();
+                if(myHandle.canRemoveMore())
+                {
+                    myHandle.removeFarmers(Choice);
+                }
+                else {
+                    isFarmersEmpty = true;
+                    i++; //this didn't count because no free citizens
+                }
+          }
+          else if(Choice == 4)
+          {
+                ProductionHandler myHandle = myTribe.getProductionHandler();
+                if(myHandle.canRemoveMore())
+                {
+                    myHandle.removeProducers(1);
+                }
+                else {
+                    isProducersEmpty = true;
+                    i++; //this didn't count because no free citizens
+                }
+          }
+          else if(Choice == 5)
+          {
+                WarriorHandler myHandle = myTribe.getWarriorHandler();
+                if(myHandle.getWarriorsAmount() > 0)
+                {
+                    myHandle.removeAnyWarrior();
+                }
+                else {
+                    isWarriorsEmpty = true;
+                    i++; //this didn't count because no free citizens
+                }
+          }
+          else if (isWarriorsEmpty && isFarmersEmpty && isBuildersEmpty && isProducersEmpty && isFreeCitizenEmpty)
+          {
+              break; //All dead!
+          }
+      }
     }
 
 

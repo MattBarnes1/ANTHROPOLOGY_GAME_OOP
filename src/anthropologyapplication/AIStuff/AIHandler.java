@@ -179,7 +179,7 @@ public class AIHandler extends Service {
             }
     }
     //////////////////////////////////
-    //START Expanding State
+    //End Expanding State
     //////////////////////////////////
     
     
