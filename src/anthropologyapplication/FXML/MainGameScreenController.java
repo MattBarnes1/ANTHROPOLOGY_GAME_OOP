@@ -146,7 +146,7 @@ public class MainGameScreenController implements Initializable {
     MainGameCode myMain;
     public void setMainGameCode(MainGameCode aThis) {
         
-            BuildingsTabErrorText.setText("");
+        BuildingsTabErrorText.setText("");
         TradeGoodsTabErrorText.setText("");
         WarriorsTabErrorText.setText("");
         FarmerTabErrorText.setText("");
@@ -154,28 +154,34 @@ public class MainGameScreenController implements Initializable {
         //myAutomapper.setScreenXYSize((int)CanvasMapDisplay.getWidth(),(int)CanvasMapDisplay.getHeight());
         myMain = aThis;
         worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
-         assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+        assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
         this.assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
-        //this.assignCitizensWarriorsCount1
+        this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
+        updatePossibleToMake();
         
-        Iterator<ProductProductionDisplayData> aProductIterator =  aThis.getPlayersCamp().getProductionHandler().getTradeGoodsAvailable();
-        while(aProductIterator.hasNext())
-        {
-            ProductProductionDisplayData myData = aProductIterator.next();
-            QuickTipsProductionButton aButton = new QuickTipsProductionButton(myData, new Tooltip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime()));
-            aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
-            {
-                Button myButton = aButton;
-                
-                @Override
-                public void handle(MouseEvent event) {
-                    myMain.setProductionFocus(aButton.getText());
-                }           
-            });
-            TradeFlowpane.getChildren().add(aButton);
-        }
         
-        Iterator<WarriorTrainingDisplayData> aWarriorIterator =  aThis.getPlayersCamp().getWarriorHandler().getWarriorsAvailable();
+    }
+
+    
+    public void updatePossibleToMake()
+    {
+       updateAvailableItems();
+       updateAvailableBuildings();
+       updateAvailableWarriors();
+    }
+    
+    
+    
+    
+   
+    public void setTime(String aTime) {
+        worldDisplayTime.setText(aTime);
+    }
+    
+    public void updateAvailableWarriors()
+    {
+        WarriorFlowPane.getChildren().clear();
+        Iterator<WarriorTrainingDisplayData> aWarriorIterator =  myMain.getPlayersCamp().getWarriorHandler().getWarriorsAvailable();
         while(aWarriorIterator.hasNext())
         {
             WarriorTrainingDisplayData myData = aWarriorIterator.next();
@@ -192,10 +198,33 @@ public class MainGameScreenController implements Initializable {
             });
             WarriorFlowPane.getChildren().add(aButton);
         }
-        
-        
-        this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
-        Iterator<BuildingConstructionDisplayData> anIterator = aThis.getPlayersCamp().getBuildingHandler().getBuildable().iterator();
+    }
+    
+    public void updateAvailableItems()
+    {
+        TradeFlowpane.getChildren().clear();
+        Iterator<ProductProductionDisplayData> aProductIterator =  myMain.getPlayersCamp().getProductionHandler().getTradeGoodsAvailable();
+        while(aProductIterator.hasNext())
+        {
+            ProductProductionDisplayData myData = aProductIterator.next();
+            QuickTipsProductionButton aButton = new QuickTipsProductionButton(myData, new Tooltip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime()));
+            aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                Button myButton = aButton;
+                
+                @Override
+                public void handle(MouseEvent event) {
+                    myMain.setProductionFocus(aButton.getText());
+                }           
+            });
+            TradeFlowpane.getChildren().add(aButton);
+        }
+    }
+    
+    public void updateAvailableBuildings()
+    {
+        BuildingItemList.getChildren().clear();
+        Iterator<BuildingConstructionDisplayData> anIterator = myMain.getPlayersCamp().getBuildingHandler().getBuildable().iterator();
         while(anIterator.hasNext())
         {
             BuildingConstructionDisplayData myData = anIterator.next();
@@ -211,30 +240,33 @@ public class MainGameScreenController implements Initializable {
             });
             BuildingItemList.getChildren().add(aButton);
         }
-        
-        
-    }
-
-    
-    
-    
-    
-    
-    
-    
-   
-    public void setTime(String aTime) {
-        worldDisplayTime.setText(aTime);
     }
     
-    public void updateBuildNodes()
+    
+    
+    public void updateQueues()
     {
+        if(myMain.hasToUpdateWarriors())
+        {
+            updateAvailableWarriors();
+        }
+        
+        if(myMain.hasToUpdateBuildings())
+        {
+            updateAvailableBuildings();
+        }
+        
+        if(myMain.hasToUpdateItems())
+        {
+            updateAvailableItems();
+        }
+        
        Iterator<Node> aNode = BuildingQueueList.getChildren().iterator();
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((customProgressBar)A).update();
-            if(((customProgressBar)A).isDone())
+           ((CustomHBox)A).update();
+            if(((CustomHBox)A).isDone())
             {
                 aNode.remove();
                 AutoMapperGui.redrawMap();
@@ -245,8 +277,8 @@ public class MainGameScreenController implements Initializable {
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((customProgressBar)A).update();
-            if(((customProgressBar)A).isDone())
+           ((CustomHBox)A).update();
+            if(((CustomHBox)A).isDone())
             {
                 aNode.remove();
             }
@@ -256,8 +288,8 @@ public class MainGameScreenController implements Initializable {
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((customProgressBar)A).update();
-            if(((customProgressBar)A).isDone())
+           ((CustomHBox)A).update();
+            if(((CustomHBox)A).isDone())
             {
                 aNode.remove();
                 AutoMapperGui.redrawMap();
@@ -284,7 +316,7 @@ public class MainGameScreenController implements Initializable {
                 BuildingConstructionDisplayData myConstruction = myMain.getPlayersCamp().getBuildingHandler().startBuilding(BuildingSelectedForBuilding, aTile);
                 if(myConstruction != null)
                 {
-                    BuildingQueueList.getChildren().add(new customProgressBar(myConstruction, this.myMain));
+                    BuildingQueueList.getChildren().add(new CustomHBox(myConstruction, this.myMain));
                 }
            }
         }

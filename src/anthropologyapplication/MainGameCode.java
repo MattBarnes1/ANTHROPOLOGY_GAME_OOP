@@ -371,5 +371,17 @@ public class MainGameCode {
         playersCamp.getWarriorHandler().removeWarriorFromTraining(ProgressData);
     }
 
+    public boolean hasToUpdateWarriors() {
+        return playersCamp.getWarriorHandler().hasChanged();
+    }
+
+    public boolean hasToUpdateBuildings() {
+       return (playersCamp.getBuildingHandler().hasChanged());
+    }
+
+    public boolean hasToUpdateItems() {
+        return playersCamp.getProductionHandler().hasChanged();
+    }
+
     
 }

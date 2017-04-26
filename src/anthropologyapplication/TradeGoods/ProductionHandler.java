@@ -60,11 +60,13 @@ public class ProductionHandler
                 
                 public void lockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
+                     hasChanged = true;
                      for(internalProductLocker A : internalProductList)
                     {
                         if(A.myTradeGood.getClass() == aTradeGood)
                         {
                             A.Available = false;
+                            updatePossibleItems();
                         }
                     }
                     
@@ -72,11 +74,13 @@ public class ProductionHandler
                 
                 public void unlockTradeGood(Class<? extends TradeGood> aTradeGood)
                 {
+                     hasChanged = true;
                      for(internalProductLocker A : internalProductList)
                     {
                         if(A.myTradeGood.getClass() == aTradeGood)
                         {
                             A.Available = true;
+                            updatePossibleItems();
                         }
                     }
                 }
@@ -136,10 +140,15 @@ public class ProductionHandler
     }
     
     int maxActiveTradeGoods = 0;
-    
+    int currentlyActiveTradeGoods = 0;
     public void calculateMaxNumberOfGoodsCanWorkOn()
     {
-        
+        if(ProducersAmount != 0)
+        {
+            maxActiveTradeGoods = (ProducersAmount - (ProducersAmount % 2))/2;
+        } else {
+            maxActiveTradeGoods = 0;
+        }
     }
     
     public boolean canRemoveMore()
@@ -148,15 +157,26 @@ public class ProductionHandler
     }
     
     public boolean canAddTradeGood() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (currentlyActiveTradeGoods < maxActiveTradeGoods);
     }
 
     public void addProductionItem(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
     }
 
     public void removeProductFromProduction(TradeGood ProgressData) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    boolean hasChanged = false;
+    public boolean hasChanged() {
+        if(hasChanged == true)
+        {
+            hasChanged = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

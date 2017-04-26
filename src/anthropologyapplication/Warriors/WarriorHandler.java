@@ -207,6 +207,7 @@ public class WarriorHandler {
             if(warriorList[i].getWarrior().getClass() == aClass)
             {
                 warriorList[i].unlock();
+                hasChanged = true;
             }
         }
     }
@@ -217,6 +218,7 @@ public class WarriorHandler {
             if(warriorList[i].getWarrior().getClass() == aClass)
             {
                 warriorList[i].lock();
+                hasChanged = true;
             }
         }
     }
@@ -250,6 +252,17 @@ public class WarriorHandler {
             } else {
                 myTrainedWarriors.remove(myTrainedWarriors.size()-1);                
             }
+        }
+    }
+
+    boolean hasChanged = false;
+    public boolean hasChanged() {
+        if(hasChanged == true)
+        {
+            hasChanged = false;
+            return true;
+        } else {
+            return false;
         }
     }
 }

@@ -45,24 +45,26 @@ public class ReputationFactory {
            myTribeWhosBeingModified.remove(); //Temporarily Removes it;
            for(int i = 0; i < myReputation.size(); i++)
            {
-               try
-               {
+               
                 Reputation[] newReputations = new Reputation[myReputation.size()];
                 ReputationHandler myHandler = myModifyingTribe.getReputationHandler();
                 System.out.println("Handler" + myHandler );
                 Reputation[] oldReputations = myHandler.myReputationList;
-                System.out.println("Old Reputation: " + toArrayString(oldReputations));
-                System.arraycopy(oldReputations, 0, newReputations, 0, oldReputations.length);
-                System.out.println("New Reputation before add: " + toArrayString(newReputations));
-                newReputations[myReputation.size()-1] = new Reputation(myModifyingTribe, myNewObject);
-                System.out.println("New Reputation after add: " + toArrayString(newReputations));
-                myHandler.myReputationList = newReputations;
-                System.out.println("Reputation set to: " + toArrayString(myHandler.myReputationList));
-               } 
-               catch(Exception e)
-               {
-                       System.out.println(e.getMessage());
-               }
+                if(oldReputations != null)
+                {
+                    //System.out.println("Old Reputation: " + toArrayString(oldReputations));
+                    System.arraycopy(oldReputations, 0, newReputations, 0, oldReputations.length);
+                    // System.out.println("New Reputation before add: " + toArrayString(newReputations));
+                    newReputations[myReputation.size()-1] = new Reputation(myModifyingTribe, myNewObject);
+                    //System.out.println("New Reputation after add: " + toArrayString(newReputations));
+                    myHandler.myReputationList = newReputations;
+                    //System.out.println("Reputation set to: " + toArrayString(myHandler.myReputationList));
+                } else {
+                    newReputations[myReputation.size()-1] = new Reputation(myModifyingTribe, myNewObject);
+                    //System.out.println("Reputation set to: " + toArrayString(newReputations));
+                    myHandler.myReputationList = newReputations;
+                }
+               
            }
            myTribeWhosBeingModified.add(myModifyingTribe);//Position is preserved!
            int debug = 0;

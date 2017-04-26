@@ -36,10 +36,13 @@ public class customProgressBar extends javafx.scene.control.ProgressBar {
         this.myCode = myCode;
         //CodeObject = myCode;
         this.ProgressData = myData;
+        setProgress(0);
+        myToolTip = new Tooltip(myData.getToolTipString());
+        myLabel = new Label();
         myLabel.setText(ProgressData.getName());
         Bounds WindowBounds = boundsInLocalProperty().get();
-        myLabel.setTranslateX(WindowBounds.getWidth()*0.5 - myLabel.getBoundsInLocal().getWidth()*0.5);
-        myLabel.setTranslateY(WindowBounds.getHeight()*0.5 - myLabel.getBoundsInLocal().getHeight()*0.5);
+        //myLabel.setTranslateX(WindowBounds.getWidth()*0.5 - myLabel.getBoundsInLocal().getWidth()*0.5);
+        //myLabel.setTranslateY(WindowBounds.getHeight()*0.5 - myLabel.getBoundsInLocal().getHeight()*0.5);
         myToolTip.setText(myData.getTimeToCompleteString());
         customProgressBar toPass = this;
         setOnMouseEntered(new EventHandler<MouseEvent>(){
@@ -76,6 +79,9 @@ public class customProgressBar extends javafx.scene.control.ProgressBar {
         if(ProgressData.getCompletionPercentage() == 1.0D && !isDoneNow)
         {
             isDoneNow = (ProgressData.getCompletionPercentage() == 1.0D);
+            this.setProgress(ProgressData.getCompletionPercentage());
+        } else if(ProgressData.getCompletionPercentage() != 1.0D) {
+            this.setProgress(ProgressData.getCompletionPercentage());
         }
     }
     

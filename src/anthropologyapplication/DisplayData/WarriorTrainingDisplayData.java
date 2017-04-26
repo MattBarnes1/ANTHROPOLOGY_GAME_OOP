@@ -60,6 +60,11 @@ public class WarriorTrainingDisplayData implements DisplayData {
     public boolean shouldBeRemoved() {
         return true;
     }
+
+    @Override
+    public String getToolTipString() {
+        return getDescription() + getTimeToCompleteString();
+    }
     
     
     

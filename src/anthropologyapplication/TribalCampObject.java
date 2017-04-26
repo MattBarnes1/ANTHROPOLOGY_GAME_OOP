@@ -34,7 +34,8 @@ public class TribalCampObject {
     private ReputationHandler myReputationHandler;
     public TribalCampObject(SocietyChoices mySocietyChoices) throws Exception {
         this.mySocietyChoices = mySocietyChoices;
-        myReputationHandler = new ReputationHandler(this);
+        myReputationHandler = new ReputationHandler();
+        myReputationHandler.doReputationCalculation(this);
         myProductionHandler = new ProductionHandler(this);
         myWarriorHandler = new WarriorHandler(this);
         myBuildingHandler = new BuildingHandler(this);

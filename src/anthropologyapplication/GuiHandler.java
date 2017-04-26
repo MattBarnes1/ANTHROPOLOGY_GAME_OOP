@@ -46,7 +46,7 @@ public class GuiHandler {
     
     public void updateBuildQueue()
     {
-        mainGameScreenController.updateBuildNodes();
+        mainGameScreenController.updateQueues();
     }
     
     public GuiHandler(Stage aStage, int WindowWidth, int WindowHeight) throws IOException

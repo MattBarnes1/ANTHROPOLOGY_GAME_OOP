@@ -18,4 +18,6 @@ public interface DisplayData {
     public void acceptRemoverAsVisitor(MainGameCode myGameCode);
 
     public boolean shouldBeRemoved();
+
+    public String getToolTipString();
 }

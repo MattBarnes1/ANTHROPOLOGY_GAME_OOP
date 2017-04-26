@@ -38,7 +38,7 @@ public class BuildingHandler {
                 private int currentlyAllowedTier = 0; //Unlocked level
 		private ArrayList<Building> BuildingsBeingConstructed = new ArrayList<>();
                 private ArrayList<Building> BuildingsBuilt = new ArrayList<>();
-    private final TribalCampObject myTribe;
+                private final TribalCampObject myTribe;
                 
                 
 		public BuildingHandler(TribalCampObject myObject)
@@ -71,7 +71,8 @@ public class BuildingHandler {
                         {
                             A.Available = false;
                             A.myBuilding.onLock(myTribe);
-                            
+                            updatePossibleBuildings();
+                            hasChanged = true;
                         }
                     }
                 }
@@ -84,6 +85,8 @@ public class BuildingHandler {
                         {
                             A.Available = true;
                             A.myBuilding.onUnlock(myTribe);
+                            updatePossibleBuildings();
+                            hasChanged = true;
                         }
                     }
                 }
@@ -305,6 +308,17 @@ public class BuildingHandler {
     public void stopBuilding(Building ProgressData) {
         ProgressData.stopConstruction();
         this.BuildingsBeingConstructed.remove(ProgressData);
+    }
+
+    boolean hasChanged = false;
+    public boolean hasChanged() {
+        if(hasChanged == true)
+        {
+            hasChanged = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
