@@ -15,9 +15,10 @@ public class ReputationHandler {
     private final int Adjustment_OnAttack_Goal_Kill = -10;
     private final int Adjustment_OnAttack_Goal_Steal = -5;
     private final int Adjustment_OnAttack_Goal_Trade = 10;
-    Reputation[] myReputationList = {};
+    Reputation[] myReputationList;
     public ReputationHandler(TribalCampObject myObject) throws Exception
     {
+        myReputationList = new Reputation[]{};
         ReputationFactory.addNewTribe(myObject);
     }
     

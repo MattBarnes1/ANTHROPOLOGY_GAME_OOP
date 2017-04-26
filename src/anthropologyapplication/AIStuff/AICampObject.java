@@ -23,7 +23,7 @@ public class AICampObject extends TribalCampObject {
     private final static String[] PossibleNames = { "A", "B", "C", "D", "E" };
     private final static boolean[] isNameInUse = new boolean[PossibleNames.length];
     private final AIHandler myHandler;
-    public AICampObject(SocietyChoices mySocietyChoices, Map myMap, MapTile HomeTile) {
+    public AICampObject(SocietyChoices mySocietyChoices, Map myMap, MapTile HomeTile) throws Exception {
         super(mySocietyChoices);
         super.setHomeTile(HomeTile);
         myWorldMap = myMap;

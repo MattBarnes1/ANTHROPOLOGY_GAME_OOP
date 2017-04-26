@@ -19,8 +19,11 @@ public class ReputationFactory {
     {
         if(!myReputation.contains(myNewObject))
         {
+            System.out.println("Adding a new Object: " + myNewObject.hashCode());
             myReputation.add(myNewObject);
             updateReputationHandlersOnAdd(myNewObject);
+            System.out.println("Finished adding a new Object: " + myNewObject.hashCode());
+            
         } else {
             throw new Exception("Attempted to add a Tribal Object to Reputation twice!");
         }
@@ -42,12 +45,24 @@ public class ReputationFactory {
            myTribeWhosBeingModified.remove(); //Temporarily Removes it;
            for(int i = 0; i < myReputation.size(); i++)
            {
+               try
+               {
                 Reputation[] newReputations = new Reputation[myReputation.size()];
                 ReputationHandler myHandler = myModifyingTribe.getReputationHandler();
+                System.out.println("Handler" + myHandler );
                 Reputation[] oldReputations = myHandler.myReputationList;
+                System.out.println("Old Reputation: " + toArrayString(oldReputations));
                 System.arraycopy(oldReputations, 0, newReputations, 0, oldReputations.length);
+                System.out.println("New Reputation before add: " + toArrayString(newReputations));
                 newReputations[myReputation.size()-1] = new Reputation(myModifyingTribe, myNewObject);
+                System.out.println("New Reputation after add: " + toArrayString(newReputations));
                 myHandler.myReputationList = newReputations;
+                System.out.println("Reputation set to: " + toArrayString(myHandler.myReputationList));
+               } 
+               catch(Exception e)
+               {
+                       System.out.println(e.getMessage());
+               }
            }
            myTribeWhosBeingModified.add(myModifyingTribe);//Position is preserved!
            int debug = 0;
@@ -84,5 +99,20 @@ public class ReputationFactory {
             myHandler.myReputationList = newReputations;
         }
     }
+
+    private static String toArrayString(Reputation[] oldReputations) {
+        if(oldReputations == null)
+        {
+            return "NULL";
+        }
+        String myString = "";
+        for(int i = 0; i < oldReputations.length; i++)
+        {
+            myString += (oldReputations[i].toString() + "\n");
+        }
+        return myString;
+    }
+
+   
 
 }

@@ -206,7 +206,7 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
     
     
     
-    private AICampObject[] generateSettlements()
+    private AICampObject[] generateSettlements() throws Exception
     {
         ArrayList<SocialValues> AISocialValues = new ArrayList<>();
         myCamps = new AICampObject[possibleSettlements];

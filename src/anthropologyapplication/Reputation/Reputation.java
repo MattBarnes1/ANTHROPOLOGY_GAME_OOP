@@ -53,8 +53,11 @@ public class Reputation {
         return whoTheyAre;
     }
 
-    
-        
+    @Override
+     public String toString()
+     {
+         return whoTheyAre.hashCode() + ":" + whatTheirReputationIs;
+     }
         
   
 }
