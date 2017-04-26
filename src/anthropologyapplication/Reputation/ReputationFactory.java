@@ -50,6 +50,7 @@ public class ReputationFactory {
                 myHandler.myReputationList = newReputations;
            }
            myTribeWhosBeingModified.add(myModifyingTribe);//Position is preserved!
+           int debug = 0;
         }
         
     }

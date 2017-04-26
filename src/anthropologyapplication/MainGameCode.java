@@ -8,7 +8,7 @@ package anthropologyapplication;
 import anthropologyapplication.RandomEvents.RandomEventHandler;
 import anthropologyapplication.AIStuff.AICampObject;
 import anthropologyapplication.Buildings.Building;
-import anthropologyapplication.WorldEntityHandler.WorldMapEntityProducer;
+import anthropologyapplication.MapEntityHandler.MapEntityProducer;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
 import anthropologyapplication.DisplayData.ProductProductionDisplayData;
 import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.Worker.State;
+import javax.naming.OperationNotSupportedException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -38,16 +39,15 @@ public class MainGameCode {
     Map myMap;
     Thread MapThread;
     Thread RandomEventsThread;
-    public void newGame() throws IOException {
+    public void newGame() throws IOException, OperationNotSupportedException {
         myMap = new Map(50, this, myDisplay.getAutomapper());
         myDisplay.setupMap();
         //myMap.run();
         
         myMap.start();
-        myRandomEvents = new RandomEventHandler("anthropologyApplication/RandomEvents/RandomEvents.json");
-        RandomEventsThread = new Thread(myRandomEvents);
+       // myRandomEvents = new RandomEventHandler("anthropologyApplication/RandomEvents/RandomEvents.json");
+       //TODO: myRandomEvents.start();
         
-        //RandomEventsThread.start();
         
         myDisplay.displaySocietyChoiceSelectionGUI(this);
     }
@@ -87,7 +87,7 @@ public class MainGameCode {
                     } else {
                         WorldTime.Update(10);
                     }
-                    WorldMapEntityProducer.update(WorldTime);
+                    MapEntityProducer.update(WorldTime);
                     for(AICampObject anObject : myEnemyArray)
                     {
                         anObject.update(WorldTime);

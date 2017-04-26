@@ -17,6 +17,8 @@ public class Timer {
     private int Seconds;
     private int Milliseconds = 0;
 
+    public static final Timer Zero = new Timer(0,0,0,0);
+    
     public Timer(int Days, int Hours, int Minutes, int Seconds) {
         this.Days = Days;
         this.Hours = Hours;

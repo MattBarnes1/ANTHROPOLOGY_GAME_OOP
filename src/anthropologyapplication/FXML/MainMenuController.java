@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javax.naming.OperationNotSupportedException;
 
 /**
  * FXML Controller class
@@ -51,7 +52,7 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void NewGameClick(ActionEvent event) {
+    private void NewGameClick(ActionEvent event) throws OperationNotSupportedException {
         try {
             myMain.newGame();
         } catch (IOException ex) {

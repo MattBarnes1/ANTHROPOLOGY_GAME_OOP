@@ -16,24 +16,29 @@
         <URL value="@maingamescreen.css" />
     </stylesheets>
    <children>
-      <Canvas fx:id="CanvasMapDisplay" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
-      <Canvas fx:id="CanvasMapDisplayTerritoryLayer" height="392.0" layoutX="213.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="587.0" />
+      <Canvas fx:id="CanvasMapDisplay" height="392.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="800.0" />
+      <Canvas fx:id="CanvasMapDisplayTerritoryLayer" height="392.0" onKeyPressed="#CanvasKeyPressed" onKeyReleased="#CanvasKeyReleased" onMouseClicked="#CanvasMapDisplayClicked" onMouseDragged="#MouseDraggedMe" onMouseEntered="#CanvasMapMouseEntered" onMouseExited="#CanvasMapMouseExited" onMouseMoved="#MouseMovedWithinMe" onScroll="#CanvasScrollingWhileScrolling" onScrollFinished="#CanvasScrollingFinished" onScrollStarted="#CanvasScrollingStarted" width="800.0" />
       <TabPane layoutX="6.0" layoutY="424.0" prefHeight="194.0" prefWidth="781.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="BuildingsTab" onSelectionChanged="#BuildingsTabSelected" text="Buildings">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutX="192.0" layoutY="8.0" prefHeight="129.0" prefWidth="585.0">
+                        <ScrollPane layoutX="369.0" layoutY="8.0" prefHeight="129.0" prefWidth="408.0">
                            <content>
-                              <FlowPane fx:id="BuildingItemList" prefHeight="127.0" prefWidth="582.0" />
+                              <FlowPane fx:id="BuildingItemList" prefHeight="127.0" prefWidth="397.0" />
                            </content>
                         </ScrollPane>
                         <Label fx:id="GameWorldTimeObject11112" layoutX="19.0" layoutY="16.0" text="Builders:" />
                         <Label fx:id="assignCitizensBuildersCount" layoutX="66.0" layoutY="17.0" prefHeight="17.0" prefWidth="28.0" text="0" />
                         <Button fx:id="increaseBuildersButton" layoutX="34.0" layoutY="52.0" mnemonicParsing="false" onAction="#increaseBuildersButtonClick" text="/\" />
                         <Button fx:id="decreaseBuildersButton" layoutX="34.0" layoutY="84.0" mnemonicParsing="false" onAction="#decreaseBuildersButtonClick" text="\\/" />
-                        <Label fx:id="BuildingsTabErrorText" layoutX="192.0" layoutY="137.0" text="Error" />
+                        <Label fx:id="BuildingsTabErrorText" layoutX="106.0" layoutY="143.0" text="Error" />
+                        <ScrollPane layoutX="146.0" layoutY="9.0" prefHeight="127.0" prefWidth="213.0">
+                           <content>
+                              <VBox fx:id="BuildingQueueList" prefHeight="124.0" prefWidth="210.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
             </content>
@@ -42,9 +47,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="163.0" prefWidth="781.0">
                      <children>
-                        <ScrollPane layoutX="208.0" layoutY="6.0" prefHeight="127.0" prefWidth="566.0">
+                        <ScrollPane layoutX="391.0" layoutY="19.0" prefHeight="127.0" prefWidth="390.0">
                            <content>
-                              <FlowPane fx:id="TradeFlowpane" prefHeight="124.0" prefWidth="565.0" />
+                              <FlowPane fx:id="TradeFlowpane" prefHeight="124.0" prefWidth="387.0" />
                            </content>
                         </ScrollPane>
                         <Label fx:id="GameWorldTimeObject112" layoutX="14.0" layoutY="14.0" text="Workers:" />
@@ -52,7 +57,12 @@
                         <Button fx:id="increaseWorkersButton" layoutX="25.0" layoutY="46.0" mnemonicParsing="false" onAction="#increaseWorkersButtonClick" text="/\" />
                         <Button fx:id="decreaseWorkersButton1" layoutX="25.0" layoutY="88.0" mnemonicParsing="false" onAction="#decreaseWorkersButtonClick" text="\\/" />
                         <Label fx:id="TradeGoodTabErrorText" layoutX="208.0" layoutY="139.0" />
-                        <Label fx:id="TradeGoodsTabErrorText" layoutX="208.0" layoutY="139.0" text="Error" />
+                        <Label fx:id="TradeGoodsTabErrorText" layoutX="148.0" layoutY="148.0" text="Error" />
+                        <ScrollPane layoutX="148.0" layoutY="19.0" prefHeight="127.0" prefWidth="233.0">
+                           <content>
+                              <VBox fx:id="ProductionQueueList" prefHeight="125.0" prefWidth="218.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
             </content>
@@ -83,31 +93,44 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutX="130.0" layoutY="9.0" prefHeight="127.0" prefWidth="651.0">
+                        <ScrollPane layoutX="407.0" layoutY="9.0" prefHeight="127.0" prefWidth="374.0">
                            <content>
-                              <FlowPane fx:id="WarriorFlowPane" prefHeight="124.0" prefWidth="482.0" />
+                              <FlowPane fx:id="WarriorFlowPane" prefHeight="124.0" prefWidth="371.0" />
                            </content>
                         </ScrollPane>
                         <Label fx:id="WarriorsTabErrorText" layoutX="130.0" layoutY="143.0" text="Error" />
+                        <ScrollPane layoutX="130.0" layoutY="9.0" prefHeight="127.0" prefWidth="189.0">
+                           <content>
+                              <VBox fx:id="WarriorTrainingQueueList" prefHeight="122.0" prefWidth="173.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab fx:id="RaidingTab" text="Raids">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="TradeTab" text="Trade">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
-      <Label fx:id="GameWorldTimeObject" layoutX="14.0" layoutY="14.0" text="Building Queue" />
       <Label layoutX="220.0" layoutY="400.0" text="Free Citizens:" />
       <Label fx:id="worldDisplayFreeCitizensCount" layoutX="302.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
       <Button layoutX="753.0" layoutY="396.0" mnemonicParsing="false" onAction="#fastForwardClicked" onMouseClicked="#FastForwardButtonClicked" text="&gt;&gt;" />
       <Button fx:id="NormalSpeedButton" layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickedNormalSpeed" onMouseClicked="#RegularSpeedButtonClicked" text="&gt;" />
       <Button fx:id="Pause" layoutX="665.0" layoutY="396.0" mnemonicParsing="false" onAction="#openPauseMenu" text="Pause" />
-      <VBox fx:id="BuildingQueueList" layoutX="6.0" layoutY="31.0" prefHeight="363.0" prefWidth="170.0" />
       <Label layoutX="14.0" layoutY="400.0" text="Time:" />
       <Label fx:id="worldDisplayTime" layoutX="55.0" layoutY="400.0" prefHeight="17.0" prefWidth="67.0" />
-      <Label fx:id="displayMapInfo" layoutX="220.0" layoutY="368.0" text="Label" textFill="WHITE" />
+      <Label fx:id="displayMapInfo" layoutX="15.0" layoutY="362.0" text="Label" textFill="WHITE" />
       <Label layoutX="330.0" layoutY="400.0" text="Food Available:" />
       <Label fx:id="worldDisplayFoodAvailable" layoutX="418.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
       <Label layoutX="446.0" layoutY="400.0" text="Social Cohesion:" />
-      <Label fx:id="SocialCohesionPercentage" layoutX="533.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
+      <Label fx:id="SocialCohesionPercentage" layoutX="540.0" layoutY="400.0" prefHeight="17.0" prefWidth="28.0" text="0" />
    </children>
 </AnchorPane>

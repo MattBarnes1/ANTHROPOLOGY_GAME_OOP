@@ -8,7 +8,7 @@ package anthropologyapplication.MapEntities;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.TradeGoods.TradeGood;
 import anthropologyapplication.TribalCampObject;
-import anthropologyapplication.WorldEntityHandler.MapEntityObject;
+import anthropologyapplication.MapEntityHandler.MapEntityObject;
 
 /**
  *
@@ -33,10 +33,12 @@ public class MerchantEntityObject extends MapEntityObject {
     public void onArrival(MapTile myDestination) {
         if(endOfJourney != myDestination)
         {
-            TribalCampObject whoIAmVisiting = myDestination.getTerritory();
-             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            TribalCampObject Tradee = myDestination.getTerritory();
+            Tradee.tradeInitiated(super.getOwner(), Tradee);
+            this.returnToOrigin();
         } else {
-            deleteMe = true;
+            deleteMe = true; //We've finished Trading
+            //TODO: outcome from trade
         }
     }
 

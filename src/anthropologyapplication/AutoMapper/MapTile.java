@@ -9,10 +9,12 @@ import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.AutoMapper.*;
 import anthropologyapplication.TribalCampObject;
+import anthropologyapplication.MapEntityHandler.MapEntityObject;
 import java.awt.AlphaComposite;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -132,7 +134,12 @@ public abstract class MapTile {
         else {
             aGameCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), myImage.getPixelReader(), 0, 0);   
        
-            if(tileTerritory != null)
+            if(!MyObjectOnTile.isEmpty())
+            {
+                Image imageToDraw = MyObjectOnTile.get(MyObjectOnTile.size()-1).getImage();
+                aTerritoryCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), imageToDraw.getPixelReader(), 0, 0);
+            }
+            else if(tileTerritory != null)
             {
                aTerritoryCanvas.getPixelWriter().setPixels((int)(x*getTileWidth()), (int)(y*getTileHeight()), (int)getTileWidth(), (int)getTileHeight(), tileTerritory.getPixelReader(), 0, 0);   
             }
@@ -303,6 +310,7 @@ public abstract class MapTile {
         }
     }
 
+    
     public void clearForeground() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -343,7 +351,12 @@ public abstract class MapTile {
         }
     }
 
-   
+    public void clearTerritory()
+    {
+        myTerritory = null;
+        this.tileTerritory = null;
+    }
+    
     public TribalCampObject getTerritory()
     {
         return myTerritory;
@@ -355,10 +368,6 @@ public abstract class MapTile {
         return (myTerritory == territoryToTest);
     }
     
-    public void clearTerritory()
-    {
-        myTerritory = null;
-    }
     
     public abstract boolean canBlockMovement();
 
@@ -431,6 +440,17 @@ public abstract class MapTile {
 
     public void resetDestinationMarker() {
         this.Destination = false;
+    }
+
+    
+    ArrayList<MapEntityObject> MyObjectOnTile = new ArrayList<>();
+    
+    public void removeEntityFromTile(MapEntityObject aThis) {
+        MyObjectOnTile.add(aThis);
+    }
+
+    public void addEntityToTile(MapEntityObject aThis) {
+        MyObjectOnTile.remove(aThis);
     }
 
     

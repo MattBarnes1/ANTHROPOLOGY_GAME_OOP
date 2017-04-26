@@ -1,0 +1,211 @@
+[
+	{
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" : "",
+		"FireOnce" : true,	
+		"nextEvents" : 	
+		[
+ 			{
+				"EventScenarioString" : "First Major Event",
+				"InternalName" : "First Major Event",				
+				"EventChoices" : 
+				[
+					"MatriarchalChoice",
+		 			"PatriarchalChoice"
+				],
+				"EventChoicesSocialValues" : 
+				[
+					"Matriarchal",
+		 			"Patriarchal"
+				],
+				"EventResults" : : 
+				[
+					"You picked Matriarchal!",
+				 	"You picked Patriarchal"
+				],
+				"EventTimeDelayMS" : 1000000,
+				"EventConditions" : "", 
+				"FireOnce" : true,	
+				"nextEvents" :[]
+         		},
+ 			{
+				"EventScenarioString" : "First Major Event",
+				"InternalName" : "First Major Event",
+				"EventChoices" : 
+				[
+					"MatriarchalChoice",
+		 			"PatriarchalChoice"
+				],
+				"EventChoicesSocialValues" : 
+				[
+					"Matriarchal",
+				 	"Patriarchal"
+				],
+				"EventResults" : : 
+				[
+					"You picked Matriarchal!",
+		 			"You picked Patriarchal"
+				],
+				"EventTimeDelayMS" : 1000000,
+				"EventConditions" : "",
+				"FireOnce" : true,	
+				"nextEvents" :[]
+         		}
+		]
+         },
+	 {
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" :  "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[]
+         },
+	 {
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" :  "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[],
+         },
+	 {
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" :  "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[]
+         },
+	 {
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" : "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[]
+         },
+	 {
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" :  "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[]
+         },
+	 {		
+		"EventScenarioString" : "First Major Event",
+		"InternalName" : "First Major Event",
+		"EventChoices" : 
+		[
+			"MatriarchalChoice",
+		 	"PatriarchalChoice"
+		],
+		"EventChoicesSocialValues" : 
+		[
+			"Matriarchal",
+		 	"Patriarchal"
+		],
+		"EventResults" : : 
+		[
+			"You picked Matriarchal!",
+		 	"You picked Patriarchal"
+		],
+		"EventTimeDelayMS" : 1000000,
+		"EventConditions" : "",
+		"FireOnce" : true,	
+		"nextEvents" : 	[]
+         }
+]

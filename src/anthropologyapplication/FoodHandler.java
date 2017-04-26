@@ -79,7 +79,7 @@ public class FoodHandler {
        if(isStarving())
        {
            timeToStarvation = timeToStarvation.subtract(MS.getElapsedTime());
-           if(timeToStarvation == new Timer(0,0,0,0))
+           if(timeToStarvation == Timer.Zero)
            {
                timeToStarvation = StarvationCountDown;
                myTribe.getPopulationHandler().doStarvation();

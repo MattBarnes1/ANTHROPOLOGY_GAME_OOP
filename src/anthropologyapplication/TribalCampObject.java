@@ -32,14 +32,14 @@ public class TribalCampObject {
     private MapTile HomeTile;
     private String myName;
     private ReputationHandler myReputationHandler;
-    public TribalCampObject(SocietyChoices mySocietyChoices) {
-        myReputationHandler = new ReputationHandler();
+    public TribalCampObject(SocietyChoices mySocietyChoices) throws Exception {
+        this.mySocietyChoices = mySocietyChoices;
+        myReputationHandler = new ReputationHandler(this);
         myProductionHandler = new ProductionHandler(this);
         myWarriorHandler = new WarriorHandler(this);
         myBuildingHandler = new BuildingHandler(this);
         myFoodHandler = new FoodHandler(this);
         myPopulationHandler = new PopulationHandler(this);
-        this.mySocietyChoices = mySocietyChoices;
     }
 
     public void setName(String aName)
@@ -135,5 +135,9 @@ public class TribalCampObject {
 
     void addFreeCitizens(int newCitizens) {
         TotalFreeCitizens += newCitizens;
+    }
+
+    public void tradeInitiated(TribalCampObject owner, TribalCampObject Tradee) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

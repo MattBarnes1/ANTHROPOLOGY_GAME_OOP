@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication.WorldEntityHandler;
+package anthropologyapplication.MapEntityHandler;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.GameTime;
@@ -14,12 +14,12 @@ import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Warrior;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import anthropologyapplication.Logger.FileLogger;
 /**
  *
  * @author noone
  */
-public class WorldMapEntityProducer {
+public class MapEntityProducer {
     public static ArrayList<MapEntityObject> myEntities = new ArrayList<>();
     public static void update(GameTime MS)
     {
@@ -36,17 +36,28 @@ public class WorldMapEntityProducer {
     public static void createWarriorEntity(TribalCampObject OriginTribe, MapTile Origin, MapTile Destination, Warrior[] WarriorsToSend)
     {
         String myEntityImage = decideImageBasedOnWarriors(WarriorsToSend);
-        myEntities.add(new RaidEntityObject(OriginTribe, Destination, Origin, WarriorsToSend, myEntityImage));
+        RaidEntityObject myObject = new RaidEntityObject(OriginTribe, Destination, Origin, WarriorsToSend, myEntityImage);
+        FileLogger.writeToLog(FileLogger.LOGTO.MAP_ENTITIES, myObject.getClass().toString() + " with Entity ID:" + myObject.hashCode(), "Warrior Entity: spawned on the Map!");
+        myEntities.add(myObject);
     }
+    
+    
     
     public static void createMerchantEntity(TribalCampObject OriginTribe, MapTile Origin, MapTile Destination, TradeGood[] tradeGoodsToSend)
     {
-        myEntities.add(new MerchantEntityObject(OriginTribe, Destination, Origin, "Merchant.jpg", tradeGoodsToSend));
+        MerchantEntityObject myObject = new MerchantEntityObject(OriginTribe, Destination, Origin, "Merchant.jpg", tradeGoodsToSend);
+        FileLogger.writeToLog(FileLogger.LOGTO.MAP_ENTITIES, myObject.getClass().toString() + " with Entity ID:" + myObject.hashCode(), "Merchant Entity: spawned on the Map!");
+        myEntities.add(myObject);
     }
 
     private static String decideImageBasedOnWarriors(Warrior[] WarriorsToSend) {
         return "Warriors.jpg";
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    static void removeMapEntity(MapEntityObject anObjectToRemove) // internal to the class
+    {
+        FileLogger.writeToLog(FileLogger.LOGTO.MAP_ENTITIES, anObjectToRemove.getClass().toString() + " with Entity ID:" + anObjectToRemove.hashCode(), "Map Entity: Removing from Map!");
+        myEntities.remove(anObjectToRemove);
     }
     
 }

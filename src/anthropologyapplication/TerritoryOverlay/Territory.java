@@ -365,7 +365,7 @@ public class Territory {
             {
                 if(myTerritoryLocation[x][y] != null && whoOwnsIt != null)
                 {
-                    myTerritoryLocation[x][y].setTerritory(null);
+                    myTerritoryLocation[x][y].clearTerritory();
                 }
             }
         }

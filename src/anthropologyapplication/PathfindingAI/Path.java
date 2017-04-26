@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package anthropologyapplication;
+package anthropologyapplication.PathfindingAI;
 
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.AutoMapper.Vector3;
+import anthropologyapplication.Map;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +23,9 @@ import java.util.logging.Logger;
  */
 public class Path {
 
-    private internalPath getLowestHeuristicValue(ArrayList<internalPath> aOpenList) {
-        internalPath Lowest = null;
-        for(internalPath X : aOpenList)
+    private PathObject getLowestHeuristicValue(ArrayList<PathObject> aOpenList) {
+        PathObject Lowest = null;
+        for(PathObject X : aOpenList)
         {
             if(Lowest == null)
             {
@@ -39,8 +40,8 @@ public class Path {
         return Lowest;
     }
 
-    private boolean checkListHasTile(ArrayList<internalPath> ClosedList, MapTile X) {
-        for(internalPath x : ClosedList)
+    private boolean checkListHasTile(ArrayList<PathObject> ClosedList, MapTile X) {
+        for(PathObject x : ClosedList)
         {
             if(x.aTile == X)
             {
@@ -53,19 +54,14 @@ public class Path {
     private void doPathfindingDebugSuccess() {
         if(isValidPath())
         {
-           Iterator<MapTile> g = getInternalPath();
+           Iterator<MapTile> g = getPath();
             while(g.hasNext())
             {
                 g.next().doPathfinderDebug();
             }
-            try {
-                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Success!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
-            } catch (IOException ex) {
-                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            g = getInternalPath();
+            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass().toString(), "Pathfinding Success!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
+           
+            g = getPath();
             while(g.hasNext())
             {
                 g.next().clearPathfinderDebug();
@@ -76,19 +72,14 @@ public class Path {
 private void doPathfindingDebugFailure() {
         if(isValidPath())
         {
-           Iterator<MapTile> g = getInternalPath();
+           Iterator<MapTile> g = getPath();
             while(g.hasNext())
             {
                 g.next().doPathfinderDebug();
             }
-            try {
-                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Pathfinding Failure!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
-            } catch (IOException ex) {
-                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Path.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            g = getInternalPath();
+                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass().toString(), "Pathfinding Failure!"  + System.getProperty("line.separator") + Map.getMapString() + System.getProperty("line.separator"));
+
+            g = getPath();
             while(g.hasNext())
             {
                 g.next().clearPathfinderDebug();
@@ -97,72 +88,34 @@ private void doPathfindingDebugFailure() {
     }
     
 
-        protected class internalIterator implements Iterator<MapTile>
-        {
-
-        Iterator<internalPath> aPathIterator;
-        internalIterator(ArrayList<internalPath> aPathToFollow)
-        {
-           aPathIterator = aPathToFollow.iterator();
-        }
         
-        @Override
-        public boolean hasNext() {
-            return aPathIterator.hasNext();
-        }
-
-        @Override
-        public MapTile next() {
-            return aPathIterator.next().aTile;
-        }
-
-        @Override
-        public void remove() {
-        }
-
-        @Override
-        public void forEachRemaining(Consumer<? super MapTile> action) {
-        
-        }
-        
-        
-    }
     
         
-        public Iterator<MapTile> getInternalPath()
+        public Iterator<MapTile> getPath()
         {
-            return new internalIterator(this.cameFromPath);
+            return new PathIterator(this.cameFromPath);
         }
         
-
-        
-        private class internalPath
+        public Iterator<MapTile> getReversePath()
         {
-            public MapTile aTile;
-            public int CostFromStartToHere = 0;//g
-            public int CostFromHereToGoal = 0;//f
-            public internalPath CameFrom = null;
-            private internalPath(MapTile aTile, int CostFromStartToHere, int CostFromHereToGoal) {
-                this.aTile = aTile;
-                this.CostFromStartToHere = CostFromStartToHere;
-                this.CostFromHereToGoal = CostFromHereToGoal;
-            }
-            
-            
+            return new ReversePathIterator(this.cameFromPath);
         }
         
-        private ArrayList<internalPath> OpenList = new ArrayList<>();
-        private ArrayList<internalPath> ClosedList = new ArrayList<>();
-        private ArrayList<internalPath> cameFromPath = new ArrayList<>();
         
+       
+        
+        
+        private ArrayList<PathObject> OpenList = new ArrayList<>();
+        private ArrayList<PathObject> ClosedList = new ArrayList<>();
+        private ArrayList<PathObject> cameFromPath = new ArrayList<>();
         protected ArrayList<Vector3> myVector = new ArrayList<Vector3>();
         protected ArrayList<Integer> totalCostOfTravel = new ArrayList<Integer>();
         
         
         public Path(MapTile startTile, MapTile endTile)
         {
-            OpenList.add(new internalPath(startTile, 0, getDistance(startTile, endTile)));
-            internalPath Current;
+            OpenList.add(new PathObject(startTile, 0, getDistance(startTile, endTile)));
+            PathObject Current;
            
             while(!OpenList.isEmpty())
             {
@@ -189,10 +142,10 @@ private void doPathfindingDebugFailure() {
                             }
 
                             int Score = Current.CostFromStartToHere + 1; //Moving 1 tile
-                            internalPath newPath = null;
+                            PathObject newPath = null;
                             if(!checkListHasTile(OpenList, X))
                             {
-                                newPath = new internalPath(X, Score,  Score + getDistance(X, endTile));
+                                newPath = new PathObject(X, Score,  Score + getDistance(X, endTile));
                                 newPath.CameFrom = Current;
                                 newPath.CostFromStartToHere = Score;
                                 newPath.CostFromHereToGoal =  Score + getDistance(X, endTile);
@@ -217,7 +170,7 @@ private void doPathfindingDebugFailure() {
         
         
         
-        private void convertToPath(internalPath comeFrom)
+        private void convertToPath(PathObject comeFrom)
         {
             if(comeFrom.CameFrom != null)
             {

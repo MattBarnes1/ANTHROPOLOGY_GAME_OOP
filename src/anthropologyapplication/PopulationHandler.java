@@ -54,7 +54,7 @@ public class PopulationHandler {
     void update(GameTime MS) {
         
         currentTimer.subtract(MS.getElapsedTime());
-        if(currentTimer.EqualTo(new Timer(0,0,0,0)))
+        if(currentTimer.EqualTo(Timer.Zero))
         {
             currentTimer = initialTimer;
             doPopulationGrowth();
@@ -152,7 +152,7 @@ public class PopulationHandler {
                 WarriorHandler myHandle = myTribe.getWarriorHandler();
                 if(myHandle.getWarriorsAmount() > 0)
                 {
-                    myHandle.removeAnyWarrior();
+                    myHandle.killRandomWarrior();
                 }
                 else {
                     isWarriorsEmpty = true;

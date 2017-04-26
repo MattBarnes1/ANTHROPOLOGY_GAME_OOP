@@ -121,7 +121,8 @@ public class AIHandler extends Service {
             AICampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
             public void onEnter() {
-                writeToCampAILog("Entering State: Expanding");
+                
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Expanding");
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -145,7 +146,7 @@ public class AIHandler extends Service {
             }
 
             public void onExit() { //This is to tell us the event is still live but not active.
-                writeToCampAILog("Exiting State: Expanding");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Expanding");
                
             }
 
@@ -155,7 +156,7 @@ public class AIHandler extends Service {
 
             @Override
             public void onFinish() {
-                writeToCampAILog("Finishing State: Expanding");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Expanding");
             }
 
             @Override
@@ -169,16 +170,7 @@ public class AIHandler extends Service {
         };
     }
     
-    private void writeToCampAILog(String aMessage)
-    {
-        try {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class, aMessage);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(AIHandler.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(AIHandler.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
+   
     //////////////////////////////////
     //End Expanding State
     //////////////////////////////////

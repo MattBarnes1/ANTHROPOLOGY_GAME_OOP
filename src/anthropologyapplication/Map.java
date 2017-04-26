@@ -5,6 +5,7 @@
  */
 package anthropologyapplication;
 
+import anthropologyapplication.PathfindingAI.Path;
 import anthropologyapplication.AIStuff.AICampObject;
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.AutoMapper.AutoMapperGui;
@@ -131,13 +132,8 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
                         {
                             habitable.get(i).resetTown();
                             habitable.get(i).setRemove();
-                            try {
-                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (IOException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass().toString(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+                            
                             habitable.get(i).resetRemove();
                             habitable.remove(i);
                             
@@ -145,28 +141,17 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
                         } 
                         else if (CheckPathNumber(habitable.get(i), habitable) == CheckPathNumber(habitable.get(g), habitable))
                         {
-                            try {
-                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "All Towns can find eachother!" + System.getProperty("line.separator"));
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (IOException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass().toString(), "All Towns can find eachother!" + System.getProperty("line.separator"));
+                          
                         }
                         else 
                         {
                             
                             habitable.get(g).resetTown();
                             habitable.get(g).setRemove();
-                            System.out.println();
-                            try {
-                                FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (IOException ex) {
-                                Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                             habitable.get(i).resetRemove();
+                            FileLogger.writeToLog(FileLogger.LOGTO.PATHFINDER, getClass().toString(), "Removing a town!" + System.getProperty("line.separator") + this.toMapString() + System.getProperty("line.separator"));
+
+                            habitable.get(i).resetRemove();
                             habitable.remove(g);
                             Count--;
                         }

@@ -52,8 +52,6 @@ public class MainGameScreenController implements Initializable {
     @FXML
     private Canvas CanvasMapDisplay;
     @FXML
-    private Label GameWorldTimeObject;
-    @FXML
     private Label GameWorldTimeObject112;
     @FXML
     private Label assignCitizensWorkersCount1;
@@ -125,6 +123,14 @@ public class MainGameScreenController implements Initializable {
     private Label SocialCohesionPercentage;
     @FXML
     private Canvas CanvasMapDisplayTerritoryLayer;
+    @FXML
+    private VBox ProductionQueueList;
+    @FXML
+    private VBox WarriorTrainingQueueList;
+    @FXML
+    private Tab RaidingTab;
+    @FXML
+    private Tab TradeTab;
     
     /**
      * Initializes the controller class.
@@ -235,28 +241,28 @@ public class MainGameScreenController implements Initializable {
             }
        }
        
-       /*Iterator<Node> aNode = ProductionQueueList.getChildren().iterator();
+       aNode = ProductionQueueList.getChildren().iterator();
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((ProductionProgressBar)A).update();
-            if(((ProductionProgressBar)A).isDone())
+           ((customProgressBar)A).update();
+            if(((customProgressBar)A).isDone())
             {
                 aNode.remove();
             }
-       }*/
+       }
        
-       /*Iterator<Node> aNode = WarriorTrainingQueueList.getChildren().iterator();
+       aNode = WarriorTrainingQueueList.getChildren().iterator();
        while(aNode.hasNext())
        {
            Node A = aNode.next();
-           ((WarriorTrainingProgressBar)A).update();
-            if(((WarriorTrainingProgressBar)A).isDone())
+           ((customProgressBar)A).update();
+            if(((customProgressBar)A).isDone())
             {
                 aNode.remove();
                 AutoMapperGui.redrawMap();
             }
-       }*/
+       }
     }
     
     public void setFoodAvailable(int amount)
@@ -465,6 +471,8 @@ public class MainGameScreenController implements Initializable {
         }
     }
 
+    
+    
     public void showErrorMessage(String ErrorString) {
         if(CanvasMapDisplay.isFocused())
         {

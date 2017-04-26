@@ -104,7 +104,7 @@ public class SocietyChoices
             public short[] getSocialValuesArrayCopy()
             {
                 short[] retSocialValueArray = new short[SocialValues.values().length];
-                System.arraycopy(socialValueArray, 0, retSocialValueArray, 0, socialValueArray.length);
+                System.arraycopy(socialValueShortArray, 0, retSocialValueArray, 0, socialValueArray.length);
                 //Since array is an object it's modifiable by the one receiving it. We don't want that.
                 return retSocialValueArray;
             }

@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -28,12 +29,17 @@ import java.util.logging.Logger;
  * @author Duke
  */
 public class FileLogger {
+
+      
+  
     
     public enum LOGTO
     {
         PATHFINDER, //Only need to modify this to make new log file
-        CAMP_AI, 
-        MAP
+        CAMP_AI,
+        MAP_GENERATION,
+        MAP_ENTITIES, 
+        RANDOM_EVENTS_CREATOR
     }
     protected static Lock aLock;
     protected FileWriter myWriter = null;
@@ -103,21 +109,28 @@ public class FileLogger {
         {
             StringOutputForLogs.add(new ArrayList<String>());
         }
-        
-       
     }
     
     private static boolean isAddingToArrayList = false;
     StringBuilder myString = new StringBuilder();
-    private synchronized void internalWriteMessage(LOGTO logToWriteTo, Class<?> whoIsWriting, String aMessage) throws InterruptedException, FileNotFoundException, IOException
+    private synchronized void internalWriteMessage(LOGTO logToWriteTo, String whoIsWriting, String aMessage)
     {
-         while(isAddingToArrayList)
-            wait();//Wait for the one currently writing to the file to finish;
+        while(isAddingToArrayList)
+         {
+             try {
+                 wait();//Wait for the one currently writing to the file to finish;
+             } catch (InterruptedException ex) {
+                 Logger.getLogger(FileLogger.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    flushToFiles();
+                } catch (IOException ex1) {
+                    Logger.getLogger(FileLogger.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+             }
+         }
         isAddingToArrayList = true;
-        
-        
         myString.append(new SimpleDateFormat("MM.dd 'at' HH:mm:ss").format(Calendar.getInstance().getTime()).toString() + System.getProperty("line.separator"));
-        myString.append(whoIsWriting.toString() + System.getProperty("line.separator") + System.getProperty("line.separator"));
+        myString.append(whoIsWriting + System.getProperty("line.separator") + System.getProperty("line.separator"));
         myString.append(aMessage + System.getProperty("line.separator") + System.getProperty("line.separator"));
         
         for(int i = 0; i < LOGTO.values().length; i++)
@@ -152,10 +165,14 @@ public class FileLogger {
     
     
     //Do not ever edit;
-    public static void writeToLog(LOGTO logToWriteTo, Class<?> whoIsWriting, String aMessage) throws InterruptedException, FileNotFoundException, IOException
+    public static void writeToLog(LOGTO logToWriteTo, String whoIsWriting, String aMessage)
     {
-        createLogFile();
-        myInternalLogger.internalWriteMessage(logToWriteTo, whoIsWriting, aMessage);
-       
+        try {
+            createLogFile();
+            myInternalLogger.internalWriteMessage(logToWriteTo, whoIsWriting, aMessage);
+        } catch (IOException ex) {
+            Logger.getLogger(FileLogger.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
 }

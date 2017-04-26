@@ -41,7 +41,7 @@ public class Warrior {
     }
 
     public boolean isDoneBuilding() {
-        return (BuildTimeCountDown.EqualTo(new Timer(0,0,0,0)));
+        return (BuildTimeCountDown.EqualTo(Timer.Zero));
     }
 
     boolean hasBeenBuilt = false;
@@ -89,6 +89,11 @@ public class Warrior {
 
     public double getCompletionPercentage() {
         return BuildTimeCountDown.dividedBy(BuildTime);
+    }
+    
+    boolean isCancelled = false;
+    public void cancelBuild() {
+        isCancelled = true;
     }
 
     

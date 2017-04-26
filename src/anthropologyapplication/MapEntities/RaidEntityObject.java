@@ -5,10 +5,10 @@
  */
 package anthropologyapplication.MapEntities;
 
-import anthropologyapplication.WorldEntityHandler.MapEntityObject;
+import anthropologyapplication.MapEntityHandler.MapEntityObject;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.GameTime;
-import anthropologyapplication.Path;
+import anthropologyapplication.PathfindingAI.Path;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Warrior;
@@ -23,10 +23,12 @@ import javafx.scene.image.Image;
 public class RaidEntityObject extends MapEntityObject {
     Random myRandom = new Random();
     Warrior[] myWarriors;
+    MapTile Origin;
     public RaidEntityObject(TribalCampObject Owner, MapTile Destination, MapTile StartingPoint, Warrior[] myWarriors, String ImageName)
     {
         super(Owner, Destination, StartingPoint, ImageName);
         this.myWarriors = myWarriors;  
+        Origin = StartingPoint;
     }
   
     
@@ -34,13 +36,16 @@ public class RaidEntityObject extends MapEntityObject {
     {
         return this.myWarriors;
     }
-    
-    
+       
     
     private void Raid(MapTile aTile)
     {
-        deleteMe = true;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.  
+        if(hasLivingWarriors())
+        {
+            this.returnToOrigin();
+        } else {
+            deleteMe = true;
+        }
     }
 
     private boolean deleteMe = false;
@@ -52,11 +57,28 @@ public class RaidEntityObject extends MapEntityObject {
 
     @Override
     public void onArrival(MapTile myDestination) {
-        Raid(myDestination);
+        if(Origin != myDestination)
+        {
+            Raid(myDestination);
+        } else {
+            
+            deleteMe = true;
+        }
     }
 
     @Override
     public boolean shouldDelete() {
         return deleteMe;
+    }
+
+    private boolean hasLivingWarriors() {
+        for(int i = 0; i < this.myWarriors.length; i++)
+        {
+            if(myWarriors[i] != null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

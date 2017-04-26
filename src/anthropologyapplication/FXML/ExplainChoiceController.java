@@ -8,7 +8,12 @@ package anthropologyapplication.FXML;
 import anthropologyapplication.MainGameCode;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -16,6 +21,13 @@ import javafx.fxml.Initializable;
  * @author Duke
  */
 public class ExplainChoiceController implements Initializable {
+
+    @FXML
+    private VBox DecisionCheckBoxVBox;
+    @FXML
+    private TextArea ChoiceOutcomeText;
+    @FXML
+    private Button FinishedReadingButton;
 
     /**
      * Initializes the controller class.
@@ -29,4 +41,9 @@ public class ExplainChoiceController implements Initializable {
     public void setMainGameCode(MainGameCode aThis) {
         myMain = aThis;
     }
+
+    @FXML
+    private void FinishedReadingButtonClick(ActionEvent event) {
+    }
+
 }

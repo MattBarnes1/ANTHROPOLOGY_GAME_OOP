@@ -33,5 +33,9 @@ public class JSON {
     public aObject getObject() {
         return (aObject)Base;
     }
+
+    public Array getArray() {
+        return (Array)Base;
+    }
     
 }

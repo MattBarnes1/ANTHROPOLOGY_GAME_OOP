@@ -14,6 +14,7 @@ import anthropologyapplication.Warriors.Warrior;
 import anthropologyapplication.internalLockers.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 
 
@@ -228,14 +229,17 @@ public class WarriorHandler {
     
     
     
-    public void removeAnyWarrior() {
+    public void killRandomWarrior() {
         int choice = (myRandom.nextInt(2));
         if(!myWarriorsInTraining.isEmpty() && myTrainedWarriors.isEmpty())
         {
+                Warrior CurrentlyInTraining = myWarriorsInTraining.get(myWarriorsInTraining.size()-1);
+                CurrentlyInTraining.cancelBuild();
                 myWarriorsInTraining.remove(myWarriorsInTraining.size()-1);
         }
         else if (myWarriorsInTraining.isEmpty() && !myTrainedWarriors.isEmpty())
         {
+                Warrior CurrentlyInTraining = myWarriorsInTraining.get(myWarriorsInTraining.size()-1);
                 myTrainedWarriors.remove(myTrainedWarriors.size()-1);                 
         }
         else
