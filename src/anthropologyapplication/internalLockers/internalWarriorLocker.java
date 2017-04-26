@@ -48,5 +48,13 @@ public class internalWarriorLocker {
     public Warrior getWarrior() {
         return aWarrior;
     }
+
+    public void unlock() {
+        Available = true;
+    }
+
+    public void lock() {
+        Available = false;
+    }
     
 }

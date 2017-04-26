@@ -53,7 +53,7 @@ public class WarriorTrainingDisplayData implements DisplayData {
 
     @Override
     public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
-        myGameCode.remove(this);
+        myGameCode.remove(myData);
     }
 
     @Override

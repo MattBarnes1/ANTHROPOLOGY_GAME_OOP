@@ -167,6 +167,10 @@ public abstract class Building
         return BuiltOn;
     }
 
+    void stopConstruction() {
+       this.BuiltOn.setBuildingOnThis(null);//nulls it
+    }
+
    
 
    

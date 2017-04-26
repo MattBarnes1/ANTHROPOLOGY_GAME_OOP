@@ -23,7 +23,7 @@ public class TribalCampObject {
     private BuildingHandler myBuildingHandler;
     private SocietyChoices mySocietyChoices;
     private PopulationHandler myPopulationHandler;
-    private int TotalAvailableCitizens = 10;
+    private int TotalFreeCitizens = 10;
     private FoodHandler myFoodHandler;
     private WarriorHandler myWarriorHandler;
     private int availableFood = 100;
@@ -99,22 +99,22 @@ public class TribalCampObject {
     }
 
     public int getFreeCitizens() {
-        return this.TotalAvailableCitizens;
+        return this.TotalFreeCitizens;
     }
 
     boolean hasFreeCitizens() {
-      return (this.TotalAvailableCitizens > 0);
+      return (this.TotalFreeCitizens > 0);
     }
 
     void removeFreeCitizen() {
         if(hasFreeCitizens())
         {
-            this.TotalAvailableCitizens--;
+            this.TotalFreeCitizens--;
         }
     }
 
     void addFreeCitizen() {
-        this.TotalAvailableCitizens++;
+        this.TotalFreeCitizens++;
     }
 
     public WarriorHandler getWarriorHandler() {
@@ -130,6 +130,10 @@ public class TribalCampObject {
     }
 
     public ReputationHandler getReputationHandler() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return this.myReputationHandler;
+    }
+
+    void addFreeCitizens(int newCitizens) {
+        TotalFreeCitizens += newCitizens;
     }
 }

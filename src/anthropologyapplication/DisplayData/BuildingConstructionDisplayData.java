@@ -47,7 +47,7 @@ public class BuildingConstructionDisplayData implements DisplayData {
 
     @Override
     public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
-        myGameCode.remove(this);
+        myGameCode.remove(aBuilding);
     }
 
     @Override

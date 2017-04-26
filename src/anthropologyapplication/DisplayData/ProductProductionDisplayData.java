@@ -41,7 +41,7 @@ public class ProductProductionDisplayData implements DisplayData {
     
         @Override
     public void acceptRemoverAsVisitor(MainGameCode myGameCode) {
-        myGameCode.remove(this);
+        myGameCode.remove(myTradeGood);
     }
 
     @Override

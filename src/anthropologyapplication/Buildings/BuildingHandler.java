@@ -265,17 +265,46 @@ public class BuildingHandler {
                     return retBuilding;
 		}
 
+                
+                public ArrayList<Building> getBuildingsCurrentlyBeingBuiltByType(Class<? extends Building> myClass)
+                { 
+                    ArrayList<Building> retBuilding = new ArrayList<Building>();
+                    for(Building A : BuildingsBeingConstructed)
+                    {
+                       //System.out.println(A.getClass());
+                        if(A.getClass() == myClass)
+                        {
+                           retBuilding.add(A);
+                        }
+                    }
+                    return retBuilding;
+                }
+    
                /* public boolean hasWorking(Class<? extends Building> aClass) {
                     ArrayList<Building> retBuilding = getAllBuiltBuildingsByType(aClass);
                     retBuilding.iterator();
                 }*/
 
-    public void removeBuildingFromConstruction(BuildingConstructionDisplayData myData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    public boolean hasWorking(Class<? extends Building> aClass) {
+        for(int i = 0; i < BuildingsBuilt.size(); i++)
+        {
+            Building aBuilding = BuildingsBuilt.get(i);
+            if(aBuilding.getClass() == aClass)
+            {
+                if(!aBuilding.isDestroyed())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    public boolean hasWorking(Class<Smelterer> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void stopBuilding(Building ProgressData) {
+        ProgressData.stopConstruction();
+        this.BuildingsBeingConstructed.remove(ProgressData);
     }
 
 

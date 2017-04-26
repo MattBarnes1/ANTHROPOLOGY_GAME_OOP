@@ -160,6 +160,7 @@ public class AIHandler extends Service {
 
             @Override
             public StateExecution substateCheck() {
+                
                 //These are the substate conditions that are being checked.
                 return null;
             }

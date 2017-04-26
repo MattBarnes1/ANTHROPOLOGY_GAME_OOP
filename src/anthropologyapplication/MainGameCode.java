@@ -7,11 +7,14 @@ package anthropologyapplication;
 
 import anthropologyapplication.RandomEvents.RandomEventHandler;
 import anthropologyapplication.AIStuff.AICampObject;
+import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.WorldEntityHandler.WorldMapEntityProducer;
 import anthropologyapplication.DisplayData.BuildingConstructionDisplayData;
 import anthropologyapplication.DisplayData.ProductProductionDisplayData;
 import anthropologyapplication.DisplayData.WarriorTrainingDisplayData;
 import anthropologyapplication.DisplayData.DisplayData;
+import anthropologyapplication.TradeGoods.TradeGood;
+import anthropologyapplication.Warriors.Warrior;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,10 +44,11 @@ public class MainGameCode {
         //myMap.run();
         
         myMap.start();
-        myRandomEvents = new RandomEventHandler("an/RandomEvents.json");
+        myRandomEvents = new RandomEventHandler("anthropologyApplication/RandomEvents/RandomEvents.json");
         RandomEventsThread = new Thread(myRandomEvents);
         
         //RandomEventsThread.start();
+        
         myDisplay.displaySocietyChoiceSelectionGUI(this);
     }
 
@@ -353,18 +357,19 @@ public class MainGameCode {
     }
 
 
-    public void remove(BuildingConstructionDisplayData ProgressData) {
-        playersCamp.getBuildingHandler().removeBuildingFromConstruction(ProgressData);
+    public void remove(Building ProgressData) {
+        playersCamp.getBuildingHandler().stopBuilding(ProgressData);
     }
 
-    public void remove(ProductProductionDisplayData ProgressData)
+    public void remove(TradeGood ProgressData)
     {
         playersCamp.getProductionHandler().removeProductFromProduction(ProgressData);
     }
     
-    public void remove(WarriorTrainingDisplayData ProgressData)
+    public void remove(Warrior ProgressData)
     {
         playersCamp.getWarriorHandler().removeWarriorFromTraining(ProgressData);
     }
+
     
 }

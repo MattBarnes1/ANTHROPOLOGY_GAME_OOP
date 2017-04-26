@@ -148,7 +148,7 @@ public class aObject extends Value {
     }
 
     public Value getValueInObject(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.myPair.get(string);
     }
 
 }

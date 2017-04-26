@@ -155,7 +155,7 @@ public class ProductionHandler
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void removeProductFromProduction(ProductProductionDisplayData ProgressData) {
+    public void removeProductFromProduction(TradeGood ProgressData) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

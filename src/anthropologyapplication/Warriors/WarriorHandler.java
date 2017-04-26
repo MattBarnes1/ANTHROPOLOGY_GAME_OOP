@@ -200,15 +200,52 @@ public class WarriorHandler {
         return myRet;
     }
 
-    public void unlockWarrior(Class<Spearmen> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void unlockWarrior(Class<? extends Warrior> aClass) {
+        for(int i = 0; i < warriorList.length; i++)
+        {
+            if(warriorList[i].getWarrior().getClass() == aClass)
+            {
+                warriorList[i].unlock();
+            }
+        }
     }
 
-    public void lockWarrior(Class<Spearmen> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void lockWarrior(Class<? extends Warrior> aClass) {
+    for(int i = 0; i < warriorList.length; i++)
+        {
+            if(warriorList[i].getWarrior().getClass() == aClass)
+            {
+                warriorList[i].lock();
+            }
+        }
     }
 
-    public void removeWarriorFromTraining(WarriorTrainingDisplayData ProgressData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeWarriorFromTraining(Warrior ProgressData) {
+        myWarriorsInTraining.remove(ProgressData);
+    }
+
+    Random myRandom = new Random();
+    
+    
+    
+    public void removeAnyWarrior() {
+        int choice = (myRandom.nextInt(2));
+        if(!myWarriorsInTraining.isEmpty() && myTrainedWarriors.isEmpty())
+        {
+                myWarriorsInTraining.remove(myWarriorsInTraining.size()-1);
+        }
+        else if (myWarriorsInTraining.isEmpty() && !myTrainedWarriors.isEmpty())
+        {
+                myTrainedWarriors.remove(myTrainedWarriors.size()-1);                 
+        }
+        else
+        {
+            if(choice == 0)
+            {
+                myWarriorsInTraining.remove(myWarriorsInTraining.size()-1);//
+            } else {
+                myTrainedWarriors.remove(myTrainedWarriors.size()-1);                
+            }
+        }
     }
 }

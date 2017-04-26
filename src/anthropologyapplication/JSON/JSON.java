@@ -14,7 +14,8 @@ import javax.naming.OperationNotSupportedException;
  * @author noone
  */
 public class JSON {
-
+    
+    
     Value Base;
     public JSON(InputStream newStream) throws IOException, OperationNotSupportedException {
        char aChar = (char)newStream.read();
@@ -27,8 +28,10 @@ public class JSON {
        }
     }
 
+   // Stack<Value> myObjectsConsidered = new Stack<>();
+    
     public aObject getObject() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (aObject)Base;
     }
     
 }
