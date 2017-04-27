@@ -7,6 +7,7 @@ package anthropologyapplication.AIStuff;
 
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.FoodHandler;
+import anthropologyapplication.TribalCampObject;
 import java.io.IOException;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -27,7 +28,7 @@ public class AIHandler extends Service {
     private StateExecution StarvingFunc;
     private StateExecution PrepareRaidFunc;
 
-    private final AICampObject myCamp;
+    private final TribalCampObject myCamp;
     private Stack<StateExecution> myFunctionStack = new Stack<>();
     private StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
@@ -100,11 +101,20 @@ public class AIHandler extends Service {
         //START Expanding State Definition
         //////////////////////////////////
         ExpandingFunc = new StateExecution() {
-            AICampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
-
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+            
+            
+            int FieldNumber = 0;
+            int GranaryNumber = 0;
+            
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Expanding");
+                
+                
+                
+                
+                
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -113,6 +123,12 @@ public class AIHandler extends Service {
 
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
+                    
+                    
+
+
+
+
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
                     //If slow, it'll result in the application freezing.
@@ -164,11 +180,14 @@ public class AIHandler extends Service {
         //START Starving State Definition
         //////////////////////////////////
         StarvingFunc = new StateExecution() {
-            AICampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Starving");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                float myFoodConsumptionPerDay = myCamp.
+                
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -221,7 +240,7 @@ public class AIHandler extends Service {
         //START PrepareRaid State Definition
         ////////////////////////////////////
         PrepareRaidFunc = new StateExecution() {
-            AICampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
             public void onEnter() {
 
