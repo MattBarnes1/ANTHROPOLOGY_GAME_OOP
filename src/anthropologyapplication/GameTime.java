@@ -43,8 +43,7 @@ public class GameTime implements java.io.Serializable {
 			} 
 			if (Hours > 23)
 			{
-				IncrementCalender();
-				TotalDays++;
+				CalendarData.addDay();
 				Hours = 0;
 			} 
                     } else {
@@ -63,7 +62,6 @@ public class GameTime implements java.io.Serializable {
                 }
                 newUpdateCall = getTimeStructure();
             }
-            CalendarData.updateCalendar(this);
 	}
 
         public void UpdateAmountDays(int amount)
@@ -75,56 +73,10 @@ public class GameTime implements java.io.Serializable {
         {
             
         }
-        
-        
-        
-        int Year = 0000;
-        
-        int currentMonthNameIndex = 0;
-        int currentDayNameIndex = 0;
-        int currentDayNumber = 0;
-        
-        
-        public String getDayName()
-        {
-            return CalendarData.CalendarDayNames[currentDayNameIndex];
-        }
-        
-        public int getDayIndex()
-        {
-            return currentDayNameIndex;
-        }
-        
-        public int getMonthNameIndex()
-        {
-            return currentMonthNameIndex;
-        }
-        
-        
-        public int getNumberOfDaysIntoMonth()
-        {
-            return currentDayNumber + 1; //Plus one to fix 0
-        }
-        
+              
 
         
-	private void IncrementCalender() {
-                if(currentDayNumber + 1 > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
-                {
-                    currentDayNumber = 0;
-                    currentDayNameIndex = 0;
-                    if(currentMonthNameIndex + 1 > CalendarData.CalendarMonthNames.length)
-                    {
-                        currentMonthNameIndex = 0;
-                        Year ++;
-                    } else {
-                        currentMonthNameIndex++;
-                    }
-                } else {
-                    currentDayNumber++;
-                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
-                }
-	}
+	
 
         private void correctTime() {
         while(Millisecond >= 1000)
@@ -155,27 +107,11 @@ public class GameTime implements java.io.Serializable {
             int Remainder = Hours % 24;
             int totalDays = (int)((Hours-Remainder)/24);
             Hours = (short)Remainder;
-            currentDayNumber += totalDays;
+            CalendarData.addDays(totalDays);
         }
         
-        while(currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
-        {
-                int Remainder = 0;
-                if(currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex] > 0)
-                {
-                    currentDayNumber = currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex];
-                    if(currentMonthNameIndex + 1 >= CalendarData.CalendarMonthNames.length)
-                    {
-                        currentMonthNameIndex = 0;
-                        Year++;
-                    } else {
-                        currentMonthNameIndex++;
-                    }
-                }
-                else {
-                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
-                }
-        }
+        
+       
 
         
         
@@ -236,13 +172,13 @@ public class GameTime implements java.io.Serializable {
 	}
 
 	public Time getTimeStructure() {
-		return new Time(this.Year, this.currentMonthNameIndex, this.currentDayNumber, this.Hours, this.Minutes, this.Seconds, this.Millisecond);
+		return new Time(CalendarData.getYear(), CalendarData.getCurrentMonthNameIndex(), CalendarData.getCurrentDayNumber(), this.Hours, this.Minutes, this.Seconds, this.Millisecond);
 	}
 
 	@Override
         public String toString()
         {
-            return "Years: " + this.Year + "Months: " + this.currentMonthNameIndex + "Days: " + this.currentDayNumber + "Hours: " + Hours + ":" + Minutes + ":" + Seconds + ":" + this.Millisecond;
+            return "Years: " + CalendarData.getYear() + "Months: " + CalendarData.getCurrentMonthNameIndex() + "Days: " + CalendarData.getCurrentDayNumber() + "Hours: " + Hours + ":" + Minutes + ":" + Seconds + ":" + this.Millisecond;
         }
 
 	
@@ -259,7 +195,7 @@ public class GameTime implements java.io.Serializable {
 	}
 
     int getYear() {
-        return this.Year;
+        return CalendarData.getYear();
     }
 	
 

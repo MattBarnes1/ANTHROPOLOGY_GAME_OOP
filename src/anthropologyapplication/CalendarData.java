@@ -19,15 +19,54 @@ public class CalendarData {
         private static int currentYear = 0;
         private static int currentMonthNameIndex = 0;
         private static int currentDayNameIndex = 0;
-        private static int currentDayNumber = 0;
+        private static int currentDayNumber = 1;     
         
-        public static void updateCalendar(GameTime aTime)
+        public static void addDay()
         {
-           currentYear = aTime.getYear();
-           currentMonthNameIndex = aTime.getMonthNameIndex();
-           currentDayNameIndex = aTime.getDayIndex();
-           currentDayNumber = aTime.getDayIndex();
+            addDays(1);
         }
+        public static void addDays(int amount)
+        {
+            currentDayNumber+= amount;
+            while(currentDayNumber > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+            {
+                    int Remainder = 0;
+                    if(currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex] > 0)
+                    {
+                        currentDayNumber = currentDayNumber - CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex];
+                        if(currentMonthNameIndex + 1 >= CalendarData.CalendarMonthNames.length)
+                        {
+                            currentMonthNameIndex = 0;
+                            currentYear ++;
+                        } else {
+                            currentMonthNameIndex++;
+                        }
+                    }
+            }
+            
+            currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+        }
+        
+        
+        
+       
+        private static void IncrementCalender() {
+                if(currentDayNumber + 1 > CalendarData.numberOfDaysPerCalendarMonth[currentMonthNameIndex])
+                {
+                    currentDayNumber = 0;
+                    currentDayNameIndex = 0;
+                    if(currentMonthNameIndex + 1 > CalendarData.CalendarMonthNames.length)
+                    {
+                        currentMonthNameIndex = 0;
+                        currentYear ++;
+                    } else {
+                        currentMonthNameIndex++;
+                    }
+                } else {
+                    currentDayNumber++;
+                    currentDayNameIndex = currentDayNumber % CalendarData.CalendarDayNames.length;
+                }
+	}
             
         public static String getCalendarMonthNameByIndex(int i)
         {
@@ -94,8 +133,16 @@ public class CalendarData {
             return currentYear;
         }
 
-    static int getTotalMonths() {
+    public static int getTotalMonths() {
        return CalendarMonthNames.length;
+    }
+
+    public static int getDayIndex() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static int getYear() {
+        return currentYear;
     }
         
 }

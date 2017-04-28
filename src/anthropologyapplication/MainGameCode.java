@@ -96,6 +96,10 @@ public class MainGameCode {
                     //int amount = (int)Math.floor(((float)playersCamp.getFoodHandler().getTotalFood() -  playersCamp.getPopulationHandler().getFoodConsumptionPerDayInPerMilliSecond()*10));
                     mainHandler.setFarmingTabData(playersCamp.getFoodHandler().getFoodProducedPerDay(),  playersCamp.getPopulationHandler().getFoodConsumptionPerDay());
                     mainHandler.updateFood(playersCamp.getFoodHandler().getTotalFood());
+                    if(playersCamp.getPopulationHandler().hasChanged())
+                    {
+                        mainHandler.updateCitizensNeeded();
+                    }
                     mainHandler.updateBuildQueue();
                     mainHandler.updateTime(WorldTime.getDateString() + " " + WorldTime.getTimeString12Hour());
                     mainHandler.drawMainGameScreenMap();

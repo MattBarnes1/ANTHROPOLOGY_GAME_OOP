@@ -177,6 +177,10 @@ public class GuiHandler {
         mainGameScreenController.setFoodConsumptionTab(foodConsumptionPerDay);
         mainGameScreenController.setFoodProductionTab(foodProducedPerDay);
     }
+
+    void updateCitizensNeeded() { 
+        mainGameScreenController.updateAllCitizens();
+    }
    
 
 }

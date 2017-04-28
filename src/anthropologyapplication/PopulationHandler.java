@@ -105,21 +105,23 @@ public class PopulationHandler {
       for(int i = 0; i < amountToDecimate; i++)
       {
           int Choice = myRandom.nextInt(6);
-          if(Choice == 1)
+          if(Choice == 0)
           {
               if(myTribe.getFreeCitizens() > 0)
               {
+                hasChanged = true;
                   myTribe.removeFreeCitizen();
               } else {
                   isFreeCitizenEmpty = true;
                   i++; //this didn't count because no free citizens
               }
           }
-          else if(Choice == 2)
+          else if(Choice == 1)
           {
                 BuildingHandler myHandle = myTribe.getBuildingHandler();
                 if(myHandle.canRemoveMore())
                 {
+                    hasChanged = true;
                     myHandle.removeBuilders(Choice);
                 }
                 else {
@@ -127,11 +129,12 @@ public class PopulationHandler {
                     i++; //this didn't count because no free citizens
                 }
           }
-          else if(Choice == 3)
+          else if(Choice == 2)
           {
                 FoodHandler myHandle = myTribe.getFoodHandler();
                 if(myHandle.canRemoveMore())
                 {
+                    hasChanged = true;
                     myHandle.removeFarmers(Choice);
                 }
                 else {
@@ -139,11 +142,12 @@ public class PopulationHandler {
                     i++; //this didn't count because no free citizens
                 }
           }
-          else if(Choice == 4)
+          else if(Choice == 3)
           {
                 ProductionHandler myHandle = myTribe.getProductionHandler();
                 if(myHandle.canRemoveMore())
                 {
+                    hasChanged = true;
                     myHandle.removeProducers(1);
                 }
                 else {
@@ -151,11 +155,12 @@ public class PopulationHandler {
                     i++; //this didn't count because no free citizens
                 }
           }
-          else if(Choice == 5)
+          else if(Choice == 4)
           {
                 WarriorHandler myHandle = myTribe.getWarriorHandler();
                 if(myHandle.getWarriorsAmount() > 0)
                 {
+                    hasChanged = true;
                     myHandle.killRandomWarrior();
                 }
                 else {
@@ -190,7 +195,16 @@ public class PopulationHandler {
         return CONSUMPTION_FARMERS;
     }
 
-
+    boolean hasChanged = false;
+    public boolean hasChanged() {
+        if(hasChanged == true)
+        {
+            hasChanged = false;
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     

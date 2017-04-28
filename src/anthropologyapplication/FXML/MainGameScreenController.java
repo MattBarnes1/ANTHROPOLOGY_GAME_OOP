@@ -598,6 +598,14 @@ public class MainGameScreenController implements Initializable {
         FarmingTabFoodAvailable.setText("" + (int)Math.floor(foodProducedPerDay));
     }
 
+    public void updateAllCitizens() {
+        worldDisplayFreeCitizensCount.setText("" + myMain.getPlayersCamp().getFreeCitizens());
+        assignCitizensFarmersCount.setText("" + myMain.getPlayersCamp().getFoodHandler().getFarmersAmount());
+        this.assignCitizensWorkersCount1.setText("" + myMain.getPlayersCamp().getProductionHandler().getProducersAmount());
+        assignCitizensBuildersCount.setText("" + myMain.getPlayersCamp().getBuildingHandler().getBuildersAmount());
+        this.updateAvailableWarriors();
+    }
+
     
 
     
