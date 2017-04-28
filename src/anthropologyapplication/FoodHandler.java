@@ -20,7 +20,7 @@ public class FoodHandler {
     
 		BuildingHandler myBuildingHandler;
                 float totalFood = 100;
-                int FarmerAmount = 0;
+                float FarmerAmount = 0;
                 float foodPerDay = 0;
                 private final Timer StarvationCountDown = new Timer(7,0,0,0);
                 private Timer timeToStarvation = StarvationCountDown;
@@ -53,7 +53,7 @@ public class FoodHandler {
 
                 public float getFoodProducedPerDay()
                 {
-                    return currentFoodProductionRate;
+                    return currentFoodDailyProductionRate;
                 }
 
                 public void updateFoodForDayPerMS()
@@ -74,7 +74,7 @@ public class FoodHandler {
                 }
 
    
-    float currentFoodProductionRate = 0;
+    float currentFoodDailyProductionRate = 0;
     void update(GameTime MS) {
        if(isStarving())
        {
@@ -86,38 +86,55 @@ public class FoodHandler {
            }
        }
        ArrayList<Building> aBuildingHandler = myBuildingHandler.getAllBuiltBuildingsByType(Field.class);
-       int Check = FarmerAmount;
+       float Check = FarmerAmount;
        Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
        int RequiredFarmers = 0;
        float maxFoodProduced = 0;
+       currentFoodDailyProductionRate = 0;
        while(BuildingIterator.hasNext())
        {
                 
                 Building aBuilding = BuildingIterator.next();
                 RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
-                maxFoodProduced += (((Field)aBuilding).getYield() * MS.getElapsedTime().toMS());
+                maxFoodProduced += (((Field)aBuilding).getYieldPerMS() * MS.getElapsedTime().toMS());
+                currentFoodDailyProductionRate += ((Field)aBuilding).getDailyYield();
+                //System.out.println(("Food Yield Per MS: " + ((Field)aBuilding).getYieldPerMS()));
        }
-       System.out.println("Food PRODUCTION MS: " + (MS.getElapsedTime().toMS() * maxFoodProduced));
+       System.out.println("Food Produced Per Day: " + currentFoodDailyProductionRate);
+       System.out.println("MAX FOOD PRODUCTION THIS UPDATE: " + maxFoodProduced);
        if(FarmerAmount != 0)
        {
+           float FoodProduction = 0;
             if(FarmerAmount > RequiredFarmers)
             {
-                currentFoodProductionRate = (maxFoodProduced);
+                FoodProduction = (maxFoodProduced);
+                
+                System.out.println("Food Produced: " + maxFoodProduced);
             } 
             else
             {
-                currentFoodProductionRate = ((((float)FarmerAmount/(float)RequiredFarmers)*maxFoodProduced));
+                FoodProduction = (((FarmerAmount/RequiredFarmers)*maxFoodProduced));
+                currentFoodDailyProductionRate *= (FarmerAmount/RequiredFarmers);
             }
-            if(currentFoodProductionRate > 1)
-            {
-                System.out.println("Inside: " + (MS.getElapsedTime()));
-                int i = 0;
-            }
-            totalFood += currentFoodProductionRate;
+          
+            totalFood += FoodProduction;
+            System.out.println("Total FOOD REPORTED: " + totalFood);
        } else {
-           currentFoodProductionRate = 0;
+           currentFoodDailyProductionRate = 0;
        }
        totalFood -= (this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
+       if(this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS() == 0)
+       {
+           if(MS.getElapsedTime().toMS() == 0 && !MS.getElapsedTime().EqualTo(Time.Zero))
+           {
+               int error = 0;
+           }
+           System.out.println("ZeroBug: Elapsed: " + MS.getElapsedTime());
+           System.out.println("ZeroBug: Elapsed in MS: " + MS.getElapsedTime().toMS());
+           System.out.println("ZeroBug: Consumed: " + myTribe.getPopulationHandler().getFoodConsumptionPerMS());
+           
+           int i=0;
+       }
        System.out.println("Food Consumption: "+this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
        if(totalFood <= 0)
        {
@@ -140,7 +157,7 @@ public class FoodHandler {
     }
     
     
-    public int getFarmersAmount() {
+    public float getFarmersAmount() {
         return FarmerAmount;
     }
 

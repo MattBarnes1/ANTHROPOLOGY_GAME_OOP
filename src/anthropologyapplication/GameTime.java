@@ -66,6 +66,18 @@ public class GameTime implements java.io.Serializable {
             CalendarData.updateCalendar(this);
 	}
 
+        public void UpdateAmountDays(int amount)
+        {
+            
+        }
+       
+        public void UpdateAmountHours(int amount)
+        {
+            
+        }
+        
+        
+        
         int Year = 0000;
         
         int currentMonthNameIndex = 0;
@@ -169,6 +181,10 @@ public class GameTime implements java.io.Serializable {
         
     }
         
+        
+            public String getDateString() {
+		return CalendarData.getDateString();
+            }
         
 	public String getTimeString() {
 		if(Minutes >= 10)

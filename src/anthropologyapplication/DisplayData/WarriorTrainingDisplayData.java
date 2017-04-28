@@ -65,6 +65,11 @@ public class WarriorTrainingDisplayData implements DisplayData {
     public String getToolTipString() {
         return getDescription() + getTimeToCompleteString();
     }
+
+    @Override
+    public String getDisplayedText() {
+        return getName();
+    }
     
     
     

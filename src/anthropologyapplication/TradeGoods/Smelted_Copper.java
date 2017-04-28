@@ -23,6 +23,7 @@ public class Smelted_Copper extends TradeGood {
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
        
+         super.updateTimer(MS);
     }
     
 }

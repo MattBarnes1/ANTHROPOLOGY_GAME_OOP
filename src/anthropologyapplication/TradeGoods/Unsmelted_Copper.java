@@ -21,6 +21,8 @@ public class Unsmelted_Copper extends TradeGood {
     }
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
+        
+         super.updateTimer(MS);
         if(this.getAmount() > 10 && myObject.getBuildingHandler().hasWorking(Smelterer.class))
         {
             myObject.getProductionHandler().unlockTradeGood(Unsmelted_Copper.class);

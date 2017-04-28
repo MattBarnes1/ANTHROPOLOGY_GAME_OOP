@@ -16,7 +16,7 @@ public interface DisplayData {
     public String getTimeToCompleteString();
     public double getCompletionPercentage();
     public void acceptRemoverAsVisitor(MainGameCode myGameCode);
-
+    public String getDisplayedText();
     public boolean shouldBeRemoved();
 
     public String getToolTipString();

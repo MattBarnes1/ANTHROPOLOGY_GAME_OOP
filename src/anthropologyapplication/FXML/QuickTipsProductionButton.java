@@ -23,7 +23,7 @@ public class QuickTipsProductionButton extends javafx.scene.control.Button   {
     QuickTipsProductionButton toPass;
     QuickTipsProductionButton(ProductProductionDisplayData myConstruction, Tooltip myTip) 
     {
-        super(myConstruction.getName());
+        super(myConstruction.getDisplayedText());
         toPass = this;
         setOnMouseEntered(new EventHandler<MouseEvent>(){
             @Override
@@ -43,6 +43,10 @@ public class QuickTipsProductionButton extends javafx.scene.control.Button   {
         });
         this.myConstruction = myConstruction;
         myToolTip = myTip;
+    }
+
+    String getData() {
+        return myConstruction.getName();
     }
 
     

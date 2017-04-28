@@ -22,6 +22,10 @@ public class ProductProductionDisplayData implements DisplayData {
        return myTradeGood.getName();
     }
 
+    public String getDisplayedText() {
+       return myTradeGood.getName() + " x" + myTradeGood.getAmount();
+    }
+    
     public String getDescription() {
         return ""; //TODO:
     }

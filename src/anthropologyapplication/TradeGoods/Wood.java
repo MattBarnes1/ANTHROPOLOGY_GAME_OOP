@@ -21,7 +21,8 @@ class Wood extends TradeGood {
 
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+         super.updateTimer(MS);
     }
 
    

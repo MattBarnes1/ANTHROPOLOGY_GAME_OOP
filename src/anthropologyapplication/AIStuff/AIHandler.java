@@ -170,7 +170,7 @@ public class AIHandler extends Service {
             {
                 int Production = 0;
                 ArrayList<Building> aBuildingHandler = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class);
-                int Check = myCamp.getFoodHandler().getFarmersAmount();
+                float Check = myCamp.getFoodHandler().getFarmersAmount();
                 Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
                 int RequiredFarmers = 0;
                 float maxFoodProduced = 0;
@@ -180,7 +180,7 @@ public class AIHandler extends Service {
                 {
                          Building aBuilding = BuildingIterator.next();
                          RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
-                         maxFoodProduced += (((Field)aBuilding).getYield());
+                         maxFoodProduced += (((Field)aBuilding).getDailyYield());
                 }
                 aBuildingHandler = myCamp.getBuildingHandler().getBuildingsCurrentlyBeingBuiltByType(Field.class);
                 BuildingIterator = aBuildingHandler.iterator();
@@ -188,7 +188,7 @@ public class AIHandler extends Service {
                 {
                          Building aBuilding = BuildingIterator.next();
                          RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
-                         maxGhostFoodProduced += (((Field)aBuilding).getYield());
+                         maxGhostFoodProduced += (((Field)aBuilding).getDailyYield());
                 }
                 
                 if(RequiredFarmers != 0)

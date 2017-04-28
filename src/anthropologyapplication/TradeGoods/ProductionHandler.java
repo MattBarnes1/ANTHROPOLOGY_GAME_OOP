@@ -25,9 +25,9 @@ public class ProductionHandler
 		
 		int ProducersAmount = 0;
                 private internalProductLocker[] internalProductList = new internalProductLocker[] {
-                    new internalProductLocker(new Clay("Clay", 100, new Timer(0,0,0,1), 0), true),
-                    new internalProductLocker(new Wood("Wood", 100, new Timer(0,0,0,1), 0), true),
-                    new internalProductLocker(new Stone("Stone", 100, new Timer(0,0,0,1), 0), true),
+                    new internalProductLocker(new Clay("Clay", 10, new Timer(0,2,0,1), 0), true),
+                    new internalProductLocker(new Wood("Wood", 10, new Timer(0,2,0,1), 0), true),
+                    new internalProductLocker(new Stone("Stone", 10, new Timer(0,2,0,1), 0), true),
                     new internalProductLocker(new Smelted_Copper("Smelted Copper", 0, new Timer(0,0,0,1), 0), false),
                     new internalProductLocker(new Unsmelted_Copper("Unsmelted Copper", 0, new Timer(0,0,0,1), 0), false)
                 };
@@ -54,6 +54,10 @@ public class ProductionHandler
                    {
                        TradeGood stuff = myTradeGood.next();
                        stuff.update(MS, myTribe);
+                       if(stuff.needsAnUpdate())
+                       {
+                           hasChanged = true;
+                       }
                    }
 		}
                
@@ -188,7 +192,10 @@ public class ProductionHandler
         this.ProductsBeingMade.clear();
     }
     
-    public void isProducing
+    public boolean isProducing(TradeGood myTradeGood)
+    {
+        return this.ProductsBeingMade.contains(myTradeGood);
+    }
     
     boolean hasChanged = false;
     public boolean hasChanged() {

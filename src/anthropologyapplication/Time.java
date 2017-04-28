@@ -174,7 +174,8 @@ public String toString()
     
     public float toMS()
     {
-        return (((21600000*this.Hours + Minutes*360000) + Seconds*60000)*1 + Milliseconds);
+        float Total; 
+        return (((21600000*this.Hours + Minutes*360000) + Seconds*60000) + Milliseconds);
     }
     
 

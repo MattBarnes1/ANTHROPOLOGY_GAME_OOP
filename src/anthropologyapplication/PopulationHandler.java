@@ -20,11 +20,11 @@ public class PopulationHandler {
     private TribalCampObject myTribe;
     private int TotalPopulation = 10; //Starting Population
     private int FreeCitizens = TotalPopulation;
-    private final float CONSUMPTION_WARRIORS = 1F; //Eat the most food per person
-    private final float CONSUMPTION_BUILDERS = .75F; //Eat the 2nd most etc
-    private final float CONSUMPTION_WORKERS = .5F;
-    private final float CONSUMPTION_FARMERS = .5F;
-    private final float CONSUMPTION_FREE_CITIZENS = 2.5F; //eat the least
+    private static final float CONSUMPTION_WARRIORS = 1F; //Eat the most food per person
+    private static final float CONSUMPTION_BUILDERS = .75F; //Eat the 2nd most etc
+    private static final float CONSUMPTION_WORKERS = .5F;
+    private static final float CONSUMPTION_FARMERS = .5F;
+    private static final float CONSUMPTION_FREE_CITIZENS = .25F; //eat the least
     private float dailyFoodUse = 0;
     private Random myRandom = new Random();
     public PopulationHandler(TribalCampObject myCamp)
@@ -38,17 +38,21 @@ public class PopulationHandler {
     private Timer currentTimer;
     
     private void updateTotalFoodUse(GameTime MS) {
-        dailyFoodUse = 0;
         int freeCitizens = myTribe.getFreeCitizens();
         int Warriors = myTribe.getWarriorHandler().getWarriorsAmount();
         int Builders = myTribe.getBuildingHandler().getBuildersAmount();
         int Workers = myTribe.getProductionHandler().getProducersAmount();
         int farmers = myTribe.getProductionHandler().getProducersAmount();
-        dailyFoodUse += (freeCitizens*CONSUMPTION_FREE_CITIZENS);
+        dailyFoodUse = (freeCitizens*CONSUMPTION_FREE_CITIZENS);
+        System.out.println("FC: " + freeCitizens + " Result: " + freeCitizens*CONSUMPTION_FREE_CITIZENS);
         dailyFoodUse += (farmers * CONSUMPTION_FARMERS);
+        System.out.println("FA: " + farmers + " Result: " + farmers*CONSUMPTION_FARMERS);
         dailyFoodUse += (Warriors*CONSUMPTION_WARRIORS);
+        System.out.println("WA: " + Warriors + " Result: " + Warriors*CONSUMPTION_WARRIORS);
         dailyFoodUse += (Builders*CONSUMPTION_BUILDERS);
+        System.out.println("B: " + Builders + " Result: " + Builders*CONSUMPTION_BUILDERS);
         dailyFoodUse += (Workers*CONSUMPTION_WORKERS);
+        System.out.println("WO: " + Workers + " Result: " + Workers*CONSUMPTION_WORKERS);
     }
     
     void update(GameTime MS) {
@@ -166,24 +170,24 @@ public class PopulationHandler {
       }
     }
 
-    public float getFreeCitizensConsumption() {
-        return this.CONSUMPTION_FREE_CITIZENS;
+    public static float getFreeCitizensConsumption() {
+        return CONSUMPTION_FREE_CITIZENS;
     }
 
-    public float getWarriorsFoodConsumption() {
-        return this.CONSUMPTION_WARRIORS;
+    public static float getWarriorsFoodConsumption() {
+        return CONSUMPTION_WARRIORS;
     }
 
-    public float getBuildersFoodConsumption() {
-        return this.CONSUMPTION_BUILDERS;
+    public static float getBuildersFoodConsumption() {
+        return CONSUMPTION_BUILDERS;
     }
 
-    public float getProducersFoodConsumption() {
-        return this.CONSUMPTION_WORKERS;
+    public static float getProducersFoodConsumption() {
+        return CONSUMPTION_WORKERS;
     }
 
-    public float getFarmersFoodConsumption() {
-        return this.CONSUMPTION_FARMERS;
+    public static float getFarmersFoodConsumption() {
+        return CONSUMPTION_FARMERS;
     }
 
 

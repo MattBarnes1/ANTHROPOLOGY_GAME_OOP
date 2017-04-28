@@ -322,6 +322,7 @@ public class BuildingHandler {
     public void stopBuilding(Building ProgressData) {
         ProgressData.stopConstruction();
         this.BuildingsBeingConstructed.remove(ProgressData);
+        hasChanged = true;
     }
 
     boolean hasChanged = false;

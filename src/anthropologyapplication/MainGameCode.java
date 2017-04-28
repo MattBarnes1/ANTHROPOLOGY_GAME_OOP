@@ -97,7 +97,7 @@ public class MainGameCode {
                     mainHandler.setFarmingTabData(playersCamp.getFoodHandler().getFoodProducedPerDay(),  playersCamp.getPopulationHandler().getFoodConsumptionPerDay());
                     mainHandler.updateFood(playersCamp.getFoodHandler().getTotalFood());
                     mainHandler.updateBuildQueue();
-                    mainHandler.updateTime(WorldTime.getTimeString12Hour());
+                    mainHandler.updateTime(WorldTime.getDateString() + " " + WorldTime.getTimeString12Hour());
                     mainHandler.drawMainGameScreenMap();
                     //myMapper.Draw(Automapper.getGraphicsContext2D());
 
@@ -200,7 +200,7 @@ public class MainGameCode {
     }
 
     public void decreaseWorkers() {        
-        if(playersCamp.getProductionHandler().getProducersAmount() != 0)
+        if(playersCamp.getProductionHandler().canRemoveMore())
         {
             playersCamp.addFreeCitizen();
             playersCamp.getProductionHandler().removeProducers(1);
@@ -322,12 +322,14 @@ public class MainGameCode {
         }
     }
 
-    public void setProductionFocus(String text) {
+    public ProductProductionDisplayData setProductionFocus(String text) {
         if(playersCamp.getProductionHandler().canAddTradeGood())
         {
-            playersCamp.getProductionHandler().addProductionItem(text);
+            ProductProductionDisplayData myReturnData = playersCamp.getProductionHandler().addProductionItem(text);
+            return myReturnData;
         } else {
             this.myDisplay.setErrorMessage("You're not able to add a new item because there's not enough producers!");
+            return null;
         }
     }
 

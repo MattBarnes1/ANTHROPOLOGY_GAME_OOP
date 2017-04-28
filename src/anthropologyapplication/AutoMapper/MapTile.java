@@ -453,6 +453,12 @@ public abstract class MapTile {
         MyObjectOnTile.remove(aThis);
     }
 
+    public void clearBuilding() {
+        this.BuildingName = "";
+        this.tileBuilding = null;
+        this.myBuilding = null;
+    }
+
     
     public enum TERRITORY_IMAGE
     {

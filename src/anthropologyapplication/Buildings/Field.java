@@ -7,6 +7,7 @@ package anthropologyapplication.Buildings;
 
 import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.AutoMapper.MapTile;
+import anthropologyapplication.PopulationHandler;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TribalCampObject;
@@ -17,7 +18,8 @@ import anthropologyapplication.TribalCampObject;
  */
 public class Field extends Building {
     int RequiredAmountOfFarmers = 2;
-    float yield = 0.00001F;
+    float yield = PopulationHandler.getWarriorsFoodConsumption()*2;
+    float yieldMS = (PopulationHandler.getWarriorsFoodConsumption()*2)/86400000F;
     public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
     }
@@ -39,14 +41,19 @@ public class Field extends Building {
 
     @Override
     public void removeFromMapTile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getBuildingTile().clearBuilding();
     }
 
     public int getRequiredNumberOfFarmers() {
         return RequiredAmountOfFarmers;
     }
 
-    public float getYield() {
+    public float getYieldPerMS()
+    {
+        return yieldMS;
+    }
+    
+    public float getDailyYield() {
        return yield;
     }
     

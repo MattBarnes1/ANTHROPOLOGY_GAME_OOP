@@ -168,7 +168,7 @@ public abstract class Building
     }
 
     void stopConstruction() {
-       this.BuiltOn.setBuildingOnThis(null);//nulls it
+       this.BuiltOn.clearBuilding();
     }
 
    

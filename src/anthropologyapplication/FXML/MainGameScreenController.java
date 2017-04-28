@@ -204,8 +204,10 @@ public class MainGameScreenController implements Initializable {
     {
         TradeFlowpane.getChildren().clear();
         Iterator<ProductProductionDisplayData> aProductIterator =  myMain.getPlayersCamp().getProductionHandler().getTradeGoodsAvailable();
+        
         while(aProductIterator.hasNext())
         {
+            
             ProductProductionDisplayData myData = aProductIterator.next();
             QuickTipsProductionButton aButton = new QuickTipsProductionButton(myData, new Tooltip(myData.getDescription() + "\n\n" + myData.getTotalBuildTime()));
             aButton.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -214,7 +216,11 @@ public class MainGameScreenController implements Initializable {
                 
                 @Override
                 public void handle(MouseEvent event) {
-                    myMain.setProductionFocus(aButton.getText());
+                    ProductProductionDisplayData myData = myMain.setProductionFocus(aButton.getData());
+                    if(myData != null)
+                    {
+                        ProductionQueueList.getChildren().add(new CustomHBox(myData, myMain));
+                    }
                 }           
             });
             TradeFlowpane.getChildren().add(aButton);

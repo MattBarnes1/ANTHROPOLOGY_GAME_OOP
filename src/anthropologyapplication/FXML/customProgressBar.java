@@ -56,10 +56,10 @@ public class customProgressBar extends javafx.scene.control.ProgressBar {
         setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                if(event.isSecondaryButtonDown())
+                if(event.getButton() == event.getButton().SECONDARY)
                 {
                     ProgressData.acceptRemoverAsVisitor(myCode);//Pass as a visitor
-                    isDoneNow = ProgressData.shouldBeRemoved();
+                    isDoneNow = true;
                 }
             }
             
@@ -76,6 +76,7 @@ public class customProgressBar extends javafx.scene.control.ProgressBar {
     
     public void update()
     {
+        myToolTip.setText(ProgressData.getTimeToCompleteString());
         if(ProgressData.getCompletionPercentage() == 1.0D && !isDoneNow)
         {
             isDoneNow = (ProgressData.getCompletionPercentage() == 1.0D);

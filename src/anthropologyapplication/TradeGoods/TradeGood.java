@@ -57,10 +57,9 @@ public abstract class TradeGood
         return TradeGoodName;
     }
 
-    int amount = 0;
     
     public int getAmount() {
-        return amount;
+        return TotalAmount;
     }
     
     
@@ -77,5 +76,27 @@ public abstract class TradeGood
 
     public double getCompletionPercentage() {
        return currentProductionTime.dividedBy(productionTime);
+    }
+
+    void updateTimer(GameTime MS) {
+        currentProductionTime = currentProductionTime.subtract(MS.getElapsedTime());
+        if(currentProductionTime.EqualTo(Timer.Zero))
+        {
+            update = true;
+            incrementAmount();
+            currentProductionTime = productionTime;
+        }
+    }
+    
+    boolean update = false;
+
+    boolean needsAnUpdate() {
+        if(update)
+        {
+            update = false;
+            return true;
+        } else {
+            return update;
+        }
     }
 }

@@ -24,6 +24,7 @@ class Clay extends TradeGood {
 
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
+         super.updateTimer(MS);
          if(super.getAmount() > 20 && myObject.getProductionHandler().getAmountByString("Wood") > 20)
          {
             myObject.getBuildingHandler().unlockBuilding(Homes.class);

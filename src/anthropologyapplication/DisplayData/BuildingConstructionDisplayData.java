@@ -20,6 +20,10 @@ public class BuildingConstructionDisplayData implements DisplayData {
      this.aBuilding = aBuilding;   
     }
     
+    public String getDisplayedText() {
+       return getName();
+    }
+    
     public String getName()
     {
         return aBuilding.getBuildingName();
