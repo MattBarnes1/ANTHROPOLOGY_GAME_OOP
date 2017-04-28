@@ -283,13 +283,13 @@ public class AIHandler extends Service {
             
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
-                    if(isDoingPseudoCalculations())
+                    if(!isDoingPseudoCalculations())
                     {
                         if(rebalancePeople() == -1) //FailedToRebalance
                         {
                             doFieldBuilding();
                         } else {
-                            //Do the pseudo rebalanceing thing here.
+                            //Do the pseudo rebalancing thing here.
                             
                         }
                     } else {
