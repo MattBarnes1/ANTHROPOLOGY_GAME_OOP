@@ -32,4 +32,8 @@ public class internalProductLocker {
     public int getAmount() {
         return myTradeGood.getAmount();
     }
+
+    public void reduceAmount(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

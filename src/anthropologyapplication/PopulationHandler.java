@@ -40,7 +40,7 @@ public class PopulationHandler {
     private void updateTotalFoodUse(GameTime MS) {
         int freeCitizens = myTribe.getFreeCitizens();
         int Warriors = myTribe.getWarriorHandler().getWarriorsAmount();
-        int Builders = myTribe.getBuildingHandler().getBuildersAmount();
+        float Builders = myTribe.getBuildingHandler().getBuildersAmount();
         int Workers = myTribe.getProductionHandler().getProducersAmount();
         int farmers = myTribe.getProductionHandler().getProducersAmount();
         dailyFoodUse = (freeCitizens*CONSUMPTION_FREE_CITIZENS);

@@ -10,6 +10,7 @@ import anthropologyapplication.AutoMapper.Vector3;
 import anthropologyapplication.GameTime;
 import anthropologyapplication.TerritoryOverlay.Territory;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -32,6 +33,7 @@ public abstract class Building
         private MapTile BuiltOn;
         private final String ForegroundImageFileName;
         private final String ForegroundImageDestroyedFileName;
+        private final ResourceArray RequiredResources;
         public void removeFromMapTile()
         {
             BuiltOn.clearForeground();
@@ -68,8 +70,9 @@ public abstract class Building
         
         final Timer BuildTimeToBuild;
        final int TerritorySize;
-        protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int territorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+        protected Building(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int territorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName, ResourceArray RequiredToBuildResources)
         {
+            assert(RequiredToBuildResources != null);
             assert(territorySize % 2 != 0);
             TerritorySize = territorySize;
             myTerritory = new Territory(territorySize);
@@ -81,6 +84,7 @@ public abstract class Building
             this.Description = Description;
             timeTillBuilt = BuildTime;
             BuildTimeToBuild = BuildTime;
+            this.RequiredResources = RequiredToBuildResources;
         }
         
         public String getForeGroundImageName()
@@ -116,7 +120,7 @@ public abstract class Building
                 System.out.println("T.Elapsed: " + T.getElapsedTime());
                 timeTillBuilt = ((timeTillBuilt.subtract(T.getElapsedTime().multiply(Ratio))));
                 System.out.println("timeTillBuilt.subtract(T.getElapsedTime()): " + timeTillBuilt.subtract(T.getElapsedTime()));
-                isFinishedBuilding = (timeTillBuilt.EqualTo(Timer.Zero));;
+                isFinishedBuilding = (timeTillBuilt.EqualTo(Timer.Zero));
                 
             }
         }
@@ -171,11 +175,29 @@ public abstract class Building
        this.BuiltOn.clearBuilding();
     }
 
+    protected void removeResources(TribalCampObject myTribe)
+    {
+         for(int i = 0 ; i < RequiredResources.getLength(); i++)
+        {
+            myTribe.getProductionHandler().subtractFromResourceAtIndex(i, RequiredResources.getAmountAtIndex(i));
+        }
+    }
     
+    protected ResourceArray getResourceArray()
+    {
+        return RequiredResources;
+    }
     
     
     boolean hasEnoughResources(TribalCampObject myTribe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(int i = 0 ; i < RequiredResources.getLength(); i++)
+        {
+            if(RequiredResources.getAmountAtIndex(i) > myTribe.getProductionHandler().getAmountAtIndex(i))
+            {
+                return false;
+            }
+        }
+        return true;[plk;lk;]
     }
 
    

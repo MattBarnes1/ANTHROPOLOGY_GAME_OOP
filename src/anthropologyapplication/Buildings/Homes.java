@@ -7,6 +7,7 @@ package anthropologyapplication.Buildings;
 
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 
 /**
@@ -15,19 +16,19 @@ import anthropologyapplication.TribalCampObject;
  */
 public class Homes extends Building {
 
-    public Homes(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired,  int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+    public Homes(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired,  int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName, ResourceArray myResourcesNeed)
     {
-        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize, ForegroundImageFileName, ForegroundImageDestroyedFileName);
+        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize, ForegroundImageFileName, ForegroundImageDestroyedFileName,myResourcesNeed);
         
     }
 
     private Homes(Homes aThis) {      
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(), aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName(), aThis.getResourceArray());
     }
 
     @Override
     public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
-        return (aTile.isLand() && aTile.isTerritoryOf(myObject) && !aTile.hasBuilding());
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject) && !aTile.hasBuilding() && hasEnoughResources(myObject));
     }
 
     @Override

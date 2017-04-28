@@ -6,6 +6,9 @@
 package anthropologyapplication.TradeGoods;
 
 
+import anthropologyapplication.Buildings.Blacksmith;
+import anthropologyapplication.Buildings.Homes;
+import anthropologyapplication.Buildings.Smelterer;
 import anthropologyapplication.TradeGoods.Wood;
 import anthropologyapplication.DisplayData.ProductProductionDisplayData;
 import anthropologyapplication.GameTime;
@@ -50,6 +53,27 @@ public class ProductionHandler
 		public void update(GameTime MS)
 		{
                    Iterator<TradeGood> myTradeGood = ProductsBeingMade.iterator();
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 20 && myTribe.getProductionHandler().getAmountByString("Wood") > 20)
+                    {
+                       myTribe.getBuildingHandler().unlockBuilding(Homes.class);
+                    }
+                    else if {
+                       myTribe.getBuildingHandler().lockBuilding(Homes.class);
+                    }
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 50 && myObject.getProductionHandler().getAmountByString("Wood") > 50
+                            && myObject.getProductionHandler().getAmountByString("Stone") > 50)
+                    {
+                       myTribe.getBuildingHandler().unlockBuilding(Smelterer.class);
+                    } else {
+                        myTribe.getBuildingHandler().lockBuilding(Smelterer.class);
+                    }
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 100 && myObject.getProductionHandler().getAmountByString("Wood") > 100
+                            && myObject.getProductionHandler().getAmountByString("Stone") > 100)
+                    {
+                       myTribe.getBuildingHandler().unlockBuilding(Blacksmith.class);
+                    } else {
+                        myTribe.getBuildingHandler().lockBuilding(Blacksmith.class);
+                    }
                    while(myTradeGood.hasNext())
                    {
                        TradeGood stuff = myTradeGood.next();
@@ -210,6 +234,14 @@ public class ProductionHandler
         } else {
             return false;
         }
+    }
+
+    public int getAmountAtIndex(int i) {
+        return internalProductList[i].getAmount();
+    }
+
+    public void subtractFromResourceAtIndex(int i, int amountAtIndex) {
+        internalProductList[i].reduceAmount(i);
     }
 
 }

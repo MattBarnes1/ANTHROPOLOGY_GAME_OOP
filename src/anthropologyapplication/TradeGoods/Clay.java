@@ -25,27 +25,7 @@ class Clay extends TradeGood {
     @Override
     public void update(GameTime MS, TribalCampObject myObject) {
          super.updateTimer(MS);
-         if(super.getAmount() > 20 && myObject.getProductionHandler().getAmountByString("Wood") > 20)
-         {
-            myObject.getBuildingHandler().unlockBuilding(Homes.class);
-         }
-         else {
-            myObject.getBuildingHandler().lockBuilding(Homes.class);
-         }
-         if(super.getAmount() > 50 && myObject.getProductionHandler().getAmountByString("Wood") > 50
-                 && myObject.getProductionHandler().getAmountByString("Stone") > 50)
-         {
-            myObject.getBuildingHandler().unlockBuilding(Smelterer.class);
-         } else {
-             myObject.getBuildingHandler().lockBuilding(Smelterer.class);
-         }
-         if(super.getAmount() > 100 && myObject.getProductionHandler().getAmountByString("Wood") > 100
-                 && myObject.getProductionHandler().getAmountByString("Stone") > 100)
-         {
-            myObject.getBuildingHandler().unlockBuilding(Blacksmith.class);
-         } else {
-             myObject.getBuildingHandler().lockBuilding(Blacksmith.class);
-         }
+         
     }
 
 

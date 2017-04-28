@@ -10,6 +10,7 @@ import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.PopulationHandler;
 import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 
 /**
@@ -20,18 +21,18 @@ public class Field extends Building {
     int RequiredAmountOfFarmers = 2;
     float yield = PopulationHandler.getWarriorsFoodConsumption()*2;
     float yieldMS = (PopulationHandler.getWarriorsFoodConsumption()*2)/86400000F;
-    public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage) {
-        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage);
+    public Field(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired,  int TerritorySize,String FileNameForegroundImage, String FileNameForegroundDestroyedImage, ResourceArray myResourcesNeed) {
+        super(Name, Description, BuildTime, Index, amountOfBuildersRequired, TerritorySize,FileNameForegroundImage, FileNameForegroundDestroyedImage,myResourcesNeed);
     }
 
     private Field(Field aThis) {
-        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(),  aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(), aThis.getDescription(), aThis.getBuildTime(), aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(),  aThis.getForeGroundImageName(),  aThis.getForeGroundDestroyedImageName(), aThis.getResourceArray());
     
     }
 
     @Override
     public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
-        return (aTile.isLand() && aTile.isTerritoryOf(myObject) && !aTile.hasBuilding());
+        return (aTile.isLand() && aTile.isTerritoryOf(myObject) && !aTile.hasBuilding()) && hasEnoughResources(myObject);
     }
 
     @Override

@@ -8,6 +8,7 @@ package anthropologyapplication.Buildings;
 import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Timer;
+import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 import anthropologyapplication.Warriors.Spearmen;
 
@@ -17,19 +18,19 @@ import anthropologyapplication.Warriors.Spearmen;
  */
 public class Blacksmith extends Building {
 
-    public Blacksmith(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName)
+    public Blacksmith(String Name, String Description, Timer BuildTime, int Index, int BuildersRequired, int TerritorySize, String ForegroundImageFileName, String ForegroundImageDestroyedFileName, ResourceArray myResourcesNeed)
     {
-        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize,ForegroundImageFileName, ForegroundImageDestroyedFileName);
+        super(Name,Description, BuildTime, Index, BuildersRequired, TerritorySize,ForegroundImageFileName, ForegroundImageDestroyedFileName, myResourcesNeed);
         
     }
 
     private Blacksmith(Blacksmith aThis) {
-        super(aThis.getBuildingName(),aThis.getDescription(), aThis.BuildTimeToBuild, aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(), aThis.getForeGroundImageName(), aThis.getForeGroundDestroyedImageName());
+        super(aThis.getBuildingName(),aThis.getDescription(), aThis.BuildTimeToBuild, aThis.getIndex(), aThis.getRequiredBuildersAmount(), aThis.getTerritorySize(), aThis.getForeGroundImageName(), aThis.getForeGroundDestroyedImageName(), aThis.getResourceArray());
     }
 
     @Override
     public boolean canBuildOnTile(TribalCampObject myObject, MapTile aTile) {
-        return aTile.isLand() && aTile.isTerritoryOf(myObject);
+        return aTile.isLand() && aTile.isTerritoryOf(myObject) && hasEnoughResources(myObject);
     }
 
     @Override
