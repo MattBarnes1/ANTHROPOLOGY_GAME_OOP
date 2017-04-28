@@ -13,13 +13,27 @@ package anthropologyapplication;
  */
 public class CalendarData {
         public final static String[] CalendarDayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
-        public final static String[] CalendarMonthNames = { "Month1", "Month2", "Month3" };
+        public final static String[] CalendarMonthNames = { "Month 1", "Month 2", "Month 3" };
         public final static short[] numberOfDaysPerCalendarMonth = { 30, 30, 30};
         
         private static int currentYear = 0;
         private static int currentMonthNameIndex = 0;
         private static int currentDayNameIndex = 0;
         private static int currentDayNumber = 1;     
+        
+        private static int resetDay;
+        private static int resetMonth;
+        private static int resetYear;
+        
+        public static void setStart(int currentMonthIndex, int CurrentDay, int CurrentYear)
+        {
+            assert(currentMonthIndex < CalendarMonthNames.length);
+            resetMonth = currentMonthNameIndex = currentMonthIndex;
+            resetYear = currentYear = CurrentYear;
+            resetDay = CurrentDay;
+            addDays(CurrentDay);
+        }
+        
         
         public static void addDay()
         {
@@ -143,6 +157,14 @@ public class CalendarData {
 
     public static int getYear() {
         return currentYear;
+    }
+
+    public static void reset() {
+        
+        currentMonthNameIndex = resetMonth;
+        currentYear = resetYear;
+        currentDayNumber = resetDay;
+        addDays(0);// causes it to just reset
     }
         
 }

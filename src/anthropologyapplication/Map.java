@@ -241,6 +241,8 @@ private MapTile[] getPossibleSettlementPosition() throws InterruptedException, I
         return myCamps;
     }
     
+   
+    
     public MapTile getPlayerMapTile()
     {
         return PlayerCampTile;

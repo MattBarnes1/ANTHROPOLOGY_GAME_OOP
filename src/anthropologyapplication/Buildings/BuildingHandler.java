@@ -179,7 +179,7 @@ public class BuildingHandler {
                         {
                             if(A.myBuilding.getBuildingName().compareTo(aBuildingName) == 0)
                             {
-                                if(A.myBuilding.canBuildOnTile(myTribe, aTile))
+                                if(A.myBuilding.canBuildOnTile(myTribe, aTile) && A.myBuilding.hasEnoughResources(myTribe))
                                 {
                                     if((BuildingsBuilt.contains(A) && A.myBuilding.canBuildMultiples()) || !BuildingsBuilt.contains(A))
                                     {

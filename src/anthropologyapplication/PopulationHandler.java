@@ -101,7 +101,7 @@ public class PopulationHandler {
       boolean isBuildersEmpty = false;
       boolean isFarmersEmpty = false; 
       boolean isProducersEmpty = false;
-      
+
       for(int i = 0; i < amountToDecimate; i++)
       {
           int Choice = myRandom.nextInt(6);
@@ -111,6 +111,7 @@ public class PopulationHandler {
               {
                 hasChanged = true;
                   myTribe.removeFreeCitizen();
+                  TotalPopulation--;
               } else {
                   isFreeCitizenEmpty = true;
                   i++; //this didn't count because no free citizens
@@ -123,6 +124,7 @@ public class PopulationHandler {
                 {
                     hasChanged = true;
                     myHandle.removeBuilders(Choice);
+                  TotalPopulation--;
                 }
                 else {
                     isBuildersEmpty = true;
@@ -136,6 +138,7 @@ public class PopulationHandler {
                 {
                     hasChanged = true;
                     myHandle.removeFarmers(Choice);
+                  TotalPopulation--;
                 }
                 else {
                     isFarmersEmpty = true;
@@ -145,10 +148,11 @@ public class PopulationHandler {
           else if(Choice == 3)
           {
                 ProductionHandler myHandle = myTribe.getProductionHandler();
-                if(myHandle.canRemoveMore())
+                if(myHandle.getProducersAmount() > 0)
                 {
                     hasChanged = true;
                     myHandle.removeProducers(1);
+                  TotalPopulation--;
                 }
                 else {
                     isProducersEmpty = true;
@@ -162,6 +166,7 @@ public class PopulationHandler {
                 {
                     hasChanged = true;
                     myHandle.killRandomWarrior();
+                  TotalPopulation--;
                 }
                 else {
                     isWarriorsEmpty = true;
@@ -204,6 +209,10 @@ public class PopulationHandler {
         } else {
             return false;
         }
+    }
+
+    boolean hasStarvedToDeath() {
+       return (this.TotalPopulation == 0);
     }
     
     

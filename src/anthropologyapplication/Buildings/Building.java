@@ -171,6 +171,13 @@ public abstract class Building
        this.BuiltOn.clearBuilding();
     }
 
+    
+    
+    
+    boolean hasEnoughResources(TribalCampObject myTribe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 
    

@@ -44,7 +44,7 @@ public class GuiHandler {
     private final Scene creatingWorldScreen;
     private final CreatingWorldScreenController creatingWorldScreenLoader;
     
-    public void updateBuildQueue()
+    public void updateGUIQueues()
     {
         mainGameScreenController.updateQueues();
     }

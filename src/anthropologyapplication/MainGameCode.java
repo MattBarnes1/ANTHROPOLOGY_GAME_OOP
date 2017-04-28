@@ -75,6 +75,9 @@ public class MainGameCode {
         myTimer = new AnimationTimer()
         {
             Double updateInternalTime = 0D;
+            
+            
+            
             public void handle(long currentNanoTime)
             {
                 updateInternalTime += currentNanoTime;
@@ -100,7 +103,11 @@ public class MainGameCode {
                     {
                         mainHandler.updateCitizensNeeded();
                     }
-                    mainHandler.updateBuildQueue();
+                    if(playersCamp.getPopulationHandler().hasStarvedToDeath())
+                    {
+                        returningToMainMenu();
+                    }
+                    mainHandler.updateGUIQueues();
                     mainHandler.updateTime(WorldTime.getDateString() + " " + WorldTime.getTimeString12Hour());
                     mainHandler.drawMainGameScreenMap();
                     //myMapper.Draw(Automapper.getGraphicsContext2D());
@@ -359,6 +366,9 @@ public class MainGameCode {
     public void returningToMainMenu() {
         myEnemyArray = null;
         playersCamp = null;
+        myTimer.stop();
+        CalendarData.reset();
+        this.increaseSpeed = false;
         myDisplay.displayMainMenuGUI(this);
     }
 

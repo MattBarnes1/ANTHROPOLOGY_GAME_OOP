@@ -104,11 +104,15 @@ public class ProductionHandler
 		{
                     if((ProducersAmount - Amount) > 0)
                     {
-			ProducersAmount--;
+			ProducersAmount =- Amount;
                     } else {
                         ProducersAmount = 0;
                     }
                     calculateMaxNumberOfGoodsCanWorkOn();
+                    while(maxActiveTradeGoods < currentlyActiveTradeGoods)
+                    {
+                       this.removeProductFromProduction(this.ProductsBeingMade.get(ProductsBeingMade.size()-1));
+                    }
 		}
 
             private void updatePossibleItems() { 
