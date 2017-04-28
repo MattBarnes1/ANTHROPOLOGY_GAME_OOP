@@ -40,7 +40,7 @@ public class MainGameCode {
     Thread MapThread;
     Thread RandomEventsThread;
     public void newGame() throws IOException, OperationNotSupportedException {
-        myMap = new Map(50, this, myDisplay.getAutomapper());
+        myMap = new Map(100, this, myDisplay.getAutomapper());
         myDisplay.setupMap();
         //myMap.run();
         

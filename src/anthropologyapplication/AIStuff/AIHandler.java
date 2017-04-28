@@ -5,10 +5,14 @@
  */
 package anthropologyapplication.AIStuff;
 
+import anthropologyapplication.Buildings.Building;
+import anthropologyapplication.Buildings.Field;
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.FoodHandler;
 import anthropologyapplication.TribalCampObject;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import java.util.Stack;
@@ -151,6 +155,57 @@ public class AIHandler extends Service {
                 }
             }
 
+            public float estimateConsumption()
+            {
+               int Consumption = 0;
+               Consumption += (myCamp.getPopulationHandler().getWarriorsFoodConsumption()*myCamp.getWarriorHandler().getWarriorsAmount());
+               Consumption += (myCamp.getFreeCitizens() * myCamp.getPopulationHandler().getFreeCitizensConsumption());
+               Consumption += (myCamp.getBuildingHandler().getBuildersAmount() * myCamp.getPopulationHandler().getBuildersFoodConsumption());
+               Consumption += (myCamp.getProductionHandler().getProducersAmount() * myCamp.getPopulationHandler().getProducersFoodConsumption());
+               Consumption += (myCamp.getFoodHandler().getFarmersAmount() * myCamp.getPopulationHandler().getFarmersFoodConsumption());
+               return Consumption;
+            }
+            
+            public float estimateProduction()
+            {
+                int Production = 0;
+                ArrayList<Building> aBuildingHandler = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class);
+                int Check = myCamp.getFoodHandler().getFarmersAmount();
+                Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
+                int RequiredFarmers = 0;
+                float maxFoodProduced = 0;
+                float maxGhostFoodProduced = 0;
+                float TotalFoodProducedPerDay = 0;
+                while(BuildingIterator.hasNext())
+                {
+                         Building aBuilding = BuildingIterator.next();
+                         RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
+                         maxFoodProduced += (((Field)aBuilding).getYield());
+                }
+                aBuildingHandler = myCamp.getBuildingHandler().getBuildingsCurrentlyBeingBuiltByType(Field.class);
+                BuildingIterator = aBuildingHandler.iterator();
+                while(BuildingIterator.hasNext())
+                {
+                         Building aBuilding = BuildingIterator.next();
+                         RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
+                         maxGhostFoodProduced += (((Field)aBuilding).getYield());
+                }
+                
+                if(RequiredFarmers != 0)
+                {
+                    if(((float)Check/(float)RequiredFarmers) > 1)
+                    {
+                        TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
+                        TotalFoodProducedPerDay += maxGhostFoodProduced;
+                    } else {
+                        
+                    }
+                }
+                
+                return TotalFoodProducedPerDay;
+            }
+            
+            
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Expanding");
 
@@ -168,7 +223,7 @@ public class AIHandler extends Service {
                 
                 if(myHandle.getFoodHandler().isStarving() == true)
                 {
-                    setStateExecution(StarvingFunc);
+                    return StarvingFunc;
                 }
                 //There will also be an if statement here checking if we need to switch to PrepareRaid
                 

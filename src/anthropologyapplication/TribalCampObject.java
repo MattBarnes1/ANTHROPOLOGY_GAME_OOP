@@ -114,7 +114,7 @@ public class TribalCampObject {
         }
     }
 
-    void addFreeCitizen() {
+    public void addFreeCitizen() {
         this.TotalFreeCitizens++;
     }
 
@@ -126,7 +126,7 @@ public class TribalCampObject {
         return this.HomeTile;
     }
 
-    PopulationHandler getPopulationHandler() {
+    public PopulationHandler getPopulationHandler() {
         return this.myPopulationHandler;
     }
 
@@ -134,7 +134,7 @@ public class TribalCampObject {
        return this.myReputationHandler;
     }
 
-    void addFreeCitizens(int newCitizens) {
+    public void addFreeCitizens(int newCitizens) {
         TotalFreeCitizens += newCitizens;
     }
 

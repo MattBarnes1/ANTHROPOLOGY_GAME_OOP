@@ -166,6 +166,26 @@ public class PopulationHandler {
       }
     }
 
+    public float getFreeCitizensConsumption() {
+        return this.CONSUMPTION_FREE_CITIZENS;
+    }
+
+    public float getWarriorsFoodConsumption() {
+        return this.CONSUMPTION_WARRIORS;
+    }
+
+    public float getBuildersFoodConsumption() {
+        return this.CONSUMPTION_BUILDERS;
+    }
+
+    public float getProducersFoodConsumption() {
+        return this.CONSUMPTION_WORKERS;
+    }
+
+    public float getFarmersFoodConsumption() {
+        return this.CONSUMPTION_FARMERS;
+    }
+
 
     
     
