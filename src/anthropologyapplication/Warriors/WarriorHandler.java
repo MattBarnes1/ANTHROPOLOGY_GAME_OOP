@@ -164,19 +164,22 @@ public class WarriorHandler {
         }
     }
 
-    public void addWarriorToTraining(String myWarrior) { 
+    public WarriorTrainingDisplayData addWarriorToTraining(String myWarrior) { 
         for(int i = 0; i < warriorList.length; i++)
         {
            if(warriorList[i].getName().compareTo(myWarrior)==0)
            {
                 if(warriorList[i].checkIfCanBuild(myProductionHandler))
                 {
-                    myWarriorsInTraining.add(warriorList[i].Copy());
+                    Warrior aCopy = warriorList[i].Copy();
+                    myWarriorsInTraining.add(aCopy);
+                    return new WarriorTrainingDisplayData(aCopy);
                 } else {
                     Error = "Not enough trade goods for this to be built!";
                 }
            }
         }
+        return null;
     }
 
     public void removeWarriorFromTraining(String myWarrior) { 

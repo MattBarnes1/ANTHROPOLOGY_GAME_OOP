@@ -11,11 +11,7 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< .mine
-    <jar href="AnthropologyApplication.jar" size="232156" download="eager" />
-=======
-    <jar href="AnthropologyApplication.jar" size="237427" download="eager" />
->>>>>>> .r53
+    <jar href="AnthropologyApplication.jar" size="233958" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AnthropologyApplication" >
     <param name="requiredFXVersion" value="8.0+"/>
