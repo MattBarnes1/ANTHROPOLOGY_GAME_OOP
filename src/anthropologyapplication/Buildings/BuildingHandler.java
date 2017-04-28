@@ -76,6 +76,9 @@ public class BuildingHandler {
                         }
                     }
                 }
+               
+                
+                
                 
                 public void unlockBuilding(Class<? extends Building> aBuilding)
                 {
@@ -90,6 +93,15 @@ public class BuildingHandler {
                         }
                     }
                 }
+                
+                public void clearBuildingList()
+                {
+                    hasChanged = true;
+                    BuildingsBeingConstructed.clear();
+                }
+                
+                
+                
                 
                 public void update(GameTime T)
                 {

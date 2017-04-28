@@ -160,14 +160,36 @@ public class ProductionHandler
         return (currentlyActiveTradeGoods < maxActiveTradeGoods);
     }
 
-    public void addProductionItem(String text) {
-       
-        
+    public ProductProductionDisplayData addProductionItem(String text) {
+       for(internalProductLocker aLocker : this.internalProductList)
+       {
+           if(aLocker.getName().compareTo(text) == 0)
+           {
+                hasChanged = true;
+               this.ProductsBeingMade.add(aLocker.myTradeGood);
+               currentlyActiveTradeGoods++;
+               return new ProductProductionDisplayData(aLocker.myTradeGood);
+           }
+       }
+       return null;
     }
 
     public void removeProductFromProduction(TradeGood ProgressData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.ProductsBeingMade.remove(ProgressData))
+        {
+            
+            hasChanged = true;
+            currentlyActiveTradeGoods--;
+        }
     }
+    
+    public void clearProductsInProduction()
+    {
+        this.ProductsBeingMade.clear();
+    }
+    
+    public void isProducing
+    
     boolean hasChanged = false;
     public boolean hasChanged() {
         if(hasChanged == true)
