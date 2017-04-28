@@ -53,25 +53,35 @@ public class ProductionHandler
 		public void update(GameTime MS)
 		{
                    Iterator<TradeGood> myTradeGood = ProductsBeingMade.iterator();
-                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 20 && myTribe.getProductionHandler().getAmountByString("Wood") > 20)
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 20 && myTribe.getProductionHandler().getAmountByString("Wood") > 20 && !myTribe.getBuildingHandler().isUnlocked(Homes.class))
                     {
+                        this.hasChanged = true;
                        myTribe.getBuildingHandler().unlockBuilding(Homes.class);
                     }
-                    else if {
-                       myTribe.getBuildingHandler().lockBuilding(Homes.class);
-                    }
-                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 50 && myObject.getProductionHandler().getAmountByString("Wood") > 50
-                            && myObject.getProductionHandler().getAmountByString("Stone") > 50)
+                    else if (myTribe.getBuildingHandler().isUnlocked(Homes.class))
                     {
+                       myTribe.getBuildingHandler().lockBuilding(Homes.class);
+                        this.hasChanged = true;
+                    }
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 50 && myTribe.getProductionHandler().getAmountByString("Wood") > 50
+                            && myTribe.getProductionHandler().getAmountByString("Stone") > 50 && myTribe.getBuildingHandler().isUnlocked(Smelterer.class))
+                    {
+                        this.hasChanged = true;
                        myTribe.getBuildingHandler().unlockBuilding(Smelterer.class);
-                    } else {
+                    } else if (myTribe.getBuildingHandler().isUnlocked(Smelterer.class))
+                    {
+                        this.hasChanged = true;
                         myTribe.getBuildingHandler().lockBuilding(Smelterer.class);
                     }
-                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 100 && myObject.getProductionHandler().getAmountByString("Wood") > 100
-                            && myObject.getProductionHandler().getAmountByString("Stone") > 100)
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 100 && myTribe.getProductionHandler().getAmountByString("Wood") > 100
+                            && myTribe.getProductionHandler().getAmountByString("Stone") > 100 && !myTribe.getBuildingHandler().isUnlocked(Blacksmith.class))
                     {
+                        this.hasChanged = true;
                        myTribe.getBuildingHandler().unlockBuilding(Blacksmith.class);
-                    } else {
+                    } 
+                    else if (myTribe.getBuildingHandler().isUnlocked(Blacksmith.class))
+                    {
+                        this.hasChanged = true;
                         myTribe.getBuildingHandler().lockBuilding(Blacksmith.class);
                     }
                    while(myTradeGood.hasNext())

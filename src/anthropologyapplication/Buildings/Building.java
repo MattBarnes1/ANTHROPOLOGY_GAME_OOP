@@ -197,7 +197,7 @@ public abstract class Building
                 return false;
             }
         }
-        return true;[plk;lk;]
+        return true;
     }
 
    
