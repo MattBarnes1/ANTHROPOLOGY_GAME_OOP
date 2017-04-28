@@ -267,7 +267,6 @@ public class BuildingHandler {
                     }
                     return retBuilding;
 		}
-
                 
                 public ArrayList<Building> getBuildingsCurrentlyBeingBuiltByType(Class<? extends Building> myClass)
                 { 
@@ -288,7 +287,10 @@ public class BuildingHandler {
                     retBuilding.iterator();
                 }*/
 
-    
+    public int countBuildingsBeingBuilt()
+    {
+        return BuildingsBeingConstructed.size();
+    }
     
     public boolean hasWorking(Class<? extends Building> aClass) {
         for(int i = 0; i < BuildingsBuilt.size(); i++)

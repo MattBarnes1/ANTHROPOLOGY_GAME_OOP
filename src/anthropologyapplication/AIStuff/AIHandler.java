@@ -32,14 +32,8 @@ public class AIHandler extends Service {
     private Stack<StateExecution> myFunctionStack = new Stack<>();
     private StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
-                                                              //Citizen     //Buildings  //Food surplus form it.
-    AIArray startCurrentState       = new AIArray(new float[]{0,0,0,0,10    ,0,0,0,0,0,0,-2.5F});
-    AIArray addWarriorModifier      = new AIArray(new float[]{1,0,2,0,-3    ,0,1,0,0,0,0,0});
-    AIArray addBuilderModifier      = new AIArray(new float[]{0,1,2,0,-3    ,0,1,0,0,0,0,0.25F});
-    AIArray addWorkerModifier       = new AIArray(new float[]{0,0,2,1,-3    ,0,1,0,0,0,0,0.5F});
-    AIArray addFarmerModifier       = new AIArray(new float[]{0,0,1,0,-1    ,0,0.5F,0,0,0,0,0.5F});
-    AIArray addFreeCitizenModifier  = new AIArray(new float[]{0,1,0,0.5F   ,0,1,0,0,0,0,0,0});
-    //Warriors, Builders, 
+
+  
     
     
     public AIHandler(AICampObject myCampObject) {
