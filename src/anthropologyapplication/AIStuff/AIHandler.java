@@ -30,19 +30,27 @@ public class AIHandler extends Service {
     int i = 0;
 
     //Randomize AI personality by writing multiple funcs of the same type and picking one specific one?
+    
+    //Main states
     private StateExecution initialState;
     private StateExecution hungryState;
     private StateExecution buildHomesState;
     private StateExecution genWarriorsState;
-
+    
+    //Substates
+    private StateExecution NER_Builders;
+    private StateExecution NER_Workers;
+    private StateExecution NER_Clay;
+    private StateExecution NER_Stone;
+    private StateExecution NER_Wood;
+    private StateExecution NER_UnsmCopper;
+    private StateExecution NER_SmCopper;
+    
     private final TribalCampObject myCamp;
     private Stack<StateExecution> myFunctionStack = new Stack<>();
     private StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
     private Random DrunkardWalkran = new Random(); 
-  
-    
-    
     public AIHandler(AICampObject myCampObject) {
         this.myCamp = myCampObject;
         createStateInterfaces(); //Create our interfaces?
@@ -55,7 +63,7 @@ public class AIHandler extends Service {
                 while (isAlive) //loops until we set the dead state then ends;
                 {
                     if (myCurrentFunctionToExecute == null) {
-                        setStateExecution(initialState); //Since Expanding Func is our 'root' node of the state tree it automatically gets selected
+                        setStateExecution(initialState); //Since Initial is our 'root' node of the state tree it automatically gets selected
                     } else {
                         StateExecution aNewState = myCurrentFunctionToExecute.substateCheck();
                         if (aNewState != null) {
@@ -110,10 +118,10 @@ public class AIHandler extends Service {
         //////////////////////////////////
         //START Initial State Definition
         //////////////////////////////////
-        hungryState = new StateExecution() {
+        initialState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
             
-            
+            //There will probably be more things to set to zero here
             int FieldNumber = 0;
             int GranaryNumber = 0;
             
@@ -263,7 +271,7 @@ public class AIHandler extends Service {
             
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Fixing Hungry");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Food (Hungry)");
                 float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
                 //float myFoodConsumptionPerDay = myCamp.
                 
@@ -272,7 +280,7 @@ public class AIHandler extends Service {
                 /////////////////////////////////////////////////////////////////////////
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
-
+            
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     if(isDoingPseudoCalculations())
@@ -292,11 +300,7 @@ public class AIHandler extends Service {
                     //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
                     //If slow, it'll result in the application freezing.
                     
-                    //THINGS TO DO/CHECK FOR:
-                    //Build Farms
-                    //Reduce Workforce
-                    //Raid for food
-                    //Die
+                    
 
                     
                     
@@ -371,19 +375,20 @@ public class AIHandler extends Service {
             
             
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Fixing Hungry");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Food (Hungry)");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Fixing Hungry");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Food (Hungry)");
             }
 
             @Override
             public StateExecution substateCheck() { 
                 //These are the substate conditions that are being checked.
                 
+                //NER_Builders substate check will go here
 
                 return null;
             }
@@ -423,7 +428,7 @@ public class AIHandler extends Service {
 
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Building Homes");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Homes");
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -449,13 +454,13 @@ public class AIHandler extends Service {
             }
 
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Building Homes");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Homes");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Building Homes");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Homes");
             }
 
             @Override
@@ -479,7 +484,7 @@ public class AIHandler extends Service {
 
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Generating Warriors");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Warriors");
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -505,13 +510,13 @@ public class AIHandler extends Service {
             }
 
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Generating Warriors");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Warriors");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Generating Warriors");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Warriors");
             }
 
             @Override
@@ -527,8 +532,388 @@ public class AIHandler extends Service {
         //////////////////////////////////
         };
         
+         ////////////////////////////////////
+        //START NER_Builders State Definition
+        /////////////////////////////////////
+        NER_Builders = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State:  Not Enough Builders");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Builders");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Builders");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_Builders State
+        //////////////////////////////////
+        };
+        
+         ////////////////////////////////////
+        //START NER_Workers State Definition
+        /////////////////////////////////////
+        NER_Workers = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Workers");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Workers");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Workers");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_Workers State
+        //////////////////////////////////
+        };
+        
+         //////////////////////////////////
+        //START NER_Clay State Definition
+        //////////////////////////////////
+        NER_Clay = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Clay");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Clay");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Clay");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_Clay State
+        //////////////////////////////////
+        };
+        
+         //////////////////////////////////
+        //START NER_Wood State Definition
+        //////////////////////////////////
+        NER_Wood = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Wood");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Wood");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Wood");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_Wood State
+        //////////////////////////////////
+        };
+        
+         //////////////////////////////////
+        //START NER_Stone State Definition
+        //////////////////////////////////
+        NER_Stone = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Stone");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Stone");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Stone");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_Stone State
+        //////////////////////////////////
+        };
+        
+         //////////////////////////////////////
+        //START NER_UnsmCopper State Definition
+        ///////////////////////////////////////
+        NER_UnsmCopper = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Unsmelted Copper");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Unsmelted Copper");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Unsmelted Copper");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_UnsmCopper State
+        //////////////////////////////////
+        };
+        
+         //////////////////////////////////////
+        //START NER_SmCopper State Definition
+        ///////////////////////////////////////
+        NER_SmCopper = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Smelted Copper");
+                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                //float myFoodConsumptionPerDay = myCamp.
+                
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Smelted Copper");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Smelted Copper");
+            }
+
+            @Override
+            public StateExecution substateCheck() { 
+                //These are the substate conditions that are being checked.
+                
+                return null;
+            }
+        //////////////////////////////////
+        //End NER_SmCopper State
+        //////////////////////////////////
+        };
         
     }
-
-
 }
