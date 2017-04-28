@@ -42,7 +42,7 @@ public class PopulationHandler {
         int Warriors = myTribe.getWarriorHandler().getWarriorsAmount();
         float Builders = myTribe.getBuildingHandler().getBuildersAmount();
         int Workers = myTribe.getProductionHandler().getProducersAmount();
-        int farmers = myTribe.getProductionHandler().getProducersAmount();
+        float farmers = myTribe.getFoodHandler().getFarmersAmount();
         dailyFoodUse = (freeCitizens*CONSUMPTION_FREE_CITIZENS);
         System.out.println("FC: " + freeCitizens + " Result: " + freeCitizens*CONSUMPTION_FREE_CITIZENS);
         dailyFoodUse += (farmers * CONSUMPTION_FARMERS);
