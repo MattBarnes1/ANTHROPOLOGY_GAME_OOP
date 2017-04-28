@@ -16,7 +16,7 @@ import anthropologyapplication.internalLockers.internalWarriorLocker;
  *
  * @author Duke
  */
-public class Warrior {
+public abstract class Warrior {
     protected final Timer BuildTime;
     protected Timer BuildTimeCountDown;
     protected String[] itemsNeededForProduction;
@@ -95,6 +95,8 @@ public class Warrior {
     public void cancelBuild() {
         isCancelled = true;
     }
+
+    public abstract Warrior Copy();
 
     
 

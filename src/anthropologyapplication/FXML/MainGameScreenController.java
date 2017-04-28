@@ -165,6 +165,7 @@ public class MainGameScreenController implements Initializable {
     
     public void updatePossibleToMake()
     {
+        
        updateAvailableItems();
        updateAvailableBuildings();
        updateAvailableWarriors();
@@ -193,7 +194,11 @@ public class MainGameScreenController implements Initializable {
                 Button myButton = aButton;
                 @Override
                 public void handle(MouseEvent event) {
-                    myMain.addWarrior(aButton.getText());
+                   WarriorTrainingDisplayData ret = myMain.addWarrior(aButton.getText());
+                   if(ret != null)
+                   {
+                       WarriorTrainingQueueList.getChildren().add(new CustomHBox(ret, myMain));
+                   }
                 }           
             });
             WarriorFlowPane.getChildren().add(aButton);

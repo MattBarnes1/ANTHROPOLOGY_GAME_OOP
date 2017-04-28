@@ -18,4 +18,15 @@ public class Spearmen extends Warrior {
         super(Name, Description,  TrainingTimeMS, Strength);
     }
     
+    @Override
+    public Warrior Copy()
+    {
+       return new Spearmen(this);
+    }
+    
+    
+    private Spearmen(Spearmen mySpearmen)
+    {
+        super(mySpearmen.getName(), mySpearmen.getDescription(), mySpearmen.BuildTime, mySpearmen.Strength);
+    }
 }

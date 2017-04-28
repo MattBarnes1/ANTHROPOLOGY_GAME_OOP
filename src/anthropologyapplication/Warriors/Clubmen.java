@@ -19,4 +19,17 @@ public class Clubmen extends Warrior {
         super(Name, Description,  TrainingTimeMS, Strength);
     }
     
+    @Override
+    public Warrior Copy()
+    {
+       return new Clubmen(this);
+    }
+    
+    
+    private Clubmen(Clubmen myClubbers)
+    {
+        super(myClubbers.getName(), myClubbers.getDescription(), myClubbers.BuildTime, myClubbers.Strength);
+    }
+    
+    
 }

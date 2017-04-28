@@ -316,21 +316,23 @@ public class MainGameCode {
            }
        }
 
-    public void addWarrior(String text) {
+    public WarriorTrainingDisplayData addWarrior(String text) {
         if(playersCamp.hasFreeCitizens())
         {
-            playersCamp.getWarriorHandler().addWarriorToTraining(text);
+            WarriorTrainingDisplayData returnVal = playersCamp.getWarriorHandler().addWarriorToTraining(text);
             if(playersCamp.getWarriorHandler().hasError())
             {
                this.myDisplay.setErrorMessage(playersCamp.getWarriorHandler().getError());
+               return null;
             } else {
                 playersCamp.removeFreeCitizen();
             }
-            
+            return returnVal;
         } else {
             this.myDisplay.setErrorMessage("Not enough citizens to build this!");
             
         }
+        return null;
     }
 
     public ProductProductionDisplayData setProductionFocus(String text) {

@@ -25,13 +25,13 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class BuildingHandler {
                 private final String NoFile = "NoFile";
                 private internalBuildingLocker[] internalBuildingList = new internalBuildingLocker[] { 
-                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,1,1,0), 0, 2, 5,"TribalCamp.jpg", "TribalCampDestroyed.jpg", new ResourceArray(new int[]{ })), false),
-                    new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, 3,"Granary.jpg", "GranaryDestroyed.jpg", new ResourceArray(new int[]{ })), true),
-                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,5,5,5), 2, 4, 3,"Field.jpg", "FieldDestroyed.jpg", new ResourceArray(new int[]{ })), true),
-                    new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, 3,"Workshop.jpg", "WorkshopDestroyed.jpg", new ResourceArray(new int[]{ })), true),
-                    new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, 3, "Blacksmith.jpg", "BlacksmithDestroyed.jpg", new ResourceArray(new int[]{ })), false),
-                    new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, 3, "Homes.jpg","HomesDestroyed.jpg", new ResourceArray(new int[]{ })), true),
-                    new internalBuildingLocker(new Smelterer("Smelterer", "A workshop",  new Timer(0,0,0,5), 6, 2, 3,"Smelterer.jpg", "SmeltererDestroyed.jpg", new ResourceArray(new int[]{ })), true)  
+                    new internalBuildingLocker(new TribalHut("Tribal Hut", "Goverment", new Timer(0,1,1,0), 0, 2, 5,"TribalCamp.jpg", "TribalCampDestroyed.jpg", new ResourceArray(new int[]{0,0,0,0,0})), false),
+                    new internalBuildingLocker(new Granary("Granary", "Food Storage",   new Timer(0,0,0,5), 1, 2, 3,"Granary.jpg", "GranaryDestroyed.jpg", new ResourceArray(new int[]{0,0,0,0,0})), true),
+                    new internalBuildingLocker(new Field ("Field", "A field",           new Timer(0,5,5,5), 2, 4, 3,"Field.jpg", "FieldDestroyed.jpg", new ResourceArray(new int[]{0,0,0,0,0})), true),
+                    new internalBuildingLocker(new Workshop("Workshop", "A workshop",   new Timer(0,0,0,5), 3, 2, 3,"Workshop.jpg", "WorkshopDestroyed.jpg", new ResourceArray(new int[]{0,0,0,0,0})), true),
+                    new internalBuildingLocker(new Blacksmith("Blacksmith", "A workshop",  new Timer(0,0,0,5), 4, 2, 3, "Blacksmith.jpg", "BlacksmithDestroyed.jpg", new ResourceArray(new int[]{100,100,100,0,0})), false),
+                    new internalBuildingLocker(new Homes("Homes", "A workshop",  new Timer(0,0,0,5), 5, 2, 3, "Homes.jpg","HomesDestroyed.jpg", new ResourceArray(new int[]{20,20,0,0,0})), false),
+                    new internalBuildingLocker(new Smelterer("Smelterer", "A workshop",  new Timer(0,0,0,5), 6, 2, 3,"Smelterer.jpg", "SmeltererDestroyed.jpg", new ResourceArray(new int[]{50,50,50,0,0})), false)  
                 };//this is a template list of all buildings
 		private int BuildersBuilding = 0; //number of people building
 		private ArrayList<BuildingConstructionDisplayData> BuildingsThatCanBeBuilt = new ArrayList<>(); //Used for building in menu
@@ -336,6 +336,7 @@ public class BuildingHandler {
             return false;
         }
     }
+    
 
     public boolean isUnlocked(Class<? extends Building> aClass) {
         for(int i = 0; i < internalBuildingList.length; i++)

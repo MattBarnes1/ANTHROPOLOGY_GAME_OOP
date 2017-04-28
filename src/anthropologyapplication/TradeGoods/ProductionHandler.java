@@ -53,10 +53,13 @@ public class ProductionHandler
 		public void update(GameTime MS)
 		{
                    Iterator<TradeGood> myTradeGood = ProductsBeingMade.iterator();
-                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 20 && myTribe.getProductionHandler().getAmountByString("Wood") > 20 && !myTribe.getBuildingHandler().isUnlocked(Homes.class))
+                    if(myTribe.getProductionHandler().getAmountByString("Clay") > 20 && myTribe.getProductionHandler().getAmountByString("Wood") > 20)
                     {
-                        this.hasChanged = true;
-                       myTribe.getBuildingHandler().unlockBuilding(Homes.class);
+                        if(!myTribe.getBuildingHandler().isUnlocked(Homes.class))
+                        {
+                            this.hasChanged = true;
+                            myTribe.getBuildingHandler().unlockBuilding(Homes.class);
+                        }
                     }
                     else if (myTribe.getBuildingHandler().isUnlocked(Homes.class))
                     {
@@ -64,25 +67,34 @@ public class ProductionHandler
                         this.hasChanged = true;
                     }
                     if(myTribe.getProductionHandler().getAmountByString("Clay") > 50 && myTribe.getProductionHandler().getAmountByString("Wood") > 50
-                            && myTribe.getProductionHandler().getAmountByString("Stone") > 50 && myTribe.getBuildingHandler().isUnlocked(Smelterer.class))
+                            && myTribe.getProductionHandler().getAmountByString("Stone") > 50)
                     {
-                        this.hasChanged = true;
-                       myTribe.getBuildingHandler().unlockBuilding(Smelterer.class);
+                        if(!myTribe.getBuildingHandler().isUnlocked(Smelterer.class))
+                        {
+                            this.hasChanged = true;
+                            myTribe.getBuildingHandler().unlockBuilding(Smelterer.class);
+                        }
                     } else if (myTribe.getBuildingHandler().isUnlocked(Smelterer.class))
                     {
-                        this.hasChanged = true;
-                        myTribe.getBuildingHandler().lockBuilding(Smelterer.class);
+                        if(!myTribe.getBuildingHandler().isUnlocked(Homes.class))
+                        {
+                            this.hasChanged = true;
+                            myTribe.getBuildingHandler().lockBuilding(Smelterer.class);
+                        }
                     }
                     if(myTribe.getProductionHandler().getAmountByString("Clay") > 100 && myTribe.getProductionHandler().getAmountByString("Wood") > 100
-                            && myTribe.getProductionHandler().getAmountByString("Stone") > 100 && !myTribe.getBuildingHandler().isUnlocked(Blacksmith.class))
+                            && myTribe.getProductionHandler().getAmountByString("Stone") > 100)
                     {
-                        this.hasChanged = true;
-                       myTribe.getBuildingHandler().unlockBuilding(Blacksmith.class);
+                        if(!myTribe.getBuildingHandler().isUnlocked(Blacksmith.class))
+                        {
+                            this.hasChanged = true;
+                           myTribe.getBuildingHandler().unlockBuilding(Blacksmith.class);
+                        }
                     } 
                     else if (myTribe.getBuildingHandler().isUnlocked(Blacksmith.class))
                     {
-                        this.hasChanged = true;
-                        myTribe.getBuildingHandler().lockBuilding(Blacksmith.class);
+                            this.hasChanged = true;
+                            myTribe.getBuildingHandler().lockBuilding(Blacksmith.class);
                     }
                    while(myTradeGood.hasNext())
                    {
@@ -136,6 +148,7 @@ public class ProductionHandler
 
 		public void removeProducers(int Amount)
 		{
+                    hasChanged = true;
                     if((ProducersAmount - Amount) > 0)
                     {
 			ProducersAmount =- Amount;

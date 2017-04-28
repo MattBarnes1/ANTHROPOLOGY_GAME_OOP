@@ -34,12 +34,10 @@ public class internalWarriorLocker {
     }
 
     public Warrior Copy() {
-        return this.Copy(aWarrior);
+        return aWarrior.Copy();
     }
 
-    private Warrior Copy(Warrior aWarrior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     public boolean isAvailable() {
         return Available;

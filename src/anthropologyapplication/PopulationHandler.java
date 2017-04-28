@@ -57,7 +57,7 @@ public class PopulationHandler {
     
     void update(GameTime MS) {
         
-        currentTimer.subtract(MS.getElapsedTime());
+        currentTimer = currentTimer.subtract(MS.getElapsedTime());
         if(currentTimer.EqualTo(Timer.Zero))
         {
             currentTimer = initialTimer;
@@ -94,6 +94,11 @@ public class PopulationHandler {
        
     }
 
+    public int getTotalPopulation()
+    {
+        return TotalPopulation;
+    }
+    
     void doStarvation() {
       int amountToDecimate = (int)Math.floor((float)TotalPopulation * ((float)1/(float)myRandom.nextInt(4)));
       boolean isWarriorsEmpty = false;
