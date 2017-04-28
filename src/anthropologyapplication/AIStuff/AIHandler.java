@@ -5,6 +5,7 @@
  */
 package anthropologyapplication.AIStuff;
 
+import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.Buildings.Field;
 import anthropologyapplication.Logger.FileLogger;
@@ -13,6 +14,7 @@ import anthropologyapplication.TribalCampObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import java.util.Stack;
@@ -37,7 +39,7 @@ public class AIHandler extends Service {
     private Stack<StateExecution> myFunctionStack = new Stack<>();
     private StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
-
+    private Random DrunkardWalkran = new Random(); 
   
     
     
@@ -254,7 +256,11 @@ public class AIHandler extends Service {
         //////////////////////////////////
         hungryState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
-
+            float FarmersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
+            float BuildersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredBuildersAmount();
+            float fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
+            float calInitialFoodDifference = calculateInitialFoodDifferenceToSolveFor();
+            
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Fixing Hungry");
@@ -269,6 +275,19 @@ public class AIHandler extends Service {
 
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
+                    if(isDoingPseudoCalculations())
+                    {
+                        if(rebalancePeople() == -1) //FailedToRebalance
+                        {
+                            doFieldBuilding();
+                        } else {
+                            //Do the pseudo rebalanceing thing here.
+                            
+                        }
+                    } else {
+                        doFieldBuilding();
+                        
+                    }
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
                     //If slow, it'll result in the application freezing.
@@ -279,6 +298,9 @@ public class AIHandler extends Service {
                     //Raid for food
                     //Die
 
+                    
+                    
+                    
                     if (!isFinished()) {
                         onExit();
                     } else {
@@ -286,7 +308,68 @@ public class AIHandler extends Service {
                     }
                 }
             }
+            
+            private void doFieldBuilding()
+            {
+                        float neededFarmsToCorrectFor = calInitialFoodDifference/fieldDailyYield;
+                        float calculateAdjustedYield = 
+                        int CurrentlyRequired = myHandle.getBuildingHandler().getRequiredBuildersAmountInConstructionQueue();
+                        int NextRequired = CurrentlyRequired + 
+                        float FoodRequirements = TotalPopulation
+                        if(myHandle.getBuildingHandler().getBuildersAmount() > )
+                        {
+                            
+                        }
+                        
+                        
+                        this.doCanBuild();
+                        
+                        if(isHungry())
+                        {
+                            
+                        }
+            }
+            
+            
+            private boolean isDoingPseudoCalculations()
+            {
+                return false;
+            }
+            
+            
 
+            private MapTile drunkenWalker(MapTile myTile)
+            {
+                int Amount = DrunkardWalkran.nextInt(3)
+                MapTile myNextTile = myTile;
+                for(int i = 0; i < Amount; i++)
+                {
+                  int Choice = DrunkardWalkran.nextInt(8) + 1; //So we ignore 0
+                  MapTile nextTile = getMapTileByRandomWalking(Choice, myNextTile);
+                  if(nextTile == null)
+                  {
+                      i++;
+                      continue;
+                  } else {
+                    if(nextTile.isTerritoryOf(myHandle))
+                    {
+                        myNextTile = nextTile;
+                    } else {
+                        i++;
+                        continue;
+                    }
+                  }
+                }
+                return myNextTile;
+            }
+            
+            private int rebalancePeople()
+            {
+                int Builders = myHandle.getBuildingHandler().getBuildersAmount();
+                
+            }
+            
+            
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Fixing Hungry");
 
@@ -307,6 +390,29 @@ public class AIHandler extends Service {
         //////////////////////////////////
         //End Hungry State
         //////////////////////////////////
+
+            private MapTile getMapTileByRandomWalking(int Choice, MapTile myTile) {
+               switch(Choice)
+               {
+                   case 1:
+                       return myTile.getNorth();
+                       //break;
+                   case 2:
+                       return myTile.getEast();
+                    case 3:
+                       return myTile.getSouth();
+                    case 4:
+                       return myTile.getWest();
+                    case 5:
+                       return myTile.getNortheast();
+                    case 6:
+                       return myTile.getNorthwest();
+                    case 7:
+                       return myTile.getSoutheast();
+                    case 8:
+                       return myTile.getSouthwest();
+               }
+            }
         };
         
         /////////////////////////////////////
