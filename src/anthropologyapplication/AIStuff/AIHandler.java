@@ -28,9 +28,10 @@ public class AIHandler extends Service {
     int i = 0;
 
     //Randomize AI personality by writing multiple funcs of the same type and picking one specific one?
-    private StateExecution ExpandingFunc;
-    private StateExecution StarvingFunc;
-    private StateExecution PrepareRaidFunc;
+    private StateExecution initialState;
+    private StateExecution hungryState;
+    private StateExecution buildHomesState;
+    private StateExecution genWarriorsState;
 
     private final TribalCampObject myCamp;
     private Stack<StateExecution> myFunctionStack = new Stack<>();
@@ -52,7 +53,7 @@ public class AIHandler extends Service {
                 while (isAlive) //loops until we set the dead state then ends;
                 {
                     if (myCurrentFunctionToExecute == null) {
-                        setStateExecution(ExpandingFunc); //Since Expanding Func is our 'root' node of the state tree it automatically gets selected
+                        setStateExecution(initialState); //Since Expanding Func is our 'root' node of the state tree it automatically gets selected
                     } else {
                         StateExecution aNewState = myCurrentFunctionToExecute.substateCheck();
                         if (aNewState != null) {
@@ -105,9 +106,9 @@ public class AIHandler extends Service {
         //Additionally we can create a web of interfaces that can be checked by the state machine
 
         //////////////////////////////////
-        //START Expanding State Definition
+        //START Initial State Definition
         //////////////////////////////////
-        ExpandingFunc = new StateExecution() {
+        hungryState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
             
             
@@ -116,11 +117,7 @@ public class AIHandler extends Service {
             
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Expanding");
-                
-                
-                
-                
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Initial");               
                 
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
@@ -131,21 +128,15 @@ public class AIHandler extends Service {
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     
+                    int numBuilders = myHandle.getBuildingHandler().getBuildersAmount();
                     
-
-
-
-
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
-                    //If slow, it'll result in the application freezing.
-                    
-                    //THINGS TO DO/CHECK FOR:
-                    //Building
-                    //Training warriors
-                    //Not enough housing
-                    //Destroyed building
-                    //Depleted Resources
+                    //Make sure that if we are in intial state, we are no longer wasting food on non-working builders
+                    if(myHandle.getBuildingHandler().countBuildingsBeingBuilt() == 0 && numBuilders > 0)
+                    {
+                        myHandle.getBuildingHandler().removeBuilders(numBuilders);
+                        myHandle.addFreeCitizens(numBuilders);
+                        myHandle.getBuildingHandler().clearBuildingList();
+                    }
 
                     if (!isFinished()) {
                         onExit();
@@ -204,45 +195,69 @@ public class AIHandler extends Service {
                 
                 return TotalFoodProducedPerDay;
             }
-            
-            
+
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Expanding");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Initial");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Expanding");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Initial");
+            }
+            
+            private boolean isHungry()
+            {
+                //Make sure math here is correct
+                return((estimateProduction() - estimateConsumption()) < 0);
+            }
+
+            private boolean isNuffWarriors()
+            {
+                //Things will happen here
+
+                return true;
+            }
+
+            private boolean isNuffHomes()
+            {
+                //Things will happen here
+
+                return true;
             }
 
             @Override
             public StateExecution substateCheck() {
 
-                //These are the substate conditions that are being checked.
-                
-                if(myHandle.getFoodHandler().isStarving() == true)
+                //These are the substate condition functions that are being checked.             
+                if(isHungry())
                 {
-                    return StarvingFunc;
+                    return hungryState;
                 }
-                //There will also be an if statement here checking if we need to switch to PrepareRaid
-                
+                else if(isNuffWarriors())
+                {
+                    return genWarriorsState;
+                }
+                else if(isNuffHomes())
+                {
+                    return buildHomesState;
+                }
                 return null;
             }
         //////////////////////////////////
-        //End Expanding State
+        //End Initial State
         //////////////////////////////////
         };
         
         //////////////////////////////////
-        //START Starving State Definition
+        //START Hungry State Definition
         //////////////////////////////////
-        StarvingFunc = new StateExecution() {
+        hungryState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Starving");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Fixing Hungry");
                 float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
                 //float myFoodConsumptionPerDay = myCamp.
                 
@@ -273,36 +288,36 @@ public class AIHandler extends Service {
             }
 
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Starving");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Fixing Hungry");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Starving");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Fixing Hungry");
             }
 
             @Override
             public StateExecution substateCheck() { 
                 //These are the substate conditions that are being checked.
                 
-                //Possibly PrepareRaid will be substate
+
                 return null;
             }
         //////////////////////////////////
-        //End Starving State
+        //End Hungry State
         //////////////////////////////////
         };
         
         /////////////////////////////////////
-        //START PrepareRaid State Definition
+        //START Building Homes State Definition
         ////////////////////////////////////
-        PrepareRaidFunc = new StateExecution() {
+        buildHomesState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Prepare Raid");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Building Homes");
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -328,13 +343,13 @@ public class AIHandler extends Service {
             }
 
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Prepare Raid");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Building Homes");
 
             }
 
             @Override
             public void onFinish() {
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Prepare Raid");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Building Homes");
             }
 
             @Override
@@ -342,11 +357,67 @@ public class AIHandler extends Service {
 
                 //These are the substate conditions that are being checked.
                 
-                //Not too sure if PrepareRaid will have a substate
+
                 return null;
             }
         //////////////////////////////////
-        //End PrepareRaid State
+        //End Build Homes State
+        //////////////////////////////////
+        };
+        
+        /////////////////////////////////////
+        //START GenWarrior State Definition
+        ////////////////////////////////////
+        genWarriorsState = new StateExecution() {
+            TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
+
+            public void onEnter() {
+
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Generating Warriors");
+                /////////////////////////////////////////////////////////////////////////
+                //We could possibly pre-generate data here to make Execute execute faster
+                /////////////////////////////////////////////////////////////////////////
+                super.shouldExecute = true; //Ready to fire the AI Event
+            }
+
+            public void Execute() {
+                if (super.shouldExecute && !isFinished()) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
+                    //If slow, it'll result in the application freezing.
+                    
+                    //THINGS TO DO/CHECK FOR:
+                    //Produce Warriors
+                    //Actually Raid
+
+                    if (!isFinished()) {
+                        onExit();
+                    } else {
+                        myCurrentFunctionToExecute.onFinish();
+                    }
+                }
+            }
+
+            public void onExit() { //This is to tell us the event is still live but not active.
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Generating Warriors");
+
+            }
+
+            @Override
+            public void onFinish() {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Generating Warriors");
+            }
+
+            @Override
+            public StateExecution substateCheck() {
+
+                //These are the substate conditions that are being checked.
+                
+
+                return null;
+            }
+        //////////////////////////////////
+        //End GenWarriors Homes State
         //////////////////////////////////
         };
         
