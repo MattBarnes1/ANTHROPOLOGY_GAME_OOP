@@ -2,12 +2,35 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< .mine
         <group>
-            <file>file:/home/class/jar165/ANTHROPOLOGY_GAME_OOP.git/trunk/src/anthropologyapplication/AIStuff/AIHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/PopulationHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/FXML/MainGameScreenController.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Buildings/BuildingHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/FXML/QuickTipsProductionButton.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/AIStuff/AIHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/FXML/CustomHBox.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/DisplayData/BuildingConstructionDisplayData.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/CalendarData.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/MainGameCode.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/AutoMapper/MapTile.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TradeGoods/TradeGood.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Time.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/DisplayData/WarriorTrainingDisplayData.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/DisplayData/DisplayData.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Buildings/Building.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/FXML/customProgressBar.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/FoodHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/DisplayData/ProductProductionDisplayData.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TradeGoods/Wood.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Timer.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TradeGoods/Clay.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/GuiHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TradeGoods/ProductionHandler.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Buildings/Field.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/GameTime.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/Map.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TribalCampObject.java</file>
+            <file>file:/C:/Users/Duke/Desktop/Github2/ANTHROPOLOGY_GAME_OOP/src/anthropologyapplication/TradeGoods/ResourceArray.java</file>
         </group>
-=======
-        <group/>
->>>>>>> .r51
     </open-files>
 </project-private>

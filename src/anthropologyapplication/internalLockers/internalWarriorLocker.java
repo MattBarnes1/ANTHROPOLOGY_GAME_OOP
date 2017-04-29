@@ -29,10 +29,6 @@ public class internalWarriorLocker {
         return aWarrior.getName();
     }
 
-    public boolean checkIfCanBuild(ProductionHandler myProductionHandler) {
-        return aWarrior.checkIfCanBuild(myProductionHandler);
-    }
-
     public Warrior Copy() {
         return aWarrior.Copy();
     }

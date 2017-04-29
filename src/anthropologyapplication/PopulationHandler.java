@@ -156,7 +156,7 @@ public class PopulationHandler {
                 if(myHandle.getProducersAmount() > 0)
                 {
                     hasChanged = true;
-                    myHandle.removeProducers(1);
+                    myHandle.removeProducers();
                   TotalPopulation--;
                 }
                 else {

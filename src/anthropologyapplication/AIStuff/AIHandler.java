@@ -264,10 +264,10 @@ public class AIHandler extends Service {
         //////////////////////////////////
         hungryState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
-            float FarmersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
-            float BuildersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredBuildersAmount();
-            float fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
-            float calInitialFoodDifference = calculateInitialFoodDifferenceToSolveFor();
+            //float FarmersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
+            //float BuildersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredBuildersAmount();
+            //float fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
+            //float calInitialFoodDifference = calculateInitialFoodDifferenceToSolveFor();
             
             public void onEnter() {
 
@@ -285,15 +285,15 @@ public class AIHandler extends Service {
                 if (super.shouldExecute && !isFinished()) {
                     if(!isDoingPseudoCalculations())
                     {
-                        if(rebalancePeople() == -1) //FailedToRebalance
-                        {
-                            doFieldBuilding();
-                        } else {
+                        //if(rebalancePeople() == -1) //FailedToRebalance
+                        //{
+                        //    doFieldBuilding();
+                        //} else {
                             //Do the pseudo rebalancing thing here.
                             
-                        }
+                        //}
                     } else {
-                        doFieldBuilding();
+                        //doFieldBuilding();
                         
                     }
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -315,7 +315,7 @@ public class AIHandler extends Service {
             
             private void doFieldBuilding()
             {
-                        float neededFarmsToCorrectFor = calInitialFoodDifference/fieldDailyYield;
+                       /* float neededFarmsToCorrectFor = calInitialFoodDifference/fieldDailyYield;
                         float calculateAdjustedYield = 
                         int CurrentlyRequired = myHandle.getBuildingHandler().getRequiredBuildersAmountInConstructionQueue();
                         int NextRequired = CurrentlyRequired + 
@@ -331,7 +331,7 @@ public class AIHandler extends Service {
                         if(isHungry())
                         {
                             
-                        }
+                        }*/
             }
             
             
@@ -344,7 +344,7 @@ public class AIHandler extends Service {
 
             private MapTile drunkenWalker(MapTile myTile)
             {
-                int Amount = DrunkardWalkran.nextInt(3)
+                int Amount = DrunkardWalkran.nextInt(3);
                 MapTile myNextTile = myTile;
                 for(int i = 0; i < Amount; i++)
                 {
@@ -367,11 +367,11 @@ public class AIHandler extends Service {
                 return myNextTile;
             }
             
-            private int rebalancePeople()
+           /* private int rebalancePeople()
             {
                 int Builders = myHandle.getBuildingHandler().getBuildersAmount();
                 
-            }
+            }*/
             
             
             public void onExit() { //This is to tell us the event is still live but not active.
@@ -417,6 +417,9 @@ public class AIHandler extends Service {
                     case 8:
                        return myTile.getSouthwest();
                }
+               
+                throw new RuntimeException("Walking Algorithm Failed!");
+            
             }
         };
         

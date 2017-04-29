@@ -12,7 +12,7 @@ import anthropologyapplication.TradeGoods.TradeGood;
  * @author Duke
  */
 public class internalProductLocker {
-      public boolean Available = true;
+    public boolean Available = true;
     public TradeGood myTradeGood;
     public internalProductLocker(TradeGood aTradeGood, boolean isAvailable)
     {
@@ -33,7 +33,8 @@ public class internalProductLocker {
         return myTradeGood.getAmount();
     }
 
-    public void reduceAmount(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void reduceAmount(int Amount) {
+        assert((myTradeGood.getAmount() - Amount) > 0);
+        myTradeGood.setAmount(myTradeGood.getAmount() - Amount);
     }
 }

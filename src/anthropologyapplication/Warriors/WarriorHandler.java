@@ -169,7 +169,7 @@ public class WarriorHandler {
         {
            if(warriorList[i].getName().compareTo(myWarrior)==0)
            {
-                if(warriorList[i].checkIfCanBuild(myProductionHandler))
+                if(warriorList[i].getWarrior().checkIfCanBuild(myProductionHandler))
                 {
                     Warrior aCopy = warriorList[i].Copy();
                     myWarriorsInTraining.add(aCopy);

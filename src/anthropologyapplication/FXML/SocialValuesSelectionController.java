@@ -9,6 +9,8 @@ import anthropologyapplication.MainGameCode;
 import anthropologyapplication.SocialValues;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ import javafx.scene.input.MouseEvent;
  * @author Duke
  */
 public class SocialValuesSelectionController implements Initializable {
-    SocialChoice myChoices;// = new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal",SocialValues.Matrilineal, SocialValues.Patrilineal);
+        LinkedList<SocialChoice> myChoices = new LinkedList<SocialChoice>();// = new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal",SocialValues.Matrilineal, SocialValues.Patrilineal);
    
             
 
@@ -47,31 +49,25 @@ public class SocialValuesSelectionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        myChoices = new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal","MatrilinialDefinition","PatrilinealDefinition", SocialValues.Matrilineal, SocialValues.Patrilineal);
-        myChoices.setNext(new SocialChoice("SCENARIOTEXT", "Exogamy", "Endogamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
-        currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Monogamy", "Polygamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
-        currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Matriarchal", "Patriarchal","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
-        currentChoice = myChoices.getNext();
-        currentChoice.setNext(new SocialChoice("SCENARIOTEXT", "Horticultural", "Pastoral","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
-        //currentChoice = myChoices.getNext();
-        currentChoice = myChoices;
+        myChoices.add(new SocialChoice("SCENARIOTEXT", "Matrilineal", "Patrilineal","Matrilineal society, also called matriliny, group adhering to a kinship system in which ancestral descent is traced through maternal instead of paternal lines (the l.","Patrilineal society, also called patriliny, group adhering to a kinship system in which ancestral descent is traced through paternal instead of maternal lines.", SocialValues.Matrilineal, SocialValues.Patrilineal));
+        myChoices.add(new SocialChoice("SCENARIOTEXT", "Exogamy", "Endogamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Exogamy, SocialValues.Endogamy));
+        myChoices.add(new SocialChoice("SCENARIOTEXT", "Monogamy", "Polygamy","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Monogamy, SocialValues.Polygamy));
+        myChoices.add(new SocialChoice("SCENARIOTEXT", "Matriarchal", "Patriarchal","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Matriarchal, SocialValues.Patriarchal));
+        myChoices.add(new SocialChoice("SCENARIOTEXT", "Horticultural", "Pastoral","MatrilinialDefinition","PatrilinealDefinition",SocialValues.Horticultural, SocialValues.Pastoral));
+        currentChoiceIterator = myChoices.iterator();
+        currentChoice = currentChoiceIterator.next();
         updateQuestionFields();
     }    
-
+    Iterator<SocialChoice> currentChoiceIterator;
     public void nextQuestion()
     {
-       
+        currentChoice = currentChoiceIterator.next();
         if(Choice1.isSelected())
         {
             myValues.add(currentChoice.getChoiceSocialValue(0));
         } else if (Choice2.isSelected()) {
             myValues.add(currentChoice.getChoiceSocialValue(1));
         }
-        currentChoice = currentChoice.getNext();
-        //Add social value to myValues
-        
     }
     
     
@@ -83,7 +79,8 @@ public class SocialValuesSelectionController implements Initializable {
     }
 
     public void reset() {
-        currentChoice = myChoices;
+        currentChoiceIterator = myChoices.iterator();
+        currentChoice = currentChoiceIterator.next();
         myValues.clear();
         updateQuestionFields();
     }
@@ -92,7 +89,7 @@ public class SocialValuesSelectionController implements Initializable {
     private void onNextClicked(ActionEvent event) throws Throwable {
         if(Choice1.isSelected() || Choice2.isSelected())
         {
-            if(currentChoice.getNext() != null)
+            if(currentChoiceIterator.hasNext())
             {
                 nextQuestion();
                 updateQuestionFields();

@@ -214,7 +214,7 @@ public class MainGameCode {
         if(playersCamp.getProductionHandler().canRemoveMore())
         {
             playersCamp.addFreeCitizen();
-            playersCamp.getProductionHandler().removeProducers(1);
+            playersCamp.getProductionHandler().removeProducers();
         } else {
             myDisplay.setErrorMessage("You have no farmers to remove!"); //Error messages are red
         }

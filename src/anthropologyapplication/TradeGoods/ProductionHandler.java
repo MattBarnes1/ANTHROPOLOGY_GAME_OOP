@@ -146,12 +146,12 @@ public class ProductionHandler
                     calculateMaxNumberOfGoodsCanWorkOn();
 		}
 
-		public void removeProducers(int Amount)
+		public void removeProducers()
 		{
                     hasChanged = true;
-                    if((ProducersAmount - Amount) > 0)
+                    if((ProducersAmount - 1) > 0)
                     {
-			ProducersAmount =- Amount;
+			ProducersAmount = ProducersAmount - 1;
                     } else {
                         ProducersAmount = 0;
                     }
@@ -208,7 +208,7 @@ public class ProductionHandler
     
     public boolean canRemoveMore()
     {
-        return ((ProducersAmount - 1) > 0);
+        return ((ProducersAmount - 1) >= 0);
     }
     
     public boolean canAddTradeGood() {

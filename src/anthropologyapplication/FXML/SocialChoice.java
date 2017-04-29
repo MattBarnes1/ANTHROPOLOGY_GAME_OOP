@@ -6,17 +6,18 @@
 package anthropologyapplication.FXML;
 
 import anthropologyapplication.SocialValues;
+import java.util.LinkedList;
 
 /**
  *
  * @author Duke
  */
 public class SocialChoice {
-    private SocialChoice Next = null;
     private String ScenarioString;
     private String[] ChoiceStrings;
     private SocialValues[] SocialValuesForChoice;
     private String[] ChoiceExplanation;
+
     public SocialChoice(String Scenario, String Choice1, String Choice2, String Choice1Explanation, String Choice2Explanation, SocialValues withChoice1, SocialValues withChoice2)
     {
         ChoiceStrings = new String[] { Choice1, Choice2 };
@@ -24,16 +25,9 @@ public class SocialChoice {
         SocialValuesForChoice = new SocialValues[]{withChoice1, withChoice2};
         ChoiceExplanation = new String[] { Choice1Explanation, Choice2Explanation};
     }
-    
-    public void setNext(SocialChoice aChoice)
-    {
-        Next = aChoice;
-    }
-    
-    public SocialChoice getNext()
-    {
-        return Next;
-    }
+
+
+   
 
     String getChoiceString(int i) {
       return ChoiceStrings[i];
