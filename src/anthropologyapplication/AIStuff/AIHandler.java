@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,6 +8,7 @@ package anthropologyapplication.AIStuff;
 import anthropologyapplication.AutoMapper.MapTile;
 import anthropologyapplication.Buildings.Building;
 import anthropologyapplication.Buildings.Field;
+import anthropologyapplication.Buildings.Homes;
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.FoodHandler;
 import anthropologyapplication.TribalCampObject;
@@ -224,16 +225,21 @@ public class AIHandler extends Service {
 
             private boolean isNuffWarriors()
             {
-                //Things will happen here
+                //I am not 100% positive what we are going to be checking for here to have them
+                //generate warriors
+                //Maybe isHungry and isNuff homes are both false, then just generaate warriors if there are none?
+                
+                //This is temporary until we figure out exactly what to check for here
+                return(isHungry() && isNuffHomes() && myHandle.getWarriorHandler().getWarriorsAmount() == 0);
 
-                return true;
             }
 
             private boolean isNuffHomes()
             {
-                //Things will happen here
+                int numHomes = myHandle.getBuildingHandler().countBuildingsInList(Homes.class);
+                
+                return ((numHomes*2) >= myHandle.getPopulationHandler().getTotalPopulation());
 
-                return true;
             }
 
             @Override
@@ -300,9 +306,7 @@ public class AIHandler extends Service {
                     //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
                     //If slow, it'll result in the application freezing.
                     
-                    
-
-                    
+                  
                     
                     
                     if (!isFinished()) {
