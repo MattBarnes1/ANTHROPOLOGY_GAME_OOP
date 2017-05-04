@@ -11,6 +11,7 @@ import anthropologyapplication.Buildings.Field;
 import anthropologyapplication.Buildings.Homes;
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.FoodHandler;
+import anthropologyapplication.PopulationHandler;
 import anthropologyapplication.TribalCampObject;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +53,9 @@ public class AIHandler extends Service {
     private StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
     private Random DrunkardWalkran = new Random(); 
+//Warriors, Builders, 
+    
+    
     public AIHandler(AICampObject myCampObject) {
         this.myCamp = myCampObject;
         createStateInterfaces(); //Create our interfaces?
@@ -270,17 +274,43 @@ public class AIHandler extends Service {
         //////////////////////////////////
         hungryState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
-            //float FarmersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
-            //float BuildersAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredBuildersAmount();
-            //float fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
-            //float calInitialFoodDifference = calculateInitialFoodDifferenceToSolveFor();
             
+            
+            float FarmersAmount;
+            float ProducersAmount;
+            float WarriorsAmount;
+            float FarmersRequiredAmountPerField; 
+            float BuildersRequiredAmount;
+            float fieldDailyYield;
+            float calInitialFoodDifference;
+            float myFoodAmountProducedPerDay;
+            float FreeCitizensAmount;
+            float totalFoodStores;
+            float buildersAmount;
+            float FieldsAmount;
+            float FieldsInProduction;
+            float TotalFarmersRequired;
+            @Override
             public void onEnter() {
-
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Food (Hungry)");
-                float myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
-                //float myFoodConsumptionPerDay = myCamp.
-                
+                //FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Food (Hungry)");
+                fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
+                myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                FarmersRequiredAmountPerField = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
+                FieldsAmount = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class).size();
+                TotalFarmersRequired = FarmersRequiredAmountPerField * FieldsAmount;
+                BuildersRequiredAmount = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredBuildersAmount();
+                ProducersAmount = myHandle.getProductionHandler().getWorkersAmount();
+                buildersAmount = myHandle.getBuildingHandler().getBuildersAmount();
+                FreeCitizensAmount = myHandle.getFreeCitizens();
+                calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption(0,0,0,0);
+                totalFoodStores = myCamp.getFoodHandler().getTotalFood();
+                WarriorsAmount = myCamp.getWarriorHandler().getWarriorsAmount();
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Food (Hungry)"
+                        + "\nReported Field Yield: "    + fieldDailyYield 
+                        + "\nFood Produced Per Day: "   + myFoodAmountProducedPerDay
+                        + "\nFarmer Amount: "           + FarmersAmount
+                        + "\nProducion - Consumption Reported: "    + calInitialFoodDifference
+                        + "\nTotal Food: "    + totalFoodStores);
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
@@ -291,13 +321,13 @@ public class AIHandler extends Service {
                 if (super.shouldExecute && !isFinished()) {
                     if(!isDoingPseudoCalculations())
                     {
-                        //if(rebalancePeople() == -1) //FailedToRebalance
+                        if(rebalancePeople() == -1) //FailedToRebalance
                         //{
                         //    doFieldBuilding();
-                        //} else {
+                        } else {
                             //Do the pseudo rebalancing thing here.
                             
-                        //}
+                        }
                     } else {
                         //doFieldBuilding();
                         
@@ -315,7 +345,7 @@ public class AIHandler extends Service {
                         myCurrentFunctionToExecute.onFinish();
                     }
                 }
-            }
+            
             
             private void doFieldBuilding()
             {
@@ -338,6 +368,93 @@ public class AIHandler extends Service {
                         }*/
             }
             
+            private int rebalancePeople()
+            {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Attempting to Rebalance Population: " 
+                      + "\nFarmers: "       + this.FarmersAmount
+                      + "\nBuilders: "      + this.buildersAmount
+                      + "\nWorkers: "       + this.ProducersAmount
+                      + "\nFree Citizens: " + this.FreeCitizensAmount
+                      + "\nWarriors: "      + this.WarriorsAmount
+                      + "\nFood Difference " + this.calInitialFoodDifference);
+                float buildersAdjustment = 0;
+                float FarmersAdjustment = 0;
+                float freeCitizenAdjustment = 0;
+                if(this.BuildersRequiredAmount < this.buildersAmount)
+                {
+                    buildersAdjustment = buildersAmount - BuildersRequiredAmount;
+                    freeCitizensAdjustment = buildersAdjustment;
+                    if(estimateConsumption(freeCitizensAdjustment,-buildersAdjustment, 0, 0) < this.myFoodAmountProducedPerDay)
+                    {
+                        writeSuccessfulRebalanceToLog();
+                        return 1;
+                    }
+                    
+                    if(this.farmersRequiredAmountTotal < this.FarmersAmount)
+                    {
+                        
+                    }
+                }
+                if(estimateConsumption(freeCitizensAdjustment,-buildersAdjustment, 0, 0) < this.myFoodAmountProducedPerDay)
+                {
+                    writeSuccessfulRebalanceToLog();
+                    return 1; //success!
+                }
+          
+                
+                //////////////
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, this, "After rebalancing population: " 
+                      + "\nFarmers: "       + this.FarmersAmount
+                      + "\nBuilders: "      + this.buildersAmount
+                      + "\nWorkers: "       + this.ProducersAmount
+                      + "\nFree Citizens: " + this.FreeCitizensAmount
+                      + "\nWarriors: "      + this.WarriorsAmount
+                      + "\nFood Difference " + this.calInitialFoodDifference);
+            }
+            
+            private void writeSuccessfulRebalanceToLog()
+            {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, this, "After rebalancing population: " 
+                          + "\nFarmers: "       + this.FarmersAmount
+                          + "\nBuilders: "      + this.buildersAmount
+                          + "\nWorkers: "       + this.ProducersAmount
+                          + "\nFree Citizens: " + this.FreeCitizensAmount
+                          + "\nWarriors: "      + this.WarriorsAmount
+                          + "\nFood Difference " + this.calInitialFoodDifference);
+                    
+            }
+            
+            private boolean isStillHungry()
+            {
+                return 
+            }
+            
+            private void writeFailureRebalanceToLog()
+            {
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, this, "After rebalancing population: " 
+                      + "\nFarmers: "       + this.FarmersAmount
+                      + "\nBuilders: "      + this.buildersAmount
+                      + "\nWorkers: "       + this.ProducersAmount
+                      + "\nFree Citizens: " + this.FreeCitizensAmount
+                      + "\nWarriors: "      + this.WarriorsAmount
+                      + "\nFood Difference " + this.calInitialFoodDifference);
+            }
+            
+            public float estimateConsumption(int freeCitizensDiff, int buildersDiff, int ProducersDiff, int farmersDiff)
+            {
+               int Consumption = 0;
+               Consumption += (WarriorsAmount*PopulationHandler.getWarriorsFoodConsumption());
+               Consumption += ((this.buildersAmount + buildersDiff) * PopulationHandler.getBuildersFoodConsumption());
+               Consumption += ((this.FreeCitizensAmount + freeCitizensDiff) * PopulationHandler.getFreeCitizensConsumption());
+               Consumption += ((this.ProducersAmount + ProducersDiff) * PopulationHandler.getProducersFoodConsumption());
+               Consumption += ((this.FarmersAmount + farmersDiff) * PopulationHandler.getFarmersFoodConsumption());
+               return Consumption;
+            }
+            
+            public float estimateProduction(int diffFarmer)
+            {
+                
+            }
             
             private boolean isDoingPseudoCalculations()
             {
