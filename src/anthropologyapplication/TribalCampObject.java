@@ -85,11 +85,11 @@ public class TribalCampObject {
         this.myMap = myMap;
     }
 
-    AICampObject[] loadAntagonists() {
+    public AICampObject[] loadAntagonists() {
         return myEnemyArray;
     }
 
-    Map loadMap() {
+    public Map loadMap() {
         return myMap;
     }
 
@@ -103,11 +103,11 @@ public class TribalCampObject {
         return this.TotalFreeCitizens;
     }
 
-    boolean hasFreeCitizens() {
+    public boolean hasFreeCitizens() {
       return (this.TotalFreeCitizens > 0);
     }
 
-    void removeFreeCitizen() {
+    public void removeFreeCitizen() {
         if(hasFreeCitizens())
         {
             this.TotalFreeCitizens--;
@@ -122,7 +122,7 @@ public class TribalCampObject {
         return myWarriorHandler;
     }
 
-    Object getMapTileLocation() {
+    public MapTile getMapTileLocation() {
         return this.HomeTile;
     }
 

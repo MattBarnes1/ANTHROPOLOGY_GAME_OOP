@@ -1,0 +1,8838 @@
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Initial
+
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Initial
+
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Initial
+
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:00
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Initial
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Initial
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Initial
+
+
+05.02 at 19:37:09
+class anthropologyapplication.AIStuff.AIHandler
+
+Entering State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Initial
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:12
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:13
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:14
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:15
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:16
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:17
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:18
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:19
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
+
+05.02 at 19:37:20
+class anthropologyapplication.AIStuff.AIHandler
+
+Exiting State: Not Enough Food (Hungry)
+
