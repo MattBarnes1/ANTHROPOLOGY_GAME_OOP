@@ -25,5 +25,9 @@ public class ResourceArray {
     public int getLength() {
         return myResources.length;
     }
+
+    public ResourceArray multiply(float numberofHomesToBuildCurrently) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

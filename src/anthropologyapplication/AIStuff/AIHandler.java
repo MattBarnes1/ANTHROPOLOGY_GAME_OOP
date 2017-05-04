@@ -12,6 +12,7 @@ import anthropologyapplication.Buildings.Homes;
 import anthropologyapplication.Logger.FileLogger;
 import anthropologyapplication.FoodHandler;
 import anthropologyapplication.PopulationHandler;
+import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -215,6 +216,7 @@ public class AIHandler extends Service {
                 return TotalFoodProducedPerDay;
             }
 
+            @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Initial");
 
@@ -300,6 +302,8 @@ public class AIHandler extends Service {
             public void onEnter() {
                 //FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Food (Hungry)");
                 fieldDailyYield = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getDailyYield();
+                
+                
                 myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
                 FarmersRequiredAmountPerField = ((Field)myHandle.getBuildingHandler().getInternalBuildingByClass(Field.class)).getRequiredNumberOfFarmers();
                 FieldsAmount = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class).size();
@@ -345,15 +349,8 @@ public class AIHandler extends Service {
                             isFinished = true;
                         }
                     } else {
-                        doFieldBuilding();
-                        
+                        doFieldBuilding(); 
                     }
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
-                    //If slow, it'll result in the application freezing.
-                    
-                  
-                    
                     
                     if (!isFinished()) {
                         onExit();
@@ -365,28 +362,52 @@ public class AIHandler extends Service {
             
             private void doFieldBuilding()
             {
-                MapTile myHomeLocation = myHandle.getMapTileLocation();
-                MapTile myNewBuildLocation = drunkenWalker(myHomeLocation);
-                
-                
-                
-                    /*    float neededFarmsToCorrectFor = calInitialFoodDifference/fieldDailyYield;
-                        float calculateAdjustedYield = 
-                        int CurrentlyRequired = myHandle.getBuildingHandler().getRequiredBuildersAmountInConstructionQueue();
-                        int NextRequired = CurrentlyRequired + 
-                        float FoodRequirements = TotalPopulation;
-                        if(myHandle.getBuildingHandler().getBuildersAmount() > )
+                int iterations = (int)Math.ceil(this.calInitialFoodDifference/2);
+                for(int i = 0 ; i < iterations; i++)
+                {
+                    MapTile myHomeLocation = myHandle.getMapTileLocation();
+                    MapTile myNewBuildLocation = drunkenWalker(myHomeLocation);
+                    myHandle.getBuildingHandler().startBuilding("Field", myNewBuildLocation); 
+                }
+                int BuildersRequiredForOptimalSpeed = iterations * 2;
+                //Can we support this many builders without running out of total food?
+                int buildersDifference = (int)(BuildersRequiredForOptimalSpeed + this.BuildersRequiredAmount);
+                float foodChangeDaily = estimateConsumption(0, buildersDifference, 0, 0);
+                int NumberOfDaysForSimultaneousFieldCompletion =  0; //TODO: this
+                if(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
+                {
+                    adjustPopulation(0, (int)buildersDifference, 0, 0);
+                    isFinished = true;
+                    //We are okay; //Adjust Builders and run with it.
+                }
+                else {
+                    foodChangeDaily = estimateConsumption(0, 0, 0, 0);
+                    NumberOfDaysForSimultaneousFieldCompletion =  0; //restimate this to determine if we are screwed or not 
+                    
+                    if(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
+                    {                    
+                        FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "I was close to starving!");
+                        //We can survive with the current number of builders, but can we get it to go faster?
+                        float BuildersTemp = this.buildersAmount;
+                        float differenceCount = 0;
+                        while(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
                         {
-                            
+                             foodChangeDaily = estimateConsumption(0, (int)BuildersTemp, 0, 0);
+                             NumberOfDaysForSimultaneousFieldCompletion =  0; //restimate this to determine if we are screwed or not 
+                             BuildersTemp++;
+                             differenceCount++;
                         }
+                        differenceCount--;
+                        writeSuccessfulRebalanceToLog();
+                        adjustPopulation(0, (int)differenceCount, 0, 0);
+                        FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Starvation: Found a happy median");
                         
-                        
-                        this.doCanBuild();
-                        
-                        if(isHungry())
-                        {
-                            
-                        }*/
+                    }
+                    else {
+                        FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Starvation: No Hope");
+                    }
+                }
+
             }
             
             private int rebalancePeople()
@@ -568,14 +589,12 @@ public class AIHandler extends Service {
                   if(nextTile == null)
                   {
                       i++;
-                      continue;
                   } else {
                     if(nextTile.isTerritoryOf(myHandle))
                     {
                         myNextTile = nextTile;
                     } else {
                         i++;
-                        continue;
                     }
                   }
                 }
@@ -644,18 +663,30 @@ public class AIHandler extends Service {
         ////////////////////////////////////
         buildHomesState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
-
+            int totalPopulation;
+            float numberofHomesToBuildCurrently;
+            ResourceArray resourcesRequired;
+            @Override
             public void onEnter() {
 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Homes");
+                totalPopulation = myHandle.getPopulationHandler().getTotalPopulation();
+                numberofHomesToBuildCurrently = (Math.floorDiv(myHandle.getPopulationHandler().getTotalPopulation(), 2) - myHandle.getBuildingHandler().countBuildingsInList(Homes.class));
+                resourcesRequired = myHandle.getBuildingHandler().getBuildingResourceArray(Homes.class);
+                resourcesRequired = resourcesRequired.multiply(numberofHomesToBuildCurrently);
                 /////////////////////////////////////////////////////////////////////////
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Homes");
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
 
+            @Override
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
+                    if(myHandle.getProductionHandler().checkResourceArray(resourcesRequired))
+                    {
+                        
+                    }
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     //Code to execute goes here. This has to be fast though since it's part of the actual application loop. 
                     //If slow, it'll result in the application freezing.
@@ -701,6 +732,7 @@ public class AIHandler extends Service {
         genWarriorsState = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
+            @Override
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Warriors");
@@ -710,6 +742,7 @@ public class AIHandler extends Service {
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
 
+            @Override
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -728,6 +761,7 @@ public class AIHandler extends Service {
                 }
             }
 
+            @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Warriors");
 
@@ -757,6 +791,7 @@ public class AIHandler extends Service {
         NER_Builders = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
+            @Override
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State:  Not Enough Builders");
@@ -784,6 +819,7 @@ public class AIHandler extends Service {
                 }
             }
 
+            @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Builders");
 
@@ -812,6 +848,7 @@ public class AIHandler extends Service {
         NER_Workers = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
+            @Override
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Workers");
@@ -824,6 +861,7 @@ public class AIHandler extends Service {
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
 
+            @Override
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -839,6 +877,7 @@ public class AIHandler extends Service {
                 }
             }
 
+            @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Workers");
 
@@ -866,6 +905,7 @@ public class AIHandler extends Service {
         NER_Clay = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
+            @Override
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Clay");
@@ -878,6 +918,7 @@ public class AIHandler extends Service {
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
 
+            @Override
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -893,6 +934,7 @@ public class AIHandler extends Service {
                 }
             }
 
+            @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Clay");
 
@@ -921,6 +963,7 @@ public class AIHandler extends Service {
         NER_Wood = new StateExecution() {
             TribalCampObject myHandle = myCamp;//can inherit data inside this class meaning that all the food hand
 
+            @Override
             public void onEnter() {
 
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Entering State: Not Enough Wood");
@@ -933,6 +976,7 @@ public class AIHandler extends Service {
                 super.shouldExecute = true; //Ready to fire the AI Event
             }
 
+            @Override
             public void Execute() {
                 if (super.shouldExecute && !isFinished()) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
