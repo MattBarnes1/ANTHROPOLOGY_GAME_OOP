@@ -27,7 +27,17 @@ public class ResourceArray {
     }
 
     public ResourceArray multiply(float numberofHomesToBuildCurrently) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResourceArray myArray = new ResourceArray(this, (int)numberofHomesToBuildCurrently);
+        return myArray;
+    }
+    
+    private ResourceArray(ResourceArray myOldArray, int numberofHomesToBuildCurrently)
+    {
+        myResources = new int[myOldArray.getLength()];
+        for(int i = 0 ; i < myOldArray.getLength(); i++)
+        {
+            myResources[i] = myOldArray.getAmountAtIndex(i) * numberofHomesToBuildCurrently;
+        }
     }
     
 }

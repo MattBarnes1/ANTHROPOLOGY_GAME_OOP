@@ -141,4 +141,8 @@ public class TribalCampObject {
     public void tradeInitiated(TribalCampObject owner, TribalCampObject Tradee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void removeFreeCitizens(int abs) {
+        TotalFreeCitizens -= abs;
+    }
 }

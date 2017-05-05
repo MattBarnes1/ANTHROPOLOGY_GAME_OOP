@@ -44,6 +44,7 @@ public class AICampObject extends TribalCampObject {
         {
             aFunc.Execute(); //Executes the state
         }
+        super.update(MS);
     }
     
     private static ArrayList<Integer> NamesUsed = new ArrayList<Integer>();

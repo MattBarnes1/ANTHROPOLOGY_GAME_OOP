@@ -350,7 +350,20 @@ public class BuildingHandler {
     }
 
     public ResourceArray getBuildingResourceArray(Class<? extends Building> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (internalBuildingLocker internalBuildingList1 : this.internalBuildingList) {
+            if (internalBuildingList1.myBuilding.getClass() == aClass) {
+                return internalBuildingList1.myBuilding.getResourceArray();
+            }
+        }
+        return null;
+    }
+
+    public Timer getBuildTimeByClass(Class<? extends Building> aClass) {
+        for(int i = 0; i < this.internalBuildingList.length; i++)
+        {
+            return internalBuildingList[i].myBuilding.BuildTimeToBuild;
+        }
+        return null;
     }
 
 

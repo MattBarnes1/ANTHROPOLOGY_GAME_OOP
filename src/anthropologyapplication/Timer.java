@@ -10,6 +10,7 @@ package anthropologyapplication;
  * @author Duke
  */
 public class Timer {
+    public static Timer Day = new Timer(1,0,0,0);
 
     private int Days;
     private int Hours;

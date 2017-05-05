@@ -263,28 +263,39 @@ public class ProductionHandler
         return internalProductList[i].getAmount();
     }
 
+    public String getNameAtIndex(int index)
+    {
+        return internalProductList[index].getName();
+    }
+    
     public void subtractFromResourceAtIndex(int i, int amountAtIndex) {
         internalProductList[i].reduceAmount(i);
     }
 
     public int getRequiredProducerAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ProductsBeingMade.size()*2;
     }
 
     public void removeProducers(int producersAdjustment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.ProducersAmount -= producersAdjustment;
+        calculateMaxNumberOfGoodsCanWorkOn();
+        while(maxActiveTradeGoods < currentlyActiveTradeGoods)
+        {
+           this.removeProductFromProduction(this.ProductsBeingMade.get(ProductsBeingMade.size()-1));
+        }
+        
     }
+   
 
-    public void removeProducers(int producersAdjustment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getRequiredProducerAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public boolean checkResourceArray(ResourceArray resourcesRequired) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int checkResourceArray(ResourceArray resourcesRequired) {
+        for(int i = 0; i < resourcesRequired.getLength(); i++)
+        {
+            if(resourcesRequired.getAmountAtIndex(i) > internalProductList[i].getAmount())
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }
