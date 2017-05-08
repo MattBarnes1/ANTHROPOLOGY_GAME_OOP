@@ -11,8 +11,8 @@ package anthropologyapplication.AIStuff;
  */
 public abstract class StateExecution {
     protected AIHandler myHandler;
-    protected boolean shouldExecute = false;
-    protected boolean isFinished = false;
+    protected volatile boolean shouldExecute = false;
+    protected volatile boolean isFinished = false;
     public abstract void onEnter();
     public abstract void Execute();
     public abstract void onExit();

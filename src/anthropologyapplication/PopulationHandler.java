@@ -19,7 +19,7 @@ import java.util.Random;
 public class PopulationHandler {
     private TribalCampObject myTribe;
     private int TotalPopulation = 10; //Starting Population
-    private int FreeCitizens = TotalPopulation;
+//    private int FreeCitizens = TotalPopulation;
     private static final float CONSUMPTION_WARRIORS = 1F; //Eat the most food per person
     private static final float CONSUMPTION_BUILDERS = .75F; //Eat the 2nd most etc
     private static final float CONSUMPTION_WORKERS = .5F;
@@ -29,7 +29,7 @@ public class PopulationHandler {
     private Random myRandom = new Random();
     public PopulationHandler(TribalCampObject myCamp)
     {
-        initialTimer = new Timer(730, 0, 0, 0); //Ever 2 ingame years birth
+        initialTimer = new Timer(100, 0, 0, 0); //Ever 2 ingame years birth
         currentTimer = initialTimer;
         myTribe = myCamp;
     }
@@ -55,7 +55,7 @@ public class PopulationHandler {
         System.out.println("WO: " + Workers + " Result: " + Workers*CONSUMPTION_WORKERS);
     }
     
-    void update(GameTime MS) {
+    public void update(GameTime MS) {
         
         currentTimer = currentTimer.subtract(MS.getElapsedTime());
         if(currentTimer.EqualTo(Timer.Zero))
@@ -83,13 +83,14 @@ public class PopulationHandler {
            AmountInHomes = ((Homes)X).getOccupancy();
        }
        
-       if(AmountInHomes > TotalPopulation)
+       if(AmountInHomes >= TotalPopulation)
        {
-           TotalPopulation += ((TotalPopulation-(TotalPopulation%2))/2);
+           int newCitizens = ((TotalPopulation-(TotalPopulation/2)));
        } else {
            int newCitizens = (int)Math.toIntExact((TotalPopulation-(TotalPopulation%2))/2);
            TotalPopulation += newCitizens;
            myTribe.addFreeCitizens(newCitizens);
+           hasChanged = true;
        }
        
     }
@@ -216,8 +217,8 @@ public class PopulationHandler {
         }
     }
 
-    boolean hasStarvedToDeath() {
-       return (this.TotalPopulation == 0);
+    public boolean hasStarvedToDeath() {
+       return (this.TotalPopulation <= 0);
     }
     
     

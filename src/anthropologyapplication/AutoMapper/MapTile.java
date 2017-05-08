@@ -115,6 +115,14 @@ public abstract class MapTile {
         }
     }
 
+    public void setBuildingImage(Image myImage)
+    {
+        tileBuilding = myImage;
+    }
+    public void setStatusImage(Image myImage)
+    {
+        tileBuilding = myImage;
+    }
     public void setMapImage(Image myImage)
     {
         this.myImage = myImage;
@@ -457,6 +465,10 @@ public abstract class MapTile {
         this.BuildingName = "";
         this.tileBuilding = null;
         this.myBuilding = null;
+    }
+
+    public Image getMapTileForegroundImage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

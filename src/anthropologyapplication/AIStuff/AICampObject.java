@@ -12,6 +12,8 @@ import anthropologyapplication.SocietyChoices;
 import anthropologyapplication.TribalCampObject;
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.concurrent.Worker;
+import javafx.concurrent.Worker.State;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -39,10 +41,17 @@ public class AICampObject extends TribalCampObject {
     @Override 
     public void update(GameTime MS)
     {
-        StateExecution aFunc = myHandler.getStateExecution();
-        if(aFunc != null)
+        if(myHandler.getState() == State.FAILED)
         {
-            aFunc.Execute(); //Executes the state
+            String Except = myHandler.getException().getMessage();
+            throw new RuntimeException(Except);
+        } else if(myHandler.getState() == State.RUNNING)
+        {
+            StateExecution aFunc = myHandler.getStateExecution();
+            if(aFunc != null)
+            {
+                aFunc.Execute(); //Executes the state
+            }
         }
         super.update(MS);
     }

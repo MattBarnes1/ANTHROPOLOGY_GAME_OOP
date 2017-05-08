@@ -33,7 +33,7 @@ public class FoodHandler {
 
 		public void addFarmers(int amount)
 		{
-			FarmerAmount++;
+			FarmerAmount+=amount;
 		}
 
 		public void removeFarmers(int Amount)
@@ -42,7 +42,7 @@ public class FoodHandler {
                     {
                         FarmerAmount = 0;
                     } else {
-			FarmerAmount--;
+			FarmerAmount-=Amount;
                     }
 		}
 

@@ -52,7 +52,7 @@ public class AIHandler extends Service {
     
     private final TribalCampObject myCamp;
     private Stack<StateExecution> myFunctionStack = new Stack<>();
-    private StateExecution myCurrentFunctionToExecute;
+    private volatile StateExecution myCurrentFunctionToExecute;
     boolean isAlive = true;
     private Random DrunkardWalkran = new Random(); 
 //Warriors, Builders, 
@@ -154,9 +154,9 @@ public class AIHandler extends Service {
                     //Make sure that if we are in intial state, we are no longer wasting food on non-working builders
                     if(myHandle.getBuildingHandler().countBuildingsBeingBuilt() == 0 && numBuilders > 0)
                     {
+                        
                         myHandle.getBuildingHandler().removeBuilders(numBuilders);
                         myHandle.addFreeCitizens(numBuilders);
-                        myHandle.getBuildingHandler().clearBuildingList();
                     }
 
                     if (!isFinished()) {
@@ -169,7 +169,7 @@ public class AIHandler extends Service {
 
             public float estimateConsumption()
             {
-               int Consumption = 0;
+               float Consumption = 0;
                Consumption += (myCamp.getPopulationHandler().getWarriorsFoodConsumption()*myCamp.getWarriorHandler().getWarriorsAmount());
                Consumption += (myCamp.getFreeCitizens() * myCamp.getPopulationHandler().getFreeCitizensConsumption());
                Consumption += (myCamp.getBuildingHandler().getBuildersAmount() * myCamp.getPopulationHandler().getBuildersFoodConsumption());
@@ -210,13 +210,17 @@ public class AIHandler extends Service {
                         TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
                         TotalFoodProducedPerDay += maxGhostFoodProduced;
                     } else {
-                        
+                        TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
+                        TotalFoodProducedPerDay += maxGhostFoodProduced;
                     }
                 }
                 
                 return TotalFoodProducedPerDay;
             }
 
+            
+            
+            
             @Override
             public void onExit() { //This is to tell us the event is still live but not active.
                 FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Initial");
@@ -241,15 +245,15 @@ public class AIHandler extends Service {
                 //Maybe isHungry and isNuff homes are both false, then just generaate warriors if there are none?
                 
                 //This is temporary until we figure out exactly what to check for here
-                return(isHungry() && isNuffHomes() && myHandle.getWarriorHandler().getWarriorsAmount() == 0);
+                return(isHungry() && isNotNuffHomes() && myHandle.getWarriorHandler().getWarriorsAmount() == 0);
 
             }
 
-            private boolean isNuffHomes()
+            private boolean isNotNuffHomes()
             {
                 int numHomes = myHandle.getBuildingHandler().countBuildingsInList(Homes.class);
                 
-                return ((numHomes*2) >= myHandle.getPopulationHandler().getTotalPopulation());
+                return ((numHomes*2) <= myHandle.getPopulationHandler().getTotalPopulation());
 
             }
 
@@ -265,7 +269,7 @@ public class AIHandler extends Service {
                 {
                     return genWarriorsState;
                 }
-                else if(isNuffHomes())
+                else if(isNotNuffHomes())
                 {
                     return buildHomesState;
                 }
@@ -299,7 +303,7 @@ public class AIHandler extends Service {
             float TotalFarmersRequired;
             float farmersRequiredAmountTotal;
             float FarmersNegativeAdjustment = 0;
-            float FarmersAdjustment = 0;
+            //float FarmersAdjustment = 0;
             @Override
             public void onEnter() {
                 isBuildingFieldsNow = false;
@@ -349,6 +353,16 @@ public class AIHandler extends Service {
                             if(!isBuildingFieldsNow)
                             {
                                 doFieldBuilding();
+                            } 
+                            else if(myHandle.getBuildingHandler().countBuildingsBeingBuilt() == 0)
+                            {
+                                myFoodAmountProducedPerDay = myCamp.getFoodHandler().getFoodProducedPerDay();
+                                calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption(0,0,0,0);
+                                isBuildingFieldsNow = false;
+                                if(myHandle.getBuildingHandler().countBuildingsBeingBuilt() == 0 && myHandle.getBuildingHandler().getBuildersAmount() > 0)
+                                {
+                                    this.adjustPopulation(myHandle.getBuildingHandler().getBuildersAmount(), -myHandle.getBuildingHandler().getBuildersAmount(),0,0);
+                                }
                             }
                         } 
                         else if(result == 0) //success but recalculation conflict could occur
@@ -363,11 +377,17 @@ public class AIHandler extends Service {
                     } else {
                         doFieldBuilding(); 
                     }
+                    assert(this.estimateProduction(0) == myCamp.getFoodHandler().getFoodProducedPerDay());
                     if(this.estimateProduction(0) - this.estimateConsumption(0, 0, 0, 0) > 0)
                     {
                         this.isFinished = true;
                     }
-                    
+                    if(myHandle.getPopulationHandler().hasStarvedToDeath())
+                    {
+                        this.isFinished = true;
+                        myCurrentFunctionToExecute = null;
+                        isAlive = false;
+                    }
                     if (!isFinished()) {
                         onExit();
                     } else {
@@ -379,26 +399,36 @@ public class AIHandler extends Service {
             private void doFieldBuilding()
             {
                 this.myHandle.getBuildingHandler().clearBuildingList();
-                int iterations = (int)Math.abs(Math.ceil(this.calInitialFoodDifference/2));
+                    int iterations = 1;
+                if(Math.abs(this.calInitialFoodDifference) >= 2)
+                {
+                   iterations = (int)Math.abs(Math.ceil(this.calInitialFoodDifference/2));
+                }
                 for(int i = 0 ; i < iterations; i++)
                 {
                     MapTile myHomeLocation = myHandle.getMapTileLocation();
                     MapTile myNewBuildLocation = drunkenWalker(myHomeLocation);
-                    myHandle.getBuildingHandler().startBuilding("Field", myNewBuildLocation); 
+                    if(myHandle.getBuildingHandler().startBuilding("Field", myNewBuildLocation) == null)
+                    {
+                      i--;   
+                    } else {
+                        maxFieldDailyYield += 2;
+                    }
                 }
                 int BuildersRequiredForOptimalSpeed = iterations * 2;
                 int FarmersRequiredForOptimalSpeed = iterations * 2;
                 //Can we support this many builders without running out of total food?
                 int buildersDifference = (int)(BuildersRequiredForOptimalSpeed + this.BuildersRequiredAmount);
+                int farmersDifference = (int)(FarmersRequiredForOptimalSpeed + this.farmersRequiredAmountTotal);
                 float foodChangeDaily = estimateConsumption(0, buildersDifference, 0, 0);
                 float NumberOfDaysForSimultaneousFieldCompletion =  0;
                 if(this.BuildersRequiredAmount == 0)
                 {
                     NumberOfDaysForSimultaneousFieldCompletion =  (float)myHandle.getBuildingHandler().getBuildTimeByClass(Field.class).dividedBy(Timer.Day); //TODO: thi
                 }
-                if(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion < this.totalFoodStores  && buildersDifference <= this.buildersAmount && FarmersRequiredForOptimalSpeed <= this.FarmersAmount)
+                if(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion < this.totalFoodStores  && buildersDifference <= this.buildersAmount && farmersDifference <= this.FarmersAmount)
                 {
-                    adjustPopulation(0, (int)buildersDifference, 0, 0);
+                    //adjustPopulation((int)-buildersDifference, (int)buildersDifference, 0, 0);
                     isFinished = true;
                     //We are okay; //Adjust Builders and run with it.
                 }
@@ -413,13 +443,13 @@ public class AIHandler extends Service {
                         float BuildersTemp = this.buildersAmount;
                         float differenceCount = 0;
                         float farmersTemp = this.FarmersAmount;
-                        float farmersDifference = 0;
-                        while(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion < this.totalFoodStores && buildersDifference > BuildersTemp && FarmersRequiredForOptimalSpeed > farmersDifference)
+                        float farmersAmount = 0;
+                        while(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion < this.totalFoodStores && buildersDifference > BuildersTemp && farmersDifference > farmersAmount)
                         {
-                             foodChangeDaily = estimateConsumption(0, (int)BuildersTemp, (int)farmersTemp, 0);
+                             foodChangeDaily = estimateConsumption((int)(-(BuildersTemp + farmersTemp)), (int)BuildersTemp, (int)farmersTemp, 0);
                              NumberOfDaysForSimultaneousFieldCompletion = (float)myHandle.getBuildingHandler().getBuildTimeByClass(Field.class).dividedBy(Timer.Day) * (BuildersTemp/buildersDifference); //TODO: thi; //restimate this to determine if we are screwed or not 
                              BuildersTemp++;
-                             float checkfoodChangeDaily = estimateConsumption(0, (int)BuildersTemp, (int)farmersTemp, 0);
+                             float checkfoodChangeDaily = estimateConsumption((int)(this.FreeCitizensAmount -(BuildersTemp + farmersTemp)), (int)BuildersTemp, (int)farmersTemp, 0);
                              if(checkfoodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
                              {
                                  break;
@@ -427,24 +457,26 @@ public class AIHandler extends Service {
                              differenceCount++;
                              
                              farmersTemp++;
-                             checkfoodChangeDaily = estimateConsumption(0, (int)BuildersTemp, (int)farmersTemp, 0);
+                             checkfoodChangeDaily = estimateConsumption((int)(-(BuildersTemp + farmersTemp)), (int)BuildersTemp, (int)farmersTemp, 0);
                              if(checkfoodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
                              {
                                  break;
                              }
-                             farmersDifference++;
+                             farmersAmount++;
                         }
                        // if(foodChangeDaily * NumberOfDaysForSimultaneousFieldCompletion > this.totalFoodStores)
                        // {
                        //     differenceCount--;
                         //}
+                        this.farmersRequiredAmountTotal = farmersDifference;
+                        this.BuildersRequiredAmount = BuildersRequiredForOptimalSpeed + this.BuildersRequiredAmount;
                         writeSuccessfulRebalanceToLog();
-                        adjustPopulation(0, (int)differenceCount, 0, (int)farmersDifference);
+                        adjustPopulation((int)-(differenceCount + farmersDifference), (int)differenceCount, 0, (int)farmersDifference);
                         //FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Starvation: Found a happy median");
                         this.isBuildingFieldsNow = true;
                     }
                     else {
-                        FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Starvation: No Hope");
+                       // FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, "AI CAMP", "Starvation: No Hope");
                     }
                 }
 
@@ -469,13 +501,13 @@ public class AIHandler extends Service {
                 ////////////////////////////////
                 if(this.BuildersRequiredAmount < this.buildersAmount)
                 {
-                    buildersAdjustment = buildersAmount - BuildersRequiredAmount;
-                    freeCitizensAdjustment = buildersAdjustment;
-                    if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, 0, 0) < this.myFoodAmountProducedPerDay)
+                    buildersAdjustment = BuildersRequiredAmount - buildersAmount;
+                    freeCitizensAdjustment = buildersAmount - BuildersRequiredAmount;
+                    if(estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment, 0, 0) < this.myFoodAmountProducedPerDay)
                     {
                         writeSuccessfulRebalanceToLog();
                         adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
-                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)-FarmersAdjustment);
+                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                         return 1; //success && no chance of recalculation errors
                     }
                 }
@@ -483,45 +515,46 @@ public class AIHandler extends Service {
                 if(myHandle.getProductionHandler().getRequiredProducerAmount() < myHandle.getProductionHandler().getProducersAmount())
                 {
                     producersAdjustment = myHandle.getProductionHandler().getProducersAmount() - myHandle.getProductionHandler().getRequiredProducerAmount();
-                    freeCitizensAdjustment += producersAdjustment;
-                    if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)-producersAdjustment, 0) < this.myFoodAmountProducedPerDay)
+                    freeCitizensAdjustment =  myHandle.getProductionHandler().getRequiredProducerAmount() - myHandle.getProductionHandler().getProducersAmount();
+                    if(estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment, (int)producersAdjustment, 0) < this.myFoodAmountProducedPerDay)
                     {
                         writeSuccessfulRebalanceToLog();
                         adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
-                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)-FarmersAdjustment);
+                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                         return 1; //success && no chance of recalculation errors
                     }
                 }                
                                
                 if(this.farmersRequiredAmountTotal < this.FarmersAmount)
                 {
-                    FarmersNegativeAdjustment = this.FarmersAmount - this.farmersRequiredAmountTotal;
-                    freeCitizensAdjustment += FarmersAdjustment;
-                    if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)-producersAdjustment, (int)-FarmersNegativeAdjustment) < this.myFoodAmountProducedPerDay)
+                    FarmersAdjustment = this.farmersRequiredAmountTotal - this.FarmersAmount;
+                    freeCitizensAdjustment += (-FarmersAdjustment);
+                    if(estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment) < this.myFoodAmountProducedPerDay)
                     {
                         writeSuccessfulRebalanceToLog();
-                        adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersNegativeAdjustment);
-                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment, (int)FarmersNegativeAdjustment);
+                        adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
+                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment, (int)FarmersAdjustment);
                         return 1; //success && no chance of recalculation errors
                     }
                 } 
                 else if(this.farmersRequiredAmountTotal > this.FarmersAmount)
                 {
-                    if(freeCitizensAdjustment > 0)
+                    if(this.FreeCitizensAmount + freeCitizensAdjustment > 0)
                     {
-                        if(freeCitizensAdjustment > (this.farmersRequiredAmountTotal - this.FarmersAmount))
+                        if(this.FreeCitizensAmount + freeCitizensAdjustment > (this.farmersRequiredAmountTotal - this.FarmersAmount))
                         {
                             freeCitizensAdjustment -= (this.farmersRequiredAmountTotal - this.FarmersAmount);
-                            this.FarmersAdjustment += (this.farmersRequiredAmountTotal - this.FarmersAmount);
+                            FarmersAdjustment += (this.farmersRequiredAmountTotal - this.FarmersAmount);
                         } else {
-                            this.FarmersAdjustment += freeCitizensAdjustment;
-                            freeCitizensAdjustment = 0;
+                            FarmersAdjustment += this.FreeCitizensAmount;
+                            freeCitizensAdjustment =- this.FreeCitizensAmount;
                         }
-                        if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)-producersAdjustment, (int)FarmersAdjustment) < estimateProduction((int)FarmersAdjustment))
+                        
+                        if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment) < estimateProduction((int)FarmersAdjustment))
                         {
-                            writeSuccessfulRebalanceToLog();
+                            writeSuccessfulRebalanceToLog();                            
                             adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
-                            calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)FarmersAdjustment);
+                            calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                             return 1; //success && no chance of recalculation errors
                         } else {
                             
@@ -540,12 +573,12 @@ public class AIHandler extends Service {
                 {
                     float difference = (this.ProducersAmount - 2);
                     freeCitizensAdjustment += difference;
-                    producersAdjustment += difference;
-                    if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)-producersAdjustment, (int)-FarmersAdjustment) < this.myFoodAmountProducedPerDay)
+                    producersAdjustment -= difference;
+                    if(estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment) < this.myFoodAmountProducedPerDay)
                     {
                         //writeSuccessfulRebalanceToLog();
                         adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
-                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)FarmersAdjustment);
+                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                         return 1; //success && no chance of recalculation errors
                     }
                 }
@@ -554,12 +587,12 @@ public class AIHandler extends Service {
                 {
                     float difference = (this.buildersAmount - 2);
                     freeCitizensAdjustment += difference;
-                    buildersAdjustment += difference;
-                    if(estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment, (int)-producersAdjustment, (int)-FarmersAdjustment) < this.myFoodAmountProducedPerDay)
+                    buildersAdjustment -= difference;
+                    if(estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment) < this.myFoodAmountProducedPerDay)
                     {
                         //writeSuccessfulRebalanceToLog();
                         adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
-                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)FarmersAdjustment);
+                        calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                         return 1; //success && no chance of recalculation errors
                     }
                 }
@@ -567,7 +600,7 @@ public class AIHandler extends Service {
                 //////////////
                 adjustPopulation((int)freeCitizensAdjustment, (int)buildersAdjustment, (int)producersAdjustment, (int)FarmersAdjustment);
                 //writeFailureRebalanceToLog();
-                calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)-buildersAdjustment,(int)-producersAdjustment,(int)FarmersAdjustment);
+                calInitialFoodDifference = myFoodAmountProducedPerDay - estimateConsumption((int)freeCitizensAdjustment,(int)buildersAdjustment,(int)producersAdjustment,(int)FarmersAdjustment);
                 return -1; //Failure
             }
             
@@ -597,7 +630,7 @@ public class AIHandler extends Service {
             
             public float estimateConsumption(int freeCitizensDiff, int buildersDiff, int ProducersDiff, int farmersDiff)
             {
-               int Consumption = 0;
+               float Consumption = 0;
                Consumption += (WarriorsAmount*PopulationHandler.getWarriorsFoodConsumption());
                Consumption += ((this.buildersAmount + buildersDiff) * PopulationHandler.getBuildersFoodConsumption());
                Consumption += ((this.FreeCitizensAmount + freeCitizensDiff) * PopulationHandler.getFreeCitizensConsumption());
@@ -642,14 +675,24 @@ public class AIHandler extends Service {
             }
             
             public void onExit() { //This is to tell us the event is still live but not active.
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Food (Hungry)");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Exiting State: Not Enough Food (Hungry)" +
+                        "\nReported Field Yield: "    + maxFieldDailyYield 
+                        + "\nFood Produced Per Day: "   + myFoodAmountProducedPerDay
+                        + "\nFarmer Amount: "           + FarmersAmount
+                        + "\nProducion - Consumption Reported: "    + calInitialFoodDifference
+                        + "\nTotal Food: "    + totalFoodStores);
 
             }
 
             @Override
             public void onFinish() {
                 
-                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Food (Hungry)");
+                FileLogger.writeToLog(FileLogger.LOGTO.CAMP_AI, AIHandler.class.toString(), "Finishing State: Not Enough Food (Hungry)" +
+                        "\nReported Field Yield: "    + maxFieldDailyYield 
+                        + "\nFood Produced Per Day: "   + myFoodAmountProducedPerDay
+                        + "\nFarmer Amount: "           + FarmersAmount
+                        + "\nProducion - Consumption Reported: "    + calInitialFoodDifference
+                        + "\nTotal Food: "    + totalFoodStores);
             }
 
             @Override
@@ -689,12 +732,15 @@ public class AIHandler extends Service {
             }
 
             private void adjustPopulation(int freeCitizensAdjustment, int buildersAdjustment, int producersAdjustment, int FarmersAdjustment) {
+                this.FreeCitizensAmount += freeCitizensAdjustment;
                 if(freeCitizensAdjustment > 0)
                 {
                     myHandle.addFreeCitizens(freeCitizensAdjustment);
                 } else {
                     myHandle.removeFreeCitizens(Math.abs(freeCitizensAdjustment));
                 }
+                    
+                this.ProducersAmount += producersAdjustment;
                 if(producersAdjustment > 0)
                 {
                     myHandle.getProductionHandler().addProducers(Math.abs(producersAdjustment));
@@ -702,19 +748,26 @@ public class AIHandler extends Service {
                     myHandle.getProductionHandler().removeProducers(Math.abs(producersAdjustment));
                 }
                 
+                this.FarmersAmount += FarmersAdjustment;
                 if(FarmersAdjustment > 0)
                 {
                     myHandle.getFoodHandler().addFarmers(FarmersAdjustment);
                 } else {
                     myHandle.getFoodHandler().removeFarmers(Math.abs(FarmersAdjustment));
                 }
-                
+                    
+                this.buildersAmount += buildersAdjustment;
                 if(buildersAdjustment > 0)
                 {
                     myHandle.getBuildingHandler().addBuilders(buildersAdjustment); 
                 } else {
                     myHandle.getBuildingHandler().removeBuilders(Math.abs(buildersAdjustment)); 
                 }
+                
+              if(myHandle.getPopulationHandler().getTotalPopulation() != (myHandle.getFreeCitizens() + myHandle.getBuildingHandler().getBuildersAmount() + myHandle.getProductionHandler().getProducersAmount() + myHandle.getWarriorHandler().getWarriorsAmount() + myHandle.getFoodHandler().getFarmersAmount()))
+              {
+                  int debug =0;
+              }
             }
 
           
@@ -786,13 +839,13 @@ public class AIHandler extends Service {
                   MapTile nextTile = getMapTileByRandomWalking(Choice, myNextTile);
                   if(nextTile == null)
                   {
-                      i++;
+                      i--;
                   } else {
-                    if(nextTile.isTerritoryOf(myHandle))
+                    if(nextTile.isTerritoryOf(myHandle) && !nextTile.hasBuilding() && nextTile.isLand())
                     {
                         myNextTile = nextTile;
                     } else {
-                        i++;
+                        i--;
                     }
                   }
                 }
@@ -823,11 +876,70 @@ public class AIHandler extends Service {
                 throw new RuntimeException("Walking Algorithm Failed!");
             }
             
+            public float estimateConsumption()
+            {
+               float Consumption = 0;
+               Consumption += (myCamp.getPopulationHandler().getWarriorsFoodConsumption()*myCamp.getWarriorHandler().getWarriorsAmount());
+               Consumption += (myCamp.getFreeCitizens() * myCamp.getPopulationHandler().getFreeCitizensConsumption());
+               Consumption += (myCamp.getBuildingHandler().getBuildersAmount() * myCamp.getPopulationHandler().getBuildersFoodConsumption());
+               Consumption += (myCamp.getProductionHandler().getProducersAmount() * myCamp.getPopulationHandler().getProducersFoodConsumption());
+               Consumption += (myCamp.getFoodHandler().getFarmersAmount() * myCamp.getPopulationHandler().getFarmersFoodConsumption());
+               return Consumption;
+            }
             
+            public float estimateProduction()
+            {
+                int Production = 0;
+                ArrayList<Building> aBuildingHandler = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class);
+                float Check = myCamp.getFoodHandler().getFarmersAmount();
+                Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
+                int RequiredFarmers = 0;
+                float maxFoodProduced = 0;
+                float maxGhostFoodProduced = 0;
+                float TotalFoodProducedPerDay = 0;
+                while(BuildingIterator.hasNext())
+                {
+                         Building aBuilding = BuildingIterator.next();
+                         RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
+                         maxFoodProduced += (((Field)aBuilding).getDailyYield());
+                }
+                aBuildingHandler = myCamp.getBuildingHandler().getBuildingsCurrentlyBeingBuiltByType(Field.class);
+                BuildingIterator = aBuildingHandler.iterator();
+                while(BuildingIterator.hasNext())
+                {
+                         Building aBuilding = BuildingIterator.next();
+                         RequiredFarmers += (((Field)aBuilding).getRequiredNumberOfFarmers());
+                         maxGhostFoodProduced += (((Field)aBuilding).getDailyYield());
+                }
+                
+                if(RequiredFarmers != 0)
+                {
+                    if(((float)Check/(float)RequiredFarmers) > 1)
+                    {
+                        TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
+                        TotalFoodProducedPerDay += maxGhostFoodProduced;
+                    } else {
+                        TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
+                        TotalFoodProducedPerDay += maxGhostFoodProduced;
+                    }
+                }
+                
+                return TotalFoodProducedPerDay;
+            }
+
+            
+            private boolean isHungry()
+            {
+                //Make sure math here is correct
+                return((estimateProduction() - estimateConsumption()) < 0);
+            }
+                        
             @Override
             public StateExecution substateCheck() {
-
-                
+                if(isHungry())
+                {
+                    return hungryState;
+                }
                 
 
                 return null;

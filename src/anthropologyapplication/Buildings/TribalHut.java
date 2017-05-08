@@ -11,6 +11,7 @@ import anthropologyapplication.Time;
 import anthropologyapplication.Timer;
 import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -20,9 +21,13 @@ public class TribalHut extends Building {
 
     public TribalHut(String Name, String Description, Timer BuildTime, int Index, int amountOfBuildersRequired, int TerritorySize, String FileNameForegroundImage, String FileNameForegroundDestroyedImage, ResourceArray myResourcesNeed) {
         super(Name, Description, BuildTime, Index, amountOfBuildersRequired,  TerritorySize, FileNameForegroundImage, FileNameForegroundDestroyedImage,myResourcesNeed);
-        
+
+        this.isFinishedBuilding = true;
     }
 
+
+    
+   
     
     
     private TribalHut(TribalHut aThis) {

@@ -11,6 +11,7 @@ import anthropologyapplication.Buildings.BuildingHandler;
 import anthropologyapplication.Warriors.WarriorHandler;
 import anthropologyapplication.TradeGoods.ProductionHandler;
 import anthropologyapplication.AutoMapper.MapTile;
+import javafx.scene.image.Image;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -61,22 +62,43 @@ public class TribalCampObject {
         return myBuildingHandler;
     }
     
-    
+        private Image Starving = new Image("anthropologyapplication/AutoMapper/Starving.bmp");
+        private Image StarvationDeath = new Image("anthropologyapplication/AutoMapper/StarvationDeath.bmp");
+        private Image originalImage = new Image("anthropologyapplication/AutoMapper/TribalCamp.jpg");
+        private Image CurrentImage = originalImage;
     
     public FoodHandler getFoodHandler()
     {
         return myFoodHandler;
     }
     
+    private final Timer baseStarvationAnimationTimer = new Timer(0,0,0,10);
+    private Timer currentStarvation = baseStarvationAnimationTimer;
     public void update(GameTime MS)
     {
-        myProductionHandler.update(MS);
-        myBuildingHandler.update(MS);
-        myWarriorHandler.update(MS);
-        myFoodHandler.update(MS);
-        myPopulationHandler.update(MS);
+        currentStarvation = currentStarvation.subtract(MS.getElapsedTime());
+        if(currentStarvation.EqualTo(Timer.Zero) && getFoodHandler().isStarving()&& !getPopulationHandler().hasStarvedToDeath())
+        {
+            showStarvationWarning();
+            currentStarvation = baseStarvationAnimationTimer;
+        }
+        if(getPopulationHandler().hasStarvedToDeath() && this.HomeTile.getMapTileForegroundImage() != StarvationDeath)
+        {
+            this.HomeTile.setStatusImage(StarvationDeath);
+            
+        }
+        if(!getPopulationHandler().hasStarvedToDeath())
+        {
+            myProductionHandler.update(MS);
+            myBuildingHandler.update(MS);
+            myWarriorHandler.update(MS);
+            myFoodHandler.update(MS);
+            myPopulationHandler.update(MS);
+        }
     }
 
+    
+    
     void saveAntagonists(AICampObject[] myEnemyArray) {
         this.myEnemyArray = myEnemyArray;
     }
@@ -135,14 +157,34 @@ public class TribalCampObject {
     }
 
     public void addFreeCitizens(int newCitizens) {
+        
         TotalFreeCitizens += newCitizens;
     }
 
+  
+    
+    
     public void tradeInitiated(TribalCampObject owner, TribalCampObject Tradee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void removeFreeCitizens(int abs) {
         TotalFreeCitizens -= abs;
+    }
+
+    
+    public void showStarvationDeath() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void showStarvationWarning() {
+        if(CurrentImage != Starving)
+        {
+            CurrentImage = Starving;
+            HomeTile.setStatusImage(Starving);
+        } else {
+            CurrentImage = originalImage;
+            HomeTile.setStatusImage(originalImage);
+        }
     }
 }
