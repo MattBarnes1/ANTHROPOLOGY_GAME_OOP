@@ -44,15 +44,10 @@ public class PopulationHandler {
         int Workers = myTribe.getProductionHandler().getProducersAmount();
         float farmers = myTribe.getFoodHandler().getFarmersAmount();
         dailyFoodUse = (freeCitizens*CONSUMPTION_FREE_CITIZENS);
-        System.out.println("FC: " + freeCitizens + " Result: " + freeCitizens*CONSUMPTION_FREE_CITIZENS);
         dailyFoodUse += (farmers * CONSUMPTION_FARMERS);
-        System.out.println("FA: " + farmers + " Result: " + farmers*CONSUMPTION_FARMERS);
         dailyFoodUse += (Warriors*CONSUMPTION_WARRIORS);
-        System.out.println("WA: " + Warriors + " Result: " + Warriors*CONSUMPTION_WARRIORS);
         dailyFoodUse += (Builders*CONSUMPTION_BUILDERS);
-        System.out.println("B: " + Builders + " Result: " + Builders*CONSUMPTION_BUILDERS);
         dailyFoodUse += (Workers*CONSUMPTION_WORKERS);
-        System.out.println("WO: " + Workers + " Result: " + Workers*CONSUMPTION_WORKERS);
     }
     
     public void update(GameTime MS) {

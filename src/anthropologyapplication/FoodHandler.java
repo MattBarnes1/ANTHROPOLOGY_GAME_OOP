@@ -100,8 +100,6 @@ public class FoodHandler {
                 currentFoodDailyProductionRate += ((Field)aBuilding).getDailyYield();
                 //System.out.println(("Food Yield Per MS: " + ((Field)aBuilding).getYieldPerMS()));
        }
-       System.out.println("Food Produced Per Day: " + currentFoodDailyProductionRate);
-       System.out.println("MAX FOOD PRODUCTION THIS UPDATE: " + maxFoodProduced);
        if(FarmerAmount != 0)
        {
            float FoodProduction = 0;
@@ -109,7 +107,6 @@ public class FoodHandler {
             {
                 FoodProduction = (maxFoodProduced);
                 
-                System.out.println("Food Produced: " + maxFoodProduced);
             } 
             else
             {
@@ -118,7 +115,6 @@ public class FoodHandler {
             }
           
             totalFood += FoodProduction;
-            System.out.println("Total FOOD REPORTED: " + totalFood);
        } else {
            currentFoodDailyProductionRate = 0;
        }
@@ -129,13 +125,9 @@ public class FoodHandler {
            {
                int error = 0;
            }
-           System.out.println("ZeroBug: Elapsed: " + MS.getElapsedTime());
-           System.out.println("ZeroBug: Elapsed in MS: " + MS.getElapsedTime().toMS());
-           System.out.println("ZeroBug: Consumed: " + myTribe.getPopulationHandler().getFoodConsumptionPerMS());
            
            int i=0;
        }
-       System.out.println("Food Consumption: "+this.myTribe.getPopulationHandler().getFoodConsumptionPerMS() * MS.getElapsedTime().toMS());
        if(totalFood <= 0)
        {
             totalFood = 0;

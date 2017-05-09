@@ -44,7 +44,7 @@ public class AICampObject extends TribalCampObject {
         if(myHandler.getState() == State.FAILED)
         {
             String Except = myHandler.getException().getMessage();
-            throw new RuntimeException(Except);
+            myHandler.getException().printStackTrace();
         } else if(myHandler.getState() == State.RUNNING)
         {
             StateExecution aFunc = myHandler.getStateExecution();

@@ -339,6 +339,7 @@ public class AIHandler extends Service {
                 //We could possibly pre-generate data here to make Execute execute faster
                 /////////////////////////////////////////////////////////////////////////
                 super.shouldExecute = true; //Ready to fire the AI Event
+                super.isFinished = false;
             }
             boolean isBuildingFieldsNow = false;
             @Override
@@ -378,6 +379,7 @@ public class AIHandler extends Service {
                         doFieldBuilding(); 
                     }
                     assert(this.estimateProduction(0) == myCamp.getFoodHandler().getFoodProducedPerDay());
+                    assert(this.estimateConsumption(0,0,0,0) == myCamp.getPopulationHandler().getFoodConsumptionPerDay());
                     if(this.estimateProduction(0) - this.estimateConsumption(0, 0, 0, 0) > 0)
                     {
                         this.isFinished = true;
@@ -408,6 +410,12 @@ public class AIHandler extends Service {
                 {
                     MapTile myHomeLocation = myHandle.getMapTileLocation();
                     MapTile myNewBuildLocation = drunkenWalker(myHomeLocation);
+                    if(myNewBuildLocation == null)
+                    {
+                        //wasn't able to find a free space.
+                        isAlive = false;
+                        isFinished = true;
+                    }
                     if(myHandle.getBuildingHandler().startBuilding("Field", myNewBuildLocation) == null)
                     {
                       i--;   
@@ -641,7 +649,7 @@ public class AIHandler extends Service {
             
             public float estimateProduction(int diffFarmer)
             {
-                return maxFieldDailyYield*Math.max(1, (diffFarmer + this.FarmersAmount)/this.farmersRequiredAmountTotal);
+                return maxFieldDailyYield*Math.min(1, (diffFarmer + this.FarmersAmount)/this.farmersRequiredAmountTotal);
             }
             
             private boolean isDoingPseudoCalculations()
@@ -653,7 +661,10 @@ public class AIHandler extends Service {
 
             private MapTile drunkenWalker(MapTile myTile)
             {
-                int Amount = DrunkardWalkran.nextInt(3);
+                ArrayList<MapTile> donotUse = new ArrayList<MapTile>();
+                int ResetCounter = 10;
+                int Counter = 0;
+                int Amount = DrunkardWalkran.nextInt(5) + 1;
                 MapTile myNextTile = myTile;
                 for(int i = 0; i < Amount; i++)
                 {
@@ -663,9 +674,26 @@ public class AIHandler extends Service {
                   {
                       i--;
                   } else {
-                    if(nextTile.isTerritoryOf(myHandle) && !nextTile.hasBuilding() && nextTile.isLand())
+                    if(nextTile.isTerritoryOf(myHandle))
                     {
-                        myNextTile = nextTile;
+                        if(i+1 < Amount)
+                        {
+                            myNextTile = nextTile;
+                        }
+                        else
+                        {
+                            myNextTile = nextTile;
+                            if(nextTile.hasBuilding() || !nextTile.isLand())
+                            {
+                                Counter++;
+                                if(Counter == ResetCounter)
+                                {
+                                    System.out.println("Infinite Loop Detected!");
+                                    return null;
+                                }
+                                i = 0;
+                            }
+                        }
                     } else {
                         i--;
                     }
@@ -889,7 +917,7 @@ public class AIHandler extends Service {
             
             public float estimateProduction()
             {
-                int Production = 0;
+                float Production = 0;
                 ArrayList<Building> aBuildingHandler = myCamp.getBuildingHandler().getAllBuiltBuildingsByType(Field.class);
                 float Check = myCamp.getFoodHandler().getFarmersAmount();
                 Iterator<Building> BuildingIterator = aBuildingHandler.iterator();
@@ -916,7 +944,7 @@ public class AIHandler extends Service {
                 {
                     if(((float)Check/(float)RequiredFarmers) > 1)
                     {
-                        TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
+                        TotalFoodProducedPerDay = (maxFoodProduced);
                         TotalFoodProducedPerDay += maxGhostFoodProduced;
                     } else {
                         TotalFoodProducedPerDay = ((float)Check/(float)RequiredFarmers)*(maxFoodProduced);
@@ -930,6 +958,8 @@ public class AIHandler extends Service {
             
             private boolean isHungry()
             {
+                assert(myCamp.getFoodHandler().getFoodProducedPerDay() == estimateProduction());
+                assert(myCamp.getPopulationHandler().getFoodConsumptionPerDay() == estimateConsumption());
                 //Make sure math here is correct
                 return((estimateProduction() - estimateConsumption()) < 0);
             }

@@ -30,6 +30,11 @@ public class MapTile_Land extends MapTile{
 
     @Override
     public String toString() {
+        String Territory = "";
+        if(super.getTerritory() != null)
+        {
+            Territory = "T: Yes";
+        }
         if(super.Destination)
         {
             return "□";
@@ -53,10 +58,10 @@ public class MapTile_Land extends MapTile{
                     {
                         return "Land, "+ this.myBuilding.getBuildingName() + "DEBUG: " + this.getCoordinates().toString();
                     } else {
-                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionPercentage()*100 + "%" + "DEBUG: " + this.getCoordinates().toString();
+                        return "Land, "+ this.myBuilding.getBuildingName() + ", " + this.myBuilding.getCompletionPercentage()*100 + "%" + "DEBUG: " + this.getCoordinates().toString() + " " + Territory;
                     }
                 } else {
-                    return "Land" + "DEBUG: " + this.getCoordinates().toString() + "ForegroundImageFileName: " + super.getTerritoryImage();
+                    return "Land" + "DEBUG: " + this.getCoordinates().toString() + "ForegroundImageFileName: " + super.getTerritoryImage() + " " + Territory;
                 }
             } else {
                 return "X";

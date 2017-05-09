@@ -16,6 +16,8 @@ import anthropologyapplication.TradeGoods.ResourceArray;
 import anthropologyapplication.TribalCampObject;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -266,19 +268,28 @@ public class BuildingHandler {
 		{
                     return BuildersBuilding;
 		}
-
-		public ArrayList<Building> getAllBuiltBuildingsByType(Class<? extends Building> theClass)
+                boolean comodificationLocking = false;
+		public synchronized ArrayList<Building> getAllBuiltBuildingsByType(Class<? extends Building> theClass)
 		{
-                    ArrayList<Building> retBuilding = new ArrayList<Building>();
-                    for(Building A : BuildingsBuilt)
-                    {
-                       //System.out.println(A.getClass());
-                        if(A.getClass() == theClass)
+                    try {
+                        if(comodificationLocking) wait();
+                        comodificationLocking = true;
+                        ArrayList<Building> retBuilding = new ArrayList<Building>();
+                        for(Building A : BuildingsBuilt)
                         {
-                           retBuilding.add(A);
+                            //System.out.println(A.getClass());
+                            if(A.getClass() == theClass)
+                            {
+                                retBuilding.add(A);
+                            }
                         }
+                        comodificationLocking = false;
+                        notify();
+                        return retBuilding;
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(BuildingHandler.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    return retBuilding;
+                    return null;
 		}
                 
                 public ArrayList<Building> getBuildingsCurrentlyBeingBuiltByType(Class<? extends Building> myClass)

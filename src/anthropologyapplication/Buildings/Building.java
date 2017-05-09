@@ -117,9 +117,7 @@ public abstract class Building
             //System.out.println("Build Time: " + timeTillBuilt);
             if(!isFinishedBuilding)
             {
-                System.out.println("T.Elapsed: " + T.getElapsedTime());
                 timeTillBuilt = ((timeTillBuilt.subtract(T.getElapsedTime().multiply(Ratio))));
-                System.out.println("timeTillBuilt.subtract(T.getElapsedTime()): " + timeTillBuilt.subtract(T.getElapsedTime()));
                 isFinishedBuilding = (timeTillBuilt.EqualTo(Timer.Zero));
                 
             }
